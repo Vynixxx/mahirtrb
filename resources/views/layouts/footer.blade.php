@@ -35,9 +35,9 @@
     <div class="col-lg-2 col-md-3 footer-links">
       <h4>Penawaran</h4>
       <ul>
-        <li><a href="#">Cara Penyewaan</a></li>
-        <li><a href="#">Jenis Alat Berat</a></li>
-        <li><a href="#">Syarat & Ketentuan</a></li>
+        <li><a href="{{ route('penyewaan') }}">Cara Penyewaan</a></li>
+        <li><a href="{{ route('produk') }}">Jenis Alat Berat</a></li>
+        <li><a href="{{ route('sk') }}">Syarat & Ketentuan</a></li>
       </ul>
     </div>
 

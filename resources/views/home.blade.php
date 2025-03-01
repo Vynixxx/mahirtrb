@@ -48,7 +48,7 @@
             <h1>Butuh Kendaraan Berat untuk Proyek Anda? <span> Kami Siap Membantu!</span></h1>
             <p>Mahir Trans Bersaudara hadir untuk memenuhi kebutuhan sewa kendaraan berat dengan armada lengkap dan layanan terbaik.</p>
             <div class="d-flex">
-              <a href="#about" class="btn-get-started">Selengkapnya</a>
+              <a href="#tentang-kami" class="btn-get-started">Selengkapnya</a>
             </div>
           </div>
 
@@ -179,29 +179,41 @@
     <!-- layanan Section -->
     <section id="layanan-kami" class="services section light-background py-5">
       <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Layanan</h2>
-        <div><span>Layanan yang</span> <span class="description-title">Tersedia</span></div>
-      </div><!-- End Section Title -->
+      <div class="container section-title d-flex justify-content-between align-items-center flex-wrap gap-2" data-aos="fade-up">
+          <div>
+              <h2 class="mb-0">Layanan</h2>
+              <div><span>Layanan yang</span> <span class="description-title">Tersedia</span></div>
+          </div>
+          <a href="{{ route('penyewaan') }}">Pesan Sekarang <i class="bi bi-arrow-right"></i></a>
+      </div>
+      <!-- End Section Title -->
+
+
 
       <div class="container">
         <div class="row gy-4">
-          <!-- Service Item 1 -->
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="card border-0 shadow-sm h-100">
-              <img src="assets/img/services/foco.png" class="card-img-top" alt="Layanan 1">
-              <div class="card-body text-center">
-                <h5 class="card-title fw-bold">Foco Truck</h5>
-                <p class="card-text text-muted">Kendaraan niaga yang dapat mengangkut beban berat hingga 8 ton. Foco truck merupakan gabungan antara truk dan crane yang dipasangkan di atasnya. Memiliki daya tahan dan kekuatan yang tinggi, dapat diandalkan untuk mengangkut material besar dan berat, efisien, dan dapat digunakan di berbagai kondisi medan.  </p>
-              </div>
+        <!-- Service Item 1 -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="ratio ratio-16x9">
+              <img src="assets/img/services/tendem.png" class="card-img-top" alt="Layanan kami">
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-title fw-bold">Tandem Truck</h5>
+              <p class="card-text text-muted">
+                Truk tandem memiliki satu poros di depan dan satu poros ganda di belakang. Karena terdapat dua buah roda yang ditempatkan pada masing-masing sisi poros belakang truk, maka beban yang diangkut di bak truk mampu terdistribusi secara merata.
+              </p>
             </div>
           </div>
+        </div>
           <!-- Service Item 2 -->
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="card border-0 shadow-sm h-100">
-              <img src="assets/img/services/watertrailer1.jpg" class="card-img-top" alt="Layanan 2">
-              <div class="card-body text-center">
-                <h5 class="card-title fw-bold">Water Trailer</h5>
+            <div class="ratio ratio-16x9">
+              <img src="assets/img/services/watertrailer1.jpg" class="card-img-top" alt="Layanan 1">
+            </div>              
+            <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Water Tank Trailer</h5>
                 <p class="card-text text-muted">Sistem tangki air bergerak yang dirancang untuk mengangkut air yang diperlukan dan peralatan semprotan ke dan dari lokasi yang diperlukan seperti pertanian, lokasi konstruksi, arena, dan lain-lain.</p>
               </div>
             </div>
@@ -209,10 +221,12 @@
           <!-- Service Item 3 -->
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="card border-0 shadow-sm h-100">
-              <img src="assets/img/services/service3.jpg" class="card-img-top" alt="Layanan 3">
+            <div class="ratio ratio-16x9">
+              <img src="assets/img/services/foco.jpg" class="card-img-top" alt="Layanan 1">
+            </div>
               <div class="card-body text-center">
-                <h5 class="card-title fw-bold">Trucking & Ekspedisi</h5>
-                <p class="card-text text-muted">Layanan pengangkutan alat berat dan logistik dengan armada terpercaya.</p>
+                <h5 class="card-title fw-bold">Foco Truck</h5>
+                <p class="card-text text-muted">Kendaraan niaga yang dapat mengangkut beban berat hingga 8 -16 ton. Foco truck merupakan gabungan antara truk dan crane yang dipasangkan di atasnya. Memiliki daya tahan dan kekuatan yang tinggi, dapat diandalkan untuk mengangkut material besar dan berat, efisien, dan dapat digunakan di berbagai kondisi medan. </p>
               </div>
             </div>
           </div>

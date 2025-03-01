@@ -37,4 +37,14 @@ class pageAdmin extends Controller
     {
         return view('admin.mitra');
     }
+
+    //halaman tambah
+    public function tambahlayanan()
+    {
+        return view('admin.tambahlayanan');
+    }
+    public function tambahgaleri()
+    {
+        return view('admin.tambahgaleri');
+    }
 }
