@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Cara Pemesanan - PT. Mahir Trans Bersaudara</title>
+  <title>Pemesanan - PT. Mahir Trans Bersaudara</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 

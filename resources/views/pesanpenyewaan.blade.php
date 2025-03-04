@@ -65,7 +65,7 @@
                                     @csrf
                                     <h5>Penanggung Jawab</h5>
                                     <div class="form-group mt-4">
-                                        <label class="text-secondary mb-2">Nama</label>
+                                        <label class="text-secondary mb-2">Nama Penyewa / Perusahaan</label>
                                         <input class="form-control border border-secondary form-control" name="nama" required value="" type="text" >
                                         <span class="text-danger">
                                             @error('nama')
@@ -92,24 +92,37 @@
                                         </span>
                                     </div><br>
                                     <h5>Informasi Kendaraan</h5>
-                                    <div class="form-group mt-4">
-                                        <label class="text-secondary mb-2">Nomor Polisi</label>
-                                        <input class="form-control border border-secondary form-control" name="nopol" required value="" type="text" >
-                                        <span class="text-danger">
-                                            @error('nopol')
-                                              {{ $message }}
-                                            @enderror
-                                        </span>
-                                    </div>
-                                    <div class="form-group mt-3">
-                                        <label class="text-secondary mb-2">Jenis Kendaraan</label>
-                                        <input class="form-control border border-secondary form-control" name="jenis" required value="" type="text" >
-                                        <span class="text-danger">
-                                            @error('jenis')
-                                              {{ $message }}
-                                            @enderror
-                                        </span>
-                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Jenis Kendaraan</label>
+                                            <select class="form-select" name="jenis" required value="{{ old('jenis') }}">
+                                                <option selected>Pilih Jenis Kendaraan</option>
+                                                <option>Truk Foco</option>
+                                                <option>Crane</option>
+                                                <option>Dozer</option>
+                                                <option>Lowbed</option>
+                                                <option>Triller</option>
+                                                <option>Truk Kepala</option>
+                                                <option>Truk Tandem</option>
+                                                <option>Truk Vakum</option>
+                                                <option>Tangki Air</option>
+                                            </select>
+                                            <span class="text-danger">
+                                                @error('jenis')
+                                                {{ $message }}
+                                                @enderror
+                                            </span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="text-secondary mb-2">Jumlah Kebutuhan</label>
+                                            <input class="form-control border border-secondary" name="jml" required type="number" value="{{ old('jml') }}">
+                                            <span class="text-danger">
+                                                @error('jml')
+                                                {{ $message }}
+                                                @enderror
+                                            </span>
+                                        </div>
+                                    </div>      
                                     <div class="form-group mt-3">
                                         <label class="text-secondary mb-2">Kendala Kendaraan</label>
                                         <textarea  type="text" class="form-control border border-secondary form-control" name="isi" value=""></textarea>

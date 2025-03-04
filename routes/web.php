@@ -12,7 +12,7 @@ Route::get('/mitra-kami', [pageuser::class, 'halamanmitra'])->name('mitra');
 Route::get('/layanan-kami', [pageuser::class, 'halamanlayanan'])->name('layanan');
 Route::get('/galeri', [pageuser::class, 'halamangaleri'])->name('galeri');
 Route::get('/kontak-kami', [pageuser::class, 'halamankontak'])->name('kontak');
-Route::get('/cara-pesan', [pageuser::class, 'halamanpesan'])->name('pemesanan');
+Route::get('/pemesanan', [pageuser::class, 'halamanpesan'])->name('pemesanan');
 Route::get('/jenis-alat-berat', [pageuser::class, 'halamanproduk'])->name('produk');
 Route::get('/syarat-dan-ketentuan', [pageuser::class, 'halamansk'])->name('sk');
 Route::get('/ekspedisi', [pageuser::class, 'halamanekspedisi'])->name('ekspedisi');

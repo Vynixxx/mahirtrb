@@ -35,7 +35,7 @@
     <div class="col-lg-2 col-md-3 footer-links">
       <h4>Penawaran</h4>
       <ul>
-        <li><a href="{{ route('pemesanan') }}">Cara Pemesanan</a></li>
+        <li><a href="{{ route('pemesanan') }}">Pemesanan</a></li>
         <li><a href="{{ route('ekspedisi') }}">Ekspedisi</a></li>
         <li><a href="{{ route('produk') }}">Jenis Alat Berat</a></li>
         <li><a href="{{ route('pabrikasi') }}">Pabrikasi</a></li>

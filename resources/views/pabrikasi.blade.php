@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Ekspedisi - PT. Mahir Trans Bersaudara</title>
+  <title>Pabrikasi - PT. Mahir Trans Bersaudara</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -63,7 +63,7 @@
             <div class="container">
             <div class="row d-flex justify-content-center text-center">
                 <div class="col-lg-8">
-                <h1 class="mb-4">Ekspedisi</h1>
+                <h1 class="mb-4">Pabrikasi</h1>
                 </div>
             </div>
             </div>
@@ -72,7 +72,7 @@
             <div class="container">
             <ol>
                 <li><a href="{{ route('home') }}">Beranda</a></li>
-                <li class="current">Ekspedisi</li>
+                <li class="current">Pabrikasi</li>
             </ol>
             </div>
         </nav>
@@ -80,7 +80,7 @@
 
         <!-- Timeline -->
         <div class="container py-5">
-            <h2 class="text-center mb-4" data-aos="fade-up" data-aos-delay="100">Cara Pesan Ekspedisi Kendaraan Berat <br> PT. Mahir Trans Bersaudara</h2><br>
+            <h2 class="text-center mb-4" data-aos="fade-up" data-aos-delay="100">Cara Pabrikasi Kendaraan Berat <br> PT. Mahir Trans Bersaudara</h2><br>
 
             <div class="timeline">
                 <!-- Langkah 1 -->

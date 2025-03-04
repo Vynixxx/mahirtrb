@@ -65,8 +65,8 @@
                                     @csrf
                                     <h5>Penanggung Jawab</h5>
                                     <div class="form-group mt-4">
-                                        <label class="text-secondary mb-2">Nama</label>
-                                        <input class="form-control border border-secondary form-control" name="nama" required value="" type="text" >
+                                    <label class="text-secondary mb-2">Nama Penyewa / Perusahaan</label>
+                                    <input class="form-control border border-secondary form-control" name="nama" required value="" type="text" >
                                         <span class="text-danger">
                                             @error('nama')
                                               {{ $message }}
