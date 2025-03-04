@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard Admin | Mahir Trans Bersaudara</title>
+  <title>Penyewaan | Mahir Trans Bersaudara</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -33,8 +33,8 @@
 
 <body>
 
-  @include('admin.layouts.header')
-  @include('admin.layouts.sidebar')
+  @include('layouts.headerp')
+  @include('layouts.sidebar')
 
   <main id="main" class="main">
             <div class="container">
@@ -59,44 +59,76 @@
                               <div  href="" >
                                 <h5 class="card-title text-center">
                                 <nav class="d-flex justify-content-center">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                                        <li class="breadcrumb-item"><a href="{{ route('admin.layanan') }}">Layanan</a></li>
-                                        <li class="breadcrumb-item active">Tambah Layanan</li>
-                                    </ol>
                                 </nav>
-                                Tambah Layanan</h5>
-                                <form action="{{ route('postTambahlayanan') }}" method="POST" enctype="multipart/form-data" >
+                                Penyewaan</h5>
+                                <form action="#" method="POST" enctype="multipart/form-data" >
                                     @csrf
+                                    <h5>Penanggung Jawab</h5>
                                     <div class="form-group mt-4">
-                                        <label class="text-secondary mb-2">Nama Kendaraan</label>
+                                        <label class="text-secondary mb-2">Nama</label>
                                         <input class="form-control border border-secondary form-control" name="nama" required value="" type="text" >
                                         <span class="text-danger">
                                             @error('nama')
                                               {{ $message }}
                                             @enderror
                                         </span>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label class="text-secondary mb-2">Nomor WhatsApp</label>
+                                        <input class="form-control border border-secondary form-control" name="nohp" required value="" type="number" >
+                                        <span class="text-danger">
+                                            @error('nohp')
+                                              {{ $message }}
+                                            @enderror
+                                        </span>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label class="text-secondary mb-2">Email</label>
+                                        <input class="form-control border border-secondary form-control" name="email" required value="" type="email" >
+                                        <span class="text-danger">
+                                            @error('email')
+                                              {{ $message }}
+                                            @enderror
+                                        </span>
                                     </div><br>
-                                    <div class="form-group mt-1">
-                                        <label class="text-secondary mb-2">Deskripsi</label>
+                                    <h5>Informasi Kendaraan</h5>
+                                    <div class="form-group mt-4">
+                                        <label class="text-secondary mb-2">Nomor Polisi</label>
+                                        <input class="form-control border border-secondary form-control" name="nopol" required value="" type="text" >
+                                        <span class="text-danger">
+                                            @error('nopol')
+                                              {{ $message }}
+                                            @enderror
+                                        </span>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label class="text-secondary mb-2">Jenis Kendaraan</label>
+                                        <input class="form-control border border-secondary form-control" name="jenis" required value="" type="text" >
+                                        <span class="text-danger">
+                                            @error('jenis')
+                                              {{ $message }}
+                                            @enderror
+                                        </span>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label class="text-secondary mb-2">Kendala Kendaraan</label>
                                         <textarea  type="text" class="form-control border border-secondary form-control" name="isi" value=""></textarea>
                                         <span class="text-danger">
                                             @error('isi')
                                             {{ $message }}
                                             @enderror
                                         </span>
-                                    </div><br>
-                                    <div class="form-group mt-1">
-                                        <label class="text-secondary mb-2">Gambar</label>
-                                        <input class="form-control border border-secondary form-control" name="gambar" required value="" type="file">
-                                        <div class="form-text">Maksimal ukuran Gambar 5MB
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label class="text-secondary mb-2">Catatan Tambahan </label> <span class="text-danger">(Opsional)</span>
+                                        <textarea  type="text" class="form-control border border-secondary form-control" name="isi" value=""></textarea>
                                         <span class="text-danger">
-                                            @error('gambar')
-                                              {{ $message }}
+                                            @error('isi')
+                                            {{ $message }}
                                             @enderror
                                         </span>
                                     </div>
-                                    <button type="submit" class="btn btn-success mt-5">Tambah Data</button>
+                                    <button type="submit" class="btn btn-success mt-5">Kirim</button>
                                 </form>
                             </div>
                         </div>

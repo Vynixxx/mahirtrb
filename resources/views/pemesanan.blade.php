@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Cara Penyewaan - PT. Mahir Trans Bersaudara</title>
+  <title>Cara Pemesanan - PT. Mahir Trans Bersaudara</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -63,7 +63,7 @@
             <div class="container">
             <div class="row d-flex justify-content-center text-center">
                 <div class="col-lg-8">
-                <h1 class="mb-4">Penyewaan</h1>
+                <h1 class="mb-4">Pemesanan</h1>
                 </div>
             </div>
             </div>
@@ -72,155 +72,12 @@
             <div class="container">
             <ol>
                 <li><a href="{{ route('home') }}">Beranda</a></li>
-                <li class="current">Penyewaan</li>
+                <li class="current">Pemesanan</li>
             </ol>
             </div>
         </nav>
         </div><!-- End Page Title -->
-
-        <!-- Timeline -->
-        <div class="container py-5">
-            <h2 class="text-center mb-4" data-aos="fade-up" data-aos-delay="100">Cara Penyewaan Kendaraan Berat <br> PT. Mahir Trans Bersaudara</h2><br>
-
-            <div class="timeline">
-                <!-- Langkah 1 -->
-                <div class="timeline-step" data-aos="fade-up" data-aos-delay="100">
-                    <div class="circle bg-primary">1</div>
-                    <h6>Pilih Kendaraan</h6>
-                </div>
-
-                <div class="line" data-aos="fade-up" data-aos-delay="100"></div> <!-- Garis Penghubung -->
-
-                <!-- Langkah 2 -->
-                <div class="timeline-step" data-aos="fade-up" data-aos-delay="200">
-                    <div class="circle bg-success">2</div>
-                    <h6>Isi Formulir</h6>
-                </div>
-
-                <div class="line" data-aos="fade-up" data-aos-delay="200"></div> <!-- Garis Penghubung -->
-
-                <!-- Langkah 3 -->
-                <div class="timeline-step" data-aos="fade-up" data-aos-delay="300">
-                    <div class="circle bg-warning">3</div>
-                    <h6>Konfirmasi & Pembayaran</h6>
-                </div>
-
-                <div class="line" data-aos="fade-up" data-aos-delay="300"></div> <!-- Garis Penghubung -->
-
-                <!-- Langkah 4 -->
-                <div class="timeline-step" data-aos="fade-up" data-aos-delay="400">
-                    <div class="circle bg-danger">4</div>
-                    <h6>Pengiriman</h6>
-                </div>
-
-                <div class="line" data-aos="fade-up" data-aos-delay="400"></div> <!-- Garis Penghubung -->
-
-                <!-- Langkah 5 -->
-                <div class="timeline-step" data-aos="fade-up" data-aos-delay="500">
-                    <div class="circle bg-info">5</div>
-                    <h6>Penggunaan</h6>
-                </div>
-
-                <div class="line" data-aos="fade-up" data-aos-delay="500"></div> <!-- Garis Penghubung -->
-
-                <!-- Langkah 6 -->
-                <div class="timeline-step" data-aos="fade-up" data-aos-delay="600">
-                    <div class="circle bg-secondary">6</div>
-                    <h6>Pengembalian</h6>
-                </div>
-            </div>
-
-        <!-- CSS -->
-        <style>
-            .timeline {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-wrap: wrap;
-                position: relative;
-                margin: 50px auto;
-            }
-
-            .timeline-item {
-                display: flex;
-                align-items: center;
-                text-align: center;
-                position: relative;
-            }
-
-            .timeline-step {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                position: relative;
-                margin: 20px;
-            }
-
-            .circle {
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: white;
-                font-weight: bold;
-                font-size: 1.2rem;
-                position: relative;
-                z-index: 2;
-                transition: transform 0.3s ease-in-out;
-            }
-
-            .circle:hover {
-                transform: scale(1.2);
-            }
-
-            .line {
-                flex-grow: 1;
-                height: 5px;
-                background-color: gray;
-                margin: 0 10px;
-            }
-
-            @keyframes grow {
-                from {
-                    width: 0;
-                }
-                to {
-                    width: 80px;
-                }
-            }
-
-            h6 {
-                margin-top: 10px;
-                font-size: 1rem;
-                text-align: center;
-            }
-
-            @media (max-width: 768px) {
-                .timeline {
-                    flex-direction: column;
-                    align-items: center;
-                }
-
-                .timeline-item {
-                    flex-direction: column;
-                }
-
-                .line {
-                    width: 5px; /* Garis menjadi vertikal */
-                    height: 50px; /* Jarak antar elemen */
-                    margin: 10px 0;
-                }
-            }
-        </style>
-
-        <!-- Script AOS -->
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <script>
-            AOS.init();
-        </script>
-
+        
         <!-- Keunggulan Section -->
         <section class="about section">
             <div class="container" data-aos="fade-up" data-aos-delay="200">
@@ -265,9 +122,81 @@
                 </div>
                 </div>
         </section>
+
+        <!-- layanan Section -->
+        <section id="layanan-kami" class="services section light-background py-5">
+        <!-- Section Title -->
+        <h2 class="text-center mb-4">Layanan Kami</h2>
+        <!-- End Section Title -->
+
+        <div class="container">
+            <div class="row gy-4 justify-content-center text-center">
+            <!-- Service Item 1 -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="ratio ratio-16x9">
+                <img src="assets/img/services/tendem.png" class="card-img-top" alt="Layanan kami">
+                </div>
+                <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Ekspedisi</h5>
+                <p class="card-text text-muted">
+                    isi
+                </p>
+                </div>
+                <a href="{{ route('pesanekspedisi') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="200">
+                    Pesan
+                </a>
+            </div>
+            </div>
+            <!-- Service Item 2 -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="card border-0 shadow-sm h-100">
+                <div class="ratio ratio-16x9">
+                <img src="assets/img/services/watertrailer1.jpg" class="card-img-top" alt="Layanan 1">
+                </div>              
+                <div class="card-body text-center">
+                    <h5 class="card-title fw-bold">Pabrikasi</h5>
+                    <p class="card-text text-muted">isi</p>
+                </div>
+                <a href="{{ route('pesanpabrikasi') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="300">
+                    Pesan
+                </a>
+                </div>
+            </div>
+            <!-- Service Item 3 -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="card border-0 shadow-sm h-100">
+                <div class="ratio ratio-16x9">
+                <img src="assets/img/services/foco.jpg" class="card-img-top" alt="Layanan 1">
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="card-title fw-bold">Perbaikan</h5>
+                    <p class="card-text text-muted">isi</p>
+                </div>
+                <a href="{{ route('pesanperbaikan') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="400">
+                    Pesan
+                </a>
+                </div>
+            </div>
+            <!-- Service Item 4 -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                <div class="card border-0 shadow-sm h-100">
+                <img src="assets/img/services/service4.jpg" class="card-img-top" alt="Layanan 4">
+                <div class="card-body text-center">
+                    <h5 class="card-title fw-bold">Penyewaan</h5>
+                    <p class="card-text text-muted">isi</p>
+                </div>
+                <a href="{{ route('pesanpenyewaan') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="200">
+                    Pesan
+                </a>
+                </div>
+            </div>
+            </div>
+        </div>
+        </section><!-- layanan section -->
         </div>
 
-            <!-- /About Section -->
+        <!-- /About Section -->
 
         <!-- Testimonials Section -->
         <section id="testimonials" class="testimonials section dark-background">

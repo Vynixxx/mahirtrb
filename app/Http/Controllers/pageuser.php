@@ -3,12 +3,34 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\LayananKendaraan;
+
 
 class pageuser extends Controller
 {
+    public function halamanpesan()
+    {
+        return view('pemesanan');
+    }
+
     public function halamansewa()
     {
         return view('penyewaan');
+    }
+
+    public function halamanekspedisi()
+    {
+        return view('ekspedisi');
+    }
+
+    public function halamanperbaikan()
+    {
+        return view('perbaikan');
+    }
+
+    public function halamanpabrikasi()
+    {
+        return view('pabrikasi');
     }
 
     public function halamanproduk()
@@ -48,6 +70,24 @@ class pageuser extends Controller
     
     public function halamanhome()
     {
-        return view('home');
+        $layanan = LayananKendaraan::get();
+        return view('home', compact('layanan'));
+    }
+
+    public function halamanpesanekspedisi()
+    {
+        return view('pesanekspedisi');
+    }
+    public function halamanpesanpabrikasi()
+    {
+        return view('pesanpabrikasi');
+    }
+    public function halamanpesanpenyewaan()
+    {
+        return view('pesanpenyewaan');
+    }
+    public function halamanpesanperbaikan()
+    {
+        return view('pesanperbaikan');
     }
 }

@@ -46,7 +46,7 @@
 
           <div class="col-lg-6  d-flex flex-column justify-content-center" data-aos="fade-in">
             <h1>Butuh Kendaraan Berat untuk Proyek Anda? <span> Kami Siap Membantu!</span></h1>
-            <p>Mahir Trans Bersaudara hadir untuk memenuhi kebutuhan sewa kendaraan berat dengan armada lengkap dan layanan terbaik.</p>
+            <p>Mahir Trans Bersaudara hadir untuk memenuhi kebutuhan akan kendaraan berat dengan armada lengkap dan layanan terbaik.</p>
             <div class="d-flex">
               <a href="#tentang-kami" class="btn-get-started">Selengkapnya</a>
             </div>
@@ -184,14 +184,12 @@
               <h2 class="mb-0">Layanan</h2>
               <div><span>Layanan yang</span> <span class="description-title">Tersedia</span></div>
           </div>
-          <a href="{{ route('penyewaan') }}">Pesan Sekarang <i class="bi bi-arrow-right"></i></a>
+          <a href="{{ route('pemesanan') }}">Selengkapnya <i class="bi bi-arrow-right"></i></a>
       </div>
       <!-- End Section Title -->
 
-
-
       <div class="container">
-        <div class="row gy-4">
+        <div class="row gy-4 justify-content-center text-center">
         <!-- Service Item 1 -->
         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
           <div class="card border-0 shadow-sm h-100">
@@ -199,11 +197,14 @@
               <img src="assets/img/services/tendem.png" class="card-img-top" alt="Layanan kami">
             </div>
             <div class="card-body text-center">
-              <h5 class="card-title fw-bold">Tandem Truck</h5>
+              <h5 class="card-title fw-bold">Ekspedisi</h5>
               <p class="card-text text-muted">
-                Truk tandem memiliki satu poros di depan dan satu poros ganda di belakang. Karena terdapat dua buah roda yang ditempatkan pada masing-masing sisi poros belakang truk, maka beban yang diangkut di bak truk mampu terdistribusi secara merata.
+                isi
               </p>
             </div>
+            <a href="{{ route('pesanekspedisi') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="200">
+              Pesan
+            </a>
           </div>
         </div>
           <!-- Service Item 2 -->
@@ -213,9 +214,12 @@
               <img src="assets/img/services/watertrailer1.jpg" class="card-img-top" alt="Layanan 1">
             </div>              
             <div class="card-body text-center">
-                <h5 class="card-title fw-bold">Water Tank Trailer</h5>
-                <p class="card-text text-muted">Sistem tangki air bergerak yang dirancang untuk mengangkut air yang diperlukan dan peralatan semprotan ke dan dari lokasi yang diperlukan seperti pertanian, lokasi konstruksi, arena, dan lain-lain.</p>
+                <h5 class="card-title fw-bold">Pabrikasi</h5>
+                <p class="card-text text-muted">isi</p>
               </div>
+              <a href="{{ route('pesanpabrikasi') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="200">
+                    Pesan
+                </a>
             </div>
           </div>
           <!-- Service Item 3 -->
@@ -225,9 +229,12 @@
               <img src="assets/img/services/foco.jpg" class="card-img-top" alt="Layanan 1">
             </div>
               <div class="card-body text-center">
-                <h5 class="card-title fw-bold">Foco Truck</h5>
-                <p class="card-text text-muted">Kendaraan niaga yang dapat mengangkut beban berat hingga 8 -16 ton. Foco truck merupakan gabungan antara truk dan crane yang dipasangkan di atasnya. Memiliki daya tahan dan kekuatan yang tinggi, dapat diandalkan untuk mengangkut material besar dan berat, efisien, dan dapat digunakan di berbagai kondisi medan. </p>
+                <h5 class="card-title fw-bold">Perbaikan</h5>
+                <p class="card-text text-muted">isi</p>
               </div>
+              <a href="{{ route('pesanperbaikan') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="200">
+                    Pesan
+                </a>
             </div>
           </div>
           <!-- Service Item 4 -->
@@ -235,29 +242,12 @@
             <div class="card border-0 shadow-sm h-100">
               <img src="assets/img/services/service4.jpg" class="card-img-top" alt="Layanan 4">
               <div class="card-body text-center">
-                <h5 class="card-title fw-bold">Pabrikasi & Manufaktur</h5>
-                <p class="card-text text-muted">Melayani pembuatan komponen dan struktur industri sesuai kebutuhan.</p>
+                <h5 class="card-title fw-bold">Penyewaan</h5>
+                <p class="card-text text-muted">isi</p>
               </div>
-            </div>
-          </div>
-          <!-- Service Item 5 -->
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="card border-0 shadow-sm h-100">
-              <img src="assets/img/services/service5.jpg" class="card-img-top" alt="Layanan 5">
-              <div class="card-body text-center">
-                <h5 class="card-title fw-bold">Konsultasi Proyek</h5>
-                <p class="card-text text-muted">Membantu klien merencanakan kebutuhan alat berat dan logistik proyek.</p>
-              </div>
-            </div>
-          </div>
-          <!-- Service Item 6 -->
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-            <div class="card border-0 shadow-sm h-100">
-              <img src="assets/img/services/service6.jpg" class="card-img-top" alt="Layanan 6">
-              <div class="card-body text-center">
-                <h5 class="card-title fw-bold">Jasa Operator & Pelatihan</h5>
-                <p class="card-text text-muted">Pelatihan tenaga kerja dan penyediaan operator alat berat bersertifikasi.</p>
-              </div>
+              <a href="{{ route('pesanpenyewaan') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="200">
+                    Pesan
+                </a>
             </div>
           </div>
         </div>
@@ -269,8 +259,8 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Gallery</h2>
-        <div><span>Check Our</span> <span class="description-title">Gallery</span></div>
+        <h2>Galeri</h2>
+        <div><span>Perangkat Kendaraan Berat</span> <span class="description-title">Kami</span></div>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -378,7 +368,7 @@
                 <i class="faq-icon bi bi-question-circle"></i>
                 <h3>Bagaimana cara menyewa alat berat di PT Mahir Trans Bersaudara?</h3>
                 <div class="faq-content">
-                  <p>Anda dapat menghubungi kami melalui telepon, WhatsApp, atau email untuk konsultasi dan pemesanan. Setelah itu, kami akan membantu memilih alat yang sesuai, menentukan durasi sewa, dan mengatur pengiriman ke lokasi proyek Anda.</p>
+                  <p>Anda dapat menghubungi kami melalui telepon, WhatsApp, atau mengisi form yang telah disediakan untuk konsultasi dan pemesanan. Setelah itu, kami akan segera melakukan pengecekan dan konfirmasi kepada Anda, menentukan durasi sewa, dan mengatur pengiriman ke lokasi proyek Anda.</p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
               </div><!-- End Faq item-->

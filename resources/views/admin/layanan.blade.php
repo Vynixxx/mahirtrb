@@ -37,7 +37,21 @@
   @include('admin.layouts.sidebar')
 
   <main id="main" class="main">
-
+    <div class="container">
+      <div class="container mt-3">
+        @if (Session::get('success'))
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Berhasil!</strong> {{ Session::get('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        @endif
+        @if (Session::get('failed'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Gagal!</strong> {{ Session::get('failed') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+      </div>
     <div class="card">
             <div class="card-body">
               <h5 class="card-title">Layanan <a href="{{ route('admin.tambahlayanan') }}" class="btn btn-white">+</a>
@@ -62,16 +76,46 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Brandon Jacob</td>
-                    <td>Designer</td>
-                    <td>28</td>
-                    <td>2016-05-25</td>
-                  </tr>
+                @foreach ($layanankendaraan as $lk)
+                <tr>
+                  <th scope="row">{{ $loop->iteration }}</th>
+                  <td>
+                    <img style="width: 150px" src="{{ asset('/images/' . $lk->gambar) }}" alt="foto kendaraan">
+                  </td>
+                    <td>{{ $lk->nama }}</td>
+                    <td>{{ $lk->isi }}</td>
+                    <td>
+                      <a class="btn btn-outline-warning" href="/admin/editlayanan/{{ $lk->id }}"><i class="bi bi-pen"></i></a>
+                      <button class="btn btn-outline-danger btn-delete" 
+                              data-id="{{ $lk->id }}" 
+                              data-nama="{{ $lk->nama }}"
+                              data-url="/admin/deletelayanan/{{ $lk->id }}">
+                        <i class="bi bi-trash3"></i>
+                      </button>
+                    </td>
+                </tr>
+              @endforeach
                 </tbody>
               </table>
               <!-- End Default Table Example -->
+              <!-- Modal Konfirmasi Hapus -->
+              <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Apakah Anda yakin ingin menghapus <b id="namaKendaraan"></b> ini?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                      <a id="confirmDelete" class="btn btn-danger">Hapus</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -93,6 +137,24 @@
 
   <!-- Template Main JS File -->
   <script src="{{ asset('assetsadmin/js/main.js') }}"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      let deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+      
+      document.querySelectorAll(".btn-delete").forEach(button => {
+        button.addEventListener("click", function () {
+          let kendaraanNama = this.getAttribute("data-nama");
+          let deleteUrl = this.getAttribute("data-url");
+
+          document.getElementById("namaKendaraan").innerText = kendaraanNama;
+          document.getElementById("confirmDelete").setAttribute("href", deleteUrl);
+
+          deleteModal.show();
+        });
+      });
+    });
+  </script>
 
 </body>
 

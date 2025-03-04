@@ -12,9 +12,17 @@ Route::get('/mitra-kami', [pageuser::class, 'halamanmitra'])->name('mitra');
 Route::get('/layanan-kami', [pageuser::class, 'halamanlayanan'])->name('layanan');
 Route::get('/galeri', [pageuser::class, 'halamangaleri'])->name('galeri');
 Route::get('/kontak-kami', [pageuser::class, 'halamankontak'])->name('kontak');
-Route::get('/cara-sewa', [pageuser::class, 'halamansewa'])->name('penyewaan');
+Route::get('/cara-pesan', [pageuser::class, 'halamanpesan'])->name('pemesanan');
 Route::get('/jenis-alat-berat', [pageuser::class, 'halamanproduk'])->name('produk');
 Route::get('/syarat-dan-ketentuan', [pageuser::class, 'halamansk'])->name('sk');
+Route::get('/ekspedisi', [pageuser::class, 'halamanekspedisi'])->name('ekspedisi');
+Route::get('/pabrikasi', [pageuser::class, 'halamanpabrikasi'])->name('pabrikasi');
+Route::get('/penyewaan', [pageuser::class, 'halamansewa'])->name('penyewaan');
+Route::get('/perbaikan', [pageuser::class, 'halamanperbaikan'])->name('perbaikan');
+Route::get('/pesan-ekspedisi', [pageuser::class, 'halamanpesanekspedisi'])->name('pesanekspedisi');
+Route::get('/pesan-pabrikasi', [pageuser::class, 'halamanpesanpabrikasi'])->name('pesanpabrikasi');
+Route::get('/pesan-penyewaan', [pageuser::class, 'halamanpesanpenyewaan'])->name('pesanpenyewaan');
+Route::get('/pesan-perbaikan', [pageuser::class, 'halamanpesanperbaikan'])->name('pesanperbaikan');
 
 
 // admin login
@@ -36,7 +44,7 @@ Route::middleware([IsAdmin::class])->group(function () {
 
     //tambah
     Route::get('/admin/tambahlayanan', [pageadmin::class,'tambahlayanan'])->name('admin.tambahlayanan');
-    Route::post('/tambahlayanan', [pageadmin::class,'layanan'])->name('postTambahlayanan');
+    Route::post('/tambahlayanan', [pageadmin::class,'layanantambah'])->name('postTambahlayanan');
     Route::get('/admin/tambahgaleri', [pageadmin::class,'tambahgaleri'])->name('admin.tambahgaleri');
     Route::post('/tambahgaleri', [pageadmin::class,'galeri'])->name('postTambahgaleri');
 

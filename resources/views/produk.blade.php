@@ -61,8 +61,7 @@
             <div class="container">
             <div class="row d-flex justify-content-center text-center">
                 <div class="col-lg-8">
-                <h1>Layanan Kami</h1>
-                <p class="mb-0">Layanan yang kami tawarkan.</p>
+                <h1 class="mb-4">Produk Kami</h1>
                 </div>
             </div>
             </div>
@@ -71,40 +70,13 @@
             <div class="container">
             <ol>
                 <li><a href="{{ route('home') }}">Beranda</a></li>
-                <li class="current">Layanan</li>
+                <li class="current">Produk</li>
             </ol>
             </div>
         </nav>
         </div><!-- End Page Title -->
 
-        <section class="container my-5">
-            <h2 class="text-center mb-4">Daftar Layanan</h2>
-            <div class="row text-center">
-                <div class="col-md-4">
-                <div class="card p-4 shadow-lg">
-                    <center>
-                        <img src="assets/img/mitra/cosl.png" class="img-fluid" alt="Mitra 1" style="max-width: 180px;">
-                    </center>
-                    <h4 class="mt-3">PT. China Oilfield Services Limited (COSL) Indo</h4>
-                    <p>Perusahaan penyedia alat berat tambahan.</p>
-                </div>
-                </div>
-                <div class="col-md-4">
-                <div class="card p-4 shadow-lg">
-                    <img src="assets/img/mitra2.png" class="img-fluid" alt="Mitra 2">
-                    <h4 class="mt-3">PT. Tambang Makmur</h4>
-                    <p>Perusahaan tambang yang menggunakan alat berat kami.</p>
-                </div>
-                </div>
-                <div class="col-md-4">
-                <div class="card p-4 shadow-lg">
-                    <img src="assets/img/mitra3.png" class="img-fluid" alt="Mitra 3">
-                    <h4 class="mt-3">PT. Logistik Sejahtera</h4>
-                    <p>Mitra transportasi dan distribusi alat berat.</p>
-                </div>
-                </div>
-            </div>
-            </section>
+        
     </main>
 
   @include('layouts.footer')
