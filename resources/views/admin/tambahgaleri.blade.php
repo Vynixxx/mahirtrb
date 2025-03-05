@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard Admin | Mahir Trans Bersaudara</title>
+  <title>Tambah Galeri | Mahir Trans Bersaudara</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -37,7 +37,7 @@
   @include('admin.layouts.sidebar')
 
         <main id="main" class="main">
-            <!-- <div class="container">
+                <div class="container">
                 <div class="container mt-3">
                     @if (Session::get('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -51,64 +51,50 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     @endif
-                </div> -->
+                </div>
                 <div class="row">
                     <div class="col d-flex justify-content-center">
                         <div class="card mt-4" style="width: 800px">
                             <div class="card-body">
                               <div  href="" >
-                                <h5 class="card-title text-center">Tambah Galeri</h5>
+                                <h5 class="card-title text-center">
+                                <nav class="d-flex justify-content-center">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="{{ route('admin.galeri') }}">Galeri</a></li>
+                                        <li class="breadcrumb-item active">Tambah Galeri</li>
+                                    </ol>
+                                </nav>    
+                                Tambah Galeri</h5>
                                 <form action="{{ route('postTambahgaleri') }}" method="POST" enctype="multipart/form-data" >
                                     @csrf
-                                    <div class="form-group mt-4">
-                                        <label class="text-secondary mb-2">Nama Kendaraan</label>
-                                        <input class="form-control border border-secondary form-control" name="name" required value="" type="text" >
-                                        <span class="text-danger">
-                                            @error('name')
-                                              {{ $message }}
-                                            @enderror
-                                        </span>
-                                    </div><br>
-                                    <!-- Slug (Read-Only) -->
                                     <div class="form-group mt-1">
-                                        <label class="text-secondary mb-2">Slug</label>
-                                        <input type="text" class="form-control border border-secondary" name="slug" id="slug" readonly placeholder="Kosongkan Saja">
-                                        <span class="text-danger">@error('slug') {{ $message }} @enderror</span>
-                                    </div><br>
-                                    <div class="form-group mt-1">
-                                        <label class="text-secondary mb-2">Jumlah</label>
-                                        <textarea  type="text" class="form-control border border-secondary form-control" name="jumlah" value=""></textarea>
-                                        <span class="text-danger">
-                                            @error('jumlah')
-                                            {{ $message }}
-                                            @enderror
-                                        </span>
-                                    </div><br>
-                                    <div class="form-group mt-1">
+                                    <label class="form-label">Kategori</label>
+                                            <select class="form-select" name="kategori" required value="{{ old('kategori') }}">
+                                                <option selected>Pilih kategori Kendaraan</option>
+                                                <option>Crane</option>
+                                                <option>Dozer</option>
+                                                <option>Lowbed</option>
+                                                <option>Pekerjaan</option>
+                                                <option>Tim</option>
+                                                <option>Triller</option>
+                                                <option>Truk Foco</option>
+                                                <option>Truk Kepala</option>
+                                                <option>Truk Tandem</option>
+                                                <option>Truk Vakum</option>
+                                                <option>Tangki Air</option>
+                                            </select>
+                                            <span class="text-danger">
+                                                @error('kategori')
+                                                {{ $message }}
+                                                @enderror
+                                            </span>
+                                    </div>
+                                    <div class="form-group mt-3">
                                         <label class="text-secondary mb-2">Foto</label>
                                         <input class="form-control border border-secondary form-control" name="gambar" required value="" type="file">
                                         <div class="form-text">Maksimal ukuran foto 5MB
                                         <span class="text-danger">
                                             @error('gambar')
-                                              {{ $message }}
-                                            @enderror
-                                        </span>
-                                    </div><br>
-                                    <div class="form-group mt-1">
-                                        <label class="text-secondary mb-2">Tanggal</label>
-                                        <input type="date" class="form-control border border-secondary form-control" name="tanggal" required value="">
-                                        <span class="text-danger">
-                                            @error('tanggal')
-                                            {{ $message }}
-                                            @enderror
-                                        </span>
-                                    </div><br>
-                                    <div class="form-group mt-1">
-                                        <label class="text-secondary mb-2">Tag</label>
-                                        <input class="form-control border border-secondary form-control" name="tag" required value="" type="text">
-                                        <div class="form-text">Harap berikan tanda tagar (#) pada setiap tag, pisahkan tag dengan spasi
-                                        <span class="text-danger">
-                                            @error('tag')
                                               {{ $message }}
                                             @enderror
                                         </span>

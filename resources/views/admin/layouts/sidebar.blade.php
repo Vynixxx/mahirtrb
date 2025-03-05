@@ -13,10 +13,10 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#kendaraan-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-truck"></i><span>Kendaraan</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="icons-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <ul id="kendaraan-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
             <a href="{{ route('admin.layanan') }}">
               <i class="bi bi-circle"></i><span>Layanan</span>
@@ -45,10 +45,10 @@
       </li><!-- End mitra Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#pemesanan-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-card-list"></i><span>Pemesanan</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="icons-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <ul id="pemesanan-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
             <a href="#">
               <i class="bi bi-circle"></i><span>Ekspedisi</span>

@@ -11,6 +11,7 @@ Route::get('/tentang-kami', [pageuser::class, 'halamanabout'])->name('tentang-ka
 Route::get('/mitra-kami', [pageuser::class, 'halamanmitra'])->name('mitra');
 Route::get('/layanan-kami', [pageuser::class, 'halamanlayanan'])->name('layanan');
 Route::get('/galeri', [pageuser::class, 'halamangaleri'])->name('galeri');
+Route::get('/galeri/filter/{kategori}', [pageuser::class, 'filter']);
 Route::get('/kontak-kami', [pageuser::class, 'halamankontak'])->name('kontak');
 Route::get('/pemesanan', [pageuser::class, 'halamanpesan'])->name('pemesanan');
 Route::get('/jenis-alat-berat', [pageuser::class, 'halamanproduk'])->name('produk');
@@ -42,18 +43,18 @@ Route::middleware([IsAdmin::class])->group(function () {
     Route::get('/admin/pemesanan', [pageAdmin::class, 'halamanpemesanan'])->name('admin.pemesanan');
     Route::get('/admin/profile', [pageAdmin::class, 'halamanprofile'])->name('admin.profile');
 
+
     //tambah
     Route::get('/admin/tambahlayanan', [pageadmin::class,'tambahlayanan'])->name('admin.tambahlayanan');
     Route::post('/tambahlayanan', [pageadmin::class,'layanantambah'])->name('postTambahlayanan');
     Route::get('/admin/tambahgaleri', [pageadmin::class,'tambahgaleri'])->name('admin.tambahgaleri');
-    Route::post('/tambahgaleri', [pageadmin::class,'galeri'])->name('postTambahgaleri');
+    Route::post('/tambahgaleri', [pageadmin::class,'galeritambah'])->name('postTambahgaleri');
 
     //edit
-    Route::get('/editlayanan/{id}', [pageadmin::class, 'editlayanan'])->name('editlayanan');
+    Route::get('/admin/editlayanan/{id}', [pageAdmin::class,'editlayanan'])->name('admin.editlayanan');
     Route::post('/postEditlayanan/{id}', [pageadmin::class, 'postEditlayanan'])->name('postEditlayanan');
-    Route::get('/editgaleri/{id}', [pageadmin::class, 'editgaleri'])->name('editgaleri');
+    Route::get('/admin/editgaleri/{id}', [pageadmin::class, 'editgaleri'])->name('editgaleri');
     Route::post('/postEditgaleri/{id}', [pageadmin::class, 'postEditgaleri'])->name('postEditgaleri');
-
 
     //delete
     Route::get('/admin/deletelayanan/{id}', [pageadmin::class,'deletelayanan'])->name('admin.deletelayanan');

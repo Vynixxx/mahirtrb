@@ -70,22 +70,50 @@
                   <tr>
                     <th scope="col">No</th>
                     <th scope="col">Gambar</th>
-                    <th scope="col">Nama Kendaraan</th>
-                    <th scope="col">Deskripsi</th>
+                    <th scope="col">Kategori</th>
                     <th scope="col">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
+                @foreach ($galeri as $galeri)
                   <tr>
-                    <th scope="row">1</th>
-                    <td>Brandon Jacob</td>
-                    <td>Designer</td>
-                    <td>28</td>
-                    <td>2016-05-25</td>
+                  <th scope="row">{{ $loop->iteration }}</th>
+                  <td>
+                    <img style="width: 150px" src="{{ asset('/images/' . $galeri->gambar) }}" alt="foto kendaraan">
+                  </td>
+                    <td>{{ $galeri->kategori }}</td>
+                    <td>
+                      <a class="btn btn-outline-warning" href="/admin/editlayanan/{{ $galeri->id }}"><i class="bi bi-pen"></i></a>
+                      <button class="btn btn-outline-danger btn-delete" 
+                              data-id="{{ $galeri->id }}" 
+                              data-nama="{{ $galeri->nama }}"
+                              data-url="/admin/deletelayanan/{{ $galeri->id }}">
+                        <i class="bi bi-trash3"></i>
+                      </button>
+                    </td>                  
                   </tr>
+                @endforeach
                 </tbody>
               </table>
               <!-- End Default Table Example -->
+              <!-- Modal Konfirmasi Hapus -->
+              <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Apakah Anda yakin ingin menghapus gambar ini?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                      <a id="confirmDelete" class="btn btn-danger">Hapus</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -107,6 +135,23 @@
 
   <!-- Template Main JS File -->
   <script src="{{ asset('assetsadmin/js/main.js') }}"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      let deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+      
+      document.querySelectorAll(".btn-delete").forEach(button => {
+        button.addEventListener("click", function () {
+          let kendaraanNama = this.getAttribute("data-nama");
+          let deleteUrl = this.getAttribute("data-url");
+
+          document.getElementById("confirmDelete").setAttribute("href", deleteUrl);
+
+          deleteModal.show();
+        });
+      });
+    });
+  </script>
 
 </body>
 

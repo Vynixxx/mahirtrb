@@ -62,7 +62,6 @@
             <div class="row d-flex justify-content-center text-center">
                 <div class="col-lg-8">
                 <h1>Kontak</h1>
-                <p class="mb-0">Jangan ragu untuk menghubungi kami dan dapatkan layanan terbaik.</p>
                 </div>
             </div>
             </div>
@@ -81,10 +80,8 @@
       <section id="kontak" class="contact section">
 
       <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Kontak Kami</h2>
-        <div><span>Silahkan Hubungi</span> <span class="description-title">Kami</span></div>
-      </div><!-- End Section Title -->
+      <h2 class="text-center mb-4" data-aos="fade-up"><span class="fw-bold text-primary">Kontak</span> Kami</h2>
+      <!-- End Section Title -->
 
       <div class="container" data-aos="fade" data-aos-delay="100">
 

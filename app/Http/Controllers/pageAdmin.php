@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\LayananKendaraan;
+use App\Models\Galeri;
 
 
 class pageAdmin extends Controller
@@ -17,7 +18,8 @@ class pageAdmin extends Controller
 
     public function halamangaleri()
     {
-        return view('admin.galeri');
+        $galeri = galeri::get();
+        return view('admin.galeri', compact('galeri'));
     }
 
     public function halamankontak()
@@ -81,8 +83,36 @@ class pageAdmin extends Controller
         }
     }
 
+    public function galeritambah(Request $request)
+    {
+        // Validasi input
+        $request->validate([
+            'kategori' => 'required|string',
+            'gambar' => 'required|image|max:5120', // Maksimal ukuran 5MB
+        ]);
+    
+        // Menyimpan berita ke database
+        $galeri = new Galeri;
+        $galeri->kategori = $request->input('kategori');
+    
+        // Proses penyimpanan gambar
+        if ($request->hasFile('gambar')) {
+            $file = $request->file('gambar');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images'), $filename);
+            $galeri->gambar = $filename;
+        }
+    
+        // Simpan ke database
+        if ($galeri->save()) {
+            return redirect()->route('admin.tambahgaleri')->with('success', 'Data berhasil ditambahkan!');
+        } else {
+            return redirect()->route('admin.tambahgaleri')->with('failed', 'Gagal menambahkan data.');
+        }
+    }
+
     //edit
-    public function editlayanankendaraan($id)
+    public function editlayanan($id)
     {
         $layanankendaraan = layanankendaraan::find($id);
         return view('admin.editlayanan', compact('layanankendaraan'));

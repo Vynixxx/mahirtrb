@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Mitra - PT. Mahir Trans Bersaudara</title>
+  <title>Layanan - PT. Mahir Trans Bersaudara</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -62,7 +62,6 @@
             <div class="row d-flex justify-content-center text-center">
                 <div class="col-lg-8">
                 <h1>Layanan Kami</h1>
-                <p class="mb-0">Layanan yang kami tawarkan.</p>
                 </div>
             </div>
             </div>
@@ -77,34 +76,70 @@
         </nav>
         </div><!-- End Page Title -->
 
-        <section class="container my-5">
-            <h2 class="text-center mb-4">Daftar Layanan</h2>
-            <div class="row text-center">
-                <div class="col-md-4">
-                <div class="card p-4 shadow-lg">
-                    <center>
-                        <img src="assets/img/mitra/cosl.png" class="img-fluid" alt="Mitra 1" style="max-width: 180px;">
-                    </center>
-                    <h4 class="mt-3">PT. China Oilfield Services Limited (COSL) Indo</h4>
-                    <p>Perusahaan penyedia alat berat tambahan.</p>
-                </div>
-                </div>
-                <div class="col-md-4">
-                <div class="card p-4 shadow-lg">
-                    <img src="assets/img/mitra2.png" class="img-fluid" alt="Mitra 2">
-                    <h4 class="mt-3">PT. Tambang Makmur</h4>
-                    <p>Perusahaan tambang yang menggunakan alat berat kami.</p>
-                </div>
-                </div>
-                <div class="col-md-4">
-                <div class="card p-4 shadow-lg">
-                    <img src="assets/img/mitra3.png" class="img-fluid" alt="Mitra 3">
-                    <h4 class="mt-3">PT. Logistik Sejahtera</h4>
-                    <p>Mitra transportasi dan distribusi alat berat.</p>
-                </div>
-                </div>
+    <!-- layanan Section -->
+    <section id="layanan-kami" class="services section light-background py-5">
+    <h2 class="text-center mb-4" data-aos="fade-up">Layanan yang <span class="fw-bold text-primary">Kami Tawarkan</span></h2>
+
+
+      <div class="container">
+        <div class="row gy-4 justify-content-center text-center mt-5">
+        <!-- Service Item 1 -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="50">
+          <div class="card border-0 shadow-sm h-100">
+              <img src="assets/img/services/ekspedisi.png" class="card-img-top" alt="Layanan kami">
+            <div class="card-body text-center">
+              <h5 class="card-title fw-bold">Ekspedisi</h5>
+              <p class="card-text text-muted">
+              PT. Mahir Trans Bersaudara hadir sebagai mitra terpercaya dalam penyewaan ekspedisi khusus untuk kendaraan alat berat. Dengan armada terbaik dan tenaga profesional berpengalaman, kami siap membantu pengangkutan alat berat Anda dengan aman, cepat, dan efisien ke berbagai lokasi di seluruh Indonesia terkhusus di wilayah Riau. Kami memahami bahwa setiap pengiriman memiliki tantangan tersendiri, oleh karena itu kami menawarkan layanan ekspedisi yang fleksibel dan disesuaikan dengan kebutuhan Anda. Dari pengiriman Truk Foco, bulldozer, crane, hingga kendaraan berat lainnya, kami memastikan proses transportasi berjalan lancar dengan standar keselamatan tinggi. Percayakan kebutuhan logistik alat berat Anda kepada PT. Mahir Trans Bersaudara untuk solusi ekspedisi yang andal dan profesional.              
+            </p>
             </div>
-            </section>
+            <a href="{{ route('pesanekspedisi') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="200">
+              Pesan
+            </a>
+          </div>
+        </div>
+          <!-- Service Item 2 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="card border-0 shadow-sm h-100">
+              <img src="assets/img/services/pabrikasi.png" class="card-img-top" alt="Layanan 1">
+            <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Pabrikasi</h5>
+                <p class="card-text text-muted">PT. Mahir Trans Bersaudara menawarkan layanan pabrikasi berkualitas tinggi untuk memenuhi kebutuhan industri Anda. Dengan tim ahli dan peralatan modern, kami siap memproduksi berbagai komponen dan struktur berbahan logam, baik untuk industri konstruksi, manufaktur, hingga alat berat. Kami berkomitmen untuk menghadirkan hasil pabrikasi yang presisi, kuat, dan sesuai dengan standar kualitas tinggi. Setiap proses produksi dilakukan dengan ketelitian dan pengawasan ketat untuk memastikan ketahanan serta keamanan produk yang kami hasilkan. Dengan pengalaman dan dedikasi dalam industri ini, PT. Mahir Trans Bersaudara menjadi pilihan tepat bagi Anda yang membutuhkan solusi pabrikasi profesional, efisien, dan terpercaya.</p>
+              </div>
+              <a href="{{ route('pesanpabrikasi') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="300">
+                    Pesan
+                </a>
+            </div>
+          </div>
+          <!-- Service Item 3 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
+            <div class="card border-0 shadow-sm h-100">
+              <img src="assets/img/services/perbaikan.png" class="card-img-top" alt="Layanan 1">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Perbaikan</h5>
+                <p class="card-text text-muted">PT. Mahir Trans Bersaudara menyediakan layanan perbaikan alat berat yang handal dan profesional untuk memastikan performa optimal mesin Anda. Dengan teknisi berpengalaman dan peralatan canggih, kami siap menangani berbagai jenis perbaikan, mulai dari perawatan rutin hingga perbaikan komponen utama seperti mesin, hidrolik, dan sistem kelistrikan. Kami memahami bahwa downtime alat berat dapat berdampak besar pada operasional bisnis, oleh karena itu kami berkomitmen untuk memberikan layanan yang cepat, efisien, dan berkualitas tinggi. Apapun jenis alat berat Anda, percayakan perbaikannya kepada kami. PT. Mahir Trans Bersaudara siap menjadi mitra terbaik Anda dalam menjaga kinerja dan keandalan alat berat di lapangan.</p>
+              </div>
+              <a href="{{ route('pesanperbaikan') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="400">
+                    Pesan
+                </a>
+            </div>
+          </div>
+          <!-- Service Item 4 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="card border-0 shadow-sm h-100">
+              <img src="assets/img/services/penyewaan.png" class="card-img-top" alt="Layanan 4">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Penyewaan</h5>
+                <p class="card-text text-muted">PT. Mahir Trans Bersaudara menyediakan layanan penyewaan alat berat dengan berbagai pilihan unit berkualitas tinggi untuk mendukung kelancaran proyek konstruksi, pertambangan, dan industri lainnya. Dengan armada yang terawat dan siap pakai, kami menawarkan beragam alat berat sesuai dengan kebutuhan operasional Anda. Kami memahami pentingnya efisiensi dan ketepatan waktu dalam setiap proyek, sehingga kami berkomitmen memberikan layanan sewa yang fleksibel, harga kompetitif, serta dukungan teknis profesional. Percayakan kebutuhan alat berat Anda kepada PT. Mahir Trans Bersaudara untuk solusi sewa yang andal, efisien, dan berkualitas tinggi.</p>
+              </div>
+              <a href="{{ route('pesanpenyewaan') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="200">
+                    Pesan
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- layanan section -->
     </main>
 
   @include('layouts.footer')

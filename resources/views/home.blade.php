@@ -131,51 +131,6 @@
 
     </section><!-- /About Section -->
 
-    <!-- Stats Section -->
-    <section id="stats" class="stats section light-background">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
-            <i class="bi bi-emoji-smile"></i>
-            <div class="stats-item">
-              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Happy Clients</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
-            <i class="bi bi-journal-richtext"></i>
-            <div class="stats-item">
-              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Projects</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
-            <i class="bi bi-headset"></i>
-            <div class="stats-item">
-              <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Hours Of Support</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
-            <i class="bi bi-people"></i>
-            <div class="stats-item">
-              <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Hard Workers</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Stats Section -->
-
     <!-- layanan Section -->
     <section id="layanan-kami" class="services section light-background py-5">
       <!-- Section Title -->
@@ -193,14 +148,12 @@
         <!-- Service Item 1 -->
         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
           <div class="card border-0 shadow-sm h-100">
-            <div class="ratio ratio-16x9">
-              <img src="assets/img/services/tendem.png" class="card-img-top" alt="Layanan kami">
-            </div>
+              <img src="assets/img/services/ekspedisi.png" class="card-img-top" alt="Layanan kami">
             <div class="card-body text-center">
               <h5 class="card-title fw-bold">Ekspedisi</h5>
               <p class="card-text text-muted">
-                isi
-              </p>
+              PT. Mahir Trans Bersaudara hadir sebagai mitra terpercaya dalam penyewaan ekspedisi khusus untuk kendaraan alat berat. Dengan armada terbaik dan tenaga profesional berpengalaman, kami siap membantu pengangkutan alat berat Anda dengan aman, cepat, dan efisien ke berbagai lokasi di seluruh Indonesia terkhusus di wilayah Riau. Kami memahami bahwa setiap pengiriman memiliki tantangan tersendiri, oleh karena itu kami menawarkan layanan ekspedisi yang fleksibel dan disesuaikan dengan kebutuhan Anda. Dari pengiriman Truk Foco, bulldozer, crane, hingga kendaraan berat lainnya, kami memastikan proses transportasi berjalan lancar dengan standar keselamatan tinggi. Percayakan kebutuhan logistik alat berat Anda kepada PT. Mahir Trans Bersaudara untuk solusi ekspedisi yang andal dan profesional.              
+            </p>
             </div>
             <a href="{{ route('pesanekspedisi') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="200">
               Pesan
@@ -210,14 +163,12 @@
           <!-- Service Item 2 -->
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="card border-0 shadow-sm h-100">
-            <div class="ratio ratio-16x9">
-              <img src="assets/img/services/watertrailer1.jpg" class="card-img-top" alt="Layanan 1">
-            </div>              
+              <img src="assets/img/services/pabrikasi.png" class="card-img-top" alt="Layanan 1">
             <div class="card-body text-center">
                 <h5 class="card-title fw-bold">Pabrikasi</h5>
-                <p class="card-text text-muted">isi</p>
+                <p class="card-text text-muted">PT. Mahir Trans Bersaudara menawarkan layanan pabrikasi berkualitas tinggi untuk memenuhi kebutuhan industri Anda. Dengan tim ahli dan peralatan modern, kami siap memproduksi berbagai komponen dan struktur berbahan logam, baik untuk industri konstruksi, manufaktur, hingga alat berat. Kami berkomitmen untuk menghadirkan hasil pabrikasi yang presisi, kuat, dan sesuai dengan standar kualitas tinggi. Setiap proses produksi dilakukan dengan ketelitian dan pengawasan ketat untuk memastikan ketahanan serta keamanan produk yang kami hasilkan. Dengan pengalaman dan dedikasi dalam industri ini, PT. Mahir Trans Bersaudara menjadi pilihan tepat bagi Anda yang membutuhkan solusi pabrikasi profesional, efisien, dan terpercaya.</p>
               </div>
-              <a href="{{ route('pesanpabrikasi') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="200">
+              <a href="{{ route('pesanpabrikasi') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="300">
                     Pesan
                 </a>
             </div>
@@ -225,14 +176,12 @@
           <!-- Service Item 3 -->
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="card border-0 shadow-sm h-100">
-            <div class="ratio ratio-16x9">
-              <img src="assets/img/services/foco.jpg" class="card-img-top" alt="Layanan 1">
-            </div>
+              <img src="assets/img/services/perbaikan.png" class="card-img-top" alt="Layanan 1">
               <div class="card-body text-center">
                 <h5 class="card-title fw-bold">Perbaikan</h5>
-                <p class="card-text text-muted">isi</p>
+                <p class="card-text text-muted">PT. Mahir Trans Bersaudara menyediakan layanan perbaikan alat berat yang handal dan profesional untuk memastikan performa optimal mesin Anda. Dengan teknisi berpengalaman dan peralatan canggih, kami siap menangani berbagai jenis perbaikan, mulai dari perawatan rutin hingga perbaikan komponen utama seperti mesin, hidrolik, dan sistem kelistrikan. Kami memahami bahwa downtime alat berat dapat berdampak besar pada operasional bisnis, oleh karena itu kami berkomitmen untuk memberikan layanan yang cepat, efisien, dan berkualitas tinggi. Apapun jenis alat berat Anda, percayakan perbaikannya kepada kami. PT. Mahir Trans Bersaudara siap menjadi mitra terbaik Anda dalam menjaga kinerja dan keandalan alat berat di lapangan.</p>
               </div>
-              <a href="{{ route('pesanperbaikan') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="200">
+              <a href="{{ route('pesanperbaikan') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="400">
                     Pesan
                 </a>
             </div>
@@ -240,10 +189,10 @@
           <!-- Service Item 4 -->
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
             <div class="card border-0 shadow-sm h-100">
-              <img src="assets/img/services/service4.jpg" class="card-img-top" alt="Layanan 4">
+              <img src="assets/img/services/penyewaan.png" class="card-img-top" alt="Layanan 4">
               <div class="card-body text-center">
                 <h5 class="card-title fw-bold">Penyewaan</h5>
-                <p class="card-text text-muted">isi</p>
+                <p class="card-text text-muted">PT. Mahir Trans Bersaudara menyediakan layanan penyewaan alat berat dengan berbagai pilihan unit berkualitas tinggi untuk mendukung kelancaran proyek konstruksi, pertambangan, dan industri lainnya. Dengan armada yang terawat dan siap pakai, kami menawarkan beragam alat berat sesuai dengan kebutuhan operasional Anda. Kami memahami pentingnya efisiensi dan ketepatan waktu dalam setiap proyek, sehingga kami berkomitmen memberikan layanan sewa yang fleksibel, harga kompetitif, serta dukungan teknis profesional. Percayakan kebutuhan alat berat Anda kepada PT. Mahir Trans Bersaudara untuk solusi sewa yang andal, efisien, dan berkualitas tinggi.</p>
               </div>
               <a href="{{ route('pesanpenyewaan') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="200">
                     Pesan
@@ -258,81 +207,30 @@
     <section id="galeri" class="gallery section">
 
       <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Galeri</h2>
-        <div><span>Perangkat Kendaraan Berat</span> <span class="description-title">Kami</span></div>
-      </div><!-- End Section Title -->
+      <div class="container section-title d-flex justify-content-between align-items-center flex-wrap gap-2" data-aos="fade-up">
+          <div>
+              <h2 class="mb-0">Galeri</h2>
+              <div><span>Dokumentasi</span></div>
+          </div>
+          <a href="{{ route('galeri') }}">Selengkapnya <i class="bi bi-arrow-right"></i></a>
+      </div>
+      <!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="row g-0">
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-1.jpg" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/gallery/gallery-1.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div><!-- End Gallery Item -->
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-2.jpg" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/gallery/gallery-2.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div><!-- End Gallery Item -->
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-3.jpg" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/gallery/gallery-3.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div><!-- End Gallery Item -->
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-4.jpg" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/gallery/gallery-4.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div><!-- End Gallery Item -->
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-5.jpg" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/gallery/gallery-5.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div><!-- End Gallery Item -->
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-6.jpg" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/gallery/gallery-6.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div><!-- End Gallery Item -->
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-7.jpg" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/gallery/gallery-7.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div><!-- End Gallery Item -->
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-8.jpg" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/gallery/gallery-8.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div><!-- End Gallery Item -->
-
-        </div>
-
+      <div class="row g-3">
+          @foreach($gambar as $gbr)
+              <div class="col-lg-3 col-md-4">
+                  <div class="gallery-item position-relative">
+                      <a href="{{ asset('/images/' . $gbr->gambar) }}" class="glightbox" data-gallery="images-gallery">
+                          <div class="ratio ratio-1x1">
+                              <img src="{{ asset('/images/' . $gbr->gambar) }}" alt="" class="img-fluid object-fit-cover w-100 h-100 rounded">
+                          </div>
+                      </a>
+                  </div>
+              </div><!-- End Gallery Item -->
+          @endforeach
+      </div>
       </div>
 
     </section><!-- /Gallery Section -->

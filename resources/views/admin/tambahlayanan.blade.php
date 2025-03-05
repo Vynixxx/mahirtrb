@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard Admin | Mahir Trans Bersaudara</title>
+  <title>Tambah Layanan | Mahir Trans Bersaudara</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -60,7 +60,6 @@
                                 <h5 class="card-title text-center">
                                 <nav class="d-flex justify-content-center">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                                         <li class="breadcrumb-item"><a href="{{ route('admin.layanan') }}">Layanan</a></li>
                                         <li class="breadcrumb-item active">Tambah Layanan</li>
                                     </ol>

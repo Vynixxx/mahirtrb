@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\LayananKendaraan;
+use App\Models\Galeri;
+
 
 
 class pageuser extends Controller
@@ -65,13 +67,26 @@ class pageuser extends Controller
 
     public function halamangaleri()
     {
-        return view('galeri');
+        $kategoris = galeri::select('kategori')->distinct()->pluck('kategori');
+        $gambar = galeri::get();
+        return view('galeri', compact('kategoris', 'gambar'));
+    }
+
+    public function filter($kategori) {
+        if ($kategori == 'semua') {
+            $galeris = Galeri::all(); // Ambil semua gambar jika kategori "semua"
+        } else {
+            $galeris = Galeri::where('kategori', $kategori)->get();
+        }
+        
+        return response()->json($galeris);
     }
     
     public function halamanhome()
     {
         $layanan = LayananKendaraan::get();
-        return view('home', compact('layanan'));
+        $gambar = Galeri::orderBy('created_at', 'desc')->get();
+        return view('home', compact('layanan', 'gambar'));
     }
 
     public function halamanpesanekspedisi()

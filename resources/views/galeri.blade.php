@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Mitra - PT. Mahir Trans Bersaudara</title>
+  <title>Galeri - PT. Mahir Trans Bersaudara</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -62,7 +62,6 @@
             <div class="row d-flex justify-content-center text-center">
                 <div class="col-lg-8">
                 <h1>Galeri Kami</h1>
-                <p class="mb-0">Dokumentasi Kegiatan.</p>
                 </div>
             </div>
             </div>
@@ -77,34 +76,84 @@
         </nav>
         </div><!-- End Page Title -->
 
-        <section class="container my-5">
-            <h2 class="text-center mb-4">Daftar Galeri</h2>
-            <div class="row text-center">
-                <div class="col-md-4">
-                <div class="card p-4 shadow-lg">
-                    <center>
-                        <img src="assets/img/mitra/cosl.png" class="img-fluid" alt="Mitra 1" style="max-width: 180px;">
-                    </center>
-                    <h4 class="mt-3">PT. China Oilfield Services Limited (COSL) Indo</h4>
-                    <p>Perusahaan penyedia alat berat tambahan.</p>
+        <!-- Gallery Section -->
+        <section id="galeri" class="gallery section">
+          <!-- Section Title -->
+            <h2 class="text-center mb-4" data-aos="fade-up"><span class="fw-bold text-primary">Galeri</span> Kami</h2>
+          <!-- End Section Title -->
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+                <!-- Dropdown untuk memilih kategori -->
+                <div class="mb-4">
+                    <select id="filterKategori" class="form-select">
+                        <option value="semua">Semua Kategori</option>
+                        @foreach($kategoris as $kategori)
+                            <option value="{{ $kategori }}">{{ $kategori }}</option>
+                        @endforeach
+                    </select>
                 </div>
-                </div>
-                <div class="col-md-4">
-                <div class="card p-4 shadow-lg">
-                    <img src="assets/img/mitra2.png" class="img-fluid" alt="Mitra 2">
-                    <h4 class="mt-3">PT. Tambang Makmur</h4>
-                    <p>Perusahaan tambang yang menggunakan alat berat kami.</p>
-                </div>
-                </div>
-                <div class="col-md-4">
-                <div class="card p-4 shadow-lg">
-                    <img src="assets/img/mitra3.png" class="img-fluid" alt="Mitra 3">
-                    <h4 class="mt-3">PT. Logistik Sejahtera</h4>
-                    <p>Mitra transportasi dan distribusi alat berat.</p>
-                </div>
+
+                <!-- Kontainer untuk galeri -->
+                <div class="row g-3" id="gallery-container">
+                 @foreach($gambar as $gbr)
+                    <div class="col-lg-3 col-md-4">
+                        <div class="gallery-item position-relative">
+                            <a href="{{ asset('/images/' . $gbr->gambar) }}" class="glightbox" data-gallery="images-gallery">
+                                <div class="ratio ratio-1x1">
+                                    <img src="{{ asset('/images/' . $gbr->gambar) }}" alt="" class="img-fluid object-fit-cover w-100 h-100 rounded">
+                                </div>
+                            </a>
+                        </div>
+                    </div><!-- End Gallery Item -->
+                @endforeach
                 </div>
             </div>
-            </section>
+        </section><!-- /Gallery Section -->
+
+        <!-- Script AJAX untuk filter -->
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const lightbox = GLightbox({
+                selector: '.glightbox',  // Pastikan semua elemen dengan class ini bisa dibuka
+                closeButton: true,       // Aktifkan tombol close
+                touchNavigation: true,
+                loop: true
+            });
+
+            document.getElementById('filterKategori').addEventListener('change', function () {
+                let kategori = this.value;
+                fetch(`/galeri/filter/${kategori}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        let galleryContainer = document.getElementById('gallery-container');
+                        galleryContainer.innerHTML = '';
+
+                        if (data.length === 0) {
+                            galleryContainer.innerHTML = '<p class="text-center">Tidak ada gambar dalam kategori ini.</p>';
+                        } else {
+                            data.forEach(item => {
+                                let galleryItem = `
+                                    <div class="col-lg-3 col-md-4">
+                                        <div class="gallery-item position-relative">
+                                            <a href="/images/${item.gambar}" class="glightbox" data-gallery="images-gallery">
+                                                <div class="ratio ratio-1x1">
+                                                    <img src="/images/${item.gambar}" alt="" class="img-fluid object-fit-cover w-100 h-100 rounded">
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                `;
+                                galleryContainer.innerHTML += galleryItem;
+                            });
+
+                            // Re-inisialisasi Glightbox setelah update konten
+                            lightbox.reload();
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            });
+        });
+        </script>
     </main>
 
   @include('layouts.footer')

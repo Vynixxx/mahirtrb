@@ -386,12 +386,12 @@
         <section id="sewa" class="text-center py-5 mt-5 mb-5">
             <div class="container mt-5">
                 <h2 class="fw-bold animate-title" data-aos="fade-down">
-                    Optimalkan Proyek Anda dengan Kendaraan Terbaik!
+                    <span class="fw-bold text-primary">Optimalkan Proyek Anda</span> dengan Kendaraan Terbaik!
                 </h2>
                 <p class="animate-text" data-aos="fade-up" data-aos-delay="200">
                     Jangan ragu untuk menghubungi kami dan dapatkan layanan terbaik.
                 </p>
-                <a href="{{ route('kontak') }}" class="btn btn-success btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="400">
+                <a href="{{ route('kontak') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="400">
                     Hubungi Kami
                 </a>
             </div>
