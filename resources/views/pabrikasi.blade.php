@@ -391,8 +391,8 @@
                 <p class="animate-text" data-aos="fade-up" data-aos-delay="200">
                     Jangan ragu untuk menghubungi kami dan dapatkan layanan terbaik.
                 </p>
-                <a href="{{ route('kontak') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="400">
-                    Hubungi Kami
+                <a href="{{ route('pesanpabrikasi') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="400">
+                    Pesan Sekarang
                 </a>
             </div>
         </section>

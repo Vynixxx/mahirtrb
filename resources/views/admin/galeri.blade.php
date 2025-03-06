@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard Admin | Mahir Trans Bersaudara</title>
+  <title>Galeri | Mahir Trans Bersaudara</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -83,11 +83,12 @@
                   </td>
                     <td>{{ $galeri->kategori }}</td>
                     <td>
-                      <a class="btn btn-outline-warning" href="/admin/editlayanan/{{ $galeri->id }}"><i class="bi bi-pen"></i></a>
+                      <a class="btn btn-outline-warning" href="/admin/editgaleri/{{ $galeri->id }}" title="Edit"><i class="bi bi-pen"></i></a>
                       <button class="btn btn-outline-danger btn-delete" 
                               data-id="{{ $galeri->id }}" 
                               data-nama="{{ $galeri->nama }}"
-                              data-url="/admin/deletelayanan/{{ $galeri->id }}">
+                              data-url="/admin/deletegaleri/{{ $galeri->id }}"
+                              title="Hapus">
                         <i class="bi bi-trash3"></i>
                       </button>
                     </td>                  

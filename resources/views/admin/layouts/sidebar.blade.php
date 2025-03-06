@@ -19,7 +19,7 @@
         <ul id="kendaraan-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
             <a href="{{ route('admin.layanan') }}">
-              <i class="bi bi-circle"></i><span>Layanan</span>
+              <i class="bi bi-circle"></i><span>Produk</span>
             </a>
           </li>
           <li>
@@ -50,22 +50,22 @@
         </a>
         <ul id="pemesanan-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="#">
+            <a href="{{ route('admin.ekspedisi') }}">
               <i class="bi bi-circle"></i><span>Ekspedisi</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="{{ route('admin.pabrikasi') }}">
               <i class="bi bi-circle"></i><span>Pabrikasi</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="{{ route('admin.penyewaan') }}">
               <i class="bi bi-circle"></i><span>Penyewaan</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="{{ route('admin.perbaikan') }}">
               <i class="bi bi-circle"></i><span>Perbaikan</span>
             </a>
           </li>

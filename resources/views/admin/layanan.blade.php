@@ -54,12 +54,12 @@
       </div>
     <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Layanan <a href="{{ route('admin.tambahlayanan') }}" class="btn btn-white">+</a>
+              <h5 class="card-title">Produk <a href="{{ route('admin.tambahlayanan') }}" class="btn btn-white">+</a>
               <nav>
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                   <li class="breadcrumb-item active">Kendaraan</li>
-                  <li class="breadcrumb-item active">Layanan</li>
+                  <li class="breadcrumb-item active">Produk</li>
                 </ol>
               </nav>  
               </h5>
@@ -85,11 +85,12 @@
                     <td>{{ $lk->nama }}</td>
                     <td>{{ $lk->isi }}</td>
                     <td>
-                      <a class="btn btn-outline-warning" href="/admin/editlayanan/{{ $lk->id }}"><i class="bi bi-pen"></i></a>
+                      <a class="btn btn-outline-warning" href="/admin/editlayanan/{{ $lk->id }}" title="Edit"><i class="bi bi-pen"></i></a>
                       <button class="btn btn-outline-danger btn-delete" 
                               data-id="{{ $lk->id }}" 
                               data-nama="{{ $lk->nama }}"
-                              data-url="/admin/deletelayanan/{{ $lk->id }}">
+                              data-url="/admin/deletelayanan/{{ $lk->id }}"
+                              title="Hapus">
                         <i class="bi bi-trash3"></i>
                       </button>
                     </td>

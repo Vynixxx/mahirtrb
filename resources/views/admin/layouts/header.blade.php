@@ -83,124 +83,83 @@
 
         </li><!-- End Notification Nav -->
 
-        <li class="nav-item dropdown">
+          <li class="nav-item dropdown">
+            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                <i class="bi bi-chat-left-text"></i>
+                <span class="badge bg-success badge-number">{{ $messages->count() }}</span>
+            </a>
 
-          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-            <i class="bi bi-chat-left-text"></i>
-            <span class="badge bg-success badge-number">3</span>
-          </a><!-- End Messages Icon -->
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+                <li class="dropdown-header">
+                    Anda memiliki {{ $messages->count() }} pesan baru
+                </li>
+                <li><hr class="dropdown-divider"></li>
 
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-            <li class="dropdown-header">
-              You have 3 new messages
-              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
+                @forelse($messages as $message)
+                <li class="message-item">
+                    <a href="{{ route('admin.kontak') }}">
+                        <img src="{{ asset('assetsadmin/img/default-user.png') }}" alt="" class="rounded-circle">
+                        <div>
+                            <h4>{{ $message->name }}</h4>
+                            <p>{{ Str::limit($message->message, 50) }}</p>
+                            <p>{{ $message->created_at->diffForHumans() }}</p>
+                        </div>
+                    </a>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                @empty
+                <li class="dropdown-header text-center">Tidak ada pesan baru</li>
+                @endforelse
 
-            <li class="message-item">
-              <a href="#">
-                <img src="assetsadmin/img/messages-1.jpg" alt="" class="rounded-circle">
-                <div>
-                  <h4>Maria Hudson</h4>
-                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                  <p>4 hrs. ago</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="message-item">
-              <a href="#">
-                <img src="assetsadmin/img/messages-2.jpg" alt="" class="rounded-circle">
-                <div>
-                  <h4>Anna Nelson</h4>
-                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                  <p>6 hrs. ago</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="message-item">
-              <a href="#">
-                <img src="assetsadmin/img/messages-3.jpg" alt="" class="rounded-circle">
-                <div>
-                  <h4>David Muldon</h4>
-                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                  <p>8 hrs. ago</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="dropdown-footer">
-              <a href="#">Show all messages</a>
-            </li>
-
-          </ul><!-- End Messages Dropdown Items -->
-
-        </li><!-- End Messages Nav -->
-
+                <li class="dropdown-footer">
+                    <a href="{{ route('admin.kontak') }}">Lihat semua pesan</a>
+                </li>
+            </ul>
+        </li>
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <span class="d-none d-md-block dropdown-toggle ps-2">Admin</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2">Profil</span>
           </a><!-- End Profile Iamge Icon -->
 
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile shadow-lg">
+            <!-- Header dengan Avatar -->
+            <li class="dropdown-header text-center">
+                <h6 class="mb-0">PT. Mahir Trans Bersaudara</h6>
+                <small class="text-muted">Administrator</small>
             </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
+            <li><hr class="dropdown-divider"></li>
 
+            <!-- Profil -->
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.profile') }}">
-                <i class="bi bi-person"></i>
-                <span>Profil</span>
-              </a>
+                <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.profile') }}">
+                    <i class="bi bi-person me-2"></i>
+                    <span>Profil</span>
+                </a>
             </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
+            <li><hr class="dropdown-divider"></li>
 
+            <!-- Bantuan -->
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-gear"></i>
-                <span>Account Settings</span>
-              </a>
+                <a class="dropdown-item d-flex align-items-center" href="https://wa.me/6285162669547?text=Halo+aku+butuh+bantuan+nih">
+                    <i class="bi bi-question-circle me-2"></i>
+                    <span>Bantuan</span>
+                </a>
             </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
+            <li><hr class="dropdown-divider"></li>
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                <i class="bi bi-question-circle"></i>
-                <span>Need Help?</span>
-              </a>
+            <!-- Logout -->
+            <li class="px-3 py-2">
+                <form action="{{ route('cred.logout') }}" method="POST">
+                    @csrf
+                    <button class="btn btn-danger w-100 d-flex align-items-center justify-content-center">
+                        <i class="bi bi-box-arrow-right me-2"></i>
+                        <span>Keluar</span>
+                    </button>
+                </form>
             </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
+        </ul>
 
-            <form action="{{ route('cred.logout') }}" method="POST">
-            @csrf
-                <button class="btn btn-primary"><span>Sign Out</span>
-                </button>
-            </form>
-
-          </ul><!-- End Profile Dropdown Items -->
         </li><!-- End Profile Nav -->
 
       </ul>

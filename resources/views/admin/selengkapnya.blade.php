@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Edit Layanan | Mahir Trans Bersaudara</title>
+  <title>Kontak | Mahir Trans Bersaudara</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -37,14 +37,13 @@
   @include('admin.layouts.sidebar')
 
   <main id="main" class="main">
-
-  <div class="container">
+    <div class="container">
       <div class="container mt-3">
         @if (Session::get('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>Berhasil!</strong> {{ Session::get('success') }}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Berhasil!</strong> {{ Session::get('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
         @endif
         @if (Session::get('failed'))
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -60,55 +59,46 @@
               <h5 class="card-title text-center">
               <nav class="d-flex justify-content-center">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="{{ route('admin.galeri') }}">Galeri</a></li>
-                  <li class="breadcrumb-item active">Edit Galeri</li>
+                  <li class="breadcrumb-item"><a href="{{ route('admin.kontak') }}">Kontak</a></li>
+                  <li class="breadcrumb-item active">Detail</li>
                 </ol>
-              </nav>Edit Galeri</h5>
-              <form action="/postEditgaleri/{{ $galeri->id }}" method="POST" enctype="multipart/form-data">
-                @csrf
+              </nav>Detail</h5>
                 <div class="form-group mt-4">
-                <label class="form-label">Kategori</label>
-                <select class="form-select" name="kategori" required>
-                    <option disabled {{ empty($galeri->kategori) ? 'selected' : '' }}>Pilih kategori Kendaraan</option>
-                    <option value="Crane" {{ $galeri->kategori == 'Crane' ? 'selected' : '' }}>Crane</option>
-                    <option value="Dozer" {{ $galeri->kategori == 'Dozer' ? 'selected' : '' }}>Dozer</option>
-                    <option value="Lowbed" {{ $galeri->kategori == 'Lowbed' ? 'selected' : '' }}>Lowbed</option>
-                    <option value="Pekerjaan" {{ $galeri->kategori == 'Pekerjaan' ? 'selected' : '' }}>Pekerjaan</option>
-                    <option value="Tim" {{ $galeri->kategori == 'Tim' ? 'selected' : '' }}>Tim</option>
-                    <option value="Triller" {{ $galeri->kategori == 'Triller' ? 'selected' : '' }}>Triller</option>
-                    <option value="Truk Foco" {{ $galeri->kategori == 'Truk Foco' ? 'selected' : '' }}>Truk Foco</option>
-                    <option value="Truk Kepala" {{ $galeri->kategori == 'Truk Kepala' ? 'selected' : '' }}>Truk Kepala</option>
-                    <option value="Truk Tandem" {{ $galeri->kategori == 'Truk Tandem' ? 'selected' : '' }}>Truk Tandem</option>
-                    <option value="Truk Vakum" {{ $galeri->kategori == 'Truk Vakum' ? 'selected' : '' }}>Truk Vakum</option>
-                    <option value="Tangki Air" {{ $galeri->kategori == 'Tangki Air' ? 'selected' : '' }}>Tangki Air</option>
-                </select>
-                <span class="text-danger">
-                    @error('kategori')
-                        {{ $message }}
-                    @enderror
-                </span>
+                    <label class="text-secondary mb-2">Nama / Perusahaan</label>
+                    <input type="text" class="form-control border border-secondary form-control" name="name" required value="{{ $kontak->name }}">
                 </div><br>
 
                 <div class="form-group mt-1">
-                  <label class="text-secondary mb-2">Gambar</label>
-                  <input type="file" class="form-control border border-secondary form-control" name="gambar" accept="image/*">
-                  <small>Biarkan kosong jika tidak mengubah gambar.</small>
-                  <span class="text-danger">
-                    @error('gambar')
-                    {{ $message }}
-                    @enderror
-                  </span>
-                </div>
+                    <label class="text-secondary mb-2">Email</label>
+                    <input type="text" class="form-control border border-secondary form-control" name="email" required value="{{ $kontak->email }}">
+                </div><br>
 
-                <button type="submit" class="btn btn-success mt-5">Edit Data</button>
-              </form>
+                <div class="form-group mt-1">
+                    <label class="text-secondary mb-2">Nomor WhatsApp</label>
+                    <input type="text" class="form-control border border-secondary form-control" name="whatsapp" required value="{{ $kontak->whatsapp }}">
+                </div><br>
+
+                <div class="form-group mt-1">
+                    <label class="text-secondary mb-2">Perihal</label>
+                    <input type="text" class="form-control border border-secondary form-control" name="subject" required value="{{ $kontak->subject }}">
+                </div><br>
+
+                <div class="form-group mt-1">
+                    <label class="text-secondary mb-2">Pesan</label>
+                    <textarea type="text" class="form-control border border-secondary form-control" name="message" required>{{ old('message', $kontak->message) }}</textarea>
+                </div><br>
+                <!-- Tombol Balas -->
+                <button type="button" class="btn btn-success mt-5" onclick="replyEmail()" title="Balas via Email"><i class="bi bi-envelope-at"></i></button>
+                <button type="button" class="btn btn-success mt-5" onclick="replyWhatsApp()" title="Balas via WhatsApp"><i class="bi bi-whatsapp"></i></button>
             </div>
           </div>
         </div>
       </div><br><br><br><br>
     </div>
+  </div>
 
   </main><!-- End #main -->
+
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
@@ -123,6 +113,27 @@
 
   <!-- Template Main JS File -->
   <script src="{{ asset('assetsadmin/js/main.js') }}"></script>
+
+  <script>
+        function replyEmail() {
+            let email = "{{ $kontak->email }}";
+            let name = "{{ $kontak->name }}";
+            let subject = encodeURIComponent("Balasan: {{ $kontak->subject }}");
+            let body = encodeURIComponent("Halo " + name + ",\n\n");
+
+            let mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
+            window.location.href = mailtoLink;
+        }
+
+        function replyWhatsApp() {
+            let whatsappNumber = "{{ $kontak->whatsapp }}";
+            let name = "{{ $kontak->name }}";
+            let message = encodeURIComponent("Halo " + name + ",\n\n");
+
+            let whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
+            window.open(whatsappLink, '_blank');
+        }
+    </script>
 
 </body>
 

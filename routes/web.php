@@ -26,6 +26,10 @@ Route::get('/pesan-penyewaan', [pageuser::class, 'halamanpesanpenyewaan'])->name
 Route::get('/pesan-perbaikan', [pageuser::class, 'halamanpesanperbaikan'])->name('pesanperbaikan');
 
 
+//post
+Route::post('/postkontak', [pageuser::class, 'tambahkontak'])->name('postkontak');
+
+
 // admin login
 Route::get('/cred/login', [admin::class, 'showLoginForm'])->name('cred.login');
 Route::post('cred/postLogin', [admin::class, 'postLogin'])->name('cred.postLogin');
@@ -40,12 +44,17 @@ Route::middleware([IsAdmin::class])->group(function () {
     Route::get('/admin/galeri', [pageAdmin::class, 'halamangaleri'])->name('admin.galeri');
     Route::get('/admin/kontak', [pageAdmin::class, 'halamankontak'])->name('admin.kontak');
     Route::get('/admin/mitra', [pageAdmin::class, 'halamanmitra'])->name('admin.mitra');
-    Route::get('/admin/pemesanan', [pageAdmin::class, 'halamanpemesanan'])->name('admin.pemesanan');
     Route::get('/admin/profile', [pageAdmin::class, 'halamanprofile'])->name('admin.profile');
+    Route::get('/admin/ekspedisi', [pageAdmin::class, 'halamanekspedisi'])->name('admin.ekspedisi');
+    Route::get('/admin/pabrikasi', [pageAdmin::class, 'halamanpabrikasi'])->name('admin.pabrikasi');
+    Route::get('/admin/penyewaan', [pageAdmin::class, 'halamanpenyewaan'])->name('admin.penyewaan');
+    Route::get('/admin/perbaikan', [pageAdmin::class, 'halamanperbaikan'])->name('admin.perbaikan');
+    Route::get('/admin/selengkapnya/{id}', [pageAdmin::class, 'halamanselengkapnya'])->name('admin.selengkapnya');
+
 
 
     //tambah
-    Route::get('/admin/tambahlayanan', [pageadmin::class,'tambahlayanan'])->name('admin.tambahlayanan');
+    Route::get('/admin/tambah-produk', [pageadmin::class,'tambahlayanan'])->name('admin.tambahlayanan');
     Route::post('/tambahlayanan', [pageadmin::class,'layanantambah'])->name('postTambahlayanan');
     Route::get('/admin/tambahgaleri', [pageadmin::class,'tambahgaleri'])->name('admin.tambahgaleri');
     Route::post('/tambahgaleri', [pageadmin::class,'galeritambah'])->name('postTambahgaleri');
@@ -59,6 +68,7 @@ Route::middleware([IsAdmin::class])->group(function () {
     //delete
     Route::get('/admin/deletelayanan/{id}', [pageadmin::class,'deletelayanan'])->name('admin.deletelayanan');
     Route::get('/admin/deletegaleri/{id}', [pageadmin::class,'deletegaleri'])->name('admin.deletegaleri');
+    Route::get('/admin/deletekontak/{id}', [pageadmin::class,'deletekontak'])->name('admin.deletekontak');
 
 });
 

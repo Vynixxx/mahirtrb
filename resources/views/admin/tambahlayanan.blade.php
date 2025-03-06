@@ -56,15 +56,15 @@
                     <div class="col d-flex justify-content-center">
                         <div class="card mt-4" style="width: 800px">
                             <div class="card-body">
-                              <div  href="" >
+                              <div href="">
                                 <h5 class="card-title text-center">
                                 <nav class="d-flex justify-content-center">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="{{ route('admin.layanan') }}">Layanan</a></li>
-                                        <li class="breadcrumb-item active">Tambah Layanan</li>
+                                        <li class="breadcrumb-item"><a href="{{ route('admin.layanan') }}">Produk</a></li>
+                                        <li class="breadcrumb-item active">Tambah Produk</li>
                                     </ol>
                                 </nav>
-                                Tambah Layanan</h5>
+                                Tambah Produk</h5>
                                 <form action="{{ route('postTambahlayanan') }}" method="POST" enctype="multipart/form-data" >
                                     @csrf
                                     <div class="form-group mt-4">

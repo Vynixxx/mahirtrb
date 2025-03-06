@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\LayananKendaraan;
 use App\Models\Galeri;
+use App\Models\kontak;
 
 
 class pageAdmin extends Controller
@@ -24,12 +25,8 @@ class pageAdmin extends Controller
 
     public function halamankontak()
     {
-        return view('admin.kontak');
-    }
-
-    public function halamanpemesanan()
-    {
-        return view('admin.pemesanan');
+        $kontak = kontak::get();
+        return view('admin.kontak', compact('kontak'));
     }
 
     public function halamanprofile()
@@ -40,6 +37,32 @@ class pageAdmin extends Controller
     public function halamanmitra()
     {
         return view('admin.mitra');
+    }
+
+    public function halamanekspedisi()
+    {
+        return view('admin.pemesanan.ekspedisi');
+    }
+
+    public function halamanpabrikasi()
+    {
+        return view('admin.pemesanan.pabrikasi');
+    }
+
+    public function halamanpenyewaan()
+    {
+        return view('admin.pemesanan.penyewaan');
+    }
+
+    public function halamanperbaikan()
+    {
+        return view('admin.pemesanan.perbaikan');
+    }
+
+    public function halamanselengkapnya($id)
+    {
+        $kontak = kontak::find($id);
+        return view('admin.selengkapnya', compact('kontak'));
     }
 
     //halaman tambah
@@ -59,7 +82,7 @@ class pageAdmin extends Controller
         $request->validate([
             'nama' => 'required|string|max:255',
             'isi' => 'required|string',
-            'gambar' => 'required|image|max:5120', // Maksimal ukuran 5MB
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120', // Maksimal ukuran 5MB
         ]);
     
         // Menyimpan berita ke database
@@ -88,7 +111,7 @@ class pageAdmin extends Controller
         // Validasi input
         $request->validate([
             'kategori' => 'required|string',
-            'gambar' => 'required|image|max:5120', // Maksimal ukuran 5MB
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120', // Maksimal ukuran 5MB
         ]);
     
         // Menyimpan berita ke database
@@ -123,7 +146,7 @@ class pageAdmin extends Controller
         $request->validate([
             'nama' => 'required|string|max:255',
             'isi' => 'required|string',
-            'gambar' => 'nullable|image|max:5120', // Gambar opsional saat edit
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120', // Gambar opsional saat edit
         ]);
         
         // Menemukan layanan berdasarkan ID
@@ -158,6 +181,50 @@ class pageAdmin extends Controller
         }
     }
 
+    public function editgaleri($id)
+    {
+        $galeri = galeri::find($id);
+        return view('admin.editgaleri', compact('galeri'));
+    }
+    public function postEditgaleri(Request $request, $id)
+    {
+        // Validasi input
+        $request->validate([
+            'kategori' => 'required|string',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120', // Gambar opsional saat edit
+        ]);
+        
+        // Menemukan galeri berdasarkan ID
+        $galeri = galeri::find($id);
+        if (!$galeri) {
+            return redirect()->route('admin.tambahgaleri')->with('failed', 'Data tidak ditemukan.');
+        }
+
+        // Update data galeri
+        $galeri->kategori = $request->input('kategori');
+
+        // Proses penyimpanan gambar jika ada gambar baru
+        if ($request->hasFile('gambar')) {
+            // Menghapus gambar lama jika ada
+            if ($galeri->gambar && file_exists(public_path('images/' . $galeri->gambar))) {
+                unlink(public_path('images/' . $galeri->gambar));
+            }
+
+            // Menyimpan gambar baru
+            $file = $request->file('gambar');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images'), $filename);
+            $galeri->gambar = $filename;
+        }
+
+        // Simpan ke database
+        if ($galeri->save()) {
+            return back()->with('success', 'Data berhasil diupdate!');
+        } else {
+            return back()->with('failed', 'Data gagal diupdate!');
+        }
+    }
+
     //hapus
     public function deletelayanan($id)
     {
@@ -165,6 +232,30 @@ class pageAdmin extends Controller
 
         $layanankendaraan->delete();
         if ($layanankendaraan) {
+            return back()->with('success', 'Data berhasil dihapus!');
+        } else {
+            return back()->with('failed', 'Gagal menghapus Data!');
+        }
+    }
+
+    public function deletegaleri($id)
+    {
+        $galeri = galeri::find($id);
+
+        $galeri->delete();
+        if ($galeri) {
+            return back()->with('success', 'Data berhasil dihapus!');
+        } else {
+            return back()->with('failed', 'Gagal menghapus Data!');
+        }
+    }
+
+    public function deletekontak($id)
+    {
+        $kontak = kontak::find($id);
+
+        $kontak->delete();
+        if ($kontak) {
             return back()->with('success', 'Data berhasil dihapus!');
         } else {
             return back()->with('failed', 'Gagal menghapus Data!');

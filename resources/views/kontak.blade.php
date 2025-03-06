@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Mitra - PT. Mahir Trans Bersaudara</title>
+  <title>Kontak - PT. Mahir Trans Bersaudara</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -54,7 +54,16 @@
     </div>
   </header>
     <main class="main">
-
+    <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1050">
+      <div id="toastNotification" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex">
+                <div class="toast-body" id="toastMessage">
+                  Pesan berhasil dikirim!
+                </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
         <!-- Page Title -->
         <div class="page-title dark-background" data-aos="fade">
         <div class="heading">
@@ -78,13 +87,28 @@
 
       <!-- Contact Section -->
       <section id="kontak" class="contact section">
+      <div class="container" data-aos="fade-up">
+        @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert" data-aos="fade-up">
+              <strong>Berhasil!</strong> {{ Session('success') }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
 
+        @if(session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" data-aos="fade-up">
+              <strong>Gagal!</strong> {{ Session('error') }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+      </div>
       <!-- Section Title -->
       <h2 class="text-center mb-4" data-aos="fade-up"><span class="fw-bold text-primary">Kontak</span> Kami</h2>
       <!-- End Section Title -->
 
       <div class="container" data-aos="fade" data-aos-delay="100">
 
+      
         <div class="row gy-4">
 
           <div class="col-lg-4">
@@ -92,7 +116,7 @@
               <i class="bi bi-geo-alt flex-shrink-0"></i>
               <div>
                 <h3>Alamat</h3>
-                <p>A108 Adam Street, New York, NY 535022</p>
+                <p>Jalan Lingkar, Balairaja, Pinggir, Riau, 28784</p>
               </div>
             </div><!-- End Info Item -->
 
@@ -115,37 +139,78 @@
           </div>
 
           <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-              <div class="row gy-4">
+            <form id="contactForm" action="{{ route('postkontak') }}" method="POST" data-aos="fade-up" data-aos-delay="200">
+                @csrf
+                <div class="row gy-4">
+                  <div class="col-md-6">
+                      <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
+                            placeholder="Nama / Perusahaan" value="{{ old('name') }}" required>
+                      @error('name')
+                          <div class="invalid-feedback">{{ $message }}</div>
+                      @enderror
+                  </div>
 
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                  <div class="col-md-6">
+                      <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
+                            placeholder="Email" value="{{ old('email') }}" required>
+                      @error('email')
+                          <div class="invalid-feedback">{{ $message }}</div>
+                      @enderror
+                  </div>
+
+                  <div class="col-md-6">
+                      <input type="text" name="whatsapp" class="form-control @error('whatsapp') is-invalid @enderror"
+                            placeholder="Nomor WhatsApp" value="{{ old('whatsapp') }}">
+                      @error('whatsapp')
+                          <div class="invalid-feedback">{{ $message }}</div>
+                      @enderror
+                  </div>
+
+                  <div class="col-md-6">
+                      <input type="text" name="subject" class="form-control @error('subject') is-invalid @enderror"
+                            placeholder="Perihal" value="{{ old('subject') }}" required>
+                      @error('subject')
+                          <div class="invalid-feedback">{{ $message }}</div>
+                      @enderror
+                  </div>
+
+                  <div class="col-md-12">
+                      <textarea name="message" class="form-control @error('message') is-invalid @enderror"
+                                rows="6" placeholder="Pesan" required>{{ old('message') }}</textarea>
+                      @error('message')
+                          <div class="invalid-feedback">{{ $message }}</div>
+                      @enderror
+                  </div>
+
+                  <div class="col-md-12 text-center">
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal">
+                          Kirim Pesan
+                      </button>
+                  </div>
                 </div>
-
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
-                </div>
-
-              </div>
             </form>
-          </div><!-- End Contact Form -->
+        </div><!-- End Contact Form -->
 
+          <!-- Modal Konfirmasi -->
+          <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="confirmModalLabel">Konfirmasi Pengiriman</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                          Apakah Anda yakin ingin mengirim pesan ini?
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                          <button type="button" class="btn btn-primary" id="confirmSend">Ya, Kirim</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+          </div>
         </div>
 
       </div>
@@ -173,6 +238,39 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+      document.getElementById("confirmSend").addEventListener("click", function () {
+          document.getElementById("contactForm").submit();
+      });
+  </script>
+
+  <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        let message = "{{ e(session('success') ?? session('error')) }}";
+        let messageType = "{{ session('success') ? 'success' : (session('error') ? 'error' : '') }}";
+
+          if (message) {
+              let toastMessage = document.getElementById("toastMessage");
+              let toastNotification = document.getElementById("toastNotification");
+
+              toastMessage.innerHTML = message;
+
+              // Ubah warna berdasarkan jenis notifikasi
+              if (messageType === "success") {
+                  toastNotification.classList.remove("bg-danger");
+                  toastNotification.classList.add("bg-success");
+              } else if (messageType === "error") {
+                  toastNotification.classList.remove("bg-success");
+                  toastNotification.classList.add("bg-danger");
+              }
+
+              // Tampilkan toast
+              let toast = new bootstrap.Toast(toastNotification);
+              toast.show();
+          }
+      });
+  </script>
 
 </body>
 
