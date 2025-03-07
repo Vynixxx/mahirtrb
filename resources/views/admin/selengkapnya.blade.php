@@ -86,9 +86,9 @@
                 <div class="form-group mt-1">
                     <label class="text-secondary mb-2">Pesan</label>
                     <textarea type="text" class="form-control border border-secondary form-control" name="message" required>{{ old('message', $kontak->message) }}</textarea>
-                </div><br>
+                </div>
                 <!-- Tombol Balas -->
-                <button type="button" class="btn btn-success mt-5" onclick="replyEmail()" title="Balas via Email"><i class="bi bi-envelope-at"></i></button>
+                <button type="button" class="btn btn-primary mt-5" onclick="replyEmail()" title="Balas via Email"><i class="bi bi-envelope-at"></i></button>
                 <button type="button" class="btn btn-success mt-5" onclick="replyWhatsApp()" title="Balas via WhatsApp"><i class="bi bi-whatsapp"></i></button>
             </div>
           </div>

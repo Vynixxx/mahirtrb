@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Mitra - PT. Mahir Trans Bersaudara</title>
+  <title>Produk - PT. Mahir Trans Bersaudara</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -76,7 +76,40 @@
         </nav>
         </div><!-- End Page Title -->
 
-        
+          <!-- layanan Section -->
+          <section class="container py-5">
+              <div class="row g-4">
+                  @foreach ($layanan as $p)
+                  <div class="col-md-4" data-aos="zoom-in-up" data-aos-delay="{{ $loop->index * 150 }}">
+                      <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+                          <div class="ratio ratio-16x9"> 
+                              <img src="{{ asset('/images/' . $p->gambar) }}" class="img-fluid object-fit-cover" alt="{{ $p->nama }}">
+                          </div>
+                          <div class="card-body text-center">
+                              <h4 class="fw-bold">{{ $p->nama }}</h4>
+                              <p class="text-muted">{{ $p->isi }}</p>
+                          </div>
+                      </div>
+                  </div>
+                  @endforeach
+              </div>
+          </section>
+
+          @include('testimoni')        
+          <!-- Call to Action -->
+          <section id="sewa" class="text-center py-5 mt-5 mb-5">
+              <div class="container mt-5">
+                  <h2 class="fw-bold animate-title" data-aos="fade-down">
+                      <span class="fw-bold text-primary">Optimalkan Proyek Anda</span> dengan Kendaraan Terbaik!
+                  </h2>
+                  <p class="animate-text" data-aos="fade-up" data-aos-delay="200">
+                      Jangan ragu untuk menghubungi kami dan dapatkan layanan terbaik.
+                  </p>
+                  <a href="{{ route('kontak') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="400">
+                      Hubungi Kami
+                  </a>
+              </div>
+          </section>
     </main>
 
   @include('layouts.footer')

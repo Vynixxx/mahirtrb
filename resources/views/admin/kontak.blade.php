@@ -38,20 +38,6 @@
 
   <main id="main" class="main">
   <div class="container">
-      <div class="container mt-3">
-        @if (Session::get('success'))
-          <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Berhasil!</strong> {{ Session::get('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-        @endif
-        @if (Session::get('failed'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-          <strong>Gagal!</strong> {{ Session::get('failed') }}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
-      </div>
         <div class="card">
             <div class="card-body">
               <h5 class="card-title">Kontak

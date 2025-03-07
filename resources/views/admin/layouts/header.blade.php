@@ -5,6 +5,26 @@
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
+    @if (Session::get('success') || Session::get('failed'))
+        <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1050">
+            <div id="toastNotification" class="toast align-items-center text-white bg-{{ Session::get('success') ? 'success' : 'danger' }} border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true">
+                <div class="d-flex">
+                    <div class="toast-body" id="toastMessage">
+                        <strong>{{ Session::get('success') ? 'Berhasil!' : 'Gagal!' }}</strong> {{ Session::get('success') ?? Session::get('failed') }}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                let toastElement = document.getElementById('toastNotification');
+                let toast = new bootstrap.Toast(toastElement);
+                toast.show();
+            });
+        </script>
+    @endif
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\LayananKendaraan;
 use App\Models\Galeri;
 use App\Models\Kontak;
+use App\Models\mitra;
 use Exception;
 
 
@@ -38,7 +39,8 @@ class pageuser extends Controller
 
     public function halamanproduk()
     {
-        return view('produk');
+        $layanan = layanankendaraan::get();
+        return view('produk', compact('layanan'));
     }
 
     public function halamansk()
@@ -53,7 +55,8 @@ class pageuser extends Controller
 
     public function halamanmitra()
     {
-        return view('mitra');
+        $mitra = mitra::get();
+        return view('mitra', compact('mitra'));
     }
 
     public function halamanlayanan()
@@ -86,8 +89,9 @@ class pageuser extends Controller
     public function halamanhome()
     {
         $layanan = LayananKendaraan::get();
-        $gambar = Galeri::orderBy('created_at', 'desc')->get();
-        return view('home', compact('layanan', 'gambar'));
+        $gambar = Galeri::orderBy('created_at', 'desc')->take(8)->get(); 
+        $mitra = mitra::get();
+        return view('home', compact('layanan', 'gambar', 'mitra'));
     }
 
     public function halamanpesanekspedisi()

@@ -56,19 +56,24 @@ Route::middleware([IsAdmin::class])->group(function () {
     //tambah
     Route::get('/admin/tambah-produk', [pageadmin::class,'tambahlayanan'])->name('admin.tambahlayanan');
     Route::post('/tambahlayanan', [pageadmin::class,'layanantambah'])->name('postTambahlayanan');
-    Route::get('/admin/tambahgaleri', [pageadmin::class,'tambahgaleri'])->name('admin.tambahgaleri');
+    Route::get('/admin/tambah-galeri', [pageadmin::class,'tambahgaleri'])->name('admin.tambahgaleri');
     Route::post('/tambahgaleri', [pageadmin::class,'galeritambah'])->name('postTambahgaleri');
+    Route::get('/admin/tambah-mitra', [pageadmin::class,'tambahmitra'])->name('admin.tambahmitra');
+    Route::post('/tambahmitra', [pageadmin::class,'mitratambah'])->name('postTambahmitra');
 
     //edit
     Route::get('/admin/editlayanan/{id}', [pageAdmin::class,'editlayanan'])->name('admin.editlayanan');
     Route::post('/postEditlayanan/{id}', [pageadmin::class, 'postEditlayanan'])->name('postEditlayanan');
     Route::get('/admin/editgaleri/{id}', [pageadmin::class, 'editgaleri'])->name('editgaleri');
     Route::post('/postEditgaleri/{id}', [pageadmin::class, 'postEditgaleri'])->name('postEditgaleri');
+    Route::get('/admin/editmitra/{id}', [pageadmin::class, 'editmitra'])->name('editmitra');
+    Route::post('/postEditmitra/{id}', [pageadmin::class, 'postEditmitra'])->name('postEditmitra');
 
     //delete
     Route::get('/admin/deletelayanan/{id}', [pageadmin::class,'deletelayanan'])->name('admin.deletelayanan');
     Route::get('/admin/deletegaleri/{id}', [pageadmin::class,'deletegaleri'])->name('admin.deletegaleri');
     Route::get('/admin/deletekontak/{id}', [pageadmin::class,'deletekontak'])->name('admin.deletekontak');
+    Route::get('/admin/deletemitra/{id}', [pageadmin::class,'deletemitra'])->name('admin.deletemitra');
 
 });
 
@@ -77,5 +82,17 @@ Route::get('/cred/logout', function() {
     abort(404);
 });
 Route::get('/cred/postLogin', function() {
+    abort(404);
+});
+Route::get('/postkontak', function() {
+    abort(404);
+});
+Route::get('/tambahlayanan', function() {
+    abort(404);
+});
+Route::get('/tambahgaleri', function() {
+    abort(404);
+});
+Route::get('/tambahmitra', function() {
     abort(404);
 });

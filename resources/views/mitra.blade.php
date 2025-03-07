@@ -62,7 +62,6 @@
             <div class="row d-flex justify-content-center text-center">
                 <div class="col-lg-8">
                 <h1>Mitra Kami</h1>
-                <p class="mb-0">Daftar Mitra yang Berkerjasama.</p>
                 </div>
             </div>
             </div>
@@ -80,68 +79,16 @@
         <section class="container my-5">
             <h2 class="text-center mb-4">Daftar Mitra</h2>
             <div class="row text-center g-4">
+                @foreach ($mitra as $m)
                 <div class="col-md-4">
                     <div class="card p-4 shadow-lg h-100 d-flex flex-column align-items-center">
-                        <div class="img-container">
-                            <img src="assets/img/mitra/cosl.png" class="img-fluid object-fit-contain" alt="Mitra 1">
+                        <div class="img-container" style="width: 150px; height: 150px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                            <img src="{{ asset('/images/' . $m->gambar) }}" class="img-fluid object-fit-contain" alt="Mitra {{ $m-> nama }}" style="max-width: 100%; max-height: 100%;">
                         </div>
-                        <h4 class="mt-3">PT. China Oilfield Services Limited (COSL) Indo</h4>
+                        <h4 class="mt-3">{{ $m-> nama }}</h4>
                     </div>
                 </div>
-
-                <div class="col-md-4">
-                    <div class="card p-4 shadow-lg h-100 d-flex flex-column align-items-center">
-                        <div class="img-container">
-                            <img src="assets/img/mitra/csa.png" class="img-fluid object-fit-contain" alt="Mitra 2">
-                        </div>
-                        <h4 class="mt-3">PT. Cakrawala Sumber Abadi</h4>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card p-4 shadow-lg h-100 d-flex flex-column align-items-center">
-                        <div class="img-container">
-                            <img src="assets/img/mitra/mkb.png" class="img-fluid object-fit-contain" alt="Mitra 3">
-                        </div>
-                        <h4 class="mt-3">PT. Multi Karya Berdikari</h4>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card p-4 shadow-lg h-100 d-flex flex-column align-items-center">
-                        <div class="img-container">
-                            <img src="assets/img/mitra/btm.png" class="img-fluid object-fit-contain" alt="Mitra 4">
-                        </div>
-                        <h4 class="mt-3">PT. Bumi Tata Mulia</h4>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card p-4 shadow-lg h-100 d-flex flex-column align-items-center">
-                        <div class="img-container">
-                            <img src="assets/img/mitra/km.png" class="img-fluid object-fit-contain" alt="Mitra 5">
-                        </div>
-                        <h4 class="mt-3">CV. Karya Mitra</h4>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card p-4 shadow-lg h-100 d-flex flex-column align-items-center">
-                        <div class="img-container">
-                            <img src="assets/img/mitra/rsu.png" class="img-fluid object-fit-contain" alt="Mitra 6">
-                        </div>
-                        <h4 class="mt-3">PT. Recon Sarana Utama</h4>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card p-4 shadow-lg h-100 d-flex flex-column align-items-center">
-                        <div class="img-container">
-                            <img src="assets/img/mitra/ib.png" class="img-fluid object-fit-contain" alt="Mitra 7">
-                        </div>
-                        <h4 class="mt-3">PT. Indrilco Bakti</h4>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </section>
     </main>

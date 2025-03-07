@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\LayananKendaraan;
 use App\Models\Galeri;
 use App\Models\kontak;
+use App\Models\mitra;
 
 
 class pageAdmin extends Controller
@@ -36,7 +37,8 @@ class pageAdmin extends Controller
 
     public function halamanmitra()
     {
-        return view('admin.mitra');
+        $mitra = mitra::get();
+        return view('admin.mitra', compact('mitra'));
     }
 
     public function halamanekspedisi()
@@ -73,6 +75,10 @@ class pageAdmin extends Controller
     public function tambahgaleri()
     {
         return view('admin.tambahgaleri');
+    }
+    public function tambahmitra()
+    {
+        return view('admin.tambahmitra');
     }
 
     //logika tambah data
@@ -131,6 +137,34 @@ class pageAdmin extends Controller
             return redirect()->route('admin.tambahgaleri')->with('success', 'Data berhasil ditambahkan!');
         } else {
             return redirect()->route('admin.tambahgaleri')->with('failed', 'Gagal menambahkan data.');
+        }
+    }
+
+    public function mitratambah(Request $request)
+    {
+        // Validasi input
+        $request->validate([
+            'nama' => 'required|string',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120', // Maksimal ukuran 5MB
+        ]);
+    
+        // Menyimpan berita ke database
+        $mitra = new mitra;
+        $mitra->nama = $request->input('nama');
+    
+        // Proses penyimpanan gambar
+        if ($request->hasFile('gambar')) {
+            $file = $request->file('gambar');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images'), $filename);
+            $mitra->gambar = $filename;
+        }
+    
+        // Simpan ke database
+        if ($mitra->save()) {
+            return redirect()->route('admin.mitra')->with('success', 'Data berhasil ditambahkan!');
+        } else {
+            return redirect()->route('admin.mitra')->with('failed', 'Gagal menambahkan data.');
         }
     }
 
@@ -225,6 +259,50 @@ class pageAdmin extends Controller
         }
     }
 
+    public function editmitra($id)
+    {
+        $mitra = mitra::find($id);
+        return view('admin.editmitra', compact('mitra'));
+    }
+    public function postEditmitra(Request $request, $id)
+    {
+        // Validasi input
+        $request->validate([
+            'nama' => 'required|string',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120', // Gambar opsional saat edit
+        ]);
+        
+        // Menemukan mitra berdasarkan ID
+        $mitra = mitra::find($id);
+        if (!$mitra) {
+            return redirect()->route('admin.tambahmitra')->with('failed', 'Data tidak ditemukan.');
+        }
+
+        // Update data mitra
+        $mitra->nama = $request->input('nama');
+
+        // Proses penyimpanan gambar jika ada gambar baru
+        if ($request->hasFile('gambar')) {
+            // Menghapus gambar lama jika ada
+            if ($mitra->gambar && file_exists(public_path('images/' . $mitra->gambar))) {
+                unlink(public_path('images/' . $mitra->gambar));
+            }
+
+            // Menyimpan gambar baru
+            $file = $request->file('gambar');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images'), $filename);
+            $mitra->gambar = $filename;
+        }
+
+        // Simpan ke database
+        if ($mitra->save()) {
+            return back()->with('success', 'Data berhasil diupdate!');
+        } else {
+            return back()->with('failed', 'Data gagal diupdate!');
+        }
+    }
+
     //hapus
     public function deletelayanan($id)
     {
@@ -256,6 +334,18 @@ class pageAdmin extends Controller
 
         $kontak->delete();
         if ($kontak) {
+            return back()->with('success', 'Data berhasil dihapus!');
+        } else {
+            return back()->with('failed', 'Gagal menghapus Data!');
+        }
+    }
+    
+    public function deletemitra($id)
+    {
+        $mitra = mitra::find($id);
+
+        $mitra->delete();
+        if ($mitra) {
             return back()->with('success', 'Data berhasil dihapus!');
         } else {
             return back()->with('failed', 'Gagal menghapus Data!');
