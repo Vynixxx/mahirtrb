@@ -146,7 +146,7 @@
                       <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
                             placeholder="Nama / Perusahaan" value="{{ old('name') }}" required>
                       @error('name')
-                          <div class="invalid-feedback">{{ $message }}</div>
+                          <div class="invalid-feedback">Kolom ini wajib diisi</div>
                       @enderror
                   </div>
 
@@ -154,7 +154,7 @@
                       <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
                             placeholder="Email" value="{{ old('email') }}" required>
                       @error('email')
-                          <div class="invalid-feedback">{{ $message }}</div>
+                          <div class="invalid-feedback">Kolom ini wajib diisi</div>
                       @enderror
                   </div>
 
@@ -162,7 +162,7 @@
                       <input type="text" name="whatsapp" class="form-control @error('whatsapp') is-invalid @enderror"
                             placeholder="Nomor WhatsApp" value="{{ old('whatsapp') }}">
                       @error('whatsapp')
-                          <div class="invalid-feedback">{{ $message }}</div>
+                          <div class="invalid-feedback">Kolom ini wajib diisi</div>
                       @enderror
                   </div>
 
@@ -170,7 +170,7 @@
                       <input type="text" name="subject" class="form-control @error('subject') is-invalid @enderror"
                             placeholder="Perihal" value="{{ old('subject') }}" required>
                       @error('subject')
-                          <div class="invalid-feedback">{{ $message }}</div>
+                          <div class="invalid-feedback">Kolom ini wajib diisi</div>
                       @enderror
                   </div>
 
@@ -178,7 +178,7 @@
                       <textarea name="message" class="form-control @error('message') is-invalid @enderror"
                                 rows="6" placeholder="Pesan" required>{{ old('message') }}</textarea>
                       @error('message')
-                          <div class="invalid-feedback">{{ $message }}</div>
+                          <div class="invalid-feedback">Kolom ini wajib diisi</div>
                       @enderror
                   </div>
 

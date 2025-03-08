@@ -6,6 +6,9 @@ use App\Http\Controllers\pageAdmin;
 use App\Http\Controllers\pageuser;
 use App\Http\Middleware\IsAdmin;
 
+Route::fallback(function () {
+    return response()->view('errors.404', [], 404);
+});
 Route::get('/', [pageuser::class, 'halamanhome'])->name('home');
 Route::get('/tentang-kami', [pageuser::class, 'halamanabout'])->name('tentang-kami');
 Route::get('/mitra-kami', [pageuser::class, 'halamanmitra'])->name('mitra');

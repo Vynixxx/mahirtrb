@@ -193,7 +193,7 @@
                 <div class="card-body">
                     <i class="bi bi-geo-alt text-danger fs-2"></i>
                     <h5 class="fw-bold mt-2">Alamat</h5>
-                    <p class="text-muted">Jl. Raya Industri No. 123, Jakarta, Indonesia</p>
+                    <p class="text-muted">Jl. Lingkar Balairaja, Pinggir, Riau</p>
                 </div>
             </div>
         </div>

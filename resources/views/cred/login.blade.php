@@ -42,7 +42,7 @@
       <!-- Error Messages -->
       @if(session('message'))
         <div class="alert alert-danger mt-3" role="alert">
-          {{ session('message') }}
+          Login gagal. Periksa kembali username dan password Anda.
         </div>
       @endif
 
