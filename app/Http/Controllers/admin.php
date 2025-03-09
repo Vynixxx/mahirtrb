@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Kontak;
+use App\Models\Mitra;
 
 class admin extends Controller
 {
@@ -28,7 +30,9 @@ class admin extends Controller
     //dashboard
     public function dashboard(){
         if(Auth::check()&& Auth::user()->role === 'admin'){
-            return view('admin.dashboard');
+            $jumlah_kontak = Kontak::count();
+            $jumlah_mitra = mitra::count();
+            return view('admin.dashboard', compact('jumlah_kontak', 'jumlah_mitra'));
         }
         return redirect('/');
            

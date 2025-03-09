@@ -145,6 +145,8 @@
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile shadow-lg">
             <!-- Header dengan Avatar -->
             <li class="dropdown-header text-center">
+                <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=random&size=150&bold=true" 
+                alt="Profile Picture" class="rounded-circle shadow mt-3 mb-3">
                 <h6 class="mb-0">PT. Mahir Trans Bersaudara</h6>
                 <small class="text-muted">Administrator</small>
             </li>

@@ -130,63 +130,99 @@
             <!-- End Section Title -->
 
             <div class="container">
-            <div class="row gy-4 justify-content-center text-center">
-            <!-- Service Item 1 -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="card border-0 shadow-sm h-100">
-                <img src="assets/img/services/ekspedisi.png" class="card-img-top" alt="Layanan kami">
-                <div class="card-body text-center">
-                <h5 class="card-title fw-bold">Ekspedisi</h5>
-                <p class="card-text text-muted">
-                PT. Mahir Trans Bersaudara hadir sebagai mitra terpercaya dalam penyewaan ekspedisi khusus untuk kendaraan alat berat. Dengan armada terbaik dan tenaga profesional berpengalaman, kami siap membantu pengangkutan alat berat Anda dengan aman, cepat, dan efisien ke berbagai lokasi di seluruh Indonesia terkhusus di wilayah Riau. Kami memahami bahwa setiap pengiriman memiliki tantangan tersendiri, oleh karena itu kami menawarkan layanan ekspedisi yang fleksibel dan disesuaikan dengan kebutuhan Anda. Dari pengiriman Truk Foco, bulldozer, crane, hingga kendaraan berat lainnya, kami memastikan proses transportasi berjalan lancar dengan standar keselamatan tinggi. Percayakan kebutuhan logistik alat berat Anda kepada PT. Mahir Trans Bersaudara untuk solusi ekspedisi yang andal dan profesional.              
-                </p>
+                <div class="row gy-4 justify-content-center text-center">
+                    <!-- Service Item -->
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card border-0 shadow-sm h-100 custom-service-card">
+                            <img src="assets/img/services/ekspedisi.png" class="custom-card-img-top" alt="Ekspedisi">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Ekspedisi</h5>
+                                <p class="card-text text-muted">
+                                    Layanan ekspedisi alat berat yang cepat, aman, dan efisien dengan armada terbaik dan tenaga profesional berpengalaman.
+                                </p>
+                            </div>
+                            <div class="card-footer bg-white border-0 text-center pb-4">
+                                <a href="{{ route('pesanekspedisi') }}" class="btn btn-primary btn-lg custom-animate-btn">
+                                    Pesan Sekarang
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service Item -->
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card border-0 shadow-sm h-100 custom-service-card">
+                            <img src="assets/img/services/pabrikasi.png" class="custom-card-img-top" alt="Pabrikasi">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Pabrikasi</h5>
+                                <p class="card-text text-muted">
+                                    Produksi komponen logam presisi tinggi untuk industri konstruksi, manufaktur, dan alat berat dengan standar kualitas terbaik.
+                                </p>
+                            </div>
+                            <div class="card-footer bg-white border-0 text-center pb-4">
+                                <a href="{{ route('pesanpabrikasi') }}" class="btn btn-primary btn-lg custom-animate-btn">
+                                    Pesan Sekarang
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service Item -->
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card border-0 shadow-sm h-100 custom-service-card">
+                            <img src="assets/img/services/perbaikan.png" class="custom-card-img-top" alt="Perbaikan">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Perbaikan</h5>
+                                <p class="card-text text-muted">
+                                    Layanan perbaikan alat berat dengan teknisi profesional dan peralatan canggih untuk memastikan performa optimal.
+                                </p>
+                            </div>
+                            <div class="card-footer bg-white border-0 text-center pb-4">
+                                <a href="{{ route('pesanperbaikan') }}" class="btn btn-primary btn-lg custom-animate-btn">
+                                    Pesan Sekarang
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service Item -->
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card border-0 shadow-sm h-100 custom-service-card">
+                            <img src="assets/img/services/penyewaan.png" class="custom-card-img-top" alt="Penyewaan">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Penyewaan</h5>
+                                <p class="card-text text-muted">
+                                    Penyewaan alat berat dengan berbagai pilihan unit berkualitas tinggi, harga kompetitif, dan dukungan teknis profesional.
+                                </p>
+                            </div>
+                            <div class="card-footer bg-white border-0 text-center pb-4">
+                                <a href="{{ route('pesanpenyewaan') }}" class="btn btn-primary btn-lg custom-animate-btn">
+                                    Pesan Sekarang
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <a href="{{ route('pesanekspedisi') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="200">
-                Pesan
-                </a>
             </div>
-            </div>
-            <!-- Service Item 2 -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="card border-0 shadow-sm h-100">
-                <img src="assets/img/services/pabrikasi.png" class="card-img-top" alt="Layanan 1">
-                <div class="card-body text-center">
-                    <h5 class="card-title fw-bold">Pabrikasi</h5>
-                    <p class="card-text text-muted">PT. Mahir Trans Bersaudara menawarkan layanan pabrikasi berkualitas tinggi untuk memenuhi kebutuhan industri Anda. Dengan tim ahli dan peralatan modern, kami siap memproduksi berbagai komponen dan struktur berbahan logam, baik untuk industri konstruksi, manufaktur, hingga alat berat. Kami berkomitmen untuk menghadirkan hasil pabrikasi yang presisi, kuat, dan sesuai dengan standar kualitas tinggi. Setiap proses produksi dilakukan dengan ketelitian dan pengawasan ketat untuk memastikan ketahanan serta keamanan produk yang kami hasilkan. Dengan pengalaman dan dedikasi dalam industri ini, PT. Mahir Trans Bersaudara menjadi pilihan tepat bagi Anda yang membutuhkan solusi pabrikasi profesional, efisien, dan terpercaya.</p>
-                </div>
-                <a href="{{ route('pesanpabrikasi') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="300">
-                        Pesan
-                    </a>
-                </div>
-            </div>
-            <!-- Service Item 3 -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                <div class="card border-0 shadow-sm h-100">
-                <img src="assets/img/services/perbaikan.png" class="card-img-top" alt="Layanan 1">
-                <div class="card-body text-center">
-                    <h5 class="card-title fw-bold">Perbaikan</h5>
-                    <p class="card-text text-muted">PT. Mahir Trans Bersaudara menyediakan layanan perbaikan alat berat yang handal dan profesional untuk memastikan performa optimal mesin Anda. Dengan teknisi berpengalaman dan peralatan canggih, kami siap menangani berbagai jenis perbaikan, mulai dari perawatan rutin hingga perbaikan komponen utama seperti mesin, hidrolik, dan sistem kelistrikan. Kami memahami bahwa downtime alat berat dapat berdampak besar pada operasional bisnis, oleh karena itu kami berkomitmen untuk memberikan layanan yang cepat, efisien, dan berkualitas tinggi. Apapun jenis alat berat Anda, percayakan perbaikannya kepada kami. PT. Mahir Trans Bersaudara siap menjadi mitra terbaik Anda dalam menjaga kinerja dan keandalan alat berat di lapangan.</p>
-                </div>
-                <a href="{{ route('pesanperbaikan') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="400">
-                        Pesan
-                    </a>
-                </div>
-            </div>
-            <!-- Service Item 4 -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                <div class="card border-0 shadow-sm h-100">
-                <img src="assets/img/services/penyewaan.png" class="card-img-top" alt="Layanan 4">
-                <div class="card-body text-center">
-                    <h5 class="card-title fw-bold">Penyewaan</h5>
-                    <p class="card-text text-muted">PT. Mahir Trans Bersaudara menyediakan layanan penyewaan alat berat dengan berbagai pilihan unit berkualitas tinggi untuk mendukung kelancaran proyek konstruksi, pertambangan, dan industri lainnya. Dengan armada yang terawat dan siap pakai, kami menawarkan beragam alat berat sesuai dengan kebutuhan operasional Anda. Kami memahami pentingnya efisiensi dan ketepatan waktu dalam setiap proyek, sehingga kami berkomitmen memberikan layanan sewa yang fleksibel, harga kompetitif, serta dukungan teknis profesional. Percayakan kebutuhan alat berat Anda kepada PT. Mahir Trans Bersaudara untuk solusi sewa yang andal, efisien, dan berkualitas tinggi.</p>
-                </div>
-                <a href="{{ route('pesanpenyewaan') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="200">
-                        Pesan
-                    </a>
-                </div>
-            </div>
-            </div>
-        </div>
+
+            <style>
+                .custom-service-card {
+                    transition: transform 0.3s, box-shadow 0.3s;
+                    border-radius: 12px;
+                    overflow: hidden;
+                }
+                .custom-service-card:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+                }
+                .custom-card-img-top {
+                    height: 200px;
+                    object-fit: cover;
+                }
+                .custom-animate-btn {
+                    transition: all 0.3s ease-in-out;
+                }
+                .custom-animate-btn:hover {
+                    transform: scale(1.05);
+                }
+            </style>
         </section><!-- layanan section -->
         </div>
 
