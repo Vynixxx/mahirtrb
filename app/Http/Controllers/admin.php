@@ -19,11 +19,8 @@ class admin extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
-
         return redirect('/');
     }
 
@@ -38,28 +35,28 @@ class admin extends Controller
            
         }
 
-        // Proses login
-        public function postLogin(Request $request){
-            $credentials = $request->validate([
-                'username'=>['required'],
-                'password'=>['required']
-            ]);
+    // Proses login
+    public function postLogin(Request $request){
+        $credentials = $request->validate([
+            'username'=>['required'],
+            'password'=>['required']
+        ]);
 
-            if(Auth::attempt($credentials)){
-                $user = Auth::user();
-                if($user->role === 'admin'){
-                    $request->session()->regenerate();
-                    return redirect()->intended('admin/dashboard');
-                }else{
-                    Auth::logout();
-                    return back()->withErrors([
-                        'username'=> 'Error'
-                    ]);
-                }
+        if(Auth::attempt($credentials)){
+            $user = Auth::user();
+            if($user->role === 'admin'){
+                $request->session()->regenerate();
+                return redirect()->intended('admin/dashboard');
+            }else{
+                Auth::logout();
+                return back()->withErrors([
+                    'username'=> 'Error'
+                ]);
             }
-
-            return back()->withErrors([
-                'username'=>'Error'
-            ]);
         }
+
+        return back()->withErrors([
+            'username'=>'Error'
+        ]);
+    }
 }
