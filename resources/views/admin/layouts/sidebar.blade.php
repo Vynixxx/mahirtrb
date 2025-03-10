@@ -3,7 +3,7 @@
   <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
-    <li class="nav-heading">Pages</li>
+    <li class="nav-heading">Halaman</li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route('admin.dashboard') }}">

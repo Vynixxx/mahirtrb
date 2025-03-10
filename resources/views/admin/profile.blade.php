@@ -58,9 +58,13 @@
                         </div>
 
                         <!-- Tombol Logout -->
-                        <a href="{{ route('cred.logout') }}" class="btn btn-danger mt-3">
-                            <i class="fas fa-sign-out-alt"></i> Keluar
-                        </a>
+                        <form action="{{ route('cred.logout') }}" method="POST">
+                            @csrf
+                            <button class="btn btn-danger w-100 d-flex align-items-center justify-content-center">
+                                <i class="bi bi-box-arrow-right me-2"></i>
+                                <span>Keluar</span>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>

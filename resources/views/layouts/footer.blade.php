@@ -64,7 +64,7 @@
 <div class="container copyright text-center mt-4">
   <p>© <span>Copyright 2025</span> <strong class="px-1 sitename">Mahir Trans Bersaudara</strong> <span>All Rights Reserved</span></p>
   <div class="credits">
-    Designed by <a href="">PT. Mahir Trans Bersaudara</a>
+    Designed by <a href="{{ route('home') }}">PT. Mahir Trans Bersaudara</a>
   </div>
 </div>
 

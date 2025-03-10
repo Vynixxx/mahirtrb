@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Produk - PT. Mahir Trans Bersaudara</title>
+  <title>Jenis Alat Berat - PT. Mahir Trans Bersaudara</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -43,7 +43,7 @@
         <ul>
           <li><a href="{{ route('home') }}">Beranda</a></li>
           <li><a href="{{ route('tentang-kami') }}" >Tentang</a></li>
-          <li><a href="{{ route('layanan') }}" class="active">Layanan</a></li>
+          <li><a href="{{ route('layanan') }}">Layanan</a></li>
           <li><a href="{{ route('galeri') }}">Galeri</a></li>
           <li><a href="{{ route('mitra') }}" >Mitra</a></li>
           <li><a href="{{ route('kontak') }}">Kontak</a></li>
@@ -61,7 +61,7 @@
             <div class="container">
             <div class="row d-flex justify-content-center text-center">
                 <div class="col-lg-8">
-                <h1 class="mb-4">Produk Kami</h1>
+                <h1 class="mb-4">Jenis Alat Berat</h1>
                 </div>
             </div>
             </div>
@@ -70,7 +70,7 @@
             <div class="container">
             <ol>
                 <li><a href="{{ route('home') }}">Beranda</a></li>
-                <li class="current">Produk</li>
+                <li class="current">Jenis Alat Berat</li>
             </ol>
             </div>
         </nav>
