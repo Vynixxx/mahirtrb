@@ -38,20 +38,35 @@
 
   <main id="main" class="main">
             <div class="container">
-                <div class="container mt-3">
-                    @if (Session::get('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>Berhasil!</strong> {{ Session::get('success') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1050">
+                    <div id="toastNotification" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="d-flex">
+                            <div class="toast-body" id="toastMessage">
+                            </div>
+                            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
                     </div>
-                    @endif
-                    @if (Session::get('failed'))
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Gagal!</strong> {{ Session::get('failed') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    @endif
                 </div>
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        var toastElement = document.getElementById("toastNotification");
+                        var toastMessage = document.getElementById("toastMessage");
+
+                        @if (Session::has('success'))
+                            toastMessage.textContent = "{{ Session::get('success') }}";
+                            var toast = new bootstrap.Toast(toastElement);
+                            toast.show();
+                        @endif
+
+                        @if (Session::has('failed'))
+                            toastMessage.textContent = "{{ Session::get('failed') }}";
+                            toastElement.classList.remove("bg-success");
+                            toastElement.classList.add("bg-danger");
+                            var toast = new bootstrap.Toast(toastElement);
+                            toast.show();
+                        @endif
+                    });
+                </script>
                 <div class="row">
                     <div class="col d-flex justify-content-center">
                         <div class="card mt-4" style="width: 800px">
@@ -61,41 +76,43 @@
                                 <nav class="d-flex justify-content-center">
                                 </nav>
                                 Ekspedisi</h5>
-                                <form action="#" method="POST" enctype="multipart/form-data" >
+                                <form action="{{ route('postPesanEkspedisi') }}" method="POST" enctype="multipart/form-data" >
                                     @csrf
-                                    <h5>Penanggung Jawab</h5>
-                                    <div class="form-group mt-4">
-                                    <label class="text-secondary mb-2">Nama Penyewa / Perusahaan</label>
+                                    <h5>Detail Pemesan</h5>
+                                    <div class="form-group mb-3">
+                                    <label class="text-secondary mb-2">Nama Pemesan / Perusahaan</label>
                                     <input class="form-control border border-secondary form-control" name="nama" required value="" type="text" >
                                         <span class="text-danger">
                                             @error('nama')
-                                              {{ $message }}
+                                              {{ 'Kolom ini wajib diisi' }}
                                             @enderror
                                         </span>
                                     </div>
-                                    <div class="form-group mt-3">
-                                        <label class="text-secondary mb-2">Nomor WhatsApp</label>
-                                        <input class="form-control border border-secondary form-control" name="nohp" required value="" type="number" >
-                                        <span class="text-danger">
-                                            @error('nohp')
-                                              {{ $message }}
-                                            @enderror
-                                        </span>
+                                    <div class="row mb-4">
+                                        <div class="col-md-6">
+                                            <label class="text-secondary mb-2">Nomor WhatsApp</label>
+                                            <input class="form-control border border-secondary form-control" name="nohp" required value="" type="number" >
+                                            <span class="text-danger">
+                                                @error('nohp')
+                                                {{ 'Kolom ini wajib diisi' }}
+                                                @enderror
+                                            </span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="text-secondary mb-2">Email</label>
+                                            <input class="form-control border border-secondary form-control" name="email" required value="" type="email" >
+                                            <span class="text-danger">
+                                                @error('email')
+                                                {{ 'Kolom ini wajib diisi' }}
+                                                @enderror
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div class="form-group mt-3">
-                                        <label class="text-secondary mb-2">Email</label>
-                                        <input class="form-control border border-secondary form-control" name="email" required value="" type="email" >
-                                        <span class="text-danger">
-                                            @error('email')
-                                              {{ $message }}
-                                            @enderror
-                                        </span>
-                                    </div><br>
-                                    <h5>Informasi Kendaraan</h5>
+                                    <h5>Detail Kebutuhan</h5>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label class="form-label">Jenis Kendaraan</label>
-                                            <select class="form-select" name="jenis" required value="{{ old('jenis') }}">
+                                            <label class="text-secondary">Jenis Kendaraan</label>
+                                            <select class="form-select mt-2" name="jenis" required value="{{ old('jenis') }}">
                                                 <option selected>Pilih Jenis Kendaraan</option>
                                                 <option>Truk Foco</option>
                                                 <option>Crane</option>
@@ -109,7 +126,7 @@
                                             </select>
                                             <span class="text-danger">
                                                 @error('jenis')
-                                                {{ $message }}
+                                                {{ 'Kolom ini wajib diisi' }}
                                                 @enderror
                                             </span>
                                         </div>
@@ -118,7 +135,7 @@
                                             <input class="form-control border border-secondary" name="jml" required type="number" value="{{ old('jml') }}">
                                             <span class="text-danger">
                                                 @error('jml')
-                                                {{ $message }}
+                                                {{ 'Kolom ini wajib diisi' }}
                                                 @enderror
                                             </span>
                                         </div>
@@ -129,7 +146,7 @@
                                             <input class="form-control border border-secondary" name="awal" required type="date" value="{{ old('awal') }}">
                                             <span class="text-danger">
                                                 @error('awal')
-                                                {{ $message }}
+                                                {{ 'Kolom ini wajib diisi' }}
                                                 @enderror
                                             </span>
                                         </div>
@@ -138,21 +155,18 @@
                                             <input class="form-control border border-secondary" name="akhir" required type="date" value="{{ old('akhir') }}">
                                             <span class="text-danger">
                                                 @error('akhir')
-                                                {{ $message }}
+                                                {{ 'Kolom ini wajib diisi' }}
                                                 @enderror
                                             </span>
                                         </div>
                                     </div>                       
                                     <div class="form-group mt-3">
                                         <label class="text-secondary mb-2">Catatan Tambahan </label> <span class="text-danger">(Opsional)</span>
-                                        <textarea  type="text" class="form-control border border-secondary form-control" name="isi" value=""></textarea>
-                                        <span class="text-danger">
-                                            @error('isi')
-                                            {{ $message }}
-                                            @enderror
-                                        </span>
+                                        <textarea  type="text" placeholder="Tambahkan catatan jika diperlukan / Kosongkan saja" class="form-control border border-secondary form-control" name="isi" value=""></textarea>
                                     </div>
-                                    <button type="submit" class="btn btn-success mt-5">Kirim</button>
+                                    <button type="submit" class="btn btn-success mt-5 w-100">
+                                        <i class="bi bi-cart"></i> Pesan
+                                    </button>
                                 </form>
                             </div>
                         </div>
@@ -177,6 +191,15 @@
 
   <!-- Template Main JS File -->
   <script src="{{ asset('assetsadmin/js/main.js') }}"></script>
+
+  <script>
+        window.onpageshow = function(event) {
+            if (event.persisted) {
+                window.location.reload();
+            }
+        };
+  </script>
+
 
 </body>
 

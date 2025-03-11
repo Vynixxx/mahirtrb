@@ -69,6 +69,11 @@
               <i class="bi bi-circle"></i><span>Perbaikan</span>
             </a>
           </li>
+          <li>
+            <a href="{{ route('admin.supplier') }}">
+              <i class="bi bi-circle"></i><span>Supplier</span>
+            </a>
+          </li>
         </ul>
       </li><!-- End Pemesanan Nav -->
 

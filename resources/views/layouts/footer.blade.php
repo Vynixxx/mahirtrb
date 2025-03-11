@@ -41,6 +41,7 @@
         <li><a href="{{ route('pabrikasi') }}">Pabrikasi</a></li>
         <li><a href="{{ route('penyewaan') }}">Penyewaan</a></li>
         <li><a href="{{ route('perbaikan') }}">Perbaikan</a></li>
+        <li><a href="{{ route('supplier') }}">Supplier</a></li>
         <li><a href="{{ route('sk') }}">Syarat & Ketentuan</a></li>
       </ul>
     </div>

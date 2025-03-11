@@ -81,7 +81,7 @@
         <div class="col-lg-6">
           <h2>Tentang <span class="fw-bold text-primary">Perusahaan</span></h2>
           <p>
-          PT. Mahir Trans Bersaudara mulai beroperasi pada (tanggal) (bulan) (tahun) dengan komitmen tinggi dalam menyediakan layanan penyewaan, perbaikan, trucking atau ekspedisi, dan pabrikasi yang profesional, terpercaya, dan berkualitas guna mendukung berbagai proyek konstruksi, infrastruktur, serta kebutuhan logistik di seluruh Indonesia. Dengan pengalaman yang luas di industri ini, kami menyediakan berbagai jenis alat berat seperti Foco Truck, Crane, Triller, Head Truck, dan lain sebagainya, yang selalu dalam kondisi optimal untuk memastikan kelancaran proyek Anda. Kami didukung oleh operator berpengalaman dan tim teknisi handal yang siap memastikan setiap peralatan berfungsi dengan efisiensi dan keamanan tinggi. Selain itu, kami juga menawarkan layanan perbaikan alat berat, ekspedisi dan trucking untuk pengangkutan peralatan serta pabrikasi komponen yang mendukung kebutuhan industri. <br>
+          PT. Mahir Trans Bersaudara mulai beroperasi pada 23 Februari 2023 dengan komitmen tinggi dalam menyediakan layanan penyewaan, perbaikan, trucking atau ekspedisi, dan pabrikasi yang profesional, terpercaya, dan berkualitas guna mendukung berbagai proyek konstruksi, infrastruktur, serta kebutuhan logistik di seluruh Indonesia. Dengan pengalaman yang luas di industri ini, kami menyediakan berbagai jenis alat berat seperti Foco Truck, Crane, Triller, Head Truck, dan lain sebagainya, yang selalu dalam kondisi optimal untuk memastikan kelancaran proyek Anda. Kami didukung oleh operator berpengalaman dan tim teknisi handal yang siap memastikan setiap peralatan berfungsi dengan efisiensi dan keamanan tinggi. Selain itu, kami juga menawarkan layanan perbaikan alat berat, ekspedisi dan trucking untuk pengangkutan peralatan serta pabrikasi komponen yang mendukung kebutuhan industri. <br>
           Dengan standar pelayanan yang profesional, kami menawarkan harga kompetitif, fleksibilitas penyewaan, serta layanan konsultasi untuk membantu pelanggan mendapatkan solusi terbaik sesuai dengan kebutuhan mereka. Seiring dengan pertumbuhan sektor konstruksi, infrastruktur, dan logistik di Indonesia, PT. Mahir Trans Bersaudara terus berinovasi dan berkembang untuk memberikan layanan yang lebih baik. Kami berkomitmen untuk menjadi mitra terpercaya bagi pelanggan kami, dengan mengutamakan kualitas, keselamatan, dan kepuasan pelanggan dalam setiap layanan yang kami berikan.
           </p>
         </div>
@@ -185,6 +185,23 @@
                     </div>
                     <div class="card-footer bg-white border-0 text-center pb-4">
                         <a href="{{ route('pesanpenyewaan') }}" class="btn btn-primary btn-lg custom-animate-btn">
+                            Pesan Sekarang
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Service Item -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="card border-0 shadow-sm h-100 custom-service-card">
+                    <img src="assets/img/services/supplier.png" class="custom-card-img-top" alt="Supplier">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Pemasok</h5>
+                        <p class="card-text text-muted">
+                        Pemasok berbagai kebutuhan, suku cadang, serta peralatan pendukung untuk operasional dan pemeliharaan alat berat.
+                        </p>
+                    </div>
+                    <div class="card-footer bg-white border-0 text-center pb-4">
+                        <a href="{{ route('pesansupplier') }}" class="btn btn-primary btn-lg custom-animate-btn">
                             Pesan Sekarang
                         </a>
                     </div>

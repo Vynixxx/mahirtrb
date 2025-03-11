@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Perbaikan | Mahir Trans Bersaudara</title>
+  <title>Supplier | Mahir Trans Bersaudara</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -60,61 +60,57 @@
                                 <h5 class="card-title text-center">
                                 <nav class="d-flex justify-content-center">
                                 </nav>
-                                Perbaikan</h5>
-                                <form action="{{ route('postPesanperbaikan') }}" method="POST">
+                                Supplier</h5>
+                                <form action="{{ route('postPesansupplier') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <h5>Detail Pemesan</h5>
                                     <div class="form-group mb-3">
                                         <label class="text-secondary mb-2">Nama Pemesan / Perusahaan</label>
                                         <input class="form-control border border-secondary" name="nama" required type="text">
-                                        @error('nama') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
-
                                     <div class="row mb-4">
                                         <div class="col-md-6">
                                             <label class="text-secondary mb-2">Nomor WhatsApp</label>
-                                            <input class="form-control border border-secondary" name="nohp" required type="text">
-                                            @error('nohp') <span class="text-danger">{{ $message }}</span> @enderror
+                                            <input class="form-control border border-secondary" name="nohp" required type="number">
                                         </div>
                                         <div class="col-md-6">
                                             <label class="text-secondary mb-2">Email</label>
                                             <input class="form-control border border-secondary" name="email" required type="email">
-                                            @error('email') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
-
-                                    <h5>Detail Kendaraan</h5>
+                                    <h5>Detail Kebutuhan</h5>
                                     <div class="row">
-                                    <div class="col-md-6">
-                                        <label class="text-secondary mb-2">Plat Nomor</label>
-                                        <input class="form-control border border-secondary" name="nopol" required type="text" maxlength="12" id="nopol">
-                                        @error('nopol') <span class="text-danger">{{ $message }}</span> @enderror
-                                    </div>
-
-                                    <script>
-                                        document.getElementById('nopol').addEventListener('input', function() {
-                                            this.value = this.value.toUpperCase();
-                                        });
-                                    </script>
                                         <div class="col-md-6">
-                                            <label class="text-secondary mb-2">Jenis Kendaraan</label>
-                                            <input class="form-control border border-secondary" name="jenis" required type="text">
-                                            @error('jenis') <span class="text-danger">{{ $message }}</span> @enderror
+                                            <label class="text-secondary mb-2">Nama Barang</label>
+                                            <input type="text" class="form-control" name="nama_barang" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="text-secondary mb-2">Merek / Spesifikasi <span class="text-danger">(Opsional)</span></label>
+                                            <input type="text" class="form-control" name="merek_spesifikasi" placeholder="Jika ada preferensi tertentu / Kosongkan saja">
                                         </div>
                                     </div>
-
-                                    <div class="form-group mt-3">
-                                        <label class="text-secondary mb-2">Kendala Kendaraan</label>
-                                        <textarea class="form-control border border-secondary" name="kendala_kendaraan" required></textarea>
-                                        @error('kendala_kendaraan') <span class="text-danger">{{ $message }}</span> @enderror
+                                    <div class="row mt-3">
+                                        <div class="col-md-6">
+                                            <label class="text-secondary mb-2">Jumlah yang Dipesan</label>
+                                            <div class="input-group">
+                                                <input type="number" class="form-control" name="jumlah" min="1" required>
+                                                <select class="form-select" name="satuan">
+                                                    <option value="unit">Unit</option>
+                                                    <option value="liter">Liter</option>
+                                                    <option value="kilogram">Kilogram</option>
+                                                    <option value="meter">Meter</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="text-secondary mb-2">Tanggal Kebutuhan</label>
+                                            <input type="date" class="form-control" name="tanggal_kebutuhan" required>
+                                        </div>
                                     </div>
-
                                     <div class="form-group mt-3">
                                         <label class="text-secondary mb-2">Catatan Tambahan <span class="text-danger">(Opsional)</span></label>
-                                        <textarea class="form-control border border-secondary" name="catatan_tambahan" placeholder="Tambahkan catatan jika diperlukan / Kosongkan saja"></textarea>
-                                        @error('catatan_tambahan') <span class="text-danger">{{ $message }}</span> @enderror
+                                        <textarea class="form-control" name="catatan" rows="3" placeholder="Tambahkan catatan jika diperlukan / Kosongkan saja"></textarea>
                                     </div>
-
                                     <button type="submit" class="btn btn-success mt-5 w-100">
                                         <i class="bi bi-cart"></i> Pesan
                                     </button>

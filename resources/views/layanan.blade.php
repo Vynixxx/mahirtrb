@@ -137,6 +137,19 @@
                 </a>
             </div>
           </div>
+          <!-- Service Item 4 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="card border-0 shadow-sm h-100">
+              <img src="assets/img/services/supplier.png" class="card-img-top" alt="Layanan 4">
+              <div class="card-body text-center">
+                <h5 class="card-title fw-bold">Supplier</h5>
+                <p class="card-text text-muted">PT. Mahir Trans Bersaudara menyediakan layanan supplier kebutuhan dan peralatan alat berat untuk mendukung berbagai sektor industri, termasuk konstruksi, pertambangan, dan manufaktur. Kami menawarkan beragam produk berkualitas tinggi, mulai dari suku cadang, komponen hidrolik, hingga peralatan pendukung yang dirancang untuk memastikan kinerja optimal alat berat Anda. Dengan jaringan supplier terpercaya dan sistem distribusi yang efisien, kami berkomitmen menyediakan produk yang tepat waktu dan sesuai dengan spesifikasi yang dibutuhkan. Kami memahami pentingnya keandalan dan durabilitas dalam setiap peralatan yang digunakan di lingkungan kerja yang menuntut, sehingga kami hanya menyediakan produk terbaik dengan standar kualitas tinggi. </p>
+              </div>
+              <a href="{{ route('pesansupplier') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="200">
+                    Pesan Sekarang
+                </a>
+            </div>
+          </div>
         </div>
       </div>
     </section><!-- layanan section -->

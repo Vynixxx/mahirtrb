@@ -90,7 +90,7 @@
           <div class="col-xl-5 content">
             <h3>Tentang Kami</h3>
             <h2>Siapa Kami?</h2>
-            <p>PT. Mahir Trans Bersaudara merupakan perusahaan yang bergerak di bidang penyewaan, perbaikan, trucking atau ekspedisi, serta pabrikasi alat berat. Sejak mulai beroperasi pada (tanggal) (bulan) (tahun), kami berkomitmen untuk menyediakan layanan profesional, terpercaya, dan berkualitas guna mendukung berbagai proyek konstruksi, infrastruktur, serta kebutuhan logistik di seluruh Indonesia terkhususnya provinsi Riau.
+            <p>PT. Mahir Trans Bersaudara merupakan perusahaan yang bergerak di bidang penyewaan, perbaikan, trucking atau ekspedisi, serta pabrikasi alat berat. Sejak mulai beroperasi pada 23 Februari 2023, kami berkomitmen untuk menyediakan layanan profesional, terpercaya, dan berkualitas guna mendukung berbagai proyek konstruksi, infrastruktur, serta kebutuhan logistik di seluruh Indonesia terkhususnya provinsi Riau.
             Dengan pengalaman luas di industri ini, kami menghadirkan berbagai alat berat seperti Foco Truck, Crane, Triller, dan Head Truck, yang selalu dalam kondisi optimal. Didukung oleh operator berpengalaman dan tim teknisi handal, kami memastikan setiap peralatan berfungsi dengan efisiensi dan keamanan tinggi.
             Kami juga menawarkan layanan perbaikan alat berat, ekspedisi dan trucking untuk pengangkutan peralatan, serta pabrikasi komponen industri. Dengan harga kompetitif, fleksibilitas penyewaan, dan layanan konsultasi, kami siap membantu pelanggan mendapatkan solusi terbaik sesuai kebutuhan mereka.
             Seiring pertumbuhan sektor konstruksi dan logistik di Indonesia, PT. Mahir Trans Bersaudara terus berinovasi untuk memberikan layanan terbaik. Kami berkomitmen menjadi mitra terpercaya dengan mengutamakan kualitas, keselamatan, dan kepuasan pelanggan.</p>
@@ -217,6 +217,23 @@
                     </div>
                     <div class="card-footer bg-white border-0 text-center pb-4">
                         <a href="{{ route('pesanpenyewaan') }}" class="btn btn-primary btn-lg custom-animate-btn">
+                            Pesan Sekarang
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Service Item -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="card border-0 shadow-sm h-100 custom-service-card">
+                    <img src="assets/img/services/supplier.png" class="custom-card-img-top" alt="Supplier">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Supplier</h5>
+                        <p class="card-text text-muted">
+                        Supplier berbagai kebutuhan, suku cadang, serta peralatan pendukung untuk operasional dan pemeliharaan alat berat.
+                        </p>
+                    </div>
+                    <div class="card-footer bg-white border-0 text-center pb-4">
+                        <a href="{{ route('pesansupplier') }}" class="btn btn-primary btn-lg custom-animate-btn">
                             Pesan Sekarang
                         </a>
                     </div>
@@ -596,6 +613,13 @@
     })();
 </script>
 
+  <script>
+        window.onpageshow = function(event) {
+            if (event.persisted) {
+                window.location.reload();
+            }
+        };
+  </script>
 </body>
 
 </html>

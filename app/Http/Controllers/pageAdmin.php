@@ -8,6 +8,11 @@ use App\Models\LayananKendaraan;
 use App\Models\Galeri;
 use App\Models\kontak;
 use App\Models\mitra;
+use App\Models\ekspedisi;
+use App\Models\pabrikasi;
+use App\Models\supplier;
+use App\Models\perbaikan;
+use App\Models\penyewaan;
 
 
 class pageAdmin extends Controller
@@ -59,6 +64,11 @@ class pageAdmin extends Controller
     public function halamanperbaikan()
     {
         return view('admin.pemesanan.perbaikan');
+    }
+
+    public function halamansupplier()
+    {
+        return view('admin.pemesanan.supplier');
     }
 
     public function halamanselengkapnya($id)

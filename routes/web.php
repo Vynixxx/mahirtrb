@@ -23,14 +23,22 @@ Route::get('/ekspedisi', [pageuser::class, 'halamanekspedisi'])->name('ekspedisi
 Route::get('/pabrikasi', [pageuser::class, 'halamanpabrikasi'])->name('pabrikasi');
 Route::get('/penyewaan', [pageuser::class, 'halamansewa'])->name('penyewaan');
 Route::get('/perbaikan', [pageuser::class, 'halamanperbaikan'])->name('perbaikan');
+Route::get('/supplier', [pageuser::class, 'halamansupplier'])->name('supplier');
 Route::get('/pesan-ekspedisi', [pageuser::class, 'halamanpesanekspedisi'])->name('pesanekspedisi');
 Route::get('/pesan-pabrikasi', [pageuser::class, 'halamanpesanpabrikasi'])->name('pesanpabrikasi');
 Route::get('/pesan-penyewaan', [pageuser::class, 'halamanpesanpenyewaan'])->name('pesanpenyewaan');
 Route::get('/pesan-perbaikan', [pageuser::class, 'halamanpesanperbaikan'])->name('pesanperbaikan');
+Route::get('/pesan-supplier', [pageuser::class, 'halamanpesansupplier'])->name('pesansupplier');
 
 
 //post
 Route::post('/postkontak', [pageuser::class, 'tambahkontak'])->name('postkontak');
+Route::post('/postPesanEkspedisi', [pageuser::class, 'tambahekspedisi'])->name('postPesanEkspedisi');
+Route::post('/postPesanpabrikasi', [pageuser::class, 'tambahpabrikasi'])->name('postPesanpabrikasi');
+Route::post('/postPesanpenyewaan', [pageuser::class, 'tambahpenyewaan'])->name('postPesanpenyewaan');
+Route::post('/postPesanperbaikan', [pageuser::class, 'tambahperbaikan'])->name('postPesanperbaikan');
+Route::post('/postPesansupplier', [pageuser::class, 'tambahsupplier'])->name('postPesansupplier');
+
 
 
 // admin login
@@ -52,6 +60,7 @@ Route::middleware([IsAdmin::class])->group(function () {
     Route::get('/admin/pabrikasi', [pageAdmin::class, 'halamanpabrikasi'])->name('admin.pabrikasi');
     Route::get('/admin/penyewaan', [pageAdmin::class, 'halamanpenyewaan'])->name('admin.penyewaan');
     Route::get('/admin/perbaikan', [pageAdmin::class, 'halamanperbaikan'])->name('admin.perbaikan');
+    Route::get('/admin/supplier', [pageAdmin::class, 'halamansupplier'])->name('admin.supplier');
     Route::get('/admin/selengkapnya/{id}', [pageAdmin::class, 'halamanselengkapnya'])->name('admin.selengkapnya');
 
 

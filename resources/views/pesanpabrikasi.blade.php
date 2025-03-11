@@ -38,20 +38,35 @@
 
   <main id="main" class="main">
             <div class="container">
-                <div class="container mt-3">
-                    @if (Session::get('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>Berhasil!</strong> {{ Session::get('success') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1050">
+                    <div id="toastNotification" class="toast align-items-center text-white bg-success border-0" role="alert">
+                        <div class="d-flex">
+                            <div class="toast-body" id="toastMessage"></div>
+                            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                        </div>
                     </div>
-                    @endif
-                    @if (Session::get('failed'))
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Gagal!</strong> {{ Session::get('failed') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    @endif
                 </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        var toastElement = document.getElementById("toastNotification");
+                        var toastMessage = document.getElementById("toastMessage");
+
+                        @if (Session::has('success'))
+                            toastMessage.textContent = "{{ Session::get('success') }}";
+                            var toast = new bootstrap.Toast(toastElement);
+                            toast.show();
+                        @endif
+
+                        @if (Session::has('failed'))
+                            toastMessage.textContent = "{{ Session::get('failed') }}";
+                            toastElement.classList.remove("bg-success");
+                            toastElement.classList.add("bg-danger");
+                            var toast = new bootstrap.Toast(toastElement);
+                            toast.show();
+                        @endif
+                    });
+                </script>
                 <div class="row">
                     <div class="col d-flex justify-content-center">
                         <div class="card mt-4" style="width: 800px">
@@ -61,64 +76,74 @@
                                 <nav class="d-flex justify-content-center">
                                 </nav>
                                 Pabrikasi</h5>
-                                <form action="#" method="POST" enctype="multipart/form-data" >
+                                <form action="{{ route('postPesanpabrikasi') }}" method="POST">
                                     @csrf
-                                    <h5>Penanggung Jawab</h5>
-                                    <div class="form-group mt-4">
-                                    <label class="text-secondary mb-2">Nama Penyewa / Perusahaan</label>
-                                    <input class="form-control border border-secondary form-control" name="nama" required value="" type="text" >
+                                    <h5>Detail Pemesan</h5>
+                                    
+                                    <div class="form-group mb-3">
+                                        <label class="text-secondary mb-2">Nama Pemesan / Perusahaan</label>
+                                        <input class="form-control border border-secondary" name="nama" required type="text">
                                         <span class="text-danger">
-                                            @error('nama')
-                                              {{ $message }}
-                                            @enderror
+                                                @error('nama')
+                                                {{ 'Kolom ini wajib diisi' }}
+                                                @enderror
                                         </span>
                                     </div>
-                                    <div class="form-group mt-3">
-                                        <label class="text-secondary mb-2">Nomor WhatsApp</label>
-                                        <input class="form-control border border-secondary form-control" name="nohp" required value="" type="number" >
-                                        <span class="text-danger">
-                                            @error('nohp')
-                                              {{ $message }}
-                                            @enderror
-                                        </span>
+
+                                    <div class="row mb-4">
+                                        <div class="col-md-6">
+                                            <label class="text-secondary mb-2">Nomor WhatsApp</label>
+                                            <input class="form-control border border-secondary" name="nohp" required type="number">
+                                            <span class="text-danger">
+                                                @error('nohp')
+                                                {{ 'Kolom ini wajib diisi' }}
+                                                @enderror
+                                            </span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="text-secondary mb-2">Email</label>
+                                            <input class="form-control border border-secondary" name="email" required type="email">
+                                            <span class="text-danger">
+                                                @error('email')
+                                                {{ 'Kolom ini wajib diisi' }}
+                                                @enderror
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div class="form-group mt-3">
-                                        <label class="text-secondary mb-2">Email</label>
-                                        <input class="form-control border border-secondary form-control" name="email" required value="" type="email" >
-                                        <span class="text-danger">
-                                            @error('email')
-                                              {{ $message }}
-                                            @enderror
-                                        </span>
-                                    </div><br>
-                                    <div class="form-group mt-3">
-                                        <label class="text-secondary mb-2">Jenis Kendaraan</label>
-                                        <input class="form-control border border-secondary form-control" name="jenis" required value="" type="text" >
-                                        <span class="text-danger">
-                                            @error('jenis')
-                                              {{ $message }}
-                                            @enderror
-                                        </span>
+
+                                    <h5>Detail Kebutuhan</h5>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label class="text-secondary">Jenis Pabrikasi</label>
+                                            <select class="form-select" name="jenis_pabrikasi" id="jenisPabrikasi" required>
+                                                <option selected disabled>Pilih Jenis Pabrikasi</option>
+                                                <option value="Material">Material</option>
+                                                <option value="Jasa">Jasa</option>
+                                                <option value="Material + Jasa">Material + Jasa</option>
+                                            </select>
+                                            <span class="text-danger">
+                                                @error('jenis_pabrikasi')
+                                                {{ 'Kolom ini wajib diisi' }}
+                                                @enderror
+                                            </span>    <!-- Pemberitahuan -->
+                                            <div class="alert alert-info mt-2 d-none" id="notifPabrikasi"></div>
+                                        </div>
                                     </div>
+                                    <div class="form-group mt-2">
+                                                <label class="text-secondary mb-2">Jenis Kendaraan</label>
+                                                <input class="form-control border border-secondary" name="jenis_kendaraan" required type="text">
+                                                @error('jenis_kendaraan')
+                                                {{ 'Kolom ini wajib diisi' }}
+                                                @enderror
+                                            </div>
                                     <div class="form-group mt-3">
-                                        <label class="text-secondary mb-2">Kendala Kendaraan</label>
-                                        <textarea  type="text" class="form-control border border-secondary form-control" name="isi" value=""></textarea>
-                                        <span class="text-danger">
-                                            @error('isi')
-                                            {{ $message }}
-                                            @enderror
-                                        </span>
+                                        <label class="text-secondary mb-2">Catatan Tambahan</label> <span class="text-danger">(Opsional)</span>
+                                        <textarea class="form-control border border-secondary" name="isi" placeholder="Tambahkan catatan jika diperlukan / Kosongkan saja"></textarea>
                                     </div>
-                                    <div class="form-group mt-3">
-                                        <label class="text-secondary mb-2">Catatan Tambahan </label> <span class="text-danger">(Opsional)</span>
-                                        <textarea  type="text" class="form-control border border-secondary form-control" name="isi" value=""></textarea>
-                                        <span class="text-danger">
-                                            @error('isi')
-                                            {{ $message }}
-                                            @enderror
-                                        </span>
-                                    </div>
-                                    <button type="submit" class="btn btn-success mt-5">Kirim</button>
+
+                                    <button type="submit" class="btn btn-success mt-5 w-100">
+                                        <i class="bi bi-cart"></i> Pesan
+                                    </button>
                                 </form>
                             </div>
                         </div>
@@ -129,6 +154,30 @@
 
   </main><!-- End #main -->
 
+    <script>
+        document.getElementById('jenisPabrikasi').addEventListener('change', function () {
+            let notif = document.getElementById('notifPabrikasi');
+            let selectedValue = this.value;
+
+            // Menentukan pesan sesuai pilihan
+            let message = "";
+            if (selectedValue === "Material") {
+                message = "Anda memilih layanan penyediaan material. Kami akan menyediakan material kendaraan berat sesuai kebutuhan Anda. Silakan cantumkan detail tambahan pada kolom catatan.";
+            } else if (selectedValue === "Jasa") {
+                message = "Anda memilih layanan jasa pabrikasi. Silakan siapkan material yang diperlukan, dan tim kami akan membantu dalam proses pabrikasi.";
+            } else if (selectedValue === "Material + Jasa") {
+                message = "Anda memilih layanan lengkap (Material + Jasa). Kami akan menyediakan seluruh material serta melakukan proses pabrikasi sesuai kebutuhan Anda.";
+            }
+
+            // Menampilkan notifikasi
+            if (message) {
+                notif.textContent = message;
+                notif.classList.remove('d-none'); // Menampilkan alert
+            } else {
+                notif.classList.add('d-none'); // Menyembunyikan alert jika tidak ada pilihan
+            }
+        });
+    </script>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
@@ -144,6 +193,13 @@
   <!-- Template Main JS File -->
   <script src="{{ asset('assetsadmin/js/main.js') }}"></script>
 
+  <script>
+        window.onpageshow = function(event) {
+            if (event.persisted) {
+                window.location.reload();
+            }
+        };
+  </script>
 </body>
 
 </html>
