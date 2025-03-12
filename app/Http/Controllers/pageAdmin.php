@@ -48,33 +48,68 @@ class pageAdmin extends Controller
 
     public function halamanekspedisi()
     {
-        return view('admin.pemesanan.ekspedisi');
+        $eks = ekspedisi::get();
+        return view('admin.pemesanan.ekspedisi', compact('eks'));
     }
 
     public function halamanpabrikasi()
     {
-        return view('admin.pemesanan.pabrikasi');
+        $pabs = pabrikasi::get();
+        return view('admin.pemesanan.pabrikasi', compact('pabs'));
     }
 
     public function halamanpenyewaan()
     {
-        return view('admin.pemesanan.penyewaan');
+        $sewa = penyewaan::get();
+        return view('admin.pemesanan.penyewaan', compact('sewa'));
     }
 
     public function halamanperbaikan()
     {
-        return view('admin.pemesanan.perbaikan');
+        $perb = perbaikan::get();
+        return view('admin.pemesanan.perbaikan', compact('perb'));
     }
 
     public function halamansupplier()
     {
-        return view('admin.pemesanan.supplier');
+        $sup = supplier::get();
+        return view('admin.pemesanan.supplier', compact('sup'));
     }
 
     public function halamanselengkapnya($id)
     {
         $kontak = kontak::find($id);
         return view('admin.selengkapnya', compact('kontak'));
+    }
+
+    public function halamaneksselengkapnya($id)
+    {
+        $eks = ekspedisi::find($id);
+        return view('admin.pemesanan.eksselengkapnya', compact('eks'));
+    }
+
+    public function halamanpabsselengkapnya($id)
+    {
+        $pabs = pabrikasi::find($id);
+        return view('admin.pemesanan.pabsselengkapnya', compact('pabs'));
+    }
+
+    public function halamansewaselengkapnya($id)
+    {
+        $sewa = penyewaan::find($id);
+        return view('admin.pemesanan.sewaselengkapnya', compact('sewa'));
+    }
+
+    public function halamanperbselengkapnya($id)
+    {
+        $perb = perbaikan::find($id);
+        return view('admin.pemesanan.perbselengkapnya', compact('perb'));
+    }   
+    
+    public function halamansupselengkapnya($id)
+    {
+        $sup = supplier::find($id);
+        return view('admin.pemesanan.supselengkapnya', compact('sup'));
     }
 
     //halaman tambah
@@ -356,6 +391,66 @@ class pageAdmin extends Controller
 
         $mitra->delete();
         if ($mitra) {
+            return back()->with('success', 'Data berhasil dihapus!');
+        } else {
+            return back()->with('failed', 'Gagal menghapus Data!');
+        }
+    }
+
+    public function deleteks($id)
+    {
+        $eks = ekspedisi::find($id);
+
+        $eks->delete();
+        if ($eks) {
+            return back()->with('success', 'Data berhasil dihapus!');
+        } else {
+            return back()->with('failed', 'Gagal menghapus Data!');
+        }
+    }
+    
+    public function deletepabrikasi($id)
+    {
+        $pabrikasi = pabrikasi::find($id);
+
+        $pabrikasi->delete();
+        if ($pabrikasi) {
+            return back()->with('success', 'Data berhasil dihapus!');
+        } else {
+            return back()->with('failed', 'Gagal menghapus Data!');
+        }
+    }
+
+    public function deletepenyewaan($id)
+    {
+        $penyewaan = penyewaan::find($id);
+
+        $penyewaan->delete();
+        if ($penyewaan) {
+            return back()->with('success', 'Data berhasil dihapus!');
+        } else {
+            return back()->with('failed', 'Gagal menghapus Data!');
+        }
+    }
+
+    public function deleteperbaikan($id)
+    {
+        $perbaikan = perbaikan::find($id);
+
+        $perbaikan->delete();
+        if ($perbaikan) {
+            return back()->with('success', 'Data berhasil dihapus!');
+        } else {
+            return back()->with('failed', 'Gagal menghapus Data!');
+        }
+    }
+
+    public function deletesupplier($id)
+    {
+        $supplier = supplier::find($id);
+
+        $supplier->delete();
+        if ($supplier) {
             return back()->with('success', 'Data berhasil dihapus!');
         } else {
             return back()->with('failed', 'Gagal menghapus Data!');

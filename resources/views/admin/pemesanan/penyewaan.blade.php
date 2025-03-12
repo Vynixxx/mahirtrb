@@ -37,7 +37,76 @@
   @include('admin.layouts.sidebar')
 
   <main id="main" class="main">
+  <div class="container">
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Penyewaan
+              <nav>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                  <li class="breadcrumb-item active">Pemesanan</li>
+                  <li class="breadcrumb-item active">Penyewaan</li>
+                </ol>
+              </nav>  
+              </h5>
 
+              <!-- Default Table -->
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Nama Pemesan / Perusahaan</th>
+                    <th scope="col">Jenis Kendaraan</th>
+                    <th scope="col">Jumlah Kebutuhan</th>
+                    <th scope="col">Durasi Penyewaan</th>
+                    <th scope="col">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                @foreach ($sewa as $sewa)
+                <tr>
+                  <th scope="row">{{ $loop->iteration }}</th>
+                    <td>{{ $sewa->nama }}</td>
+                    <td>{{ $sewa->jenis_kendaraan }}</td>
+                    <td>{{ $sewa->jumlah_kebutuhan }}</td>
+                    <td>{{ $sewa->durasi }} {{ $sewa->satuan_durasi }}</td>
+                    <td>
+                      <a class="btn btn-outline-info" href="/admin/sewaselengkapnya/{{ $sewa->id }}" title="Detail"><i class="bi bi-eye"></i></a>
+                      <button class="btn btn-outline-danger btn-delete" 
+                              data-id="{{ $sewa->id }}" 
+                              data-nama="{{ $sewa->nama }}"
+                              data-url="/admin/deletesewa/{{ $sewa->id }}"
+                              title="Hapus">
+                        <i class="bi bi-trash3"></i>
+                      </button>
+                    </td>
+                </tr>
+              @endforeach
+                </tbody>
+              </table>
+              <!-- End Default Table Example -->
+              <!-- Modal Konfirmasi Hapus -->
+              <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Apakah Anda yakin ingin menghapus pemesanan penyewaan dari <b id="sewa"></b>?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                      <a id="confirmDelete" class="btn btn-danger">Hapus</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
 
   </main><!-- End #main -->
 
@@ -65,6 +134,7 @@
           let kendaraanNama = this.getAttribute("data-nama");
           let deleteUrl = this.getAttribute("data-url");
 
+          document.getElementById("sewa").innerText = kendaraanNama;
           document.getElementById("confirmDelete").setAttribute("href", deleteUrl);
 
           deleteModal.show();

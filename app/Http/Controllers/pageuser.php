@@ -248,7 +248,7 @@ class pageuser extends Controller
             'jenis_kendaraan' => 'required|string|max:255',
             'jumlah_kebutuhan' => 'required|integer|min:1',
             'durasi' => 'required|integer|min:1',
-            'satuan_durasi' => 'required|in:bulan,tahun',
+            'satuan_durasi' => 'required|in:hari,minggu,bulan,tahun',
             'awal_penyewaan' => 'required|date',
             'catatan_tambahan' => 'nullable|string',
         ]);

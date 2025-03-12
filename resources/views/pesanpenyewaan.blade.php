@@ -133,6 +133,8 @@
                                             <div class="input-group">
                                                 <input type="number" class="form-control @error('durasi') is-invalid @enderror" name="durasi" required min="1" value="{{ old('durasi') }}">
                                                 <select class="form-select @error('satuan_durasi') is-invalid @enderror" name="satuan_durasi">
+                                                    <option value="hari" {{ old('satuan_durasi') == 'hari' ? 'selected' : '' }}>Hari</option>
+                                                    <option value="minggu" {{ old('satuan_durasi') == 'minggu' ? 'selected' : '' }}>Minggu</option>
                                                     <option value="bulan" {{ old('satuan_durasi') == 'bulan' ? 'selected' : '' }}>Bulan</option>
                                                     <option value="tahun" {{ old('satuan_durasi') == 'tahun' ? 'selected' : '' }}>Tahun</option>
                                                 </select>

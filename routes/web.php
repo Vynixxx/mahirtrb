@@ -62,6 +62,11 @@ Route::middleware([IsAdmin::class])->group(function () {
     Route::get('/admin/perbaikan', [pageAdmin::class, 'halamanperbaikan'])->name('admin.perbaikan');
     Route::get('/admin/supplier', [pageAdmin::class, 'halamansupplier'])->name('admin.supplier');
     Route::get('/admin/selengkapnya/{id}', [pageAdmin::class, 'halamanselengkapnya'])->name('admin.selengkapnya');
+    Route::get('/admin/eksselengkapnya/{id}', [pageAdmin::class, 'halamaneksselengkapnya'])->name('admin.eksselengkapnya');
+    Route::get('/admin/pabsselengkapnya/{id}', [pageAdmin::class, 'halamanpabsselengkapnya'])->name('admin.pabsselengkapnya');
+    Route::get('/admin/sewaselengkapnya/{id}', [pageAdmin::class, 'halamansewaselengkapnya'])->name('admin.sewaselengkapnya');
+    Route::get('/admin/perbselengkapnya/{id}', [pageAdmin::class, 'halamanperbselengkapnya'])->name('admin.perbselengkapnya');
+    Route::get('/admin/supselengkapnya/{id}', [pageAdmin::class, 'halamansupselengkapnya'])->name('admin.supselengkapnya');
 
 
 
@@ -86,6 +91,11 @@ Route::middleware([IsAdmin::class])->group(function () {
     Route::get('/admin/deletegaleri/{id}', [pageadmin::class,'deletegaleri'])->name('admin.deletegaleri');
     Route::get('/admin/deletekontak/{id}', [pageadmin::class,'deletekontak'])->name('admin.deletekontak');
     Route::get('/admin/deletemitra/{id}', [pageadmin::class,'deletemitra'])->name('admin.deletemitra');
+    Route::get('/admin/deletekspedisi/{id}', [pageadmin::class,'deleteks'])->name('admin.deleteks');
+    Route::get('/admin/deletepabrikasi/{id}', [pageadmin::class,'deletepabrikasi'])->name('admin.deletepabrikasi');
+    Route::get('/admin/deletepenyewaan/{id}', [pageadmin::class,'deletepenyewaan'])->name('admin.deletepenyewaan');
+    Route::get('/admin/deleteperbaikan/{id}', [pageadmin::class,'deleteperbaikan'])->name('admin.deleteperbaikan');
+    Route::get('/admin/deletesupplier/{id}', [pageadmin::class,'deletesupplier'])->name('admin.deletesupplier');
 
 });
 

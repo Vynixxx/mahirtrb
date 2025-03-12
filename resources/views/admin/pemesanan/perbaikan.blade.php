@@ -38,7 +38,74 @@
 
   <main id="main" class="main">
 
+  <div class="container">
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Penyewaan
+              <nav>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                  <li class="breadcrumb-item active">Pemesanan</li>
+                  <li class="breadcrumb-item active">Penyewaan</li>
+                </ol>
+              </nav>  
+              </h5>
 
+              <!-- Default Table -->
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Nama Pemesan / Perusahaan</th>
+                    <th scope="col">Plat Nomor</th>
+                    <th scope="col">Jenis Kendaraan</th>
+                    <th scope="col">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                @foreach ($perb as $perb)
+                <tr>
+                  <th scope="row">{{ $loop->iteration }}</th>
+                    <td>{{ $perb->nama }}</td>
+                    <td>{{ $perb->nopol }}</td>
+                    <td>{{ $perb->jenis }}</td>
+                    <td>
+                      <a class="btn btn-outline-info" href="/admin/perbselengkapnya/{{ $perb->id }}" title="Detail"><i class="bi bi-eye"></i></a>
+                      <button class="btn btn-outline-danger btn-delete" 
+                              data-id="{{ $perb->id }}" 
+                              data-nama="{{ $perb->nama }}"
+                              data-url="/admin/deleteperbaikan/{{ $perb->id }}"
+                              title="Hapus">
+                        <i class="bi bi-trash3"></i>
+                      </button>
+                    </td>
+                </tr>
+              @endforeach
+                </tbody>
+              </table>
+              <!-- End Default Table Example -->
+              <!-- Modal Konfirmasi Hapus -->
+              <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Apakah Anda yakin ingin menghapus pemesanan penyewaan dari <b id="perb"></b>?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                      <a id="confirmDelete" class="btn btn-danger">Hapus</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
   </main><!-- End #main -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -65,6 +132,7 @@
           let kendaraanNama = this.getAttribute("data-nama");
           let deleteUrl = this.getAttribute("data-url");
 
+          document.getElementById("perb").innerText = kendaraanNama;
           document.getElementById("confirmDelete").setAttribute("href", deleteUrl);
 
           deleteModal.show();

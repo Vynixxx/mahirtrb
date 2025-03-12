@@ -73,7 +73,7 @@
                                     <div class="row mb-4">
                                         <div class="col-md-6">
                                             <label class="text-secondary mb-2">Nomor WhatsApp</label>
-                                            <input class="form-control border border-secondary" name="nohp" required type="text">
+                                            <input class="form-control border border-secondary" name="nohp" required type="number">
                                             @error('nohp') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                         <div class="col-md-6">
@@ -105,7 +105,7 @@
 
                                     <div class="form-group mt-3">
                                         <label class="text-secondary mb-2">Kendala Kendaraan</label>
-                                        <textarea class="form-control border border-secondary" name="kendala_kendaraan" required></textarea>
+                                        <textarea class="form-control border border-secondary" placeholder="Silahkan beritahu kami kendala kendaraan Anda" name="kendala_kendaraan" required></textarea>
                                         @error('kendala_kendaraan') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
 

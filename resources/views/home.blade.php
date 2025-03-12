@@ -401,22 +401,6 @@
         <div><span>Silahkan Hubungi</span> <span class="description-title">Kami</span></div>
       </div><!-- End Section Title -->
 
-      <div class="container" data-aos="fade-up">
-        @if(session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert" data-aos="fade-up">
-              <strong>Berhasil!</strong> {{ Session('success') }}
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
-
-        @if(session('error'))
-            <div class="alert alert-danger alert-dismissible fade show" role="alert" data-aos="fade-up">
-              <strong>Gagal!</strong> {{ Session('error') }}
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
-      </div>
-
       <div class="container" data-aos="fade" data-aos-delay="100">
 
         <div class="row gy-4">
@@ -426,7 +410,7 @@
               <i class="bi bi-geo-alt flex-shrink-0"></i>
               <div>
                 <h3>Alamat</h3>
-                <p>Jalan Lingkar, Balairaja, Pinggir, Riau, 28784</p>
+                <p>Jalan Lingkar Timur Pinggir, Balairaja, Pinggir, Riau, 28784</p>
               </div>
             </div><!-- End Info Item -->
 
@@ -470,7 +454,7 @@
                   </div>
 
                   <div class="col-md-6">
-                      <input type="text" name="whatsapp" class="form-control @error('whatsapp') is-invalid @enderror"
+                      <input type="number" name="whatsapp" class="form-control @error('whatsapp') is-invalid @enderror"
                             placeholder="Nomor WhatsApp" value="{{ old('whatsapp') }}">
                       @error('whatsapp')
                           <div class="invalid-feedback">Kolom ini wajib diisi</div>

@@ -87,21 +87,7 @@
 
       <!-- Contact Section -->
       <section id="kontak" class="contact section">
-      <div class="container" data-aos="fade-up">
-        @if(session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert" data-aos="fade-up">
-              <strong>Berhasil!</strong> {{ Session('success') }}
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
 
-        @if(session('error'))
-            <div class="alert alert-danger alert-dismissible fade show" role="alert" data-aos="fade-up">
-              <strong>Gagal!</strong> {{ Session('error') }}
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
-      </div>
       <!-- Section Title -->
       <h2 class="text-center mb-4" data-aos="fade-up"><span class="fw-bold text-primary">Kontak</span> Kami</h2>
       <!-- End Section Title -->
@@ -159,7 +145,7 @@
                   </div>
 
                   <div class="col-md-6">
-                      <input type="text" name="whatsapp" class="form-control @error('whatsapp') is-invalid @enderror"
+                      <input type="number" name="whatsapp" class="form-control @error('whatsapp') is-invalid @enderror"
                             placeholder="Nomor WhatsApp" value="{{ old('whatsapp') }}">
                       @error('whatsapp')
                           <div class="invalid-feedback">Kolom ini wajib diisi</div>

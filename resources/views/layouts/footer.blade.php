@@ -7,7 +7,7 @@
         <span class="sitename">Mahir Trans Bersaudara</span>
       </a>
       <div class="footer-contact pt-3">
-        <p>Jalan Lingkar</p>
+        <p>Jalan Lingkar Timur Pinggir</p>
         <p>Balairaja, Pinggir, Riau</p>
         <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
         <p><strong>Email:</strong> <span>info@example.com</span></p>
@@ -49,7 +49,7 @@
     <div class="col-lg-4 col-md-12 footer-map">
       <h4>Lokasi</h4>
       <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1677.1429381028108!2d101.24530918311214!3d1.201820913223503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d37d7508a62c01%3A0x555f87d8969dd9a6!2sBalai%20Raja%2C%20Kec.%20Pinggir%2C%20Kabupaten%20Bengkalis%2C%20Riau!5e0!3m2!1sid!2sid!4v1740489795427!5m2!1sid!2sid" 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.9386769430907!2d101.24632337472437!3d1.203157198785362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d37d001e7af6f1%3A0xa2420c34cf554749!2sPT.%20Mahir%20Trans%20Bersaudara!5e0!3m2!1sid!2sid!4v1741749036626!5m2!1sid!2sid"
         width="100%" 
         height="250" 
         style="border:0;" 
