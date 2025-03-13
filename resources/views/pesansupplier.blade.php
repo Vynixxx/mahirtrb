@@ -61,21 +61,41 @@
                                 <nav class="d-flex justify-content-center">
                                 </nav>
                                 Supplier</h5>
-                                <form action="{{ route('postPesansupplier') }}" method="POST" enctype="multipart/form-data">
+                                <div class="modal fade" id="confirmModalSupplier" tabindex="-1" aria-labelledby="confirmModalSupplierLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="confirmModalSupplierLabel">Konfirmasi Pemesanan</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Apakah Anda yakin ingin melakukan pemesanan barang ini?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                                <button type="button" class="btn btn-success" id="confirmOrderSupplier">Ya, Pesan</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form id="orderFormSupplier" action="{{ route('postPesansupplier') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <h5>Detail Pemesan</h5>
                                     <div class="form-group mb-3">
                                         <label class="text-secondary mb-2">Nama Pemesan / Perusahaan</label>
                                         <input class="form-control border border-secondary" name="nama" required type="text">
+                                        @error('nama') <span class="text-danger">{{ 'Kolom ini wajib diisi.'}}</span> @enderror
                                     </div>
                                     <div class="row mb-4">
                                         <div class="col-md-6">
                                             <label class="text-secondary mb-2">Nomor WhatsApp</label>
                                             <input class="form-control border border-secondary" name="nohp" required type="number">
+                                            @error('nohp') <span class="text-danger">{{ 'Kolom ini wajib diisi.'}}</span> @enderror
                                         </div>
                                         <div class="col-md-6">
                                             <label class="text-secondary mb-2">Email</label>
                                             <input class="form-control border border-secondary" name="email" required type="email">
+                                            @error('email') <span class="text-danger">{{ 'Kolom ini wajib diisi.'}}</span> @enderror
                                         </div>
                                     </div>
                                     <h5>Detail Kebutuhan</h5>
@@ -83,6 +103,7 @@
                                         <div class="col-md-6">
                                             <label class="text-secondary mb-2">Nama Barang</label>
                                             <input type="text" class="form-control" name="nama_barang" required>
+                                            @error('nama_barang') <span class="text-danger">{{ 'Kolom ini wajib diisi.'}}</span> @enderror
                                         </div>
                                         <div class="col-md-6">
                                             <label class="text-secondary mb-2">Merek / Spesifikasi <span class="text-danger">(Opsional)</span></label>
@@ -101,18 +122,22 @@
                                                     <option value="meter">Meter</option>
                                                 </select>
                                             </div>
+                                            @error('jumlah') <span class="text-danger">{{ 'Kolom ini wajib diisi.'}}</span> @enderror
+                                            @error('satuan') <span class="text-danger">{{ 'Opsi ini wajib dipilih.'}}</span> @enderror
                                         </div>
                                         <div class="col-md-6">
                                             <label class="text-secondary mb-2">Tanggal Kebutuhan</label>
                                             <input type="date" class="form-control" name="tanggal_kebutuhan" required>
+                                            @error('tanggal_kebutuhan') <span class="text-danger">{{ 'Kolom ini wajib diisi.'}}</span> @enderror
                                         </div>
                                     </div>
                                     <div class="form-group mt-3">
                                         <label class="text-secondary mb-2">Catatan Tambahan <span class="text-danger">(Opsional)</span></label>
                                         <textarea class="form-control" name="catatan" rows="3" placeholder="Tambahkan catatan jika diperlukan / Kosongkan saja"></textarea>
+                                        @error('catatan') <span class="text-danger">{{ 'Kolom ini wajib diisi.'}}</span> @enderror
                                     </div>
-                                    <button type="submit" class="btn btn-success mt-5 w-100">
-                                        <i class="bi bi-cart"></i> Pesan
+                                    <button type="button" class="btn btn-success mt-5 w-100" data-bs-toggle="modal" data-bs-target="#confirmModalSupplier">
+                                        <i class="bi bi-cart"></i> Pesan Sekarang
                                     </button>
                                 </form>
                             </div>
@@ -139,6 +164,11 @@
   <!-- Template Main JS File -->
   <script src="{{ asset('assetsadmin/js/main.js') }}"></script>
 
+    <script>
+        document.getElementById('confirmOrderSupplier').addEventListener('click', function() {
+            document.getElementById('orderFormSupplier').submit();
+        });
+    </script>
   <script>
         window.onpageshow = function(event) {
             if (event.persisted) {

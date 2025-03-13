@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Kontak;
 use App\Models\Mitra;
+use App\Models\ekspedisi;
+use App\Models\pabrikasi;
+use App\Models\penyewaan;
+use App\Models\perbaikan;
+use App\Models\supplier;
+
 
 class admin extends Controller
 {
@@ -29,7 +35,14 @@ class admin extends Controller
         if(Auth::check()&& Auth::user()->role === 'admin'){
             $jumlah_kontak = Kontak::count();
             $jumlah_mitra = mitra::count();
-            return view('admin.dashboard', compact('jumlah_kontak', 'jumlah_mitra'));
+            $totalekspedisi = ekspedisi::count();
+            $totalpabrikasi = pabrikasi::count();
+            $totalperbaikan = perbaikan::count();
+            $totalpenyewaan = penyewaan::count();
+            $totalsupplier = supplier::count();
+            $totalPemesanan = $totalekspedisi + $totalpabrikasi + $totalperbaikan + $totalpenyewaan + $totalsupplier;
+
+            return view('admin.dashboard', compact('jumlah_kontak', 'jumlah_mitra', 'totalPemesanan', 'totalekspedisi', 'totalpabrikasi', 'totalperbaikan', 'totalpenyewaan', 'totalsupplier'));
         }
         return redirect('/');
            

@@ -61,25 +61,42 @@
                                 <nav class="d-flex justify-content-center">
                                 </nav>
                                 Perbaikan</h5>
-                                <form action="{{ route('postPesanperbaikan') }}" method="POST">
+                                <div class="modal fade" id="confirmModalPerbaikan" tabindex="-1" aria-labelledby="confirmModalPerbaikanLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="confirmModalPerbaikanLabel">Konfirmasi Pemesanan</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Apakah Anda yakin ingin melakukan pemesanan perbaikan kendaraan ini?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                                <button type="button" class="btn btn-success" id="confirmOrderPerbaikan">Ya, Pesan</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form id="orderFormPerbaikan" action="{{ route('postPesanperbaikan') }}" method="POST">
                                     @csrf
                                     <h5>Detail Pemesan</h5>
                                     <div class="form-group mb-3">
                                         <label class="text-secondary mb-2">Nama Pemesan / Perusahaan</label>
                                         <input class="form-control border border-secondary" name="nama" required type="text">
-                                        @error('nama') <span class="text-danger">{{ $message }}</span> @enderror
+                                        @error('nama') <span class="text-danger">{{ 'Kolom ini wajib diisi.'}}</span> @enderror
                                     </div>
 
                                     <div class="row mb-4">
                                         <div class="col-md-6">
                                             <label class="text-secondary mb-2">Nomor WhatsApp</label>
                                             <input class="form-control border border-secondary" name="nohp" required type="number">
-                                            @error('nohp') <span class="text-danger">{{ $message }}</span> @enderror
+                                            @error('nohp') <span class="text-danger">{{ 'Kolom ini wajib diisi.'}}</span> @enderror
                                         </div>
                                         <div class="col-md-6">
                                             <label class="text-secondary mb-2">Email</label>
                                             <input class="form-control border border-secondary" name="email" required type="email">
-                                            @error('email') <span class="text-danger">{{ $message }}</span> @enderror
+                                            @error('email') <span class="text-danger">{{ 'Kolom ini wajib diisi.'}}</span> @enderror
                                         </div>
                                     </div>
 
@@ -88,7 +105,7 @@
                                     <div class="col-md-6">
                                         <label class="text-secondary mb-2">Plat Nomor</label>
                                         <input class="form-control border border-secondary" name="nopol" required type="text" maxlength="12" id="nopol">
-                                        @error('nopol') <span class="text-danger">{{ $message }}</span> @enderror
+                                        @error('nopol') <span class="text-danger">{{ 'Kolom ini wajib diisi.'}}</span> @enderror
                                     </div>
 
                                     <script>
@@ -99,24 +116,24 @@
                                         <div class="col-md-6">
                                             <label class="text-secondary mb-2">Jenis Kendaraan</label>
                                             <input class="form-control border border-secondary" name="jenis" required type="text">
-                                            @error('jenis') <span class="text-danger">{{ $message }}</span> @enderror
+                                            @error('jenis') <span class="text-danger">{{ 'Kolom ini wajib diisi.'}}</span> @enderror
                                         </div>
                                     </div>
 
                                     <div class="form-group mt-3">
                                         <label class="text-secondary mb-2">Kendala Kendaraan</label>
                                         <textarea class="form-control border border-secondary" placeholder="Silahkan beritahu kami kendala kendaraan Anda" name="kendala_kendaraan" required></textarea>
-                                        @error('kendala_kendaraan') <span class="text-danger">{{ $message }}</span> @enderror
+                                        @error('kendala_kendaraan') <span class="text-danger">{{ 'Kolom ini wajib diisi.'}}</span> @enderror
                                     </div>
 
                                     <div class="form-group mt-3">
                                         <label class="text-secondary mb-2">Catatan Tambahan <span class="text-danger">(Opsional)</span></label>
                                         <textarea class="form-control border border-secondary" name="catatan_tambahan" placeholder="Tambahkan catatan jika diperlukan / Kosongkan saja"></textarea>
-                                        @error('catatan_tambahan') <span class="text-danger">{{ $message }}</span> @enderror
+                                        @error('catatan_tambahan') <span class="text-danger">{{ 'Kolom ini wajib diisi.'}}</span> @enderror
                                     </div>
 
-                                    <button type="submit" class="btn btn-success mt-5 w-100">
-                                        <i class="bi bi-cart"></i> Pesan
+                                    <button type="button" class="btn btn-success mt-5 w-100" data-bs-toggle="modal" data-bs-target="#confirmModalPerbaikan">
+                                        <i class="bi bi-cart"></i> Pesan Sekarang
                                     </button>
                                 </form>
                             </div>
@@ -142,7 +159,11 @@
 
   <!-- Template Main JS File -->
   <script src="{{ asset('assetsadmin/js/main.js') }}"></script>
-
+  <script>
+    document.getElementById('confirmOrderPerbaikan').addEventListener('click', function() {
+        document.getElementById('orderFormPerbaikan').submit();
+    });
+  </script>
   <script>
         window.onpageshow = function(event) {
             if (event.persisted) {

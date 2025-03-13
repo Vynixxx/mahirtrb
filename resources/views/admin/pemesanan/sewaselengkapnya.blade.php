@@ -106,7 +106,22 @@
                                     <input type="date" class="form-control @error('awal_penyewaan') is-invalid @enderror" name="awal_penyewaan" required value="{{ old('awal_penyewaan', $sewa->awal_penyewaan) }}">
                                 </div>
                             </div>
-
+                            <div class="mb-3">
+                                <label class="form-label">Dengan Tim</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="dengan_tim" id="denganTimYa" value="Ya" 
+                                        {{ old('dengan_tim', $sewa->dengan_tim ?? '') == 'Ya' ? 'checked' : '' }} required>
+                                    <label class="form-check-label" for="denganTimYa">Ya</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="dengan_tim" id="denganTimTidak" value="Tidak"
+                                        {{ old('dengan_tim', $sewa->dengan_tim ?? '') == 'Tidak' ? 'checked' : '' }} required>
+                                    <label class="form-check-label" for="denganTimTidak">Tidak</label>
+                                </div>
+                                @error('dengan_tim') 
+                                    <div class="invalid-feedback d-block">{{ $message }}</div> 
+                                @enderror
+                            </div>
                             <div class="mb-3">
                                 <label class="form-label">Catatan Tambahan <span class="text-danger">(Opsional)</span></label>
                                 <textarea class="form-control @error('catatan_tambahan') is-invalid @enderror" name="catatan_tambahan" placeholder="Tambahkan catatan jika diperlukan / Kosongkan saja">{{ old('catatan_tambahan', $sewa->catatan_tambahan ? $sewa->catatan_tambahan : 'Tidak ada catatan tambahan') }}</textarea>
@@ -146,6 +161,7 @@
             `Jumlah Kebutuhan: {{ $sewa->jumlah_kebutuhan }} unit\n` +
             `Durasi Penyewaan: {{ $sewa->durasi }} {{ $sewa->satuan_durasi }}\n` +
             `Awal Penyewaan: {{ $sewa->awal_penyewaan }}\n` +
+            `Beserta Tim: {{ $sewa->dengan_tim }}\n` +
             `Catatan Tambahan:\n{{ $sewa->catatan_tambahan ? $sewa->catatan_tambahan : 'Tidak ada catatan tambahan' }}\n\n` +
             `Kami ingin memastikan bahwa kebutuhan Anda telah sesuai. Mohon konfirmasi atau beri tahu kami jika ada perubahan atau tambahan informasi.\n\n` +
             `Kami siap membantu! Jangan ragu untuk membalas email ini.\n\nSalam,\nMahir Trans Bersaudara`);
@@ -162,6 +178,7 @@
             `Jumlah Kebutuhan: {{ $sewa->jumlah_kebutuhan }} unit\n` +
             `Durasi Penyewaan: {{ $sewa->durasi }} {{ $sewa->satuan_durasi }}\n` +
             `Awal Penyewaan: {{ $sewa->awal_penyewaan }}\n` +
+            `Beserta Tim: {{ $sewa->dengan_tim }}\n` +
             `Catatan Tambahan:\n{{ $sewa->catatan_tambahan ? $sewa->catatan_tambahan : 'Tidak ada catatan tambahan' }}\n\n` +
             `Mohon konfirmasi apakah rincian ini sudah sesuai atau jika ada informasi tambahan yang perlu disampaikan.\n\nSalam,\nMahir Trans Bersaudara`);
 

@@ -167,7 +167,7 @@ class pageuser extends Controller
             'nama' => 'required|string|max:255',
             'nohp' => 'required|regex:/^[0-9]+$/|min:10|max:15',
             'email' => 'required|email|max:255',
-            'jenis' => 'required|string|max:255',
+            'jenis' => 'required|string|in:Truk Foco,Crane,Dozer,Lowbed,Triller,Truk Kepala,Truk Tandem,Truk Vakum,Tangki Air',
             'jml' => 'required|integer|min:1',
             'awal' => 'required|date',
             'akhir' => 'required|date|after_or_equal:awal',
@@ -250,6 +250,7 @@ class pageuser extends Controller
             'durasi' => 'required|integer|min:1',
             'satuan_durasi' => 'required|in:hari,minggu,bulan,tahun',
             'awal_penyewaan' => 'required|date',
+            'dengan_tim' => 'required|string', // Tambahkan validasi radio button
             'catatan_tambahan' => 'nullable|string',
         ]);
 
@@ -270,6 +271,7 @@ class pageuser extends Controller
                 'durasi' => $request->durasi,
                 'satuan_durasi' => $request->satuan_durasi,
                 'awal_penyewaan' => $request->awal_penyewaan,
+                'dengan_tim' => $request->dengan_tim,
                 'catatan_tambahan' => $request->catatan_tambahan,
             ]);
 

@@ -76,27 +76,44 @@
                                 <nav class="d-flex justify-content-center">
                                 </nav>
                                 Penyewaan</h5>
-                                <form action="{{ route('postPesanpenyewaan') }}" method="POST">
+                                <div class="modal fade" id="confirmModalPenyewaan" tabindex="-1" aria-labelledby="confirmModalPenyewaanLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="confirmModalPenyewaanLabel">Konfirmasi Pemesanan</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Apakah Anda yakin ingin melakukan pemesanan?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                                <button type="button" class="btn btn-success" id="confirmOrderPenyewaan">Ya, Pesan</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form id="orderFormPenyewaan" action="{{ route('postPesanpenyewaan') }}" method="POST">
                                     @csrf
                                     <h5>Detail Pemesan</h5>
 
                                     <div class="mb-3">
                                         <label class="form-label">Nama Pemesan / Perusahaan</label>
                                         <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" required value="{{ old('nama') }}">
-                                        @error('nama') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                        @error('nama') <div class="invalid-feedback">{{ 'Kolom ini wajib diisi.' }}</div> @enderror
                                     </div>
 
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Nomor WhatsApp</label>
                                             <input type="number" class="form-control @error('nohp') is-invalid @enderror" name="nohp" required value="{{ old('nohp') }}">
-                                            @error('nohp') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                            @error('nohp') <div class="invalid-feedback">{{ 'Kolom ini wajib diisi.' }}</div> @enderror
                                         </div>
 
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Email</label>
                                             <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" required value="{{ old('email') }}">
-                                            @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                            @error('email') <div class="invalid-feedback">{{ 'Kolom ini wajib diisi.' }}</div> @enderror
                                         </div>
                                     </div>
 
@@ -117,13 +134,13 @@
                                                 <option value="Truk Vakum">Truk Vakum</option>
                                                 <option value="Tangki Air">Tangki Air</option>
                                             </select>
-                                            @error('jenis_kendaraan') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                            @error('jenis_kendaraan') <div class="invalid-feedback">{{ 'Kolom ini wajib diisi.' }}</div> @enderror
                                         </div>
 
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Jumlah Kebutuhan</label>
                                             <input type="number" class="form-control @error('jumlah_kebutuhan') is-invalid @enderror" name="jumlah_kebutuhan" required min="1" value="{{ old('jumlah_kebutuhan') }}">
-                                            @error('jumlah_kebutuhan') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                            @error('jumlah_kebutuhan') <div class="invalid-feedback">{{ 'Kolom ini wajib diisi.' }}</div> @enderror
                                         </div>
                                     </div>
 
@@ -139,25 +156,40 @@
                                                     <option value="tahun" {{ old('satuan_durasi') == 'tahun' ? 'selected' : '' }}>Tahun</option>
                                                 </select>
                                             </div>
-                                            @error('durasi') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                                            @error('satuan_durasi') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                            @error('durasi') <div class="invalid-feedback">{{ 'Kolom ini wajib diisi.' }}</div> @enderror
+                                            @error('satuan_durasi') <div class="invalid-feedback">{{ 'Kolom ini wajib diisi.' }}</div> @enderror
                                         </div>
 
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Awal Penyewaan</label>
                                             <input type="date" class="form-control @error('awal_penyewaan') is-invalid @enderror" name="awal_penyewaan" required value="{{ old('awal_penyewaan') }}">
-                                            @error('awal_penyewaan') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                            @error('awal_penyewaan') <div class="invalid-feedback">{{ 'Kolom ini wajib diisi.' }}</div> @enderror
                                         </div>
+                                    </div>
+
+                                    <!-- Tambahan Radio Button "Dengan Tim" -->
+                                    <div class="mb-3">
+                                        <label class="form-label">Dengan Tim?</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="dengan_tim" id="denganTimYa" value="Ya" required>
+                                            <label class="form-check-label" for="denganTimYa">Ya</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="dengan_tim" id="denganTimTidak" value="Tidak" required>
+                                            <label class="form-check-label" for="denganTimTidak">Tidak</label>
+                                        </div>
+                                        @error('dengan_tim') <div class="invalid-feedback d-block">{{ 'Opsi ini wajib dipilih.' }}</div> @enderror
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="form-label">Catatan Tambahan <span class="text-danger">(Opsional)</span></label>
                                         <textarea class="form-control @error('catatan_tambahan') is-invalid @enderror" name="catatan_tambahan" placeholder="Tambahkan catatan jika diperlukan / Kosongkan saja">{{ old('catatan_tambahan') }}</textarea>
-                                        @error('catatan_tambahan') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                        @error('catatan_tambahan') <div class="invalid-feedback">{{ 'Kolom ini wajib diisi.' }}</div> @enderror
                                     </div>
 
-                                    <button type="submit" class="btn btn-success w-100 mt-4">
-                                        <i class="bi bi-cart"></i> Pesan
+                                    <!-- Tombol untuk memunculkan modal -->
+                                    <button type="button" class="btn btn-success w-100 mt-4" data-bs-toggle="modal" data-bs-target="#confirmModalPenyewaan">
+                                        <i class="bi bi-cart"></i> Pesan Sekarang
                                     </button>
                                 </form>
                             </div>
@@ -168,7 +200,11 @@
         </div>
 
   </main><!-- End #main -->
-
+  <script>
+    document.getElementById('confirmOrderPenyewaan').addEventListener('click', function() {
+        document.getElementById('orderFormPenyewaan').submit();
+    });
+  </script>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->

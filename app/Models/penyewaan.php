@@ -20,6 +20,7 @@ class penyewaan extends Model
         'durasi',
         'satuan_durasi',
         'awal_penyewaan',
+        'dengan_tim',
         'catatan_tambahan'
     ];
 }
