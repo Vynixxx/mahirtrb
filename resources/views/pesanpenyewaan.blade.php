@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Penyewaan | Mahir Trans Bersaudara</title>
+  <title>Pesan Penyewaan | PT. Mahir Trans Bersaudara</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 

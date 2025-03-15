@@ -24,6 +24,8 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 
 
   <!-- Main CSS File -->
@@ -80,138 +82,111 @@
 
         <!-- Timeline -->
         <div class="container py-5">
-            <h2 class="text-center mb-4" data-aos="fade-up" data-aos-delay="100">Cara Perbaikan Kendaraan Berat <br> PT. Mahir Trans Bersaudara</h2><br>
+            <h2 class="text-center mb-4" data-aos="fade-up" data-aos-delay="100">
+                Prosedur Perbaikan Kendaraan Berat <br> <span class="text-primary">PT. Mahir Trans Bersaudara</span></h2>
 
             <div class="timeline">
-                <!-- Langkah 1 -->
+                <!-- Langkah 1: Isi Formulir -->
                 <div class="timeline-step" data-aos="fade-up" data-aos-delay="100">
-                    <div class="circle bg-primary">1</div>
-                    <h6>Pilih Kendaraan</h6>
-                </div>
-
-                <div class="line" data-aos="fade-up" data-aos-delay="100"></div> <!-- Garis Penghubung -->
-
-                <!-- Langkah 2 -->
-                <div class="timeline-step" data-aos="fade-up" data-aos-delay="200">
-                    <div class="circle bg-success">2</div>
+                    <div class="circle bg-success"><i class="fas fa-file-alt"></i></div>
                     <h6>Isi Formulir</h6>
+                    <p class="custom"><a href="{{ route('pesanperbaikan') }}">Lengkapi formulir</a> dengan detail kendaraan dan permasalahan yang dialami.</p>
                 </div>
-
-                <div class="line" data-aos="fade-up" data-aos-delay="200"></div> <!-- Garis Penghubung -->
-
-                <!-- Langkah 3 -->
+                <div class="line" data-aos="fade-up" data-aos-delay="100"></div>
+                
+                <!-- Langkah 2: Konfirmasi & Diskusi -->
+                <div class="timeline-step" data-aos="fade-up" data-aos-delay="200">
+                    <div class="circle bg-warning"><i class="fas fa-comments"></i></div>
+                    <h6>Konfirmasi & Diskusi</h6>
+                    <p class="custom">Admin akan menghubungi Anda melalui WhatsApp dan email untuk mendiskusikan detail perbaikan.</p>
+                </div>
+                <div class="line" data-aos="fade-up" data-aos-delay="200"></div>
+                
+                <!-- Langkah 3: Pemeriksaan Awal -->
                 <div class="timeline-step" data-aos="fade-up" data-aos-delay="300">
-                    <div class="circle bg-warning">3</div>
-                    <h6>Konfirmasi & Pembayaran</h6>
+                    <div class="circle bg-primary"><i class="fas fa-search"></i></div>
+                    <h6>Pemeriksaan Awal</h6>
+                    <p class="custom">Teknisi melakukan inspeksi kendaraan untuk menentukan langkah perbaikan.</p>
                 </div>
-
-                <div class="line" data-aos="fade-up" data-aos-delay="300"></div> <!-- Garis Penghubung -->
-
-                <!-- Langkah 4 -->
+                <div class="line" data-aos="fade-up" data-aos-delay="300"></div>
+                
+                <!-- Langkah 4: Proses Perbaikan -->
                 <div class="timeline-step" data-aos="fade-up" data-aos-delay="400">
-                    <div class="circle bg-danger">4</div>
-                    <h6>Pengiriman</h6>
+                    <div class="circle bg-danger"><i class="fas fa-tools"></i></div>
+                    <h6>Proses Perbaikan</h6>
+                    <p class="custom">Perbaikan dilakukan sesuai dengan kesepakatan dan standar teknis.</p>
                 </div>
-
-                <div class="line" data-aos="fade-up" data-aos-delay="400"></div> <!-- Garis Penghubung -->
-
-                <!-- Langkah 5 -->
-                <div class="timeline-step" data-aos="fade-up" data-aos-delay="500">
-                    <div class="circle bg-info">5</div>
-                    <h6>Penggunaan</h6>
+                <div class="line" data-aos="fade-up" data-aos-delay="400"></div>
+                
+                <!-- Langkah 5: Quality Control -->
+                <div class="timeline-step" data-aos="fade-up" data-aos-delay="400">
+                    <div class="circle bg-info"><i class="fas fa-check-circle"></i></div>
+                    <h6>Quality Control</h6>
+                    <p class="custom">Pengecekan akhir dilakukan untuk memastikan kendaraan siap digunakan.</p>
                 </div>
-
-                <div class="line" data-aos="fade-up" data-aos-delay="500"></div> <!-- Garis Penghubung -->
-
-                <!-- Langkah 6 -->
-                <div class="timeline-step" data-aos="fade-up" data-aos-delay="600">
-                    <div class="circle bg-secondary">6</div>
-                    <h6>Pengembalian</h6>
+                <div class="line" data-aos="fade-up" data-aos-delay="400"></div>
+                
+                <!-- Langkah 6: Pengembalian Kendaraan -->
+                <div class="timeline-step" data-aos="fade-up" data-aos-delay="400">
+                    <div class="circle bg-secondary"><i class="fas fa-truck"></i></div>
+                    <h6>Pengembalian Kendaraan</h6>
+                    <p class="custom">Kendaraan dikembalikan kepada pelanggan setelah perbaikan selesai.</p>
                 </div>
             </div>
+        </div>
 
         <!-- CSS -->
         <style>
             .timeline {
                 display: flex;
-                justify-content: center;
+                flex-direction: column;
                 align-items: center;
-                flex-wrap: wrap;
                 position: relative;
                 margin: 50px auto;
             }
-
-            .timeline-item {
-                display: flex;
-                align-items: center;
-                text-align: center;
-                position: relative;
-            }
-
+            
             .timeline-step {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                position: relative;
+                text-align: center;
                 margin: 20px;
             }
-
+            
             .circle {
-                width: 50px;
-                height: 50px;
+                width: 60px;
+                height: 60px;
                 border-radius: 50%;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 color: white;
-                font-weight: bold;
-                font-size: 1.2rem;
+                font-size: 1.5rem;
                 position: relative;
                 z-index: 2;
                 transition: transform 0.3s ease-in-out;
             }
-
+            
             .circle:hover {
                 transform: scale(1.2);
             }
-
+            
             .line {
-                flex-grow: 1;
-                height: 5px;
-                background-color: gray;
-                margin: 0 10px;
+                width: 5px;
+                height: 50px;
+                background: gray;
+                margin: 10px 0;
             }
-
-            @keyframes grow {
-                from {
-                    width: 0;
-                }
-                to {
-                    width: 80px;
-                }
-            }
-
+            
             h6 {
                 margin-top: 10px;
-                font-size: 1rem;
-                text-align: center;
+                font-size: 1.1rem;
+                font-weight: bold;
             }
-
-            @media (max-width: 768px) {
-                .timeline {
-                    flex-direction: column;
-                    align-items: center;
-                }
-
-                .timeline-item {
-                    flex-direction: column;
-                }
-
-                .line {
-                    width: 5px; /* Garis menjadi vertikal */
-                    height: 50px; /* Jarak antar elemen */
-                    margin: 10px 0;
-                }
+            p.custom {
+                font-size: 0.9rem;
+                color: #666;
+                max-width: 300px;
             }
         </style>
 
@@ -221,166 +196,11 @@
             AOS.init();
         </script>
 
-        <!-- Keunggulan Section -->
-        <section class="about section">
-            <div class="container" data-aos="fade-up" data-aos-delay="200">
-            <h2 class="text-center mb-4">Mengapa Memilih Kami?</h2>
-                <div class="row align-items-xl-center">
-                <div class="col-xl-12 d-flex justify-content-center">
-                    <div class="row row-cols-1 row-cols-sm-2 g-4 text-center"> 
-
-                        <div class="col" data-aos="fade-up" data-aos-delay="300">
-                            <div class="icon-box">
-                                <i class="bi bi-check-circle"></i>
-                                <h3>Harga Terjangkau</h3>
-                                <p>Kami menawarkan harga yang kompetitif dengan layanan berkualitas tinggi.</p>
-                            </div>
-                        </div> <!-- End Icon Box -->
-
-                        <div class="col" data-aos="fade-up" data-aos-delay="400">
-                            <div class="icon-box">
-                                <i class="bi bi-check-circle"></i>
-                                <h3>Pilihan Kendaraan Lengkap</h3>
-                                <p>Berbagai jenis kendaraan berat tersedia untuk berbagai kebutuhan proyek Anda.</p>
-                            </div>
-                        </div> <!-- End Icon Box -->
-
-                        <div class="col" data-aos="fade-up" data-aos-delay="400">
-                            <div class="icon-box">
-                                <i class="bi bi-check-circle"></i>
-                                <h3>Pelayanan Cepat</h3>
-                                <p>Tim kami siap membantu Anda dengan proses penyewaan yang cepat dan mudah.</p>
-                            </div>
-                        </div> <!-- End Icon Box -->
-
-                        <div class="col" data-aos="fade-up" data-aos-delay="500">
-                            <div class="icon-box">
-                                <i class="bi bi-check-circle"></i>
-                                <h3>Keamanan & Keandalan</h3>
-                                <p>Kami memastikan setiap kendaraan berat dalam kondisi prima dengan perawatan rutin, sehingga aman dan andal untuk proyek Anda.</p>
-                            </div>
-                        </div> <!-- End Icon Box -->
-
-                    </div>
-                </div>
-                </div>
-        </section>
-        </div>
-
-            <!-- /About Section -->
-
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="testimonials section dark-background">
-
-        <img src="assets/img/testimonials-bg.jpg" class="testimonials-bg" alt="">
-
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-            <div class="swiper init-swiper">
-            <script type="application/json" class="swiper-config">
-                {
-                "loop": true,
-                "speed": 600,
-                "autoplay": {
-                    "delay": 5000
-                },
-                "slidesPerView": "auto",
-                "pagination": {
-                    "el": ".swiper-pagination",
-                    "type": "bullets",
-                    "clickable": true
-                }
-                }
-            </script>
-            <div class="swiper-wrapper">
-
-                <div class="swiper-slide">
-                <div class="testimonial-item">
-                    <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                    <h3>Saul Goodman</h3>
-                    <h4>Ceo &amp; Founder</h4>
-                    <div class="stars">
-                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                    </div>
-                    <p>
-                    <i class="bi bi-quote quote-icon-left"></i>
-                    <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.</span>
-                    <i class="bi bi-quote quote-icon-right"></i>
-                    </p>
-                </div>
-                </div><!-- End testimonial item -->
-
-                <div class="swiper-slide">
-                <div class="testimonial-item">
-                    <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                    <h3>Sara Wilsson</h3>
-                    <h4>Designer</h4>
-                    <div class="stars">
-                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                    </div>
-                    <p>
-                    <i class="bi bi-quote quote-icon-left"></i>
-                    <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
-                    <i class="bi bi-quote quote-icon-right"></i>
-                    </p>
-                </div>
-                </div><!-- End testimonial item -->
-
-                <div class="swiper-slide">
-                <div class="testimonial-item">
-                    <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                    <h3>Jena Karlis</h3>
-                    <h4>Store Owner</h4>
-                    <div class="stars">
-                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                    </div>
-                    <p>
-                    <i class="bi bi-quote quote-icon-left"></i>
-                    <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.</span>
-                    <i class="bi bi-quote quote-icon-right"></i>
-                    </p>
-                </div>
-                </div><!-- End testimonial item -->
-
-                <div class="swiper-slide">
-                <div class="testimonial-item">
-                    <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                    <h3>Matt Brandon</h3>
-                    <h4>Freelancer</h4>
-                    <div class="stars">
-                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                    </div>
-                    <p>
-                    <i class="bi bi-quote quote-icon-left"></i>
-                    <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.</span>
-                    <i class="bi bi-quote quote-icon-right"></i>
-                    </p>
-                </div>
-                </div><!-- End testimonial item -->
-
-                <div class="swiper-slide">
-                <div class="testimonial-item">
-                    <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                    <h3>John Larson</h3>
-                    <h4>Entrepreneur</h4>
-                    <div class="stars">
-                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                    </div>
-                    <p>
-                    <i class="bi bi-quote quote-icon-left"></i>
-                    <span>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.</span>
-                    <i class="bi bi-quote quote-icon-right"></i>
-                    </p>
-                </div>
-                </div><!-- End testimonial item -->
-
-            </div>
-            <div class="swiper-pagination"></div>
-            </div>
+        @include('keunggulan')
 
         </div>
 
-        </section><!-- /Testimonials Section -->
+        @include('testimoni')
         
         <!-- Call to Action -->
         <section id="sewa" class="text-center py-5 mt-5 mb-5">

@@ -43,7 +43,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route('pesansupplier') }}">
           <i class="bi bi-basket"></i>
-          <span>Supplier</span>
+          <span>Pemesanan Barang</span>
         </a>
       </li><!-- End pemesanan Page Nav --> 
 

@@ -199,6 +199,23 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Service Item -->
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card border-0 shadow-sm h-100 custom-service-card">
+                            <img src="assets/img/services/supplier.png" class="custom-card-img-top" alt="Supplier">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Supplier</h5>
+                                <p class="card-text text-muted">
+                                Supplier berbagai kebutuhan, suku cadang, serta peralatan pendukung untuk operasional dan pemeliharaan alat berat.
+                                </p>
+                            </div>
+                            <div class="card-footer bg-white border-0 text-center pb-4">
+                                <a href="{{ route('pesansupplier') }}" class="btn btn-primary btn-lg custom-animate-btn">
+                                    Pesan Sekarang
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

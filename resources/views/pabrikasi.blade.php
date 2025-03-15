@@ -24,6 +24,8 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 
 
   <!-- Main CSS File -->
@@ -78,178 +80,119 @@
         </nav>
         </div><!-- End Page Title -->
 
-        <!-- Timeline -->
+        <!-- Timeline Prosedur Pabrikasi -->
         <div class="container py-5">
-            <h2 class="text-center mb-4" data-aos="fade-up" data-aos-delay="100">Cara Pabrikasi Kendaraan Berat <br> PT. Mahir Trans Bersaudara</h2><br>
-
-            <!-- CSS -->
-            <style>
-                .timeline {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    position: relative;
-                    margin: 50px auto;
-                    max-width: 800px;
-                }
-
-                .timeline-step {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    position: relative;
-                    text-align: center;
-                    margin-bottom: 30px;
-                    width: 100%;
-                }
-
-                .circle {
-                    width: 60px;
-                    height: 60px;
-                    border-radius: 50%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: white;
-                    font-weight: bold;
-                    font-size: 1.3rem;
-                    position: relative;
-                    z-index: 2;
-                    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
-                }
-
-                .circle:hover {
-                    transform: scale(1.2);
-                    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-                }
-
-                .line {
-                    width: 5px;
-                    height: 30px;
-                    background-color: gray;
-                }
-
-                h6 {
-                    margin-top: 10px;
-                    font-size: 1.2rem;
-                    font-weight: bold;
-                }
-
-                /* Responsive */
-                @media (max-width: 768px) {
-                    .timeline {
-                        max-width: 90%;
-                    }
-                }
-            </style>
-
-            <!-- Timeline -->
+            <h2 class="text-center mb-4" data-aos="fade-up" data-aos-delay="100">
+                Prosedur Pemesanan Pabrikasi Kendaraan Berat <br> <span class="text-primary">PT. Mahir Trans Bersaudara</span>
+            </h2>
+            
             <div class="timeline">
-                <!-- Langkah 1 -->
-                <div class="timeline-step" data-aos="fade-up" data-aos-delay="30">
-                    <div class="circle bg-primary">1</div>
-                    <h6>Isi Formulir Pemesanan</h6>
-                    <p>Pilih spesifikasi kendaraan dan isi formulir pemesanan.</p>
+                <!-- Langkah 1: Isi Formulir -->
+                <div class="timeline-step" data-aos="fade-up" data-aos-delay="100">
+                    <div class="circle bg-success"><i class="fas fa-file-alt"></i></div>
+                    <h6>Isi Formulir</h6>
+                    <p class="custom"><a href="pesanpabrikasi">Lengkapi formulir</a> dengan detail kebutuhan pabrikasi dan informasi kontak Anda.</p>
                 </div>
-                <div class="line"></div>
-
-                <!-- Langkah 2 -->
-                <div class="timeline-step" data-aos="fade-up" data-aos-delay="50">
-                    <div class="circle bg-success">2</div>
-                    <h6>Dihubungi oleh Mahir Trans Bersaudara</h6>
-                    <p>Tim teknis akan menghubungi untuk klarifikasi spesifikasi.</p>
+                <div class="line" data-aos="fade-up" data-aos-delay="100"></div>
+                
+                <!-- Langkah 2: Konfirmasi & Diskusi -->
+                <div class="timeline-step" data-aos="fade-up" data-aos-delay="200">
+                    <div class="circle bg-warning"><i class="fas fa-comments"></i></div>
+                    <h6>Konfirmasi & Diskusi</h6>
+                    <p class="custom">Admin akan menghubungi Anda melalui WhatsApp dan email untuk mendiskusikan spesifikasi dan detail pabrikasi.</p>
                 </div>
-                <div class="line"></div>
-
-                <!-- Langkah 3 -->
-                <div class="timeline-step" data-aos="fade-up" data-aos-delay="70">
-                    <div class="circle bg-warning">3</div>
-                    <h6>Negosiasi & Kontrak</h6>
-                    <p>Finalisasi desain, harga, dan penandatanganan kontrak.</p>
+                <div class="line" data-aos="fade-up" data-aos-delay="200"></div>
+                
+                <!-- Langkah 4: Proses Pabrikasi -->
+                <div class="timeline-step" data-aos="fade-up" data-aos-delay="300">
+                    <div class="circle bg-primary"><i class="fas fa-industry"></i></div>
+                    <h6>Proses Pabrikasi</h6>
+                    <p class="custom">Produksi dilakukan sesuai spesifikasi yang telah disepakati.</p>
                 </div>
-                <div class="line"></div>
-
-                <!-- Langkah 4 -->
-                <div class="timeline-step" data-aos="fade-up" data-aos-delay="90">
-                    <div class="circle bg-danger">4</div>
-                    <h6>Produksi Kendaraan</h6>
-                    <p>Proses pabrikasi sesuai spesifikasi yang disepakati.</p>
+                <div class="line" data-aos="fade-up" data-aos-delay="300"></div>
+                
+                <!-- Langkah 5: Quality Control -->
+                <div class="timeline-step" data-aos="fade-up" data-aos-delay="300">
+                    <div class="circle bg-info"><i class="fas fa-check-circle"></i></div>
+                    <h6>Quality Control</h6>
+                    <p class="custom">Setiap hasil produksi diperiksa untuk memastikan kualitas terbaik.</p>
                 </div>
-                <div class="line"></div>
-
-                <!-- Langkah 5 -->
-                <div class="timeline-step" data-aos="fade-up" data-aos-delay="110">
-                    <div class="circle bg-info">5</div>
-                    <h6>Pengujian & Sertifikasi</h6>
-                    <p>Kendaraan diuji dan mendapatkan sertifikasi standar.</p>
-                </div>
-                <div class="line"></div>
-
-                <!-- Langkah 6 -->
-                <div class="timeline-step" data-aos="fade-up" data-aos-delay="130">
-                    <div class="circle bg-secondary">6</div>
-                    <h6>Pengiriman & Serah Terima</h6>
-                    <p>Kendaraan dikirim ke lokasi pelanggan.</p>
-                </div>
-                <div class="line"></div>
-
-                <!-- Langkah 7 -->
-                <div class="timeline-step" data-aos="fade-up" data-aos-delay="150">
-                    <div class="circle bg-dark">7</div>
-                    <h6>Layanan Purna Jual</h6>
-                    <p>Dukungan teknis, garansi, dan suku cadang.</p>
+                <div class="line" data-aos="fade-up" data-aos-delay="300"></div>
+                
+                <!-- Langkah 6: Pengiriman Produk -->
+                <div class="timeline-step" data-aos="fade-up" data-aos-delay="300">
+                    <div class="circle bg-secondary"><i class="fas fa-truck"></i></div>
+                    <h6>Pengiriman Produk</h6>
+                    <p class="custom">Produk dikirim ke pelanggan sesuai jadwal yang telah ditentukan.</p>
                 </div>
             </div>
+        </div>
+
+        <!-- CSS -->
+        <style>
+            .timeline {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                position: relative;
+                margin: 50px auto;
+            }
+            
+            .timeline-step {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                margin: 20px;
+            }
+            
+            .circle {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 1.5rem;
+                position: relative;
+                z-index: 2;
+                transition: transform 0.3s ease-in-out;
+            }
+            
+            .circle:hover {
+                transform: scale(1.2);
+            }
+            
+            .line {
+                width: 5px;
+                height: 50px;
+                background: gray;
+                margin: 10px 0;
+            }
+            
+            h6 {
+                margin-top: 10px;
+                font-size: 1.1rem;
+                font-weight: bold;
+            }
+            
+            p.custom {
+                font-size: 0.9rem;
+                color: #666;
+                max-width: 300px;
+            }
+        </style>
+
         <!-- Script AOS -->
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>
             AOS.init();
         </script>
 
-        <!-- Keunggulan Section -->
-        <section class="about section">
-            <div class="container" data-aos="fade-up" data-aos-delay="200">
-            <h2 class="text-center mb-4">Mengapa Memilih Kami?</h2>
-                <div class="row align-items-xl-center">
-                <div class="col-xl-12 d-flex justify-content-center">
-                    <div class="row row-cols-1 row-cols-sm-2 g-4 text-center"> 
 
-                        <div class="col" data-aos="fade-up" data-aos-delay="300">
-                            <div class="icon-box">
-                                <i class="bi bi-check-circle"></i>
-                                <h3>Harga Terjangkau</h3>
-                                <p>Kami menawarkan harga yang kompetitif dengan layanan berkualitas tinggi.</p>
-                            </div>
-                        </div> <!-- End Icon Box -->
+        @include('keunggulan')
 
-                        <div class="col" data-aos="fade-up" data-aos-delay="400">
-                            <div class="icon-box">
-                                <i class="bi bi-check-circle"></i>
-                                <h3>Pilihan Kendaraan Lengkap</h3>
-                                <p>Berbagai jenis kendaraan berat tersedia untuk berbagai kebutuhan proyek Anda.</p>
-                            </div>
-                        </div> <!-- End Icon Box -->
-
-                        <div class="col" data-aos="fade-up" data-aos-delay="400">
-                            <div class="icon-box">
-                                <i class="bi bi-check-circle"></i>
-                                <h3>Pelayanan Cepat</h3>
-                                <p>Tim kami siap membantu Anda dengan proses penyewaan yang cepat dan mudah.</p>
-                            </div>
-                        </div> <!-- End Icon Box -->
-
-                        <div class="col" data-aos="fade-up" data-aos-delay="500">
-                            <div class="icon-box">
-                                <i class="bi bi-check-circle"></i>
-                                <h3>Keamanan & Keandalan</h3>
-                                <p>Kami memastikan setiap kendaraan berat dalam kondisi prima dengan perawatan rutin, sehingga aman dan andal untuk proyek Anda.</p>
-                            </div>
-                        </div> <!-- End Icon Box -->
-
-                    </div>
-                </div>
-                </div>
-        </section>
         </div>
         @include('testimoni')
         

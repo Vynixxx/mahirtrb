@@ -24,6 +24,8 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 
 
   <!-- Main CSS File -->
@@ -78,138 +80,126 @@
         </nav>
         </div><!-- End Page Title -->
 
-        <!-- Timeline -->
+        <!-- Timeline Pemesanan Ekspedisi Kendaraan Berat -->
         <div class="container py-5">
-            <h2 class="text-center mb-4" data-aos="fade-up" data-aos-delay="100">Cara Pesan Ekspedisi Kendaraan Berat <br> PT. Mahir Trans Bersaudara</h2><br>
-
+            <h2 class="text-center mb-4" data-aos="fade-up" data-aos-delay="100">
+                Prosedur Pemesanan Ekspedisi Kendaraan Berat <br> <span class="text-primary">PT. Mahir Trans Bersaudara</span>
+            </h2>
+            
             <div class="timeline">
-                <!-- Langkah 1 -->
+                <!-- Langkah 1: Pilih Kendaraan -->
                 <div class="timeline-step" data-aos="fade-up" data-aos-delay="100">
-                    <div class="circle bg-primary">1</div>
+                    <div class="circle bg-primary"><i class="fas fa-truck"></i></div>
                     <h6>Pilih Kendaraan</h6>
+                    <p class="custom"><a href="{{ route('produk') }}">Pilih jenis</a> kendaraan berat yang sesuai dengan kebutuhan Anda.</p>
                 </div>
-
-                <div class="line" data-aos="fade-up" data-aos-delay="100"></div> <!-- Garis Penghubung -->
-
-                <!-- Langkah 2 -->
+                <div class="line" data-aos="fade-up" data-aos-delay="100"></div>
+                
+                <!-- Langkah 2: Isi Formulir -->
                 <div class="timeline-step" data-aos="fade-up" data-aos-delay="200">
-                    <div class="circle bg-success">2</div>
+                    <div class="circle bg-success"><i class="fas fa-file-alt"></i></div>
                     <h6>Isi Formulir</h6>
+                    <p class="custom">Lengkapi <a href="{{ route('pesanekspedisi') }}">formulir pemesanan</a> dengan detail kebutuhan dan informasi kontak Anda.</p>
                 </div>
-
-                <div class="line" data-aos="fade-up" data-aos-delay="200"></div> <!-- Garis Penghubung -->
-
-                <!-- Langkah 3 -->
+                <div class="line" data-aos="fade-up" data-aos-delay="200"></div>
+                
+                <!-- Langkah 3: Konfirmasi & Diskusi Harga -->
                 <div class="timeline-step" data-aos="fade-up" data-aos-delay="300">
-                    <div class="circle bg-warning">3</div>
-                    <h6>Konfirmasi & Pembayaran</h6>
+                    <div class="circle bg-warning"><i class="fas fa-comments"></i></div>
+                    <h6>Konfirmasi & Diskusi Harga</h6>
+                    <p class="custom">Admin akan menghubungi Anda melalui WhatsApp dan email untuk mendiskusikan ekspedisi dan kisaran harga.</p>
                 </div>
-
-                <div class="line" data-aos="fade-up" data-aos-delay="300"></div> <!-- Garis Penghubung -->
-
-                <!-- Langkah 4 -->
+                <div class="line" data-aos="fade-up" data-aos-delay="300"></div>
+                
+                <!-- Langkah 4: Kesepakatan & Pembayaran -->
                 <div class="timeline-step" data-aos="fade-up" data-aos-delay="400">
-                    <div class="circle bg-danger">4</div>
-                    <h6>Pengiriman</h6>
+                    <div class="circle bg-danger"><i class="fas fa-credit-card"></i></div>
+                    <h6>Kesepakatan & Pembayaran</h6>
+                    <p class="custom">Setelah kesepakatan tercapai, lakukan pembayaran untuk memproses pesanan.</p>
                 </div>
-
-                <div class="line" data-aos="fade-up" data-aos-delay="400"></div> <!-- Garis Penghubung -->
-
-                <!-- Langkah 5 -->
-                <div class="timeline-step" data-aos="fade-up" data-aos-delay="500">
-                    <div class="circle bg-info">5</div>
-                    <h6>Penggunaan</h6>
+                <div class="line" data-aos="fade-up" data-aos-delay="400"></div>
+                
+                <!-- Langkah 5: Pengiriman Kendaraan -->
+                <div class="timeline-step" data-aos="fade-up" data-aos-delay="400">
+                    <div class="circle bg-info"><i class="fas fa-shipping-fast"></i></div>
+                    <h6>Pengiriman Kendaraan</h6>
+                    <p class="custom">Kendaraan dikirim sesuai dengan jadwal yang telah disepakati.</p>
                 </div>
-
-                <div class="line" data-aos="fade-up" data-aos-delay="500"></div> <!-- Garis Penghubung -->
-
-                <!-- Langkah 6 -->
-                <div class="timeline-step" data-aos="fade-up" data-aos-delay="600">
-                    <div class="circle bg-secondary">6</div>
-                    <h6>Pengembalian</h6>
+                <div class="line" data-aos="fade-up" data-aos-delay="400"></div>
+                
+                <!-- Langkah 6: Penggunaan & Pengembalian -->
+                <div class="timeline-step" data-aos="fade-up" data-aos-delay="400">
+                    <div class="circle bg-secondary"><i class="fas fa-undo"></i></div>
+                    <h6>Penggunaan & Pengembalian</h6>
+                    <p class="custom">Gunakan kendaraan sesuai keperluan dan lakukan pengembalian setelah selesai.</p>
                 </div>
             </div>
+        </div>
 
         <!-- CSS -->
         <style>
             .timeline {
                 display: flex;
-                justify-content: center;
+                flex-direction: column;
                 align-items: center;
-                flex-wrap: wrap;
                 position: relative;
                 margin: 50px auto;
             }
-
-            .timeline-item {
-                display: flex;
-                align-items: center;
-                text-align: center;
-                position: relative;
-            }
-
+            
             .timeline-step {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                position: relative;
+                text-align: center;
                 margin: 20px;
             }
-
+            
             .circle {
-                width: 50px;
-                height: 50px;
+                width: 60px;
+                height: 60px;
                 border-radius: 50%;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 color: white;
-                font-weight: bold;
-                font-size: 1.2rem;
+                font-size: 1.5rem;
                 position: relative;
                 z-index: 2;
                 transition: transform 0.3s ease-in-out;
             }
-
+            
             .circle:hover {
                 transform: scale(1.2);
             }
-
+            
             .line {
-                flex-grow: 1;
-                height: 5px;
-                background-color: gray;
-                margin: 0 10px;
+                width: 5px;
+                height: 50px;
+                background: gray;
+                margin: 10px 0;
             }
-
-            @keyframes grow {
-                from {
-                    width: 0;
-                }
-                to {
-                    width: 80px;
-                }
-            }
-
+            
             h6 {
                 margin-top: 10px;
-                font-size: 1rem;
-                text-align: center;
+                font-size: 1.1rem;
+                font-weight: bold;
             }
-
+    
+            p.custom {
+                font-size: 0.9rem;
+                color: #666;
+                max-width: 300px;
+            }
+            
             @media (max-width: 768px) {
                 .timeline {
                     flex-direction: column;
                     align-items: center;
                 }
-
-                .timeline-item {
-                    flex-direction: column;
-                }
-
+                
                 .line {
-                    width: 5px; /* Garis menjadi vertikal */
-                    height: 50px; /* Jarak antar elemen */
+                    width: 5px;
+                    height: 50px;
                     margin: 10px 0;
                 }
             }
@@ -221,50 +211,7 @@
             AOS.init();
         </script>
 
-        <!-- Keunggulan Section -->
-        <section class="about section">
-            <div class="container" data-aos="fade-up" data-aos-delay="200">
-            <h2 class="text-center mb-4">Mengapa Memilih Kami?</h2>
-                <div class="row align-items-xl-center">
-                <div class="col-xl-12 d-flex justify-content-center">
-                    <div class="row row-cols-1 row-cols-sm-2 g-4 text-center"> 
-
-                        <div class="col" data-aos="fade-up" data-aos-delay="300">
-                            <div class="icon-box">
-                                <i class="bi bi-check-circle"></i>
-                                <h3>Harga Terjangkau</h3>
-                                <p>Kami menawarkan harga yang kompetitif dengan layanan berkualitas tinggi.</p>
-                            </div>
-                        </div> <!-- End Icon Box -->
-
-                        <div class="col" data-aos="fade-up" data-aos-delay="400">
-                            <div class="icon-box">
-                                <i class="bi bi-check-circle"></i>
-                                <h3>Pilihan Kendaraan Lengkap</h3>
-                                <p>Berbagai jenis kendaraan berat tersedia untuk berbagai kebutuhan proyek Anda.</p>
-                            </div>
-                        </div> <!-- End Icon Box -->
-
-                        <div class="col" data-aos="fade-up" data-aos-delay="400">
-                            <div class="icon-box">
-                                <i class="bi bi-check-circle"></i>
-                                <h3>Pelayanan Cepat</h3>
-                                <p>Tim kami siap membantu Anda dengan proses penyewaan yang cepat dan mudah.</p>
-                            </div>
-                        </div> <!-- End Icon Box -->
-
-                        <div class="col" data-aos="fade-up" data-aos-delay="500">
-                            <div class="icon-box">
-                                <i class="bi bi-check-circle"></i>
-                                <h3>Keamanan & Keandalan</h3>
-                                <p>Kami memastikan setiap kendaraan berat dalam kondisi prima dengan perawatan rutin, sehingga aman dan andal untuk proyek Anda.</p>
-                            </div>
-                        </div> <!-- End Icon Box -->
-
-                    </div>
-                </div>
-                </div>
-        </section>
+        @include('keunggulan')
         </div>
         @include('testimoni')
         

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Supplier | Mahir Trans Bersaudara</title>
+  <title>Pesan Supplier | PT. Mahir Trans Bersaudara</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -60,7 +60,7 @@
                                 <h5 class="card-title text-center">
                                 <nav class="d-flex justify-content-center">
                                 </nav>
-                                Supplier</h5>
+                                Pemesanan Barang</h5>
                                 <div class="modal fade" id="confirmModalSupplier" tabindex="-1" aria-labelledby="confirmModalSupplierLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">

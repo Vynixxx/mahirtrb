@@ -272,6 +272,100 @@
           </script>
           <!-- End Recent Activity -->
 
+          <style>
+            .animation-container {
+              position: relative;
+              width: 100%;
+              height: 200px;
+              overflow: hidden;
+              background:rgb(255, 255, 255);
+            }
+
+            canvas {
+              position: absolute;
+              top: 0;
+              left: 0;
+            }
+
+            .fun-text {
+              text-align: center;
+              font-size: 1rem;
+              font-weight: bold;
+              color: #444;
+              margin-top: 10px;
+            }
+          </style>
+
+          <!-- Animasi Hiburan untuk Admin -->
+          <div class="card">
+            <div class="card-body pb-0 text-center">
+              <!-- Container Animasi Pixel Art -->
+              <div class="animation-container">
+                <canvas id="starCanvas"></canvas>
+                <canvas id="pixelCanvas"></canvas>
+              </div>
+              <!-- Pesan Hiburan -->
+              <p class="fun-text">Selamat datang, Admin! Nikmati pertunjukan seru pixel ini!</p>
+            </div>
+          </div>
+
+          <!-- Script untuk Animasi Pixel Art dan Bintang -->
+          <script>
+            const starCanvas = document.getElementById('starCanvas');
+            const starCtx = starCanvas.getContext('2d');
+            const pixelCanvas = document.getElementById('pixelCanvas');
+            const pixelCtx = pixelCanvas.getContext('2d');
+            
+            starCanvas.width = pixelCanvas.width = document.querySelector(".animation-container").offsetWidth;
+            starCanvas.height = pixelCanvas.height = 200;
+
+            const stars = Array.from({ length: 50 }, () => ({
+              x: Math.random() * starCanvas.width,
+              y: Math.random() * starCanvas.height,
+              speed: Math.random() * 1.5 + 0.5
+            }));
+
+            function drawStars() {
+              starCtx.clearRect(0, 0, starCanvas.width, starCanvas.height);
+              starCtx.fillStyle = 'white';
+              stars.forEach(star => {
+                starCtx.beginPath();
+                starCtx.arc(star.x, star.y, 2, 0, Math.PI * 2);
+                starCtx.fill();
+                star.y += star.speed;
+                if (star.y > starCanvas.height) star.y = 0;
+              });
+            }
+
+            const pixelAnimals = [
+              { x: 20, y: 100, sprite: '🐱', dx: 1 },
+              { x: 50, y: 110, sprite: '🐶', dx: -1 },
+              { x: 80, y: 90, sprite: '🐰', dx: 1.2 },
+              { x: 110, y: 95, sprite: '🦊', dx: -0.8 },
+              { x: 140, y: 105, sprite: '🐻', dx: 1.1 }
+            ];
+
+            function drawAnimals() {
+              pixelCtx.clearRect(0, 0, pixelCanvas.width, pixelCanvas.height);
+              pixelAnimals.forEach(animal => {
+                pixelCtx.font = '24px Arial';
+                pixelCtx.fillText(animal.sprite, animal.x, animal.y);
+                animal.x += animal.dx;
+                
+                if (animal.x > pixelCanvas.width - 30 || animal.x < 0) {
+                  animal.dx *= -1;
+                }
+              });
+            }
+
+            function animate() {
+              drawStars();
+              drawAnimals();
+              requestAnimationFrame(animate);
+            }
+
+            animate();
+          </script>
         </div><!-- End Right side columns -->
 
       </div>
