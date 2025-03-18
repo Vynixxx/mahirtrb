@@ -111,7 +111,15 @@
                                         <div class="col-md-6">
                                             <label class="text-secondary mb-2">Email</label>
                                             <input class="form-control border border-secondary form-control" name="email" required type="email">
-                                            <span class="text-danger">@error('email'){{ 'Kolom ini wajib diisi' }}@enderror</span>
+                                            @error('email')
+                                                    <div class="text-danger">
+                                                        @if ($message === 'Kolom ini wajib diisi.')
+                                                            Kolom ini wajib diisi.
+                                                        @else
+                                                            Format yang Anda masukkan salah.
+                                                        @endif
+                                                    </div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <h5>Detail Kebutuhan</h5>
@@ -142,12 +150,12 @@
                                         <div class="col-md-6">
                                             <label class="text-secondary mb-2">Awal Ekspedisi</label>
                                             <input class="form-control border border-secondary" name="awal" required type="date">
-                                            <span class="text-danger">@error('awal'){{ 'Kolom ini wajib diisi' }}@enderror</span>
+                                            <span class="text-danger">@error('awal'){{ 'Tanggal ini wajib diisi' }}@enderror</span>
                                         </div>
                                         <div class="col-md-6">
                                             <label class="text-secondary mb-2">Akhir Ekspedisi</label>
                                             <input class="form-control border border-secondary" name="akhir" required type="date">
-                                            <span class="text-danger">@error('akhir'){{ 'Kolom ini wajib diisi' }}@enderror</span>
+                                            <span class="text-danger">@error('akhir'){{ 'Tanggal ini wajib diisi' }}@enderror</span>
                                         </div>
                                     </div>                       
                                     <div class="form-group mt-3">

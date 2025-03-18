@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Edit Layanan | Mahir Trans Bersaudara</title>
+  <title>Edit Mitra | Mahir Trans Bersaudara</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -39,40 +39,27 @@
   <main id="main" class="main">
 
   <div class="container">
-      <div class="row">
+  <div class="row">
         <div class="col d-flex justify-content-center">
           <div class="card mt-4" style="width: 800px">
             <div class="card-body">
               <h5 class="card-title text-center">
               <nav class="d-flex justify-content-center">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="{{ route('admin.galeri') }}">Galeri</a></li>
-                  <li class="breadcrumb-item active">Edit Galeri</li>
+                  <li class="breadcrumb-item"><a href="{{ route('admin.mitra') }}">Mitra</a></li>
+                  <li class="breadcrumb-item active">Edit Mitra</li>
                 </ol>
-              </nav>Edit Galeri</h5>
-              <form action="/postEditgaleri/{{ $galeri->id }}" method="POST" enctype="multipart/form-data">
+              </nav>Edit Mitra</h5>
+              <form action="/postEditmitra/{{ $mitra->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group mt-4">
-                <label class="form-label">Kategori</label>
-                <select class="form-select" name="kategori" required>
-                    <option disabled {{ empty($galeri->kategori) ? 'selected' : '' }}>Pilih kategori Kendaraan</option>
-                    <option value="Crane" {{ $galeri->kategori == 'Crane' ? 'selected' : '' }}>Crane</option>
-                    <option value="Dozer" {{ $galeri->kategori == 'Dozer' ? 'selected' : '' }}>Dozer</option>
-                    <option value="Lowbed" {{ $galeri->kategori == 'Lowbed' ? 'selected' : '' }}>Lowbed</option>
-                    <option value="Pekerjaan" {{ $galeri->kategori == 'Pekerjaan' ? 'selected' : '' }}>Pekerjaan</option>
-                    <option value="Tim" {{ $galeri->kategori == 'Tim' ? 'selected' : '' }}>Tim</option>
-                    <option value="Triller" {{ $galeri->kategori == 'Triller' ? 'selected' : '' }}>Triller</option>
-                    <option value="Truk Foco" {{ $galeri->kategori == 'Truk Foco' ? 'selected' : '' }}>Truk Foco</option>
-                    <option value="Truk Kepala" {{ $galeri->kategori == 'Truk Kepala' ? 'selected' : '' }}>Truk Kepala</option>
-                    <option value="Truk Tandem" {{ $galeri->kategori == 'Truk Tandem' ? 'selected' : '' }}>Truk Tandem</option>
-                    <option value="Truk Vakum" {{ $galeri->kategori == 'Truk Vakum' ? 'selected' : '' }}>Truk Vakum</option>
-                    <option value="Tangki Air" {{ $galeri->kategori == 'Tangki Air' ? 'selected' : '' }}>Tangki Air</option>
-                </select>
-                <span class="text-danger">
-                    @error('kategori')
-                        {{ $message }}
+                  <label class="text-secondary mb-2">Nama Mitra</label>
+                  <input type="text" class="form-control border border-secondary form-control" name="nama" required value="{{ $mitra->nama }}">
+                  <span class="text-danger">
+                    @error('nama')
+                    {{ $message }}
                     @enderror
-                </span>
+                  </span>
                 </div><br>
 
                 <div class="form-group mt-1">
@@ -92,7 +79,8 @@
           </div>
         </div>
       </div><br><br><br><br>
-    </div>
+
+  </div>
 
   </main><!-- End #main -->
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

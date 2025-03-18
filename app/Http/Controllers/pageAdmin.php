@@ -79,37 +79,147 @@ class pageAdmin extends Controller
     public function halamanselengkapnya($id)
     {
         $kontak = kontak::find($id);
-        return view('admin.selengkapnya', compact('kontak'));
+        if (!$kontak) {
+            return back()->with('error', 'Pesan tidak ditemukan.');
+        }
+    
+        // Pola regex untuk mendeteksi XSS
+        $xssPattern = '/(&lt;|&gt;|&quot;|&amp;#\d+;|<script.*?>.*?<\/script>|javascript:|onerror=|onload=|onmouseover=|<iframe.*?>)/i';
+    
+        // Cek apakah ada indikasi XSS di masing-masing input
+        $xssDetected = [
+            'name' => preg_match($xssPattern, $kontak->name),
+            'email' => preg_match($xssPattern, $kontak->email),
+            'whatsapp' => preg_match($xssPattern, $kontak->whatsapp),
+            'subject' => preg_match($xssPattern, $kontak->subject),
+            'message' => preg_match($xssPattern, $kontak->message),
+        ];
+        return view('admin.selengkapnya', compact('kontak', 'xssDetected'));
     }
 
     public function halamaneksselengkapnya($id)
     {
         $eks = ekspedisi::find($id);
-        return view('admin.pemesanan.eksselengkapnya', compact('eks'));
+        if (!$eks) {
+            return back()->with('error', 'Data ekspedisi tidak ditemukan.');
+        }
+    
+        // Pola regex untuk mendeteksi XSS
+        $xssPattern = '/(&lt;|&gt;|&quot;|&amp;#\d+;|<script.*?>.*?<\/script>|javascript:|onerror=|onload=|onmouseover=|<iframe.*?>)/i';
+    
+        // Cek apakah ada indikasi XSS di masing-masing input
+        $xssDetected = [
+            'nama' => preg_match($xssPattern, $eks->nama),
+            'nohp' => preg_match($xssPattern, $eks->nohp),
+            'email' => preg_match($xssPattern, $eks->email),
+            'jenis' => preg_match($xssPattern, $eks->jenis),
+            'jml' => preg_match($xssPattern, $eks->jml),
+            'awal' => preg_match($xssPattern, $eks->awal),
+            'akhir' => preg_match($xssPattern, $eks->akhir),
+            'isi' => preg_match($xssPattern, $eks->isi),
+        ];
+    
+        return view('admin.pemesanan.eksselengkapnya', compact('eks', 'xssDetected'));
     }
 
     public function halamanpabsselengkapnya($id)
     {
         $pabs = pabrikasi::find($id);
-        return view('admin.pemesanan.pabsselengkapnya', compact('pabs'));
+        if (!$pabs) {
+            return back()->with('error', 'Data tidak ditemukan.');
+        }
+    
+        // Pola regex gabungan untuk mendeteksi XSS
+        $xssPattern = '/(&lt;|&gt;|&quot;|&amp;#\d+;|<script.*?>.*?<\/script>|javascript:|onerror=|onload=|onmouseover=|<iframe.*?>)/i';
+    
+        // Cek apakah ada indikasi XSS di masing-masing input
+        $xssDetected = [
+            'nama' => preg_match($xssPattern, $pabs->nama),
+            'nohp' => preg_match($xssPattern, $pabs->nohp),
+            'email' => preg_match($xssPattern, $pabs->email),
+            'jenis_pabrikasi' => preg_match($xssPattern, $pabs->jenis_pabrikasi),
+            'jenis_kendaraan' => preg_match($xssPattern, $pabs->jenis_kendaraan),
+            'isi' => preg_match($xssPattern, $pabs->isi),
+        ];
+    
+        return view('admin.pemesanan.pabsselengkapnya', compact('pabs', 'xssDetected'));
     }
 
     public function halamansewaselengkapnya($id)
     {
         $sewa = penyewaan::find($id);
-        return view('admin.pemesanan.sewaselengkapnya', compact('sewa'));
+        if (!$sewa) {
+            return back()->with('error', 'Data tidak ditemukan.');
+        }
+    
+        // Pola regex gabungan untuk mendeteksi XSS
+        $xssPattern = '/(&lt;|&gt;|&quot;|&amp;#\d+;|<script.*?>.*?<\/script>|javascript:|onerror=|onload=|onmouseover=|<iframe.*?>)/i';
+    
+        // Cek apakah ada indikasi XSS di masing-masing input
+        $xssDetected = [
+            'nama' => preg_match($xssPattern, $sewa->nama),
+            'nohp' => preg_match($xssPattern, $sewa->nohp),
+            'email' => preg_match($xssPattern, $sewa->email),
+            'jenis_kendaraan' => preg_match($xssPattern, $sewa->jenis_kendaraan),
+            'jumlah_kebutuhan' => preg_match($xssPattern, $sewa->jumlah_kebutuhan),
+            'durasi' => preg_match($xssPattern, $sewa->durasi),
+            'satuan_durasi' => preg_match($xssPattern, $sewa->satuan_durasi),
+            'awal_penyewaan' => preg_match($xssPattern, $sewa->awal_penyewaan),
+            'dengan_tim' => preg_match($xssPattern, $sewa->dengan_tim),
+            'catatan_tambahan' => preg_match($xssPattern, $sewa->catatan_tambahan),
+        ];
+    
+        return view('admin.pemesanan.sewaselengkapnya', compact('sewa', 'xssDetected'));
     }
 
     public function halamanperbselengkapnya($id)
     {
         $perb = perbaikan::find($id);
-        return view('admin.pemesanan.perbselengkapnya', compact('perb'));
+        if (!$perb) {
+            return back()->with('error', 'Data tidak ditemukan.');
+        }
+    
+        // Pola regex gabungan untuk mendeteksi XSS
+        $xssPattern = '/(&lt;|&gt;|&quot;|&amp;#\d+;|<script.*?>.*?<\/script>|javascript:|onerror=|onload=|onmouseover=|<iframe.*?>)/i';
+    
+        // Cek apakah ada indikasi XSS di masing-masing input
+        $xssDetected = [
+            'nama' => preg_match($xssPattern, $perb->nama),
+            'nohp' => preg_match($xssPattern, $perb->nohp),
+            'email' => preg_match($xssPattern, $perb->email),
+            'nopol' => preg_match($xssPattern, $perb->nopol),
+            'jenis' => preg_match($xssPattern, $perb->jenis),
+            'kendala_kendaraan' => preg_match($xssPattern, $perb->kendala_kendaraan),
+            'catatan_tambahan' => preg_match($xssPattern, $perb->catatan_tambahan),
+        ];
+    
+        return view('admin.pemesanan.perbselengkapnya', compact('perb', 'xssDetected'));
     }   
     
     public function halamansupselengkapnya($id)
     {
         $sup = supplier::find($id);
-        return view('admin.pemesanan.supselengkapnya', compact('sup'));
+        if (!$sup) {
+            return back()->with('error', 'Data tidak ditemukan.');
+        }
+    
+        // Pola regex gabungan untuk mendeteksi XSS
+        $xssPattern = '/(&lt;|&gt;|&quot;|&amp;#\d+;|<script.*?>.*?<\/script>|javascript:|onerror=|onload=|onmouseover=|<iframe.*?>)/i';
+    
+        // Cek apakah ada indikasi XSS di masing-masing input
+        $xssDetected = [
+            'nama' => preg_match($xssPattern, $sup->nama),
+            'nohp' => preg_match($xssPattern, $sup->nohp),
+            'email' => preg_match($xssPattern, $sup->email),
+            'nama_barang' => preg_match($xssPattern, $sup->nama_barang),
+            'merek_spesifikasi' => preg_match($xssPattern, $sup->merek_spesifikasi),
+            'jumlah' => preg_match($xssPattern, $sup->jumlah),
+            'satuan' => preg_match($xssPattern, $sup->satuan),
+            'tanggal_kebutuhan' => preg_match($xssPattern, $sup->tanggal_kebutuhan),
+            'catatan' => preg_match($xssPattern, $sup->catatan),
+        ];
+    
+        return view('admin.pemesanan.supselengkapnya', compact('sup', 'xssDetected'));
     }
 
     //halaman tambah
@@ -151,7 +261,7 @@ class pageAdmin extends Controller
     
         // Simpan ke database
         if ($kendaraan->save()) {
-            return redirect()->route('admin.tambahlayanan')->with('success', 'Data berhasil ditambahkan!');
+            return redirect()->route('admin.layanan')->with('success', 'Data berhasil ditambahkan!');
         } else {
             return redirect()->route('admin.tambahlayanan')->with('failed', 'Gagal menambahkan data.');
         }
@@ -179,7 +289,7 @@ class pageAdmin extends Controller
     
         // Simpan ke database
         if ($galeri->save()) {
-            return redirect()->route('admin.tambahgaleri')->with('success', 'Data berhasil ditambahkan!');
+            return redirect()->route('admin.galeri')->with('success', 'Data berhasil ditambahkan!');
         } else {
             return redirect()->route('admin.tambahgaleri')->with('failed', 'Gagal menambahkan data.');
         }
@@ -209,7 +319,7 @@ class pageAdmin extends Controller
         if ($mitra->save()) {
             return redirect()->route('admin.mitra')->with('success', 'Data berhasil ditambahkan!');
         } else {
-            return redirect()->route('admin.mitra')->with('failed', 'Gagal menambahkan data.');
+            return redirect()->route('admin.tambahmitra')->with('failed', 'Gagal menambahkan data.');
         }
     }
 
@@ -254,9 +364,9 @@ class pageAdmin extends Controller
 
         // Simpan ke database
         if ($layanankendaraan->save()) {
-            return back()->with('success', 'Data berhasil diupdate!');
+            return redirect()->route('admin.layanan')->with('success', 'Data berhasil diupdate!');
         } else {
-            return back()->with('failed', 'Data gagal diupdate!');
+            return redirect()->route('admin.tambahlayanan')->with('failed', 'Data gagal diupdate!');
         }
     }
 
@@ -298,9 +408,9 @@ class pageAdmin extends Controller
 
         // Simpan ke database
         if ($galeri->save()) {
-            return back()->with('success', 'Data berhasil diupdate!');
+            return redirect()->route('admin.galeri')->with('success', 'Data berhasil diupdate!');
         } else {
-            return back()->with('failed', 'Data gagal diupdate!');
+            return redirect()->route('admin.tambahgaleri')->with('failed', 'Data gagal diupdate!');
         }
     }
 
@@ -342,9 +452,9 @@ class pageAdmin extends Controller
 
         // Simpan ke database
         if ($mitra->save()) {
-            return back()->with('success', 'Data berhasil diupdate!');
+            return redirect()->route('admin.mitra')->with('success', 'Data berhasil diupdate!');
         } else {
-            return back()->with('failed', 'Data gagal diupdate!');
+            return redirect()->route('admin.tambahmitra')->with('failed', 'Data gagal diupdate!');
         }
     }
 
@@ -379,9 +489,9 @@ class pageAdmin extends Controller
 
         $kontak->delete();
         if ($kontak) {
-            return back()->with('success', 'Data berhasil dihapus!');
+            return redirect()->route('admin.kontak')->with('success', 'Data berhasil dihapus!');
         } else {
-            return back()->with('failed', 'Gagal menghapus Data!');
+            return redirect()->route('admin.kontak')->with('failed', 'Gagal menghapus Data!');
         }
     }
     
@@ -403,9 +513,9 @@ class pageAdmin extends Controller
 
         $eks->delete();
         if ($eks) {
-            return back()->with('success', 'Data berhasil dihapus!');
+            return redirect()->route('admin.ekspedisi')->with('success', 'Data berhasil dihapus!');
         } else {
-            return back()->with('failed', 'Gagal menghapus Data!');
+            return redirect()->route('admin.ekspedisi')->with('failed', 'Gagal menghapus Data!');
         }
     }
     
@@ -415,9 +525,9 @@ class pageAdmin extends Controller
 
         $pabrikasi->delete();
         if ($pabrikasi) {
-            return back()->with('success', 'Data berhasil dihapus!');
+            return redirect()->route('admin.pabrikasi')->with('success', 'Data berhasil dihapus!');
         } else {
-            return back()->with('failed', 'Gagal menghapus Data!');
+            return redirect()->route('admin.pabrikasi')->with('failed', 'Gagal menghapus Data!');
         }
     }
 
@@ -427,9 +537,9 @@ class pageAdmin extends Controller
 
         $penyewaan->delete();
         if ($penyewaan) {
-            return back()->with('success', 'Data berhasil dihapus!');
+            return redirect()->route('admin.penyewaan')->with('success', 'Data berhasil dihapus!');
         } else {
-            return back()->with('failed', 'Gagal menghapus Data!');
+            return redirect()->route('admin.penyewaan')->with('failed', 'Gagal menghapus Data!');
         }
     }
 
@@ -439,9 +549,9 @@ class pageAdmin extends Controller
 
         $perbaikan->delete();
         if ($perbaikan) {
-            return back()->with('success', 'Data berhasil dihapus!');
+            return redirect()->route('admin.perbaikan')->with('success', 'Data berhasil dihapus!');
         } else {
-            return back()->with('failed', 'Gagal menghapus Data!');
+            return redirect()->route('admin.perbaikan')->with('failed', 'Gagal menghapus Data!');
         }
     }
 
@@ -451,9 +561,9 @@ class pageAdmin extends Controller
 
         $supplier->delete();
         if ($supplier) {
-            return back()->with('success', 'Data berhasil dihapus!');
+            return redirect()->route('admin.supplier')->with('success', 'Data berhasil dihapus!');
         } else {
-            return back()->with('failed', 'Gagal menghapus Data!');
+            return redirect()->route('admin.supplier')->with('failed', 'Gagal menghapus Data!');
         }
     }
 }

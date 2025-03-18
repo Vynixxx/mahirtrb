@@ -51,26 +51,43 @@
                             </nav>Detail
                         </h5>
                         <h5>Detail Pemesan</h5>
+                        @php
+                            $hasXss = array_sum($xssDetected) > 0;
+                        @endphp
+
                         <div class="form-group mb-3">
                             <label class="text-secondary mb-2">Nama Pemesan / Perusahaan</label>
                             <input class="form-control border border-secondary form-control" name="nama" required value="{{ $perb->nama }}" type="text">
+                            @if(!empty($xssDetected['nama']))
+                                <div class="text-danger">⚠️ Nama ini mengandung karakter mencurigakan!</div>
+                            @endif
                         </div>
+
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <label class="text-secondary mb-2">Nomor WhatsApp</label>
                                 <input class="form-control border border-secondary form-control" name="nohp" required value="{{ $perb->nohp }}" type="number">
+                                @if(!empty($xssDetected['nohp']))
+                                    <div class="text-danger">⚠️ Nomor ini mencurigakan!</div>
+                                @endif
                             </div>
                             <div class="col-md-6">
                                 <label class="text-secondary mb-2">Email</label>
                                 <input class="form-control border border-secondary form-control" name="email" required value="{{ $perb->email }}" type="email">
+                                @if(!empty($xssDetected['email']))
+                                    <div class="text-danger">⚠️ Email ini mencurigakan!</div>
+                                @endif
                             </div>
                         </div>
+
                         <h5>Detail Kendaraan</h5>
                         <div class="row">
                             <div class="col-md-6">
                                 <label class="text-secondary mb-2">Plat Nomor</label>
                                 <input class="form-control border border-secondary" name="nopol" required type="text" maxlength="12" id="nopol" value="{{ old('nopol', $perb->nopol) }}">
-                                @error('nopol') <span class="text-danger">{{ $message }}</span> @enderror
+                                @if(!empty($xssDetected['nopol']))
+                                    <div class="text-danger">⚠️ Plat nomor ini mencurigakan!</div>
+                                @endif
                             </div>
 
                             <script>
@@ -82,24 +99,71 @@
                             <div class="col-md-6">
                                 <label class="text-secondary mb-2">Jenis Kendaraan</label>
                                 <input class="form-control border border-secondary" name="jenis" required type="text" value="{{ old('jenis', $perb->jenis) }}">
-                                @error('jenis') <span class="text-danger">{{ $message }}</span> @enderror
+                                @if(!empty($xssDetected['jenis']))
+                                    <div class="text-danger">⚠️ Data ini mencurigakan!</div>
+                                @endif
                             </div>
                         </div>
 
                         <div class="form-group mt-3">
                             <label class="text-secondary mb-2">Kendala Kendaraan</label>
                             <textarea class="form-control border border-secondary" name="kendala_kendaraan" required>{{ old('kendala_kendaraan', $perb->kendala_kendaraan) }}</textarea>
-                            @error('kendala_kendaraan') <span class="text-danger">{{ $message }}</span> @enderror
+                            @if(!empty($xssDetected['kendala_kendaraan']))
+                                <div class="text-danger">⚠️ Deskripsi kendala mencurigakan!</div>
+                            @endif
                         </div>
 
                         <div class="form-group mt-3">
                             <label class="text-secondary mb-2">Catatan Tambahan <span class="text-danger">(Opsional)</span></label>
                             <textarea class="form-control border border-secondary" name="catatan_tambahan" placeholder="Tambahkan catatan jika diperlukan / Kosongkan saja">{{ old('catatan_tambahan', $perb->catatan_tambahan ? $perb->catatan_tambahan : 'Tidak ada catatan tambahan') }}</textarea>
-                            @error('catatan_tambahan') <span class="text-danger">{{ $message }}</span> @enderror
+                            @if(!empty($xssDetected['catatan_tambahan']))
+                                <div class="text-danger">⚠️ Catatan ini mencurigakan!</div>
+                            @endif
                         </div>
-                        <!-- Tombol Balas -->
-                        <button type="button" class="btn btn-primary mt-5" onclick="replyEmail()" title="Balas via Email"><i class="bi bi-envelope-at"></i></button>
-                        <button type="button" class="btn btn-success mt-5" onclick="replyWhatsApp()" title="Balas via WhatsApp"><i class="bi bi-whatsapp"></i></button>
+
+                        @if (!$hasXss)
+                            <!-- Tombol Balas -->
+                            <button type="button" class="btn btn-primary mt-5" onclick="replyEmail()" title="Balas via Email">
+                                <i class="bi bi-envelope-at"></i>
+                            </button>
+                            <button type="button" class="btn btn-success mt-5" onclick="replyWhatsApp()" title="Balas via WhatsApp">
+                                <i class="bi bi-whatsapp"></i>
+                            </button>
+                        @endif
+
+                        @if ($hasXss)
+                            <div class="alert alert-danger mt-4">
+                                ⚠️ Ditemukan karakter mencurigakan yang berpotensi sebagai serangan XSS. Disarankan untuk segera menghapus data ini.
+                            </div>
+
+                            <!-- Tombol Hapus (Memicu Modal) -->
+                            <button type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                <i class="bi bi-trash"></i> Hapus Data
+                            </button>
+
+                            <!-- Modal Konfirmasi Hapus -->
+                            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Apakah Anda yakin ingin menghapus data ini? Data yang dihapus tidak dapat dikembalikan.
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                            <form action="{{ route('admin.deleteperbaikan', $perb->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Hapus</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -132,8 +196,8 @@
           `Jenis Kendaraan: {{ $perb->jenis }}\n` +
           `Kendala Kendaraan: {{ $perb->kendala_kendaraan }}\n` +
           `Catatan Tambahan:\n{{ $perb->catatan_tambahan ? $perb->catatan_tambahan : 'Tidak ada catatan tambahan' }}\n\n` +
-          `Kami akan segera menindaklanjuti laporan ini. Jika ada informasi tambahan yang ingin Anda sampaikan, silakan balas email ini.\n\n` +
-          `Salam,\nMahir Trans Bersaudara`);
+          `Kami ingin memastikan bahwa kebutuhan Anda telah sesuai. Mohon konfirmasi atau beri tahu kami jika ada perubahan atau tambahan informasi.\n\n` +
+          `Kami siap membantu! Jangan ragu untuk membalas email ini.\n\nSalam,\nMahir Trans Bersaudara`);
 
       let mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
       window.location.href = mailtoLink;
@@ -147,7 +211,7 @@
           `Jenis Kendaraan: {{ $perb->jenis }}\n` +
           `Kendala Kendaraan: {{ $perb->kendala_kendaraan }}\n` +
           `Catatan Tambahan:\n{{ $perb->catatan_tambahan ? $perb->catatan_tambahan : 'Tidak ada catatan tambahan' }}\n\n` +
-          `Kami akan segera menindaklanjuti laporan ini. Jika ada informasi tambahan, silakan hubungi kami.\n\nSalam,\nMahir Trans Bersaudara`);
+          `Mohon konfirmasi apakah rincian ini sudah sesuai atau jika ada informasi tambahan yang perlu disampaikan.\n\nSalam,\nMahir Trans Bersaudara`);
 
       let whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
       window.open(whatsappLink, '_blank');

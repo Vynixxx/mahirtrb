@@ -112,7 +112,15 @@
                                         <div class="col-md-6">
                                             <label class="text-secondary mb-2">Email</label>
                                             <input class="form-control border border-secondary" name="email" required type="email">
-                                            <span class="text-danger">@error('email'){{ 'Kolom ini wajib diisi' }}@enderror</span>
+                                            @error('email')
+                                                    <div class="text-danger">
+                                                        @if ($message === 'Kolom ini wajib diisi.')
+                                                            Kolom ini wajib diisi.
+                                                        @else
+                                                            Format yang Anda masukkan salah.
+                                                        @endif
+                                                    </div>
+                                            @enderror
                                         </div>
                                     </div>
 

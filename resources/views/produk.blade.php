@@ -75,25 +75,36 @@
             </div>
         </nav>
         </div><!-- End Page Title -->
+        
+        <!-- Layanan Section -->
+        <section class="container py-5">
+            <div class="row g-4">
+                @foreach ($layanan as $p)
+                <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ $loop->index * 150 }}">
+                    <div class="card shadow-sm border-0 rounded-4 overflow-hidden service-card">
+                        <div class="ratio ratio-16x9"> 
+                            <img src="{{ asset('/images/' . $p->gambar) }}" class="img-fluid object-fit-cover" alt="{{ $p->nama }}">
+                        </div>
+                        <div class="card-body text-center">
+                            <h4 class="fw-bold">{{ $p->nama }}</h4>
+                            <p class="text-muted">{{ $p->isi }}</p>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </section>
 
-          <!-- layanan Section -->
-          <section class="container py-5">
-              <div class="row g-4">
-                  @foreach ($layanan as $p)
-                  <div class="col-md-4" data-aos="zoom-in-up" data-aos-delay="{{ $loop->index * 150 }}">
-                      <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
-                          <div class="ratio ratio-16x9"> 
-                              <img src="{{ asset('/images/' . $p->gambar) }}" class="img-fluid object-fit-cover" alt="{{ $p->nama }}">
-                          </div>
-                          <div class="card-body text-center">
-                              <h4 class="fw-bold">{{ $p->nama }}</h4>
-                              <p class="text-muted">{{ $p->isi }}</p>
-                          </div>
-                      </div>
-                  </div>
-                  @endforeach
-              </div>
-          </section>
+        <style>
+        /* Efek hover untuk layanan */
+        .service-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .service-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        </style>
 
           @include('testimoni')        
           <!-- Call to Action -->

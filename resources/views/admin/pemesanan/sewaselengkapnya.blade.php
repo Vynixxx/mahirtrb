@@ -51,18 +51,30 @@
                             </nav>Detail
                         </h5>
                         <h5>Detail Pemesan</h5>
+                        @php
+                            $hasXss = array_sum($xssDetected) > 0;
+                        @endphp
                         <div class="form-group mb-3">
                             <label class="text-secondary mb-2">Nama Pemesan / Perusahaan</label>
                             <input class="form-control border border-secondary form-control" name="nama" required value="{{ $sewa->nama }}" type="text">
+                            @if(!empty($xssDetected['nama']))
+                                <div class="text-danger">⚠️ Nama ini mengandung karakter mencurigakan!</div>
+                            @endif
                         </div>
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <label class="text-secondary mb-2">Nomor WhatsApp</label>
                                 <input class="form-control border border-secondary form-control" name="nohp" required value="{{ $sewa->nohp }}" type="number">
+                                @if(!empty($xssDetected['nohp']))
+                                    <div class="text-danger">⚠️ Nomor ini mencurigakan!</div>
+                                @endif
                             </div>
                             <div class="col-md-6">
                                 <label class="text-secondary mb-2">Email</label>
                                 <input class="form-control border border-secondary form-control" name="email" required value="{{ $sewa->email }}" type="email">
+                                @if(!empty($xssDetected['email']))
+                                    <div class="text-danger">⚠️ Email ini mencurigakan!</div>
+                                @endif
                             </div>
                         </div>
                         <h5>Detail Kebutuhan</h5>
@@ -81,10 +93,16 @@
                                         <option value="Truk Vakum" {{ old('jenis_kendaraan', $sewa->jenis_kendaraan) == 'Truk Vakum' ? 'selected' : '' }}>Truk Vakum</option>
                                         <option value="Tangki Air" {{ old('jenis_kendaraan', $sewa->jenis_kendaraan) == 'Tangki Air' ? 'selected' : '' }}>Tangki Air</option>
                                     </select>
+                                    @if(!empty($xssDetected['jenis_kendaraan']))
+                                        <div class="text-danger">⚠️ Data ini mencurigakan!</div>
+                                    @endif
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Jumlah Kebutuhan</label>
                                     <input type="number" class="form-control @error('jumlah_kebutuhan') is-invalid @enderror" name="jumlah_kebutuhan" required min="1" value="{{ old('jumlah_kebutuhan', $sewa->jumlah_kebutuhan) }}">
+                                    @if(!empty($xssDetected['jumlah_kebutuhan']))
+                                        <div class="text-danger">⚠️ Data ini mencurigakan!</div>
+                                    @endif
                                 </div>
                             </div>
 
@@ -100,10 +118,16 @@
                                             <option value="tahun" {{ old('satuan_durasi', $sewa->satuan_durasi) == 'tahun' ? 'selected' : '' }}>Tahun</option>
                                         </select>
                                     </div>
+                                    @if(!empty($xssDetected['durasi']) || !empty($xssDetected['satuan_durasi']))
+                                        <div class="text-danger">⚠️ Data ini mencurigakan!</div>
+                                    @endif
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Awal Penyewaan</label>
                                     <input type="date" class="form-control @error('awal_penyewaan') is-invalid @enderror" name="awal_penyewaan" required value="{{ old('awal_penyewaan', $sewa->awal_penyewaan) }}">
+                                    @if(!empty($xssDetected['awal_penyewaan']))
+                                        <div class="text-danger">⚠️ Data ini mencurigakan!</div>
+                                    @endif
                                 </div>
                             </div>
                             <div class="mb-3">
@@ -118,17 +142,60 @@
                                         {{ old('dengan_tim', $sewa->dengan_tim ?? '') == 'Tidak' ? 'checked' : '' }} required>
                                     <label class="form-check-label" for="denganTimTidak">Tidak</label>
                                 </div>
-                                @error('dengan_tim') 
-                                    <div class="invalid-feedback d-block">{{ $message }}</div> 
-                                @enderror
+                                @if(!empty($xssDetected['dengan_tim']))
+                                    <div class="text-danger">⚠️ Data ini mencurigakan!</div>
+                                @endif
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Catatan Tambahan <span class="text-danger">(Opsional)</span></label>
                                 <textarea class="form-control @error('catatan_tambahan') is-invalid @enderror" name="catatan_tambahan" placeholder="Tambahkan catatan jika diperlukan / Kosongkan saja">{{ old('catatan_tambahan', $sewa->catatan_tambahan ? $sewa->catatan_tambahan : 'Tidak ada catatan tambahan') }}</textarea>
+                                @if(!empty($xssDetected['catatan_tambahan']))
+                                    <div class="text-danger">⚠️ Catatan ini mencurigakan!</div>
+                                @endif
                             </div>
-                        <!-- Tombol Balas -->
-                        <button type="button" class="btn btn-primary mt-5" onclick="replyEmail()" title="Balas via Email"><i class="bi bi-envelope-at"></i></button>
-                        <button type="button" class="btn btn-success mt-5" onclick="replyWhatsApp()" title="Balas via WhatsApp"><i class="bi bi-whatsapp"></i></button>
+                            @if (!$hasXss)
+                                <!-- Tombol Balas -->
+                                <button type="button" class="btn btn-primary mt-5" onclick="replyEmail()" title="Balas via Email">
+                                    <i class="bi bi-envelope-at"></i>
+                                </button>
+                                <button type="button" class="btn btn-success mt-5" onclick="replyWhatsApp()" title="Balas via WhatsApp">
+                                    <i class="bi bi-whatsapp"></i>
+                                </button>
+                            @endif
+
+                            @if ($hasXss)
+                                <div class="alert alert-danger mt-4">
+                                    ⚠️ Ditemukan karakter mencurigakan yang berpotensi sebagai serangan XSS. Disarankan untuk segera menghapus data ini.
+                                </div>
+
+                                <!-- Tombol Hapus -->
+                                <button type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                    <i class="bi bi-trash"></i> Hapus Data
+                                </button>
+
+                                <!-- Modal Konfirmasi Hapus -->
+                                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Apakah Anda yakin ingin menghapus data ini? Data yang dihapus tidak dapat dikembalikan.
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                                <form action="{{ route('admin.deletepenyewaan', $sewa->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                     </div>
                 </div>
             </div>

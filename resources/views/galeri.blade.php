@@ -78,9 +78,11 @@
 
         <!-- Gallery Section -->
         <section id="galeri" class="gallery section">
-          <!-- Section Title -->
-            <h2 class="text-center mb-4" data-aos="fade-up"><span class="fw-bold text-primary">Galeri</span> Kami</h2>
-          <!-- End Section Title -->
+            <!-- Section Title -->
+            <h2 class="text-center mb-4" data-aos="fade-up">
+                <span class="fw-bold text-primary">Galeri</span> Kami
+            </h2>
+            <!-- End Section Title -->
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
                 <!-- Dropdown untuk memilih kategori -->
@@ -95,20 +97,31 @@
 
                 <!-- Kontainer untuk galeri -->
                 <div class="row g-3" id="gallery-container">
-                 @foreach($gambar as $gbr)
-                    <div class="col-lg-3 col-md-4">
-                        <div class="gallery-item position-relative">
-                            <a href="{{ asset('/images/' . $gbr->gambar) }}" class="glightbox" data-gallery="images-gallery">
-                                <div class="ratio ratio-1x1">
-                                    <img src="{{ asset('/images/' . $gbr->gambar) }}" alt="" class="img-fluid object-fit-cover w-100 h-100 rounded">
-                                </div>
-                            </a>
-                        </div>
-                    </div><!-- End Gallery Item -->
-                @endforeach
+                    @foreach($gambar as $gbr)
+                        <div class="col-6 col-sm-4 col-md-3 gallery-item" data-aos="fade-up" data-aos-delay="200">
+                            <div class="position-relative overflow-hidden rounded shadow-sm">
+                                <a href="{{ asset('/images/' . $gbr->gambar) }}" class="glightbox" data-gallery="images-gallery">
+                                    <div class="ratio ratio-1x1">
+                                        <img src="{{ asset('/images/' . $gbr->gambar) }}" alt="" class="img-fluid w-100 h-100 object-fit-cover rounded gallery-img">
+                                    </div>
+                                </a>
+                            </div>
+                        </div><!-- End Gallery Item -->
+                    @endforeach
                 </div>
             </div>
         </section><!-- /Gallery Section -->
+
+        <style>
+        /* Efek hover pada gambar */
+        .gallery-img {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        </style>
 
         <!-- Script AJAX untuk filter -->
         <script>
@@ -131,23 +144,27 @@
                         if (data.length === 0) {
                             galleryContainer.innerHTML = '<p class="text-center">Tidak ada gambar dalam kategori ini.</p>';
                         } else {
-                            data.forEach(item => {
+                            data.forEach((item, index) => {
+                                let delay = index * 100; // Tambahkan delay animasi agar lebih smooth
                                 let galleryItem = `
-                                    <div class="col-lg-3 col-md-4">
-                                        <div class="gallery-item position-relative">
+                                    <div class="col-6 col-sm-4 col-md-3 gallery-item" data-aos="fade-up" data-aos-delay="${delay}">
+                                        <div class="position-relative overflow-hidden rounded shadow-sm">
                                             <a href="/images/${item.gambar}" class="glightbox" data-gallery="images-gallery">
                                                 <div class="ratio ratio-1x1">
-                                                    <img src="/images/${item.gambar}" alt="" class="img-fluid object-fit-cover w-100 h-100 rounded">
+                                                    <img src="/images/${item.gambar}" alt="" class="img-fluid object-fit-cover w-100 h-100 rounded gallery-img">
                                                 </div>
                                             </a>
                                         </div>
                                     </div>
                                 `;
-                                galleryContainer.innerHTML += galleryItem;
+                                galleryContainer.insertAdjacentHTML('beforeend', galleryItem);
                             });
 
                             // Re-inisialisasi Glightbox setelah update konten
-                            lightbox.reload();
+                            setTimeout(() => {
+                                lightbox.reload();
+                                AOS.refresh(); // Pastikan animasi AOS tetap berfungsi
+                            }, 300);
                         }
                     })
                     .catch(error => console.error('Error:', error));

@@ -51,45 +51,110 @@
                             </nav>Detail
                         </h5>
                         <h5>Detail Pemesan</h5>
+                        @php
+                            $hasXss = array_sum($xssDetected) > 0;
+                        @endphp
+
                         <div class="form-group mb-3">
                             <label class="text-secondary mb-2">Nama Pemesan / Perusahaan</label>
                             <input class="form-control border border-secondary form-control" name="nama" required value="{{ $pabs->nama }}" type="text">
+                            @if(!empty($xssDetected['nama']))
+                                <div class="text-danger">⚠️ Nama ini mengandung karakter mencurigakan! Harap periksa atau hapus data ini.</div>
+                            @endif
                         </div>
+
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <label class="text-secondary mb-2">Nomor WhatsApp</label>
                                 <input class="form-control border border-secondary form-control" name="nohp" required value="{{ $pabs->nohp }}" type="number">
+                                @if(!empty($xssDetected['nohp']))
+                                    <div class="text-danger">⚠️ Nomor WhatsApp ini mencurigakan!</div>
+                                @endif
                             </div>
                             <div class="col-md-6">
                                 <label class="text-secondary mb-2">Email</label>
                                 <input class="form-control border border-secondary form-control" name="email" required value="{{ $pabs->email }}" type="email">
+                                @if(!empty($xssDetected['email']))
+                                    <div class="text-danger">⚠️ Email ini mencurigakan!</div>
+                                @endif
                             </div>
                         </div>
+
                         <h5>Detail Kebutuhan</h5>
                         <div class="row">
-                        <div class="col-md-12">
-                            <label class="text-secondary">Jenis Pabrikasi</label>
-                            <select class="form-select" name="jenis_pabrikasi" id="jenisPabrikasi" required>
-                                <option selected disabled>Pilih Jenis Pabrikasi</option>
-                                <option value="Material" {{ $pabs->jenis_pabrikasi == 'Material' ? 'selected' : '' }}>Material</option>
-                                <option value="Jasa" {{ $pabs->jenis_pabrikasi == 'Jasa' ? 'selected' : '' }}>Jasa</option>
-                                <option value="Material + Jasa" {{ $pabs->jenis_pabrikasi == 'Material + Jasa' ? 'selected' : '' }}>Material + Jasa</option>
-                            </select>
+                            <div class="col-md-12">
+                                <label class="text-secondary">Jenis Pabrikasi</label>
+                                <select class="form-select" name="jenis_pabrikasi" id="jenisPabrikasi" required>
+                                    <option selected disabled>Pilih Jenis Pabrikasi</option>
+                                    <option value="Material" {{ $pabs->jenis_pabrikasi == 'Material' ? 'selected' : '' }}>Material</option>
+                                    <option value="Jasa" {{ $pabs->jenis_pabrikasi == 'Jasa' ? 'selected' : '' }}>Jasa</option>
+                                    <option value="Material + Jasa" {{ $pabs->jenis_pabrikasi == 'Material + Jasa' ? 'selected' : '' }}>Material + Jasa</option>
+                                </select>
+                                @if(!empty($xssDetected['jenis_pabrikasi']))
+                                    <div class="text-danger">⚠️ Data ini mencurigakan!</div>
+                                @endif
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group mt-2">
-                        <label class="text-secondary mb-2">Jenis Kendaraan</label>
-                        <input class="form-control border border-secondary" name="jenis_kendaraan" required type="text" value="{{ $pabs->jenis_kendaraan }}">
-                    </div>
+                        <div class="form-group mt-2">
+                            <label class="text-secondary mb-2">Jenis Kendaraan</label>
+                            <input class="form-control border border-secondary" name="jenis_kendaraan" required type="text" value="{{ $pabs->jenis_kendaraan }}">
+                            @if(!empty($xssDetected['jenis_kendaraan']))
+                                <div class="text-danger">⚠️ Data ini mencurigakan!</div>
+                            @endif
+                        </div>
 
-                    <div class="form-group mt-3">
-                        <label class="text-secondary mb-2">Catatan Tambahan</label> <span class="text-danger">(Opsional)</span>
-                        <textarea class="form-control border border-secondary" name="isi">{{ old('isi', $pabs->isi) }}</textarea>
-                    </div>
-                        <!-- Tombol Balas -->
-                        <button type="button" class="btn btn-primary mt-5" onclick="replyEmail()" title="Balas via Email"><i class="bi bi-envelope-at"></i></button>
-                        <button type="button" class="btn btn-success mt-5" onclick="replyWhatsApp()" title="Balas via WhatsApp"><i class="bi bi-whatsapp"></i></button>
+                        <div class="form-group mt-3">
+                            <label class="text-secondary mb-2">Catatan Tambahan</label> <span class="text-danger">(Opsional)</span>
+                            <textarea class="form-control border border-secondary" name="isi">{{ old('isi', $pabs->isi) }}</textarea>
+                            @if(!empty($xssDetected['isi']))
+                                <div class="text-danger">⚠️ Catatan ini mencurigakan! Harap periksa atau hapus data ini.</div>
+                            @endif
+                        </div>
+
+                        @if (!$hasXss)
+                            <!-- Tombol Balas -->
+                            <button type="button" class="btn btn-primary mt-5" onclick="replyEmail()" title="Balas via Email">
+                                <i class="bi bi-envelope-at"></i>
+                            </button>
+                            <button type="button" class="btn btn-success mt-5" onclick="replyWhatsApp()" title="Balas via WhatsApp">
+                                <i class="bi bi-whatsapp"></i>
+                            </button>
+                        @endif
+
+                        @if ($hasXss)
+                            <div class="alert alert-danger mt-4">
+                                ⚠️ Ditemukan karakter mencurigakan yang berpotensi sebagai serangan XSS. Disarankan untuk segera menghapus data ini.
+                            </div>
+
+                            <!-- Tombol Hapus (Memicu Modal) -->
+                            <button type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                <i class="bi bi-trash"></i> Hapus Data
+                            </button>
+
+                            <!-- Modal Konfirmasi Hapus -->
+                            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Apakah Anda yakin ingin menghapus data ini? Data yang dihapus tidak dapat dikembalikan.
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                            <form action="{{ route('admin.deletepabrikasi', $pabs->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Hapus</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

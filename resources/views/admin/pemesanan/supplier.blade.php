@@ -40,17 +40,16 @@
   <div class="container">
         <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Penyewaan
+              <h5 class="card-title">Pemesanan Barang
               <nav>
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                   <li class="breadcrumb-item active">Pemesanan</li>
-                  <li class="breadcrumb-item active">Penyewaan</li>
+                  <li class="breadcrumb-item active">Pemesanan Barang</li>
                 </ol>
               </nav>  
               </h5>
 
-              <!-- Default Table -->
               <table class="table">
                 <thead>
                   <tr>
@@ -73,33 +72,36 @@
                       <button class="btn btn-outline-danger btn-delete" 
                               data-id="{{ $sup->id }}" 
                               data-nama="{{ $sup->nama }}"
-                              data-url="/admin/deletesupplier/{{ $sup->id }}"
+                              data-url="{{ route('admin.deletesupplier', $sup->id) }}"
                               title="Hapus">
-                        <i class="bi bi-trash3"></i>
+                          <i class="bi bi-trash3"></i>
                       </button>
                     </td>
                 </tr>
               @endforeach
                 </tbody>
               </table>
-              <!-- End Default Table Example -->
               <!-- Modal Konfirmasi Hapus -->
               <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      Apakah Anda yakin ingin menghapus pemesanan penyewaan dari <b id="sup"></b>?
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                      <a id="confirmDelete" class="btn btn-danger">Hapus</a>
-                    </div>
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                              Apakah Anda yakin ingin menghapus data pemesan barang <b id="namaSupplier"></b>?
+                          </div>
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                              <form id="deleteForm" method="POST">
+                                  @csrf
+                                  @method('DELETE')
+                                  <button type="submit" class="btn btn-danger">Hapus</button>
+                              </form>
+                          </div>
+                      </div>
                   </div>
-                </div>
               </div>
             </div>
           </div>
@@ -125,21 +127,23 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      let deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
-      
-      document.querySelectorAll(".btn-delete").forEach(button => {
-        button.addEventListener("click", function () {
-          let kendaraanNama = this.getAttribute("data-nama");
-          let deleteUrl = this.getAttribute("data-url");
+        let deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+        let deleteForm = document.getElementById("deleteForm");
 
-          document.getElementById("sup").innerText = kendaraanNama;
-          document.getElementById("confirmDelete").setAttribute("href", deleteUrl);
+        document.querySelectorAll(".btn-delete").forEach(button => {
+            button.addEventListener("click", function () {
+                let supplierNama = this.getAttribute("data-nama");
+                let deleteUrl = this.getAttribute("data-url");
 
-          deleteModal.show();
+                document.getElementById("namaSupplier").innerText = supplierNama;
+                deleteForm.setAttribute("action", deleteUrl);
+
+                deleteModal.show();
+            });
         });
-      });
     });
-  </script>
+</script>
+
 
 </body>
 

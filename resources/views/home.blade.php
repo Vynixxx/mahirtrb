@@ -265,37 +265,37 @@
     </style>
     </section><!-- layanan section -->
 
-    <!-- Gallery Section -->
+   <!-- Gallery Section -->
     <section id="galeri" class="gallery section">
 
-      <!-- Section Title -->
-      <div class="container section-title d-flex justify-content-between align-items-center flex-wrap gap-2" data-aos="fade-up">
-          <div>
-              <h2 class="mb-0">Galeri</h2>
-              <div><span>Dokumentasi</span></div>
-          </div>
-          <a href="{{ route('galeri') }}">Selengkapnya <i class="bi bi-arrow-right"></i></a>
-      </div>
-      <!-- End Section Title -->
+    <!-- Section Title -->
+    <div class="container section-title d-flex justify-content-between align-items-center flex-wrap gap-2" data-aos="fade-up">
+        <div>
+            <h2 class="mb-0">Galeri</h2>
+            <div><span>Dokumentasi</span></div>
+        </div>
+        <a href="{{ route('galeri') }}">Selengkapnya <i class="bi bi-arrow-right"></i></a>
+    </div>
+    <!-- End Section Title -->
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-      <div class="row g-3">
-          @foreach($gambar as $gbr)
-              <div class="col-lg-3 col-md-4">
-                  <div class="gallery-item position-relative">
-                      <a href="{{ asset('/images/' . $gbr->gambar) }}" class="glightbox" data-gallery="images-gallery">
-                          <div class="ratio ratio-1x1">
-                              <img src="{{ asset('/images/' . $gbr->gambar) }}" alt="" class="img-fluid object-fit-cover w-100 h-100 rounded">
-                          </div>
-                      </a>
-                  </div>
-              </div><!-- End Gallery Item -->
-          @endforeach
-      </div>
-      </div>
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row g-3">
+            @foreach($gambar as $gbr)
+                <div class="col-6 col-sm-4 col-md-3">
+                    <div class="gallery-item position-relative">
+                        <a href="{{ asset('/images/' . $gbr->gambar) }}" class="glightbox" data-gallery="images-gallery">
+                            <div class="ratio ratio-1x1">
+                                <img src="{{ asset('/images/' . $gbr->gambar) }}" alt="" class="img-fluid rounded object-fit-cover">
+                            </div>
+                        </a>
+                    </div>
+                </div><!-- End Gallery Item -->
+            @endforeach
+        </div>
+    </div>
 
     </section><!-- /Gallery Section -->
+
 
     <!-- Faq Section -->
     <section id="faq" class="faq section light-background">

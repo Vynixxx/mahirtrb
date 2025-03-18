@@ -95,7 +95,15 @@
                                         <div class="col-md-6">
                                             <label class="text-secondary mb-2">Email</label>
                                             <input class="form-control border border-secondary" name="email" required type="email">
-                                            @error('email') <span class="text-danger">{{ 'Kolom ini wajib diisi.'}}</span> @enderror
+                                            @error('email')
+                                                    <span class="text-danger">
+                                                        @if ($message === 'Kolom ini wajib diisi.')
+                                                            Kolom ini wajib diisi.
+                                                        @else
+                                                            Format yang Anda masukkan salah.
+                                                        @endif
+                                                    </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <h5>Detail Kebutuhan</h5>
@@ -128,13 +136,12 @@
                                         <div class="col-md-6">
                                             <label class="text-secondary mb-2">Tanggal Kebutuhan</label>
                                             <input type="date" class="form-control" name="tanggal_kebutuhan" required>
-                                            @error('tanggal_kebutuhan') <span class="text-danger">{{ 'Kolom ini wajib diisi.'}}</span> @enderror
+                                            @error('tanggal_kebutuhan') <span class="text-danger">{{ 'Tanggal ini wajib diisi.'}}</span> @enderror
                                         </div>
                                     </div>
                                     <div class="form-group mt-3">
                                         <label class="text-secondary mb-2">Catatan Tambahan <span class="text-danger">(Opsional)</span></label>
                                         <textarea class="form-control" name="catatan" rows="3" placeholder="Tambahkan catatan jika diperlukan / Kosongkan saja"></textarea>
-                                        @error('catatan') <span class="text-danger">{{ 'Kolom ini wajib diisi.'}}</span> @enderror
                                     </div>
                                     <button type="button" class="btn btn-success mt-5 w-100" data-bs-toggle="modal" data-bs-target="#confirmModalSupplier">
                                         <i class="bi bi-cart"></i> Pesan Sekarang

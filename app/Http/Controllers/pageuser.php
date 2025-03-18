@@ -131,10 +131,15 @@ class pageuser extends Controller
         // Validasi input
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
+            'email' => 'required|email|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
             'whatsapp' => 'required|regex:/^[0-9]+$/|min:10|max:15',
             'subject' => 'required|string|max:255',
             'message' => 'required|string|min:10',
+        ],
+        [
+            'email.required' => 'Kolom ini wajib diisi.',
+            'email.email' => 'Format yang Anda masukkan salah.',
+            'email.regex' => 'Format yang Anda masukkan salah.',
         ]);
 
         try {
@@ -145,14 +150,17 @@ class pageuser extends Controller
             if (preg_match('/^08[0-9]{8,12}$/', $whatsapp)) {
                 $whatsapp = '62' . substr($whatsapp, 1); // Ubah "08xxxxxx" menjadi "62xxxxxx"
             }
+            // Escape karakter spesial sebelum menyimpan ke database
+            $safeData = [
+                'name' => htmlspecialchars($request->name, ENT_QUOTES, 'UTF-8'),
+                'email' => htmlspecialchars($request->email, ENT_QUOTES, 'UTF-8'),
+                'whatsapp' => $whatsapp, // Tidak perlu htmlspecialchars karena hanya angka
+                'subject' => htmlspecialchars($request->subject, ENT_QUOTES, 'UTF-8'),
+                'message' => htmlspecialchars($request->message, ENT_QUOTES, 'UTF-8'),
+            ];
+    
             // Simpan ke database
-            kontak::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'whatsapp' => $whatsapp,
-                'subject' => $request->subject,
-                'message' => $request->message,
-            ]);
+            kontak::create($safeData);
 
             return back()->with('success', 'Pesan Anda telah dikirim! Kami segera menghubungi Anda.');
         } catch (Exception $e) {
@@ -166,12 +174,17 @@ class pageuser extends Controller
         $request->validate([
             'nama' => 'required|string|max:255',
             'nohp' => 'required|regex:/^[0-9]+$/|min:10|max:15',
-            'email' => 'required|email|max:255',
+            'email' => 'required|email|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
             'jenis' => 'required|string|in:Truk Foco,Crane,Dozer,Lowbed,Triller,Truk Kepala,Truk Tandem,Truk Vakum,Tangki Air',
             'jml' => 'required|integer|min:1',
             'awal' => 'required|date',
             'akhir' => 'required|date|after_or_equal:awal',
             'isi' => 'nullable|string'
+        ],
+        [
+            'email.required' => 'Kolom ini wajib diisi.',
+            'email.email' => 'Format yang Anda masukkan salah.',
+            'email.regex' => 'Format yang Anda masukkan salah.',
         ]);
 
         try {
@@ -183,17 +196,21 @@ class pageuser extends Controller
                 $nohp = '62' . substr($nohp, 1); // Ubah "08xxxxxx" menjadi "62xxxxxx"
             }
 
-            // Simpan data ke database
-            ekspedisi::create([
-                'nama' => $request->nama,
-                'nohp' => $nohp,
-                'email' => $request->email,
-                'jenis' => $request->jenis,
-                'jml' => $request->jml,
-                'awal' => $request->awal,
-                'akhir' => $request->akhir,
-                'isi' => $request->isi,
-            ]);
+            
+        // Escape karakter spesial sebelum menyimpan ke database
+        $safeData = [
+            'nama' => htmlspecialchars($request->nama, ENT_QUOTES, 'UTF-8'),
+            'nohp' => $nohp, // Tidak perlu htmlspecialchars karena hanya angka
+            'email' => htmlspecialchars($request->email, ENT_QUOTES, 'UTF-8'),
+            'jenis' => htmlspecialchars($request->jenis, ENT_QUOTES, 'UTF-8'),
+            'jml' => $request->jml, // Pastikan ini integer
+            'awal' => $request->awal, // Sudah divalidasi sebagai tanggal
+            'akhir' => $request->akhir, // Sudah divalidasi sebagai tanggal
+            'isi' => htmlspecialchars($request->isi, ENT_QUOTES, 'UTF-8'),
+        ];
+
+        // Simpan data ke database
+        ekspedisi::create($safeData);
 
             return redirect()->route('home')->with('success', 'Pesanan Anda berhasil dibuat. Tim kami akan segera menghubungi Anda.');
         } catch (Exception $e) {
@@ -207,10 +224,15 @@ class pageuser extends Controller
         $request->validate([
             'nama' => 'required|string|max:255',
             'nohp' => 'required|regex:/^[0-9]+$/|min:10|max:15',
-            'email' => 'required|email|max:255',
+            'email' => 'required|email|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
             'jenis_pabrikasi' => 'required|string|in:Material,Jasa,Material + Jasa',
             'jenis_kendaraan' => 'required|string|max:255',
             'isi' => 'nullable|string',
+        ],
+        [
+            'email.required' => 'Kolom ini wajib diisi.',
+            'email.email' => 'Format yang Anda masukkan salah.',
+            'email.regex' => 'Format yang Anda masukkan salah.',
         ]);
 
         try {
@@ -222,15 +244,18 @@ class pageuser extends Controller
                 $nohp = '62' . substr($nohp, 1); // Ubah "08xxxxxx" menjadi "62xxxxxx"
             }
 
+            // Escape karakter spesial sebelum menyimpan ke database
+            $safeData = [
+                'nama' => htmlspecialchars($request->nama, ENT_QUOTES, 'UTF-8'),
+                'nohp' => $nohp, // Tidak perlu htmlspecialchars karena hanya angka
+                'email' => htmlspecialchars($request->email, ENT_QUOTES, 'UTF-8'),
+                'jenis_pabrikasi' => htmlspecialchars($request->jenis_pabrikasi, ENT_QUOTES, 'UTF-8'),
+                'jenis_kendaraan' => htmlspecialchars($request->jenis_kendaraan, ENT_QUOTES, 'UTF-8'),
+                'isi' => htmlspecialchars($request->isi, ENT_QUOTES, 'UTF-8'),
+            ];
+
             // Simpan data ke database
-            pabrikasi::create([
-                'nama' => $request->nama,
-                'nohp' => $nohp,
-                'email' => $request->email,
-                'jenis_pabrikasi' => $request->jenis_pabrikasi,
-                'jenis_kendaraan' => $request->jenis_kendaraan,
-                'isi' => $request->isi,
-            ]);
+            pabrikasi::create($safeData);
 
             return redirect()->route('home')->with('success', 'Pesanan Anda berhasil dibuat. Tim kami akan segera menghubungi Anda.');
         } catch (\Exception $e) {
@@ -244,7 +269,7 @@ class pageuser extends Controller
         $request->validate([
             'nama' => 'required|string|max:255',
             'nohp' => 'required|regex:/^[0-9]+$/|min:10|max:15',
-            'email' => 'required|email|max:255',
+            'email' => 'required|email|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
             'jenis_kendaraan' => 'required|string|max:255',
             'jumlah_kebutuhan' => 'required|integer|min:1',
             'durasi' => 'required|integer|min:1',
@@ -252,6 +277,11 @@ class pageuser extends Controller
             'awal_penyewaan' => 'required|date',
             'dengan_tim' => 'required|string', // Tambahkan validasi radio button
             'catatan_tambahan' => 'nullable|string',
+        ],
+        [
+            'email.required' => 'Kolom ini wajib diisi.',
+            'email.email' => 'Format yang Anda masukkan salah.',
+            'email.regex' => 'Format yang Anda masukkan salah.',
         ]);
 
         try {
@@ -261,19 +291,22 @@ class pageuser extends Controller
                 $nohp = '62' . substr($nohp, 1);
             }
 
+            // Escape karakter spesial sebelum menyimpan ke database
+            $safeData = [
+                'nama' => htmlspecialchars($request->nama, ENT_QUOTES, 'UTF-8'),
+                'nohp' => $nohp, // Tidak perlu htmlspecialchars karena hanya angka
+                'email' => htmlspecialchars($request->email, ENT_QUOTES, 'UTF-8'),
+                'jenis_kendaraan' => htmlspecialchars($request->jenis_kendaraan, ENT_QUOTES, 'UTF-8'),
+                'jumlah_kebutuhan' => $request->jumlah_kebutuhan, // Sudah integer, tidak perlu htmlspecialchars
+                'durasi' => $request->durasi, // Sudah integer, tidak perlu htmlspecialchars
+                'satuan_durasi' => htmlspecialchars($request->satuan_durasi, ENT_QUOTES, 'UTF-8'),
+                'awal_penyewaan' => $request->awal_penyewaan, // Format tanggal, tidak perlu htmlspecialchars
+                'dengan_tim' => htmlspecialchars($request->dengan_tim, ENT_QUOTES, 'UTF-8'),
+                'catatan_tambahan' => htmlspecialchars($request->catatan_tambahan, ENT_QUOTES, 'UTF-8'),
+            ];
+
             // Simpan ke database
-            penyewaan::create([
-                'nama' => $request->nama,
-                'nohp' => $nohp,
-                'email' => $request->email,
-                'jenis_kendaraan' => $request->jenis_kendaraan,
-                'jumlah_kebutuhan' => $request->jumlah_kebutuhan,
-                'durasi' => $request->durasi,
-                'satuan_durasi' => $request->satuan_durasi,
-                'awal_penyewaan' => $request->awal_penyewaan,
-                'dengan_tim' => $request->dengan_tim,
-                'catatan_tambahan' => $request->catatan_tambahan,
-            ]);
+            penyewaan::create($safeData);
 
             return redirect()->route('home')->with('success', 'Pesanan Anda berhasil dibuat. Tim kami akan segera menghubungi Anda.');
         } catch (Exception $e) {
@@ -287,11 +320,16 @@ class pageuser extends Controller
         $request->validate([
             'nama' => 'required|string|max:255',
             'nohp' => 'required|regex:/^[0-9]+$/|min:10|max:15',
-            'email' => 'required|email|max:255',
+            'email' => 'required|email|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
             'nopol' => 'required|string|max:12',
             'jenis' => 'required|string|max:255',
             'kendala_kendaraan' => 'required|string',
             'catatan_tambahan' => 'nullable|string',
+        ],
+        [
+            'email.required' => 'Kolom ini wajib diisi.',
+            'email.email' => 'Format yang Anda masukkan salah.',
+            'email.regex' => 'Format yang Anda masukkan salah.',
         ]);
 
         try {
@@ -304,16 +342,19 @@ class pageuser extends Controller
             // Konversi plat nomor menjadi huruf besar
             $nopol = strtoupper(trim($request->nopol));
 
-            // Simpan data ke database
-            perbaikan::create([
-                'nama' => $request->nama,
-                'nohp' => $nohp,
-                'email' => $request->email,
-                'nopol' => $nopol,
-                'jenis' => $request->jenis,
-                'kendala_kendaraan' => $request->kendala_kendaraan,
-                'catatan_tambahan' => $request->catatan_tambahan,
-            ]);
+            // Escape karakter spesial sebelum menyimpan ke database
+            $safeData = [
+                'nama' => htmlspecialchars($request->nama, ENT_QUOTES, 'UTF-8'),
+                'nohp' => $nohp, // Tidak perlu htmlspecialchars karena hanya angka
+                'email' => htmlspecialchars($request->email, ENT_QUOTES, 'UTF-8'),
+                'nopol' => htmlspecialchars($nopol, ENT_QUOTES, 'UTF-8'),
+                'jenis' => htmlspecialchars($request->jenis, ENT_QUOTES, 'UTF-8'),
+                'kendala_kendaraan' => htmlspecialchars($request->kendala_kendaraan, ENT_QUOTES, 'UTF-8'),
+                'catatan_tambahan' => htmlspecialchars($request->catatan_tambahan, ENT_QUOTES, 'UTF-8'),
+            ];
+
+            // Simpan ke database
+            perbaikan::create($safeData);
 
             return redirect()->route('home')->with('success', 'Pesanan Anda berhasil dibuat. Tim kami akan segera menghubungi Anda.');
         } catch (Exception $e) {
@@ -327,15 +368,20 @@ class pageuser extends Controller
         $request->validate([
             'nama' => 'required|string|max:255',
             'nohp' => 'required|regex:/^[0-9]+$/|min:10|max:15',
-            'email' => 'required|email|max:255',
+            'email' => 'required|email|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
             'nama_barang' => 'required|string|max:255',
             'merek_spesifikasi' => 'nullable|string|max:255',
             'jumlah' => 'required|integer|min:1',
             'satuan' => 'required|string|in:unit,liter,kilogram,meter',
             'tanggal_kebutuhan' => 'required|date',
             'catatan' => 'nullable|string',
+        ],
+        [
+            'email.required' => 'Kolom ini wajib diisi.',
+            'email.email' => 'Format yang Anda masukkan salah.',
+            'email.regex' => 'Format yang Anda masukkan salah.',
         ]);
-
+        
         try {
             // Format nomor WhatsApp
             $nohp = trim($request->nohp);
@@ -343,18 +389,21 @@ class pageuser extends Controller
                 $nohp = '62' . substr($nohp, 1);
             }
 
+            // Escape karakter spesial sebelum menyimpan ke database
+            $safeData = [
+                'nama' => htmlspecialchars($request->nama, ENT_QUOTES, 'UTF-8'),
+                'nohp' => $nohp, // Tidak perlu htmlspecialchars karena hanya angka
+                'email' => htmlspecialchars($request->email, ENT_QUOTES, 'UTF-8'),
+                'nama_barang' => htmlspecialchars($request->nama_barang, ENT_QUOTES, 'UTF-8'),
+                'merek_spesifikasi' => htmlspecialchars($request->merek_spesifikasi, ENT_QUOTES, 'UTF-8'),
+                'jumlah' => $request->jumlah, // Integer, tidak perlu htmlspecialchars
+                'satuan' => htmlspecialchars($request->satuan, ENT_QUOTES, 'UTF-8'),
+                'tanggal_kebutuhan' => $request->tanggal_kebutuhan, // Date, tidak perlu htmlspecialchars
+                'catatan' => htmlspecialchars($request->catatan, ENT_QUOTES, 'UTF-8'),
+            ];
+
             // Simpan data ke database
-            supplier::create([
-                'nama' => $request->nama,
-                'nohp' => $nohp,
-                'email' => $request->email,
-                'nama_barang' => $request->nama_barang,
-                'merek_spesifikasi' => $request->merek_spesifikasi,
-                'jumlah' => $request->jumlah,
-                'satuan' => $request->satuan,
-                'tanggal_kebutuhan' => $request->tanggal_kebutuhan,
-                'catatan' => $request->catatan,
-            ]);
+            supplier::create($safeData);
 
             return redirect()->route('home')->with('success', 'Pesanan Anda berhasil dibuat. Tim kami akan segera menghubungi Anda.');
         } catch (\Exception $e) {

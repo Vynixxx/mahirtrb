@@ -175,7 +175,7 @@
             .line {
                 width: 5px;
                 height: 50px;
-                background: gray;
+                background: linear-gradient(to bottom, gray, lightgray);
                 margin: 10px 0;
             }
             

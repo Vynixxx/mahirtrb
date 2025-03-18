@@ -75,9 +75,9 @@
                       <button class="btn btn-outline-danger btn-delete" 
                               data-id="{{ $lk->id }}" 
                               data-nama="{{ $lk->nama }}"
-                              data-url="/admin/deletelayanan/{{ $lk->id }}"
+                              data-url="{{ route('admin.deletelayanan', $lk->id) }}"
                               title="Hapus">
-                        <i class="bi bi-trash3"></i>
+                          <i class="bi bi-trash3"></i>
                       </button>
                     </td>
                 </tr>
@@ -87,21 +87,25 @@
               <!-- End Default Table Example -->
               <!-- Modal Konfirmasi Hapus -->
               <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      Apakah Anda yakin ingin menghapus <b id="namaKendaraan"></b> ini?
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                      <a id="confirmDelete" class="btn btn-danger">Hapus</a>
-                    </div>
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                              Apakah Anda yakin ingin menghapus layanan <b id="namaLayanan"></b> ini?
+                          </div>
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                              <form id="deleteForm" method="POST">
+                                  @csrf
+                                  @method('DELETE')
+                                  <button type="submit" class="btn btn-danger">Hapus</button>
+                              </form>
+                          </div>
+                      </div>
                   </div>
-                </div>
               </div>
             </div>
           </div>
@@ -126,22 +130,24 @@
   <script src="{{ asset('assetsadmin/js/main.js') }}"></script>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      let deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
-      
-      document.querySelectorAll(".btn-delete").forEach(button => {
-        button.addEventListener("click", function () {
-          let kendaraanNama = this.getAttribute("data-nama");
-          let deleteUrl = this.getAttribute("data-url");
+      document.addEventListener("DOMContentLoaded", function () {
+          let deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+          let deleteForm = document.getElementById("deleteForm");
 
-          document.getElementById("namaKendaraan").innerText = kendaraanNama;
-          document.getElementById("confirmDelete").setAttribute("href", deleteUrl);
+          document.querySelectorAll(".btn-delete").forEach(button => {
+              button.addEventListener("click", function () {
+                  let layananNama = this.getAttribute("data-nama");
+                  let deleteUrl = this.getAttribute("data-url");
 
-          deleteModal.show();
-        });
+                  document.getElementById("namaLayanan").innerText = layananNama;
+                  deleteForm.setAttribute("action", deleteUrl); // Set action ke form
+
+                  deleteModal.show();
+              });
+          });
       });
-    });
   </script>
+
 
 </body>
 

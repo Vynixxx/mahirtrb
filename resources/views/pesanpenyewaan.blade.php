@@ -99,21 +99,31 @@
 
                                     <div class="mb-3">
                                         <label class="form-label">Nama Pemesan / Perusahaan</label>
-                                        <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" required value="{{ old('nama') }}">
-                                        @error('nama') <div class="invalid-feedback">{{ 'Kolom ini wajib diisi.' }}</div> @enderror
+                                        <input type="text" class="form-control border border-secondary" name="nama" required value="{{ old('nama') }}">
+                                        @error('nama') <span class="text-danger">{{ 'Kolom ini wajib diisi.' }}</span> @enderror
                                     </div>
 
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Nomor WhatsApp</label>
-                                            <input type="number" class="form-control @error('nohp') is-invalid @enderror" name="nohp" required value="{{ old('nohp') }}">
-                                            @error('nohp') <div class="invalid-feedback">{{ 'Kolom ini wajib diisi.' }}</div> @enderror
+                                            <input type="number" class="form-control border border-secondary" name="nohp" required value="{{ old('nohp') }}">
+                                            @error('nohp') <span class="text-danger">{{ 'Kolom ini wajib diisi.' }}</span> @enderror
                                         </div>
 
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Email</label>
-                                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" required value="{{ old('email') }}">
-                                            @error('email') <div class="invalid-feedback">{{ 'Kolom ini wajib diisi.' }}</div> @enderror
+                                            <input type="email" class="form-control border border-secondary" 
+                                                name="email" required value="{{ old('email') }}">
+                                            
+                                                @error('email')
+                                                    <span class="text-danger">
+                                                        @if ($message === 'Kolom ini wajib diisi.')
+                                                            Kolom ini wajib diisi.
+                                                        @else
+                                                            Format yang Anda masukkan salah.
+                                                        @endif
+                                                    </span>
+                                                @enderror
                                         </div>
                                     </div>
 
@@ -122,7 +132,7 @@
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Jenis Kendaraan</label>
-                                            <select class="form-select @error('jenis_kendaraan') is-invalid @enderror" name="jenis_kendaraan" required>
+                                            <select class="form-control border border-secondary" name="jenis_kendaraan" required>
                                                 <option value="" disabled selected>Pilih Jenis Kendaraan</option>
                                                 <option value="Truk Foco">Truk Foco</option>
                                                 <option value="Crane">Crane</option>
@@ -134,13 +144,13 @@
                                                 <option value="Truk Vakum">Truk Vakum</option>
                                                 <option value="Tangki Air">Tangki Air</option>
                                             </select>
-                                            @error('jenis_kendaraan') <div class="invalid-feedback">{{ 'Kolom ini wajib diisi.' }}</div> @enderror
+                                            @error('jenis_kendaraan') <span class="text-danger">{{ 'Kolom ini wajib diisi.' }}</span> @enderror
                                         </div>
 
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Jumlah Kebutuhan</label>
-                                            <input type="number" class="form-control @error('jumlah_kebutuhan') is-invalid @enderror" name="jumlah_kebutuhan" required min="1" value="{{ old('jumlah_kebutuhan') }}">
-                                            @error('jumlah_kebutuhan') <div class="invalid-feedback">{{ 'Kolom ini wajib diisi.' }}</div> @enderror
+                                            <input type="number" class="form-control border border-secondary" name="jumlah_kebutuhan" required min="1" value="{{ old('jumlah_kebutuhan') }}">
+                                            @error('jumlah_kebutuhan') <span class="text-danger">{{ 'Kolom ini wajib diisi.' }}</span> @enderror
                                         </div>
                                     </div>
 
@@ -148,22 +158,22 @@
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Durasi Penyewaan</label>
                                             <div class="input-group">
-                                                <input type="number" class="form-control @error('durasi') is-invalid @enderror" name="durasi" required min="1" value="{{ old('durasi') }}">
-                                                <select class="form-select @error('satuan_durasi') is-invalid @enderror" name="satuan_durasi">
+                                                <input type="number" class="form-control border border-secondary" name="durasi" required min="1" value="{{ old('durasi') }}">
+                                                <select class="form-control border border-secondary" name="satuan_durasi">
                                                     <option value="hari" {{ old('satuan_durasi') == 'hari' ? 'selected' : '' }}>Hari</option>
                                                     <option value="minggu" {{ old('satuan_durasi') == 'minggu' ? 'selected' : '' }}>Minggu</option>
                                                     <option value="bulan" {{ old('satuan_durasi') == 'bulan' ? 'selected' : '' }}>Bulan</option>
                                                     <option value="tahun" {{ old('satuan_durasi') == 'tahun' ? 'selected' : '' }}>Tahun</option>
                                                 </select>
                                             </div>
-                                            @error('durasi') <div class="invalid-feedback">{{ 'Kolom ini wajib diisi.' }}</div> @enderror
-                                            @error('satuan_durasi') <div class="invalid-feedback">{{ 'Kolom ini wajib diisi.' }}</div> @enderror
+                                            @error('durasi') <span class="text-danger">{{ 'Kolom ini wajib diisi.' }}</span> @enderror
+                                            @error('satuan_durasi') <span class="text-danger">{{ 'Kolom ini wajib diisi.' }}</span> @enderror
                                         </div>
 
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Awal Penyewaan</label>
-                                            <input type="date" class="form-control @error('awal_penyewaan') is-invalid @enderror" name="awal_penyewaan" required value="{{ old('awal_penyewaan') }}">
-                                            @error('awal_penyewaan') <div class="invalid-feedback">{{ 'Kolom ini wajib diisi.' }}</div> @enderror
+                                            <input type="date" class="form-control border border-secondary" name="awal_penyewaan" required value="{{ old('awal_penyewaan') }}">
+                                            @error('awal_penyewaan') <span class="text-danger">{{ 'Tanggal ini wajib diisi.' }}</span> @enderror
                                         </div>
                                     </div>
 
@@ -178,14 +188,12 @@
                                             <input class="form-check-input" type="radio" name="dengan_tim" id="denganTimTidak" value="Tidak" required>
                                             <label class="form-check-label" for="denganTimTidak">Tidak</label>
                                         </div>
-                                        @error('dengan_tim') <div class="invalid-feedback d-block">{{ 'Opsi ini wajib dipilih.' }}</div> @enderror
+                                        @error('dengan_tim') <span class="text-danger d-block">{{ 'Opsi ini wajib dipilih.' }}</span> @enderror
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="form-label">Catatan Tambahan <span class="text-danger">(Opsional)</span></label>
-                                        <textarea class="form-control @error('catatan_tambahan') is-invalid @enderror" name="catatan_tambahan" placeholder="Tambahkan catatan jika diperlukan / Kosongkan saja">{{ old('catatan_tambahan') }}</textarea>
-                                        @error('catatan_tambahan') <div class="invalid-feedback">{{ 'Kolom ini wajib diisi.' }}</div> @enderror
-                                    </div>
+                                        <textarea class="form-control border border-secondary" name="catatan_tambahan" placeholder="Tambahkan catatan jika diperlukan / Kosongkan saja">{{ old('catatan_tambahan') }}</textarea>                                    </div>
 
                                     <!-- Tombol untuk memunculkan modal -->
                                     <button type="button" class="btn btn-success w-100 mt-4" data-bs-toggle="modal" data-bs-target="#confirmModalPenyewaan">

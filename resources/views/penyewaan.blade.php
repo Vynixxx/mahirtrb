@@ -24,6 +24,8 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 
 
   <!-- Main CSS File -->
@@ -78,94 +80,93 @@
         </nav>
         </div><!-- End Page Title -->
 
-        <!-- Timeline -->
+        <!-- Timeline Penyewaan Kendaraan Berat -->
         <div class="container py-5">
-            <h2 class="text-center mb-4" data-aos="fade-up" data-aos-delay="100">Cara Penyewaan Kendaraan Berat <br> PT. Mahir Trans Bersaudara</h2><br>
+            <h2 class="text-center mb-4" data-aos="fade-up" data-aos-delay="100">
+            Prosedur Penyewaan Kendaraan Berat <br> <span class="text-primary">PT. Mahir Trans Bersaudara</span></h2>
 
             <div class="timeline">
                 <!-- Langkah 1 -->
                 <div class="timeline-step" data-aos="fade-up" data-aos-delay="100">
-                    <div class="circle bg-primary">1</div>
-                    <h6>Pilih Kendaraan</h6>
+                    <div class="circle bg-primary"><i class="fas fa-file-alt"></i></div>
+                    <h6>Isi Formulir Penyewaan</h6>
+                    <p class="custom">Lengkapi <a href="{{ route('pesanpenyewaan') }}">formulir pemesanan</a> dengan detail kendaraan yang dibutuhkan, periode sewa, dan informasi kontak Anda.</p>
                 </div>
 
-                <div class="line" data-aos="fade-up" data-aos-delay="100"></div> <!-- Garis Penghubung -->
+                <div class="line" data-aos="fade-up" data-aos-delay="100"></div>
 
                 <!-- Langkah 2 -->
                 <div class="timeline-step" data-aos="fade-up" data-aos-delay="200">
-                    <div class="circle bg-success">2</div>
-                    <h6>Isi Formulir</h6>
+                    <div class="circle bg-warning"><i class="fas fa-comments"></i></div>
+                    <h6>Konfirmasi & Diskusi</h6>
+                    <p class="custom">Admin akan menghubungi Anda melalui WhatsApp dan email untuk mendiskusikan detail penyewaan.</p>
                 </div>
 
-                <div class="line" data-aos="fade-up" data-aos-delay="200"></div> <!-- Garis Penghubung -->
+                <div class="line" data-aos="fade-up" data-aos-delay="200"></div>
 
                 <!-- Langkah 3 -->
                 <div class="timeline-step" data-aos="fade-up" data-aos-delay="300">
-                    <div class="circle bg-warning">3</div>
-                    <h6>Konfirmasi & Pembayaran</h6>
+                    <div class="circle bg-success"><i class="fas fa-handshake"></i></div>
+                    <h6>Negosiasi Harga & Ketentuan</h6>
+                    <p class="custom">Setelah kesepakatan dicapai, penyewa melakukan pembayaran sesuai dengan harga yang telah disepakati.</p>
                 </div>
 
-                <div class="line" data-aos="fade-up" data-aos-delay="300"></div> <!-- Garis Penghubung -->
+                <div class="line" data-aos="fade-up" data-aos-delay="300"></div>
 
                 <!-- Langkah 4 -->
                 <div class="timeline-step" data-aos="fade-up" data-aos-delay="400">
-                    <div class="circle bg-danger">4</div>
-                    <h6>Pengiriman</h6>
+                    <div class="circle bg-danger"><i class="fas fa-truck"></i></div>
+                    <h6>Pengiriman Kendaraan</h6>
+                    <p class="custom">Kendaraan yang disewa akan dikirim ke lokasi yang telah ditentukan.</p>
                 </div>
 
                 <div class="line" data-aos="fade-up" data-aos-delay="400"></div> <!-- Garis Penghubung -->
 
                 <!-- Langkah 5 -->
                 <div class="timeline-step" data-aos="fade-up" data-aos-delay="500">
-                    <div class="circle bg-info">5</div>
-                    <h6>Penggunaan</h6>
+                    <div class="circle bg-info"><i class="fas fa-cogs"></i></div>
+                    <h6>Masa Penggunaan</h6>
+                    <p class="custom">Penyewa menggunakan kendaraan sesuai dengan durasi yang telah disepakati.</p>
                 </div>
 
                 <div class="line" data-aos="fade-up" data-aos-delay="500"></div> <!-- Garis Penghubung -->
 
                 <!-- Langkah 6 -->
                 <div class="timeline-step" data-aos="fade-up" data-aos-delay="600">
-                    <div class="circle bg-secondary">6</div>
-                    <h6>Pengembalian</h6>
+                    <div class="circle bg-secondary"><i class="fas fa-undo-alt"></i></div>
+                    <h6>Pengembalian Kendaraan</h6>
+                    <p class="custom">Setelah masa sewa berakhir, penyewa mengembalikan kendaraan dalam kondisi sesuai perjanjian.</p>
                 </div>
             </div>
+        </div>
 
         <!-- CSS -->
         <style>
-            .timeline {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-wrap: wrap;
-                position: relative;
-                margin: 50px auto;
-            }
-
-            .timeline-item {
-                display: flex;
-                align-items: center;
-                text-align: center;
-                position: relative;
-            }
-
-            .timeline-step {
+             .timeline {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 position: relative;
+                margin: 50px auto;
+            }
+            
+            .timeline-step {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
                 margin: 20px;
             }
 
             .circle {
-                width: 50px;
-                height: 50px;
+                width: 60px;
+                height: 60px;
                 border-radius: 50%;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 color: white;
-                font-weight: bold;
-                font-size: 1.2rem;
+                font-size: 1.5rem;
                 position: relative;
                 z-index: 2;
                 transition: transform 0.3s ease-in-out;
@@ -176,19 +177,10 @@
             }
 
             .line {
-                flex-grow: 1;
-                height: 5px;
-                background-color: gray;
-                margin: 0 10px;
-            }
-
-            @keyframes grow {
-                from {
-                    width: 0;
-                }
-                to {
-                    width: 80px;
-                }
+                width: 5px;
+                height: 50px;
+                background: linear-gradient(to bottom, gray, lightgray);
+                margin: 10px 0;
             }
 
             h6 {
@@ -197,20 +189,16 @@
                 text-align: center;
             }
 
+            p.custom {
+                font-size: 0.9rem;
+                color: #666;
+                max-width: 300px;
+            }
+
             @media (max-width: 768px) {
                 .timeline {
                     flex-direction: column;
                     align-items: center;
-                }
-
-                .timeline-item {
-                    flex-direction: column;
-                }
-
-                .line {
-                    width: 5px; /* Garis menjadi vertikal */
-                    height: 50px; /* Jarak antar elemen */
-                    margin: 10px 0;
                 }
             }
         </style>

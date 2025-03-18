@@ -71,12 +71,12 @@
                     <td>
                       <a class="btn btn-outline-info" href="/admin/pabsselengkapnya/{{ $pabs->id }}" title="Detail"><i class="bi bi-eye"></i></a>
                       <button class="btn btn-outline-danger btn-delete" 
-                              data-id="{{ $pabs->id }}" 
-                              data-nama="{{ $pabs->nama }}"
-                              data-url="/admin/deletepabrikasi/{{ $pabs->id }}"
-                              title="Hapus">
+                            data-id="{{ $pabs->id }}" 
+                            data-nama="{{ $pabs->nama }}"
+                            data-url="{{ route('admin.deletepabrikasi', $pabs->id) }}"
+                            title="Hapus">
                         <i class="bi bi-trash3"></i>
-                      </button>
+                    </button>
                     </td>
                 </tr>
               @endforeach
@@ -85,21 +85,25 @@
               <!-- End Default Table Example -->
               <!-- Modal Konfirmasi Hapus -->
               <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      Apakah Anda yakin ingin menghapus pemesanan pabrikasi dari <b id="pabs"></b>?
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                      <a id="confirmDelete" class="btn btn-danger">Hapus</a>
-                    </div>
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                              Apakah Anda yakin ingin menghapus pemesanan pabrikasi dari <b id="namaPabrikasi"></b>?
+                          </div>
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                              <form id="deleteForm" method="POST">
+                                  @csrf
+                                  @method('DELETE')
+                                  <button type="submit" class="btn btn-danger">Hapus</button>
+                              </form>
+                          </div>
+                      </div>
                   </div>
-                </div>
               </div>
             </div>
           </div>
@@ -125,21 +129,23 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      let deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
-      
-      document.querySelectorAll(".btn-delete").forEach(button => {
-        button.addEventListener("click", function () {
-          let kendaraanNama = this.getAttribute("data-nama");
-          let deleteUrl = this.getAttribute("data-url");
+        let deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+        let deleteForm = document.getElementById("deleteForm");
 
-          document.getElementById("pabs").innerText = kendaraanNama;
-          document.getElementById("confirmDelete").setAttribute("href", deleteUrl);
+        document.querySelectorAll(".btn-delete").forEach(button => {
+            button.addEventListener("click", function () {
+                let pabrikasiNama = this.getAttribute("data-nama");
+                let deleteUrl = this.getAttribute("data-url");
 
-          deleteModal.show();
+                document.getElementById("namaPabrikasi").innerText = pabrikasiNama;
+                deleteForm.setAttribute("action", deleteUrl); // Set action ke form
+
+                deleteModal.show();
+            });
         });
-      });
     });
-  </script>
+</script>
+
 
 </body>
 

@@ -71,7 +71,7 @@
           </li>
           <li>
             <a href="{{ route('admin.supplier') }}">
-              <i class="bi bi-circle"></i><span>Supplier</span>
+              <i class="bi bi-circle"></i><span>Pemesanan Barang</span>
             </a>
           </li>
         </ul>

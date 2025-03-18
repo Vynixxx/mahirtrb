@@ -88,7 +88,7 @@
                     <div class="timeline-step" data-aos="fade-up" data-aos-delay="100">
                         <div class="circle bg-success"><i class="fas fa-file-alt"></i></div>
                         <h6>Isi Formulir</h6>
-                        <p class="custom"><a href="{{ route('pesansupplier') }}">Lengkapi formulir</a> dengan detail barang yang akan dipesan.</p>
+                        <p class="custom">Lengkapi<a href="{{ route('pesansupplier') }}"> formulir pemesanan</a> dengan detail barang yang akan dipesan.</p>
                     </div>
                     <div class="line" data-aos="fade-up" data-aos-delay="100"></div>
                     
@@ -172,7 +172,7 @@
             .line {
                 width: 5px;
                 height: 50px;
-                background: gray;
+                background: linear-gradient(to bottom, gray, lightgray);
                 margin: 10px 0;
             }
             

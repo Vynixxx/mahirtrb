@@ -66,30 +66,84 @@
                 <div class="form-group mt-4">
                     <label class="text-secondary mb-2">Nama / Perusahaan</label>
                     <input type="text" class="form-control border border-secondary form-control" name="name" required value="{{ $kontak->name }}">
+                    @if(!empty($xssDetected['name']))
+                        <div class="text-danger">⚠️ Nama ini mengandung karakter mencurigakan! Harap periksa atau hapus data ini.</div>
+                    @endif
                 </div><br>
 
                 <div class="form-group mt-1">
                     <label class="text-secondary mb-2">Email</label>
                     <input type="text" class="form-control border border-secondary form-control" name="email" required value="{{ $kontak->email }}">
+                    @if(!empty($xssDetected['email']))
+                        <div class="text-danger">⚠️ Email ini mengandung karakter mencurigakan! Harap periksa atau hapus data ini.</div>
+                    @endif
                 </div><br>
 
                 <div class="form-group mt-1">
                     <label class="text-secondary mb-2">Nomor WhatsApp</label>
                     <input type="text" class="form-control border border-secondary form-control" name="whatsapp" required value="{{ $kontak->whatsapp }}">
+                    @if(!empty($xssDetected['whatsapp']))
+                        <div class="text-danger">⚠️ Nomor WhatsApp ini mengandung karakter mencurigakan! Harap periksa atau hapus data ini.</div>
+                    @endif
                 </div><br>
 
                 <div class="form-group mt-1">
                     <label class="text-secondary mb-2">Perihal</label>
                     <input type="text" class="form-control border border-secondary form-control" name="subject" required value="{{ $kontak->subject }}">
+                    @if(!empty($xssDetected['subject']))
+                        <div class="text-danger">⚠️ Perihal ini mengandung karakter mencurigakan! Harap periksa atau hapus data ini.</div>
+                    @endif
                 </div><br>
 
                 <div class="form-group mt-1">
                     <label class="text-secondary mb-2">Pesan</label>
-                    <textarea type="text" class="form-control border border-secondary form-control" name="message" required>{{ old('message', $kontak->message) }}</textarea>
+                    <textarea class="form-control border border-secondary form-control" name="message" required>{{ $kontak->message }}</textarea>
+                    @if(!empty($xssDetected['message']))
+                        <div class="text-danger">⚠️ Pesan ini mengandung karakter mencurigakan! Harap periksa atau hapus data ini.</div>
+                    @endif
                 </div>
                 <!-- Tombol Balas -->
                 <button type="button" class="btn btn-primary mt-5" onclick="replyEmail()" title="Balas via Email"><i class="bi bi-envelope-at"></i></button>
                 <button type="button" class="btn btn-success mt-5" onclick="replyWhatsApp()" title="Balas via WhatsApp"><i class="bi bi-whatsapp"></i></button>
+              <!-- Cek apakah ada karakter mencurigakan -->
+              @php
+                  $hasXss = array_sum($xssDetected) > 0;
+              @endphp
+
+              @if ($hasXss)
+                  <div class="alert alert-danger mt-4">
+                      ⚠️ Ditemukan karakter mencurigakan yang berpotensi sebagai serangan XSS. Disarankan untuk segera menghapus data ini.
+                  </div>
+
+                  <!-- Tombol Hapus (Memicu Modal) -->
+                  <button type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                      <i class="bi bi-trash"></i> Hapus Pesan
+                  </button>
+
+                  <!-- Modal Konfirmasi Hapus -->
+                  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                  Apakah Anda yakin ingin menghapus pesan ini? Data yang dihapus tidak dapat dikembalikan.
+                              </div>
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                  <form id="deleteForm" action="{{ route('admin.deletekontak', $kontak->id) }}" method="POST">
+                                      @csrf
+                                      @method('DELETE')
+                                      <button type="submit" class="btn btn-danger">Hapus</button>
+                                  </form>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              @endif
+
             </div>
           </div>
         </div>
