@@ -56,9 +56,12 @@
           <div class="col-lg-6  d-flex flex-column justify-content-center" data-aos="fade-in">
             <h1>Butuh Kendaraan Berat untuk Proyek Anda? <span> Kami Siap Membantu!</span></h1>
             <p>Mahir Trans Bersaudara hadir untuk memenuhi kebutuhan akan kendaraan berat dengan armada lengkap dan layanan terbaik.</p>
-            <div class="d-flex">
-              <a href="#tentang-kami" class="btn-get-started">Selengkapnya</a>
-            </div>
+            <div class="d-grid d-sm-flex gap-3 mt-3">
+                <a href="#tentang-kami" class="btn-get-started"><center>Selengkapnya</center></a>
+                <a href="{{ url('profile-company/Profile_Company_Updated.pdf') }}" target="_blank" class="btn-get-started">
+                <center><i class="bi bi-file-earmark-pdf me-2"></i> Profil Perusahaan</center>
+                </a>            
+              </div>
           </div>
 
         </div>

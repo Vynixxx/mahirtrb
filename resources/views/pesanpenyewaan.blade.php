@@ -100,14 +100,14 @@
                                     <div class="mb-3">
                                         <label class="form-label">Nama Pemesan / Perusahaan</label>
                                         <input type="text" class="form-control border border-secondary" name="nama" required value="{{ old('nama') }}">
-                                        @error('nama') <span class="text-danger">{{ 'Kolom ini wajib diisi.' }}</span> @enderror
+                                        @error('nama') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
 
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Nomor WhatsApp</label>
                                             <input type="number" class="form-control border border-secondary" name="nohp" required value="{{ old('nohp') }}">
-                                            @error('nohp') <span class="text-danger">{{ 'Kolom ini wajib diisi.' }}</span> @enderror
+                                            @error('nohp') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
 
                                         <div class="col-md-6 mb-3">
@@ -116,13 +116,7 @@
                                                 name="email" required value="{{ old('email') }}">
                                             
                                                 @error('email')
-                                                    <span class="text-danger">
-                                                        @if ($message === 'Kolom ini wajib diisi.')
-                                                            Kolom ini wajib diisi.
-                                                        @else
-                                                            Format yang Anda masukkan salah.
-                                                        @endif
-                                                    </span>
+                                                    <span class="text-danger">{{ $message }}</span> 
                                                 @enderror
                                         </div>
                                     </div>
@@ -132,25 +126,25 @@
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Jenis Kendaraan</label>
-                                            <select class="form-control border border-secondary" name="jenis_kendaraan" required>
-                                                <option value="" disabled selected>Pilih Jenis Kendaraan</option>
-                                                <option value="Truk Foco">Truk Foco</option>
-                                                <option value="Crane">Crane</option>
-                                                <option value="Dozer">Dozer</option>
-                                                <option value="Lowbed">Lowbed</option>
-                                                <option value="Triller">Triller</option>
-                                                <option value="Truk Kepala">Truk Kepala</option>
-                                                <option value="Truk Tandem">Truk Tandem</option>
-                                                <option value="Truk Vakum">Truk Vakum</option>
-                                                <option value="Tangki Air">Tangki Air</option>
+                                            <select class="form-select border border-secondary" name="jenis_kendaraan" required>
+                                                <option value="" disabled {{ old('jenis_kendaraan') ? '' : 'selected' }}>Pilih Jenis Kendaraan</option>
+                                                <option value="Truk Foco" {{ old('jenis_kendaraan') == 'Truk Foco' ? 'selected' : '' }}>Truk Foco</option>
+                                                <option value="Crane" {{ old('jenis_kendaraan') == 'Crane' ? 'selected' : '' }}>Crane</option>
+                                                <option value="Dozer" {{ old('jenis_kendaraan') == 'Dozer' ? 'selected' : '' }}>Dozer</option>
+                                                <option value="Lowbed" {{ old('jenis_kendaraan') == 'Lowbed' ? 'selected' : '' }}>Lowbed</option>
+                                                <option value="Triller" {{ old('jenis_kendaraan') == 'Triller' ? 'selected' : '' }}>Triller</option>
+                                                <option value="Truk Kepala" {{ old('jenis_kendaraan') == 'Truk Kepala' ? 'selected' : '' }}>Truk Kepala</option>
+                                                <option value="Truk Tandem" {{ old('jenis_kendaraan') == 'Truk Tandem' ? 'selected' : '' }}>Truk Tandem</option>
+                                                <option value="Truk Vakum" {{ old('jenis_kendaraan') == 'Truk Vakum' ? 'selected' : '' }}>Truk Vakum</option>
+                                                <option value="Tangki Air" {{ old('jenis_kendaraan') == 'Tangki Air' ? 'selected' : '' }}>Tangki Air</option>
                                             </select>
-                                            @error('jenis_kendaraan') <span class="text-danger">{{ 'Kolom ini wajib diisi.' }}</span> @enderror
+                                            @error('jenis_kendaraan') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
 
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Jumlah Kebutuhan</label>
                                             <input type="number" class="form-control border border-secondary" name="jumlah_kebutuhan" required min="1" value="{{ old('jumlah_kebutuhan') }}">
-                                            @error('jumlah_kebutuhan') <span class="text-danger">{{ 'Kolom ini wajib diisi.' }}</span> @enderror
+                                            @error('jumlah_kebutuhan') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
 
@@ -159,43 +153,43 @@
                                             <label class="form-label">Durasi Penyewaan</label>
                                             <div class="input-group">
                                                 <input type="number" class="form-control border border-secondary" name="durasi" required min="1" value="{{ old('durasi') }}">
-                                                <select class="form-control border border-secondary" name="satuan_durasi">
+                                                <select class="form-select border border-secondary" name="satuan_durasi">
                                                     <option value="hari" {{ old('satuan_durasi') == 'hari' ? 'selected' : '' }}>Hari</option>
                                                     <option value="minggu" {{ old('satuan_durasi') == 'minggu' ? 'selected' : '' }}>Minggu</option>
                                                     <option value="bulan" {{ old('satuan_durasi') == 'bulan' ? 'selected' : '' }}>Bulan</option>
                                                     <option value="tahun" {{ old('satuan_durasi') == 'tahun' ? 'selected' : '' }}>Tahun</option>
                                                 </select>
                                             </div>
-                                            @error('durasi') <span class="text-danger">{{ 'Kolom ini wajib diisi.' }}</span> @enderror
-                                            @error('satuan_durasi') <span class="text-danger">{{ 'Kolom ini wajib diisi.' }}</span> @enderror
+                                            @error('durasi') <span class="text-danger">{{ $message }}</span> @enderror
+                                            @error('satuan_durasi') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
 
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Awal Penyewaan</label>
                                             <input type="date" class="form-control border border-secondary" name="awal_penyewaan" required value="{{ old('awal_penyewaan') }}">
-                                            @error('awal_penyewaan') <span class="text-danger">{{ 'Tanggal ini wajib diisi.' }}</span> @enderror
+                                            @error('awal_penyewaan') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
-
-                                    <!-- Tambahan Radio Button "Dengan Tim" -->
                                     <div class="mb-3">
                                         <label class="form-label">Dengan Tim?</label>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="dengan_tim" id="denganTimYa" value="Ya" required>
-                                            <label class="form-check-label" for="denganTimYa">Ya</label>
+                                        <input class="form-check-input" type="radio" name="dengan_tim" id="denganTimYa" value="Ya" 
+                                            {{ old('dengan_tim') == 'Ya' ? 'checked' : '' }} required>
+                                        <label class="form-check-label" for="denganTimYa">Ya</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="dengan_tim" id="denganTimTidak" value="Tidak" required>
-                                            <label class="form-check-label" for="denganTimTidak">Tidak</label>
+                                        <input class="form-check-input" type="radio" name="dengan_tim" id="denganTimTidak" value="Tidak" 
+                                            {{ old('dengan_tim') == 'Tidak' ? 'checked' : '' }} required>
+                                        <label class="form-check-label" for="denganTimTidak">Tidak</label>
                                         </div>
-                                        @error('dengan_tim') <span class="text-danger d-block">{{ 'Opsi ini wajib dipilih.' }}</span> @enderror
+                                        @error('dengan_tim') <span class="text-danger d-block">{{ $message }}</span> @enderror
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="form-label">Catatan Tambahan <span class="text-danger">(Opsional)</span></label>
-                                        <textarea class="form-control border border-secondary" name="catatan_tambahan" placeholder="Tambahkan catatan jika diperlukan / Kosongkan saja">{{ old('catatan_tambahan') }}</textarea>                                    </div>
+                                        <textarea class="form-control border border-secondary" name="catatan_tambahan" placeholder="Tambahkan catatan jika diperlukan / Kosongkan saja">{{ old('catatan_tambahan') }}</textarea>                                    
+                                    </div>
 
-                                    <!-- Tombol untuk memunculkan modal -->
                                     <button type="button" class="btn btn-success w-100 mt-4" data-bs-toggle="modal" data-bs-target="#confirmModalPenyewaan">
                                         <i class="bi bi-cart"></i> Pesan Sekarang
                                     </button>
@@ -213,6 +207,51 @@
         document.getElementById('orderFormPenyewaan').submit();
     });
   </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const kendaraanContainer = document.getElementById("kendaraan-container");
+        const addKendaraanButton = document.getElementById("add-kendaraan");
+
+        addKendaraanButton.addEventListener("click", function() {
+            const newKendaraan = document.createElement("div");
+            newKendaraan.classList.add("row", "kendaraan-item");
+            newKendaraan.innerHTML = `
+                <div class="col-md-5 mb-3">
+                    <label class="form-label">Jenis Kendaraan</label>
+                    <select class="form-select border border-secondary" name="jenis_kendaraan[]" required>
+                        <option value="" disabled selected>Pilih Jenis Kendaraan</option>
+                        <option value="Truk Foco">Truk Foco</option>
+                        <option value="Crane">Crane</option>
+                        <option value="Dozer">Dozer</option>
+                        <option value="Lowbed">Lowbed</option>
+                        <option value="Triller">Triller</option>
+                        <option value="Truk Kepala">Truk Kepala</option>
+                        <option value="Truk Tandem">Truk Tandem</option>
+                        <option value="Truk Vakum">Truk Vakum</option>
+                        <option value="Tangki Air">Tangki Air</option>
+                    </select>
+                </div>
+
+                <div class="col-md-5 mb-3">
+                    <label class="form-label">Jumlah Kebutuhan</label>
+                    <input type="number" class="form-control border border-secondary" name="jumlah_kebutuhan[]" required min="1">
+                </div>
+
+                <div class="col-md-2 mb-3 d-flex align-items-end">
+                    <button type="button" class="btn btn-danger remove-kendaraan">Hapus</button>
+                </div>
+            `;
+
+            kendaraanContainer.appendChild(newKendaraan);
+        });
+
+        kendaraanContainer.addEventListener("click", function(e) {
+            if (e.target.classList.contains("remove-kendaraan")) {
+                e.target.closest(".kendaraan-item").remove();
+            }
+        });
+    });
+    </script>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->

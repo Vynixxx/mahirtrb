@@ -99,40 +99,35 @@
                                     
                                     <div class="form-group mb-3">
                                         <label class="text-secondary mb-2">Nama Pemesan / Perusahaan</label>
-                                        <input class="form-control border border-secondary" name="nama" required type="text">
-                                        <span class="text-danger">@error('nama'){{ 'Kolom ini wajib diisi' }}@enderror</span>
+                                        <input class="form-control border border-secondary" name="nama" required type="text" value="{{ old('nama') }}">
+                                        @error('nama') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
 
                                     <div class="row mb-4">
                                         <div class="col-md-6">
                                             <label class="text-secondary mb-2">Nomor WhatsApp</label>
-                                            <input class="form-control border border-secondary" name="nohp" required type="number">
-                                            <span class="text-danger">@error('nohp'){{ 'Kolom ini wajib diisi' }}@enderror</span>
+                                            <input class="form-control border border-secondary" name="nohp" required type="number" value="{{ old('nohp') }}">
+                                            @error('nohp') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                         <div class="col-md-6">
                                             <label class="text-secondary mb-2">Email</label>
-                                            <input class="form-control border border-secondary" name="email" required type="email">
+                                            <input class="form-control border border-secondary" name="email" required type="email" value="{{ old('email') }}">
                                             @error('email')
-                                                    <div class="text-danger">
-                                                        @if ($message === 'Kolom ini wajib diisi.')
-                                                            Kolom ini wajib diisi.
-                                                        @else
-                                                            Format yang Anda masukkan salah.
-                                                        @endif
-                                                    </div>
+                                                <span class="text-danger">
+                                                    {{ $message }}
+                                                </span>
                                             @enderror
                                         </div>
                                     </div>
-
                                     <h5>Detail Kebutuhan</h5>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <label class="text-secondary">Jenis Pabrikasi</label>
-                                            <select class="form-select" name="jenis_pabrikasi" id="jenisPabrikasi" required>
-                                                <option selected disabled>Pilih Jenis Pabrikasi</option>
-                                                <option value="Material">Material</option>
-                                                <option value="Jasa">Jasa</option>
-                                                <option value="Material + Jasa">Material + Jasa</option>
+                                        <label class="text-secondary">Jenis Pabrikasi</label>
+                                            <select class="form-select border border-secondary" name="jenis_pabrikasi" id="jenisPabrikasi" required>
+                                                <option value="" disabled {{ old('jenis_pabrikasi') ? '' : 'selected' }}>Pilih Jenis Pabrikasi</option>
+                                                <option value="Material" {{ old('jenis_pabrikasi') == 'Material' ? 'selected' : '' }}>Material</option>
+                                                <option value="Jasa" {{ old('jenis_pabrikasi') == 'Jasa' ? 'selected' : '' }}>Jasa</option>
+                                                <option value="Material + Jasa" {{ old('jenis_pabrikasi') == 'Material + Jasa' ? 'selected' : '' }}>Material + Jasa</option>
                                             </select>
                                             <span class="text-danger">@error('jenis_pabrikasi'){{ 'Kolom ini wajib diisi' }}@enderror</span>
                                             <div class="alert alert-info mt-2 d-none" id="notifPabrikasi"></div>
@@ -141,16 +136,15 @@
 
                                     <div class="form-group mt-2">
                                         <label class="text-secondary mb-2">Jenis Kendaraan</label>
-                                        <input class="form-control border border-secondary" name="jenis_kendaraan" required type="text">
-                                        <span class="text-danger">@error('jenis_kendaraan'){{ 'Kolom ini wajib diisi' }}@enderror</span>
+                                        <input class="form-control border border-secondary" name="jenis_kendaraan" required type="text" value="{{ old('jenis_kendaraan') }}">
+                                        @error('jenis_kendaraan') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
 
                                     <div class="form-group mt-3">
                                         <label class="text-secondary mb-2">Catatan Tambahan</label> <span class="text-danger">(Opsional)</span>
-                                        <textarea class="form-control border border-secondary" name="isi" placeholder="Tambahkan catatan jika diperlukan / Kosongkan saja"></textarea>
+                                        <textarea class="form-control border border-secondary" name="isi" placeholder="Tambahkan catatan jika diperlukan / Kosongkan saja">{{ old('isi') }}</textarea>
                                     </div>
 
-                                    <!-- Tombol untuk memunculkan modal -->
                                     <button type="button" class="btn btn-success mt-5 w-100" data-bs-toggle="modal" data-bs-target="#confirmModalPabrikasi">
                                         <i class="bi bi-cart"></i> Pesan Sekarang
                                     </button>

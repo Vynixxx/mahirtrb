@@ -38,20 +38,6 @@
 
   <main id="main" class="main">
             <div class="container">
-                <div class="container mt-3">
-                    @if (Session::get('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>Berhasil!</strong> {{ Session::get('success') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    @endif
-                    @if (Session::get('failed'))
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Gagal!</strong> {{ Session::get('failed') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    @endif
-                </div>
                 <div class="row">
                     <div class="col d-flex justify-content-center">
                         <div class="card mt-4" style="width: 800px">
@@ -83,26 +69,23 @@
                                     <h5>Detail Pemesan</h5>
                                     <div class="form-group mb-3">
                                         <label class="text-secondary mb-2">Nama Pemesan / Perusahaan</label>
-                                        <input class="form-control border border-secondary" name="nama" required type="text">
-                                        @error('nama') <span class="text-danger">{{ 'Kolom ini wajib diisi.'}}</span> @enderror
+                                        <input class="form-control border border-secondary" name="nama" required type="text" value="{{ old('nama') }}">
+                                        @error('nama') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
+
                                     <div class="row mb-4">
                                         <div class="col-md-6">
                                             <label class="text-secondary mb-2">Nomor WhatsApp</label>
-                                            <input class="form-control border border-secondary" name="nohp" required type="number">
-                                            @error('nohp') <span class="text-danger">{{ 'Kolom ini wajib diisi.'}}</span> @enderror
+                                            <input class="form-control border border-secondary" name="nohp" required type="number" value="{{ old('nohp') }}">
+                                            @error('nohp') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                         <div class="col-md-6">
                                             <label class="text-secondary mb-2">Email</label>
-                                            <input class="form-control border border-secondary" name="email" required type="email">
+                                            <input class="form-control border border-secondary" name="email" required type="email" value="{{ old('email') }}">
                                             @error('email')
-                                                    <span class="text-danger">
-                                                        @if ($message === 'Kolom ini wajib diisi.')
-                                                            Kolom ini wajib diisi.
-                                                        @else
-                                                            Format yang Anda masukkan salah.
-                                                        @endif
-                                                    </span>
+                                                <span class="text-danger">
+                                                    {{ $message }}
+                                                </span>
                                             @enderror
                                         </div>
                                     </div>
@@ -110,38 +93,38 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label class="text-secondary mb-2">Nama Barang</label>
-                                            <input type="text" class="form-control" name="nama_barang" required>
-                                            @error('nama_barang') <span class="text-danger">{{ 'Kolom ini wajib diisi.'}}</span> @enderror
+                                            <input type="text" class="form-control border border-secondary" name="nama_barang" required value="{{ old('nama_barang') }}">
+                                            @error('nama_barang') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                         <div class="col-md-6">
                                             <label class="text-secondary mb-2">Merek / Spesifikasi <span class="text-danger">(Opsional)</span></label>
-                                            <input type="text" class="form-control" name="merek_spesifikasi" placeholder="Jika ada preferensi tertentu / Kosongkan saja">
+                                            <input type="text" class="form-control border border-secondary" name="merek_spesifikasi" placeholder="Jika ada preferensi tertentu / Kosongkan saja" value="{{ old('merek_spesifikasi') }}">
                                         </div>
                                     </div>
                                     <div class="row mt-3">
                                         <div class="col-md-6">
-                                            <label class="text-secondary mb-2">Jumlah yang Dipesan</label>
-                                            <div class="input-group">
-                                                <input type="number" class="form-control" name="jumlah" min="1" required>
-                                                <select class="form-select" name="satuan">
-                                                    <option value="unit">Unit</option>
-                                                    <option value="liter">Liter</option>
-                                                    <option value="kilogram">Kilogram</option>
-                                                    <option value="meter">Meter</option>
-                                                </select>
+                                                <label class="text-secondary mb-2">Jumlah yang Dipesan</label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control border border-secondary" name="jumlah" min="1" required value="{{ old('jumlah') }}">
+                                                    <select class="form-select border border-secondary" name="satuan">
+                                                        <option value="unit" {{ old('satuan') == 'unit' ? 'selected' : '' }}>Unit</option>
+                                                        <option value="liter" {{ old('satuan') == 'liter' ? 'selected' : '' }}>Liter</option>
+                                                        <option value="kilogram" {{ old('satuan') == 'kilogram' ? 'selected' : '' }}>Kilogram</option>
+                                                        <option value="meter" {{ old('satuan') == 'meter' ? 'selected' : '' }}>Meter</option>
+                                                    </select>
+                                                </div>
+                                                @error('jumlah') <span class="text-danger">{{ $message }}</span> @enderror
+                                                @error('satuan') <span class="text-danger">{{ $message }}</span> @enderror
                                             </div>
-                                            @error('jumlah') <span class="text-danger">{{ 'Kolom ini wajib diisi.'}}</span> @enderror
-                                            @error('satuan') <span class="text-danger">{{ 'Opsi ini wajib dipilih.'}}</span> @enderror
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="text-secondary mb-2">Tanggal Kebutuhan</label>
-                                            <input type="date" class="form-control" name="tanggal_kebutuhan" required>
-                                            @error('tanggal_kebutuhan') <span class="text-danger">{{ 'Tanggal ini wajib diisi.'}}</span> @enderror
-                                        </div>
+                                            <div class="col-md-6">
+                                                <label class="text-secondary mb-2">Tanggal Kebutuhan</label>
+                                                <input type="date" class="form-control border border-secondary" name="tanggal_kebutuhan" required value="{{ old('tanggal_kebutuhan') }}">
+                                                @error('tanggal_kebutuhan') <span class="text-danger">{{ $message }}</span> @enderror
+                                            </div>
                                     </div>
                                     <div class="form-group mt-3">
                                         <label class="text-secondary mb-2">Catatan Tambahan <span class="text-danger">(Opsional)</span></label>
-                                        <textarea class="form-control" name="catatan" rows="3" placeholder="Tambahkan catatan jika diperlukan / Kosongkan saja"></textarea>
+                                        <textarea class="form-control border border-secondary" name="catatan" rows="3" placeholder="Tambahkan catatan jika diperlukan / Kosongkan saja">{{ old('catatan') }}</textarea>
                                     </div>
                                     <button type="button" class="btn btn-success mt-5 w-100" data-bs-toggle="modal" data-bs-target="#confirmModalSupplier">
                                         <i class="bi bi-cart"></i> Pesan Sekarang

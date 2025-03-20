@@ -97,73 +97,69 @@
                                 <form id="orderForm" action="{{ route('postPesanEkspedisi') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <h5>Detail Pemesan</h5>
-                                    <div class="form-group mb-3">
-                                        <label class="text-secondary mb-2">Nama Pemesan / Perusahaan</label>
-                                        <input class="form-control border border-secondary form-control" name="nama" required type="text">
-                                        <span class="text-danger">@error('nama'){{ 'Kolom ini wajib diisi' }}@enderror</span>
+                                    <div class="mb-3">
+                                        <label class="form-label">Nama Pemesan / Perusahaan</label>
+                                        <input type="text" class="form-control border border-secondary" name="nama" required value="{{ old('nama') }}">
+                                        @error('nama') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
-                                    <div class="row mb-4">
-                                        <div class="col-md-6">
-                                            <label class="text-secondary mb-2">Nomor WhatsApp</label>
-                                            <input class="form-control border border-secondary form-control" name="nohp" required type="number">
-                                            <span class="text-danger">@error('nohp'){{ 'Kolom ini wajib diisi' }}@enderror</span>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Nomor WhatsApp</label>
+                                            <input type="number" class="form-control border border-secondary" name="nohp" required value="{{ old('nohp') }}">
+                                            @error('nohp') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
-                                        <div class="col-md-6">
-                                            <label class="text-secondary mb-2">Email</label>
-                                            <input class="form-control border border-secondary form-control" name="email" required type="email">
-                                            @error('email')
-                                                    <div class="text-danger">
-                                                        @if ($message === 'Kolom ini wajib diisi.')
-                                                            Kolom ini wajib diisi.
-                                                        @else
-                                                            Format yang Anda masukkan salah.
-                                                        @endif
-                                                    </div>
-                                            @enderror
+
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Email</label>
+                                            <input type="email" class="form-control border border-secondary" name="email" required value="{{ old('email') }}">
+                                            @error('email') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
+
                                     <h5>Detail Kebutuhan</h5>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <label class="text-secondary">Jenis Kendaraan</label>
-                                            <select class="form-select mt-2" name="jenis" required>
-                                                <option selected>Pilih Jenis Kendaraan</option>
-                                                <option>Truk Foco</option>
-                                                <option>Crane</option>
-                                                <option>Dozer</option>
-                                                <option>Lowbed</option>
-                                                <option>Triller</option>
-                                                <option>Truk Kepala</option>
-                                                <option>Truk Tandem</option>
-                                                <option>Truk Vakum</option>
-                                                <option>Tangki Air</option>
+                                            <div class="col-md-6 mb-3">
+                                            <label class="form-label">Jenis Kendaraan</label>
+                                            <select class="form-select border border-secondary" name="jenis" required>
+                                                <option value="" disabled {{ old('jenis') ? '' : 'selected' }}>Pilih Jenis Kendaraan</option>
+                                                <option value="Truk Foco" {{ old('jenis') == 'Truk Foco' ? 'selected' : '' }}>Truk Foco</option>
+                                                <option value="Crane" {{ old('jenis') == 'Crane' ? 'selected' : '' }}>Crane</option>
+                                                <option value="Dozer" {{ old('jenis') == 'Dozer' ? 'selected' : '' }}>Dozer</option>
+                                                <option value="Lowbed" {{ old('jenis') == 'Lowbed' ? 'selected' : '' }}>Lowbed</option>
+                                                <option value="Triller" {{ old('jenis') == 'Triller' ? 'selected' : '' }}>Triller</option>
+                                                <option value="Truk Kepala" {{ old('jenis') == 'Truk Kepala' ? 'selected' : '' }}>Truk Kepala</option>
+                                                <option value="Truk Tandem" {{ old('jenis') == 'Truk Tandem' ? 'selected' : '' }}>Truk Tandem</option>
+                                                <option value="Truk Vakum" {{ old('jenis') == 'Truk Vakum' ? 'selected' : '' }}>Truk Vakum</option>
+                                                <option value="Tangki Air" {{ old('jenis') == 'Tangki Air' ? 'selected' : '' }}>Tangki Air</option>
                                             </select>
-                                            <span class="text-danger">@error('jenis'){{ 'Kolom ini wajib diisi' }}@enderror</span>
+                                            @error('jenis') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
-                                        <div class="col-md-6">
-                                            <label class="text-secondary mb-2">Jumlah Kebutuhan</label>
-                                            <input class="form-control border border-secondary" name="jml" required type="number">
-                                            <span class="text-danger">@error('jml'){{ 'Kolom ini wajib diisi' }}@enderror</span>
+
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Jumlah Kebutuhan</label>
+                                            <input type="number" class="form-control border border-secondary" name="jml" required min="1" value="{{ old('jml') }}">
+                                            @error('jml') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                     </div>      
                                     <div class="row mt-4">
-                                        <div class="col-md-6">
-                                            <label class="text-secondary mb-2">Awal Ekspedisi</label>
-                                            <input class="form-control border border-secondary" name="awal" required type="date">
-                                            <span class="text-danger">@error('awal'){{ 'Tanggal ini wajib diisi' }}@enderror</span>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Awal Ekspedisi</label>
+                                            <input type="date" class="form-control border border-secondary" name="awal" required value="{{ old('awal') }}">
+                                            @error('awal') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
-                                        <div class="col-md-6">
-                                            <label class="text-secondary mb-2">Akhir Ekspedisi</label>
-                                            <input class="form-control border border-secondary" name="akhir" required type="date">
-                                            <span class="text-danger">@error('akhir'){{ 'Tanggal ini wajib diisi' }}@enderror</span>
+
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Akhir Ekspedisi</label>
+                                            <input type="date" class="form-control border border-secondary" name="akhir" required value="{{ old('akhir') }}">
+                                            @error('akhir') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                     </div>                       
-                                    <div class="form-group mt-3">
+                                    <div class="form-group mb-3">
                                         <label class="text-secondary mb-2">Catatan Tambahan </label> <span class="text-danger">(Opsional)</span>
-                                        <textarea class="form-control border border-secondary form-control" name="isi" placeholder="Tambahkan catatan jika diperlukan / Kosongkan saja"></textarea>
+                                        <textarea class="form-control border border-secondary form-control" name="isi" placeholder="Tambahkan catatan jika diperlukan / Kosongkan saja">{{ old('isi') }}</textarea>
                                     </div>
                                     
-                                    <!-- Tombol untuk memunculkan modal -->
                                     <button type="button" class="btn btn-success mt-5 w-100" data-bs-toggle="modal" data-bs-target="#confirmModal">
                                         <i class="bi bi-cart"></i> Pesan Sekarang
                                     </button>
