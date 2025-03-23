@@ -93,10 +93,11 @@
           <div class="col-xl-5 content">
             <h3>Tentang Kami</h3>
             <h2>Siapa Kami?</h2>
-            <p>PT. Mahir Trans Bersaudara merupakan perusahaan yang bergerak di bidang penyewaan, perbaikan, trucking atau ekspedisi, serta pabrikasi alat berat. Sejak mulai beroperasi pada 23 Februari 2023, kami berkomitmen untuk menyediakan layanan profesional, terpercaya, dan berkualitas guna mendukung berbagai proyek konstruksi, infrastruktur, serta kebutuhan logistik di seluruh Indonesia terkhususnya provinsi Riau.
-            Dengan pengalaman luas di industri ini, kami menghadirkan berbagai alat berat seperti Foco Truck, Crane, Triller, dan Head Truck, yang selalu dalam kondisi optimal. Didukung oleh operator berpengalaman dan tim teknisi handal, kami memastikan setiap peralatan berfungsi dengan efisiensi dan keamanan tinggi.
-            Kami juga menawarkan layanan perbaikan alat berat, ekspedisi dan trucking untuk pengangkutan peralatan, serta pabrikasi komponen industri. Dengan harga kompetitif, fleksibilitas penyewaan, dan layanan konsultasi, kami siap membantu pelanggan mendapatkan solusi terbaik sesuai kebutuhan mereka.
-            Seiring pertumbuhan sektor konstruksi dan logistik di Indonesia, PT. Mahir Trans Bersaudara terus berinovasi untuk memberikan layanan terbaik. Kami berkomitmen menjadi mitra terpercaya dengan mengutamakan kualitas, keselamatan, dan kepuasan pelanggan.</p>
+            <p>PT. Mahir Trans Bersaudara adalah perusahaan yang bergerak di bidang penyewaan, perbaikan, ekspedisi, dan pabrikasi alat berat. Beroperasi sejak 23 Februari 2023, kami berkomitmen menyediakan layanan profesional dan berkualitas untuk mendukung proyek konstruksi, infrastruktur, serta logistik, khususnya di Riau.
+
+            Kami menawarkan berbagai alat berat seperti Foco Truck, Crane, Triller, dan Head Truck yang selalu dalam kondisi optimal. Didukung operator berpengalaman dan teknisi handal, kami memastikan peralatan berfungsi dengan efisiensi dan keamanan tinggi. Selain itu, kami menyediakan layanan perbaikan alat berat, ekspedisi, trucking, serta pabrikasi komponen industri.
+
+            Dengan harga kompetitif, fleksibilitas penyewaan, dan layanan konsultasi, kami siap memberikan solusi terbaik bagi pelanggan. Seiring pertumbuhan sektor konstruksi dan logistik di Indonesia, PT. Mahir Trans Bersaudara terus berinovasi untuk menjadi mitra terpercaya yang mengutamakan kualitas, keselamatan, dan kepuasan pelanggan.</p>
             <a href="{{ route('tentang-kami') }}" class="read-more"><span>Profil Perusahaan</span><i class="bi bi-arrow-right"></i></a>
           </div>
 
@@ -299,74 +300,6 @@
 
     </section><!-- /Gallery Section -->
 
-
-    <!-- Faq Section -->
-    <section id="faq" class="faq section light-background">
-
-      <div class="container-fluid">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-7 d-flex flex-column justify-content-center order-2 order-lg-1">
-
-            <div class="content px-xl-5" data-aos="fade-up" data-aos-delay="100">
-              <h3><span>Pertanyaan yang Sering </span><strong>Diajukan</strong></h3>
-              <p>
-                Beberapa pertanyaan yang sering diajukan
-              </p>
-            </div>
-
-            <div class="faq-container px-xl-5" data-aos="fade-up" data-aos-delay="200">
-
-              <div class="faq-item">
-                <i class="faq-icon bi bi-question-circle"></i>
-                <h3>Apa saja jenis alat berat yang tersedia untuk disewa?</h3>
-                <div class="faq-content">
-                  <p>Kami menyediakan berbagai jenis alat berat seperti excavator, bulldozer, crane, forklift, dan dump truck untuk mendukung kebutuhan konstruksi, pertambangan, dan proyek lainnya.</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <i class="faq-icon bi bi-question-circle"></i>
-                <h3>Bagaimana cara menyewa alat berat di PT Mahir Trans Bersaudara?</h3>
-                <div class="faq-content">
-                  <p>Anda dapat menghubungi kami melalui telepon, WhatsApp, atau mengisi form yang telah disediakan untuk konsultasi dan pemesanan. Setelah itu, kami akan segera melakukan pengecekan dan konfirmasi kepada Anda, menentukan durasi sewa, dan mengatur pengiriman ke lokasi proyek Anda.</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <i class="faq-icon bi bi-question-circle"></i>
-                <h3>Bagaimana jika alat mengalami kerusakan saat digunakan?</h3>
-                <div class="faq-content">
-                  <p>Jika terjadi kerusakan, segera hubungi tim kami untuk mendapatkan bantuan teknis. Kami menyediakan layanan perbaikan dan penggantian alat jika diperlukan.</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-              <div class="faq-item">
-                <i class="faq-icon bi bi-question-circle"></i>
-                <h3>Berapa lama durasi minimal penyewaan?</h3>
-                <div class="faq-content">
-                  <p>Durasi minimal penyewaan bervariasi tergantung pada jenis alat berat, namun umumnya kami menyediakan opsi sewa harian, mingguan, dan bulanan.</p>
-                </div>
-                <i class="faq-toggle bi bi-chevron-right"></i>
-              </div><!-- End Faq item-->
-
-
-            </div>
-
-          </div>
-
-          <div class="col-lg-5 order-1 order-lg-2">
-            <img src="assets/img/faq.jpg" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="100">
-          </div>
-        </div>
-
-      </div>
-
-    </section><!-- /Faq Section -->
     <!-- Features Section -->
     <section id="mitra" class="features section">
 

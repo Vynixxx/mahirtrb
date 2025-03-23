@@ -77,13 +77,13 @@
         </div><!-- End Page Title -->
 
         <section class="container my-5">
-            <h2 class="text-center mb-4">Daftar Mitra</h2>
+            <h2 class="text-center mb-4" data-aos="fade-up">Daftar Mitra</h2>
             <div class="row text-center g-4">
                 @foreach ($mitra as $m)
                 <div class="col-md-4">
-                    <div class="card p-4 shadow-lg h-100 d-flex flex-column align-items-center">
+                    <div class="card p-4 shadow-lg h-100 d-flex flex-column align-items-center" data-aos="fade-up">
                         <div class="img-container" style="width: 150px; height: 150px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                            <img src="{{ asset('/images/' . $m->gambar) }}" class="img-fluid object-fit-contain" alt="Mitra {{ $m-> nama }}" style="max-width: 100%; max-height: 100%;">
+                            <img src="{{ asset('/images/' . $m->gambar) }}" class="img-fluid object-fit-contain" data-aos="fade-up" alt="Mitra {{ $m-> nama }}" style="max-width: 100%; max-height: 100%;">
                         </div>
                         <h4 class="mt-3">{{ $m-> nama }}</h4>
                     </div>
