@@ -94,7 +94,10 @@ class pageAdmin extends Controller
             'subject' => preg_match($xssPattern, $kontak->subject),
             'message' => preg_match($xssPattern, $kontak->message),
         ];
-        return view('admin.selengkapnya', compact('kontak', 'xssDetected'));
+        
+        // Periksa apakah ada satu pun input yang mengandung XSS
+        $hasXss = array_sum($xssDetected) > 0;
+        return view('admin.selengkapnya', compact('kontak', 'xssDetected', 'hasXss'));
     }
 
     public function halamaneksselengkapnya($id)

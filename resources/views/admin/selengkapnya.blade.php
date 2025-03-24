@@ -102,48 +102,47 @@
                         <div class="text-danger">⚠️ Pesan ini mengandung karakter mencurigakan! Harap periksa atau hapus data ini.</div>
                     @endif
                 </div>
-                <!-- Tombol Balas -->
-                <button type="button" class="btn btn-primary mt-5" onclick="replyEmail()" title="Balas via Email"><i class="bi bi-envelope-at"></i></button>
-                <button type="button" class="btn btn-success mt-5" onclick="replyWhatsApp()" title="Balas via WhatsApp"><i class="bi bi-whatsapp"></i></button>
-              <!-- Cek apakah ada karakter mencurigakan -->
-              @php
-                  $hasXss = array_sum($xssDetected) > 0;
-              @endphp
+                @if (!$hasXss)
+                    <!-- Tombol Balas -->
+                    <button type="button" class="btn btn-primary mt-5" onclick="replyEmail()" title="Balas via Email">
+                        <i class="bi bi-envelope-at"></i>
+                    </button>
+                    <button type="button" class="btn btn-success mt-5" onclick="replyWhatsApp()" title="Balas via WhatsApp">
+                        <i class="bi bi-whatsapp"></i>
+                    </button>
+                @else
+                    <div class="alert alert-danger mt-4">
+                        ⚠️ Ditemukan karakter mencurigakan yang berpotensi sebagai serangan XSS. Disarankan untuk segera menghapus data ini.
+                    </div>
 
-              @if ($hasXss)
-                  <div class="alert alert-danger mt-4">
-                      ⚠️ Ditemukan karakter mencurigakan yang berpotensi sebagai serangan XSS. Disarankan untuk segera menghapus data ini.
-                  </div>
+                    <!-- Tombol Hapus (Memicu Modal) -->
+                    <button type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                        <i class="bi bi-trash"></i> Hapus Data
+                    </button>
 
-                  <!-- Tombol Hapus (Memicu Modal) -->
-                  <button type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                      <i class="bi bi-trash"></i> Hapus Pesan
-                  </button>
-
-                  <!-- Modal Konfirmasi Hapus -->
-                  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                          <div class="modal-content">
-                              <div class="modal-header">
-                                  <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus</h5>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                              </div>
-                              <div class="modal-body">
-                                  Apakah Anda yakin ingin menghapus pesan ini? Data yang dihapus tidak dapat dikembalikan.
-                              </div>
-                              <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                  <form id="deleteForm" action="{{ route('admin.deletekontak', $kontak->id) }}" method="POST">
-                                      @csrf
-                                      @method('DELETE')
-                                      <button type="submit" class="btn btn-danger">Hapus</button>
-                                  </form>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              @endif
-
+                    <!-- Modal Konfirmasi Hapus -->
+                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Apakah Anda yakin ingin menghapus data ini? Data yang dihapus tidak dapat dikembalikan.
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                    <form action="{{ route('admin.deletekontak', $kontak->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Hapus</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
             </div>
           </div>
         </div>

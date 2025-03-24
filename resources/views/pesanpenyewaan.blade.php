@@ -128,15 +128,15 @@
                                             <label class="form-label">Jenis Kendaraan</label>
                                             <select class="form-select border border-secondary" name="jenis_kendaraan" required>
                                                 <option value="" disabled {{ old('jenis_kendaraan') ? '' : 'selected' }}>Pilih Jenis Kendaraan</option>
-                                                <option value="Truk Foco" {{ old('jenis_kendaraan') == 'Truk Foco' ? 'selected' : '' }}>Truk Foco</option>
+                                                <option value="Bulldozer" {{ old('jenis_kendaraan') == 'Bulldozer' ? 'selected' : '' }}>Bulldozer</option>
                                                 <option value="Crane" {{ old('jenis_kendaraan') == 'Crane' ? 'selected' : '' }}>Crane</option>
-                                                <option value="Dozer" {{ old('jenis_kendaraan') == 'Dozer' ? 'selected' : '' }}>Dozer</option>
-                                                <option value="Lowbed" {{ old('jenis_kendaraan') == 'Lowbed' ? 'selected' : '' }}>Lowbed</option>
-                                                <option value="Triller" {{ old('jenis_kendaraan') == 'Triller' ? 'selected' : '' }}>Triller</option>
-                                                <option value="Truk Kepala" {{ old('jenis_kendaraan') == 'Truk Kepala' ? 'selected' : '' }}>Truk Kepala</option>
-                                                <option value="Truk Tandem" {{ old('jenis_kendaraan') == 'Truk Tandem' ? 'selected' : '' }}>Truk Tandem</option>
-                                                <option value="Truk Vakum" {{ old('jenis_kendaraan') == 'Truk Vakum' ? 'selected' : '' }}>Truk Vakum</option>
-                                                <option value="Tangki Air" {{ old('jenis_kendaraan') == 'Tangki Air' ? 'selected' : '' }}>Tangki Air</option>
+                                                <option value="Foco Truck" {{ old('jenis_kendaraan') == 'Foco Truck' ? 'selected' : '' }}>Foco Truck</option>
+                                                <option value="Trailer" {{ old('jenis_kendaraan') == 'Trailer' ? 'selected' : '' }}>Trailer</option>
+                                                <option value="Lowbed Trailer" {{ old('jenis_kendaraan') == 'Lowbed Trailer' ? 'selected' : '' }}>Lowbed Trailer</option>
+                                                <option value="Prime Mover" {{ old('jenis_kendaraan') == 'Prime Mover' ? 'selected' : '' }}>Prime Mover</option>
+                                                <option value="Tandem Roller" {{ old('jenis_kendaraan') == 'Tandem Roller' ? 'selected' : '' }}>Tandem Roller</option>
+                                                <option value="Vacuum Truck" {{ old('jenis_kendaraan') == 'Vacuum Truck' ? 'selected' : '' }}>Vacuum Truck</option>
+                                                <option value="Water Tank Truck" {{ old('jenis_kendaraan') == 'Water Tank Truck' ? 'selected' : '' }}>Water Tank Truck</option>
                                             </select>
                                             @error('jenis_kendaraan') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>

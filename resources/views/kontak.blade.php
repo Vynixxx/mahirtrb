@@ -27,7 +27,16 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 </head>
-
+<style>
+  .btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  .btn-primary:active {
+    transform: scale(0.95);
+  }
+</style>
 <body class="index-page">
 
 <header id="header" class="header d-flex align-items-center fixed-top">
@@ -132,7 +141,7 @@
                       <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
                             placeholder="Nama / Perusahaan" value="{{ old('name') }}" required>
                       @error('name')
-                          <div class="invalid-feedback">Kolom ini wajib diisi</div>
+                          <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
                   </div>
 
@@ -140,7 +149,7 @@
                       <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
                             placeholder="Email" value="{{ old('email') }}" required>
                       @error('email')
-                          <div class="invalid-feedback">Kolom ini wajib diisi</div>
+                          <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
                   </div>
 
@@ -148,7 +157,7 @@
                       <input type="number" name="whatsapp" class="form-control @error('whatsapp') is-invalid @enderror"
                             placeholder="Nomor WhatsApp" value="{{ old('whatsapp') }}">
                       @error('whatsapp')
-                          <div class="invalid-feedback">Kolom ini wajib diisi</div>
+                          <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
                   </div>
 
@@ -156,7 +165,7 @@
                       <input type="text" name="subject" class="form-control @error('subject') is-invalid @enderror"
                             placeholder="Perihal" value="{{ old('subject') }}" required>
                       @error('subject')
-                          <div class="invalid-feedback">Kolom ini wajib diisi</div>
+                          <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
                   </div>
 
@@ -164,13 +173,15 @@
                       <textarea name="message" class="form-control @error('message') is-invalid @enderror"
                                 rows="6" placeholder="Pesan" required>{{ old('message') }}</textarea>
                       @error('message')
-                          <div class="invalid-feedback">Kolom ini wajib diisi</div>
+                          <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
                   </div>
 
-                  <div class="col-md-12 text-center">
-                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal">
-                          Kirim Pesan
+                  <div class="d-flex justify-content-center align-items-center my-3">
+                      <button type="button" class="btn btn-primary btn-lg shadow-sm px-4 py-2 fw-bold d-flex align-items-center gap-2" 
+                          data-bs-toggle="modal" data-bs-target="#confirmModal"
+                          style="transition: all 0.3s ease-in-out;">
+                          <i class="bi bi-send"></i> Kirim Pesan
                       </button>
                   </div>
                 </div>

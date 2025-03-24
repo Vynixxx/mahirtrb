@@ -119,19 +119,19 @@
 
                                     <h5>Detail Kebutuhan</h5>
                                     <div class="row">
-                                            <div class="col-md-6 mb-3">
+                                        <div class="col-md-6 mb-3">
                                             <label class="form-label">Jenis Kendaraan</label>
                                             <select class="form-select border border-secondary" name="jenis" required>
                                                 <option value="" disabled {{ old('jenis') ? '' : 'selected' }}>Pilih Jenis Kendaraan</option>
-                                                <option value="Truk Foco" {{ old('jenis') == 'Truk Foco' ? 'selected' : '' }}>Truk Foco</option>
+                                                <option value="Bulldozer" {{ old('jenis') == 'Bulldozer' ? 'selected' : '' }}>Bulldozer</option>
                                                 <option value="Crane" {{ old('jenis') == 'Crane' ? 'selected' : '' }}>Crane</option>
-                                                <option value="Dozer" {{ old('jenis') == 'Dozer' ? 'selected' : '' }}>Dozer</option>
-                                                <option value="Lowbed" {{ old('jenis') == 'Lowbed' ? 'selected' : '' }}>Lowbed</option>
-                                                <option value="Triller" {{ old('jenis') == 'Triller' ? 'selected' : '' }}>Triller</option>
-                                                <option value="Truk Kepala" {{ old('jenis') == 'Truk Kepala' ? 'selected' : '' }}>Truk Kepala</option>
-                                                <option value="Truk Tandem" {{ old('jenis') == 'Truk Tandem' ? 'selected' : '' }}>Truk Tandem</option>
-                                                <option value="Truk Vakum" {{ old('jenis') == 'Truk Vakum' ? 'selected' : '' }}>Truk Vakum</option>
-                                                <option value="Tangki Air" {{ old('jenis') == 'Tangki Air' ? 'selected' : '' }}>Tangki Air</option>
+                                                <option value="Foco Truck" {{ old('jenis') == 'Foco Truck' ? 'selected' : '' }}>Foco Truck</option>
+                                                <option value="Trailer" {{ old('jenis') == 'Trailer' ? 'selected' : '' }}>Trailer</option>
+                                                <option value="Lowbed Trailer" {{ old('jenis') == 'Lowbed Trailer' ? 'selected' : '' }}>Lowbed Trailer</option>
+                                                <option value="Prime Mover" {{ old('jenis') == 'Prime Mover' ? 'selected' : '' }}>Prime Mover</option>
+                                                <option value="Tandem Roller" {{ old('jenis') == 'Tandem Roller' ? 'selected' : '' }}>Tandem Roller</option>
+                                                <option value="Vacuum Truck" {{ old('jenis') == 'Vacuum Truck' ? 'selected' : '' }}>Vacuum Truck</option>
+                                                <option value="Water Tank Truck" {{ old('jenis') == 'Water Tank Truck' ? 'selected' : '' }}>Water Tank Truck</option>
                                             </select>
                                             @error('jenis') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>

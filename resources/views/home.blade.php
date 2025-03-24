@@ -37,7 +37,6 @@
       <div id="toastNotification" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
           <div class="d-flex">
                 <div class="toast-body" id="toastMessage">
-                  Pesan berhasil dikirim!
                 </div>
             <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
@@ -58,7 +57,7 @@
             <p>Mahir Trans Bersaudara hadir untuk memenuhi kebutuhan akan kendaraan berat dengan armada lengkap dan layanan terbaik.</p>
             <div class="d-grid d-sm-flex gap-3 mt-3">
                 <a href="#tentang-kami" class="btn-get-started"><center>Selengkapnya</center></a>
-                <a href="{{ url('profile-company/Profile_Company_Updated.pdf') }}" target="_blank" class="btn-get-started">
+                <a href="{{ url('profile-company/Profile_Company.pdf') }}" target="_blank" class="btn-get-started">
                 <center><i class="bi bi-file-earmark-pdf me-2"></i> Profil Perusahaan</center>
                 </a>            
               </div>
@@ -377,7 +376,7 @@
                       <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
                             placeholder="Nama / Perusahaan" value="{{ old('name') }}" required>
                       @error('name')
-                          <div class="invalid-feedback">Kolom ini wajib diisi</div>
+                          <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
                   </div>
 
@@ -385,7 +384,7 @@
                       <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
                             placeholder="Email" value="{{ old('email') }}" required>
                       @error('email')
-                          <div class="invalid-feedback">Kolom ini wajib diisi</div>
+                          <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
                   </div>
 
@@ -393,7 +392,7 @@
                       <input type="number" name="whatsapp" class="form-control @error('whatsapp') is-invalid @enderror"
                             placeholder="Nomor WhatsApp" value="{{ old('whatsapp') }}">
                       @error('whatsapp')
-                          <div class="invalid-feedback">Kolom ini wajib diisi</div>
+                          <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
                   </div>
 
@@ -401,7 +400,7 @@
                       <input type="text" name="subject" class="form-control @error('subject') is-invalid @enderror"
                             placeholder="Perihal" value="{{ old('subject') }}" required>
                       @error('subject')
-                          <div class="invalid-feedback">Kolom ini wajib diisi</div>
+                          <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
                   </div>
 
@@ -409,16 +408,16 @@
                       <textarea name="message" class="form-control @error('message') is-invalid @enderror"
                                 rows="6" placeholder="Pesan" required>{{ old('message') }}</textarea>
                       @error('message')
-                          <div class="invalid-feedback">Kolom ini wajib diisi</div>
+                          <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
                   </div>
-
-                  <div class="col-md-12 text-center">
-                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal">
-                          Kirim Pesan
+                  <div class="d-flex justify-content-center align-items-center my-3">
+                      <button type="button" class="btn btn-primary btn-lg shadow-sm px-4 py-2 fw-bold d-flex align-items-center gap-2" 
+                          data-bs-toggle="modal" data-bs-target="#confirmModal"
+                          style="transition: all 0.3s ease-in-out;">
+                          <i class="bi bi-send"></i> Kirim Pesan
                       </button>
                   </div>
-
               </div>
             </form>
           </div><!-- End Contact Form -->

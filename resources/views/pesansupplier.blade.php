@@ -94,6 +94,7 @@
                                         <div class="col-md-6">
                                             <label class="text-secondary mb-2">Nama Barang</label>
                                             <input type="text" class="form-control border border-secondary" name="nama_barang" required value="{{ old('nama_barang') }}">
+                                            <p class="text-secondary">Pisahkan nama barang dengan tanda koma (,)</p>
                                             @error('nama_barang') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                         <div class="col-md-6">

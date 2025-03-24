@@ -166,7 +166,7 @@ class pageuser extends Controller
             // Simpan ke database
             kontak::create($safeData);
 
-            return back()->with('success', 'Pesan Anda telah dikirim! Kami segera menghubungi Anda.');
+            return back()->with('success', 'Pesan Anda telah dikirim! Tim kami akan segera menghubungi Anda.');
         } catch (Exception $e) {
             return back()->with('error', 'Terjadi kesalahan. Silakan coba lagi.');
         }
@@ -179,7 +179,7 @@ class pageuser extends Controller
             'nama' => 'required|string|max:255',
             'nohp' => 'required|regex:/^[0-9]+$/|min:10|max:15',
             'email' => 'required|email|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
-            'jenis' => 'required|string|in:Truk Foco,Crane,Dozer,Lowbed,Triller,Truk Kepala,Truk Tandem,Truk Vakum,Tangki Air',
+            'jenis' => 'required|string|in:Bulldozer,Crane,Foco Truck,Trailer,Lowbed Trailer,Prime Mover,Tandem Roller,Vacuum Truck,Water Tank Truck',
             'jml' => 'required|integer|min:1',
             'awal' => 'required|date',
             'akhir' => 'required|date|after_or_equal:awal',
@@ -284,7 +284,7 @@ class pageuser extends Controller
             'nama' => 'required|string|max:255',
             'nohp' => 'required|regex:/^[0-9]+$/|min:10|max:15',
             'email' => 'required|email|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
-            'jenis_kendaraan' => 'required|string|max:255',
+            'jenis_kendaraan' => 'required|string|in:Bulldozer,Crane,Foco Truck,Trailer,Lowbed Trailer,Prime Mover,Tandem Roller,Vacuum Truck,Water Tank Truck',
             'jumlah_kebutuhan' => 'required|integer|min:1',
             'durasi' => 'required|integer|min:1',
             'satuan_durasi' => 'required|in:hari,minggu,bulan,tahun',
