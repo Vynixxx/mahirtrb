@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Mitra - PT. Mahir Trans Bersaudara</title>
+  <title>{{ __('msg.menu_mitra') }} - PT. Mahir Trans Bersaudara</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -41,12 +41,21 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="{{ route('home') }}">Beranda</a></li>
-          <li><a href="{{ route('tentang-kami') }}" >Tentang</a></li>
-          <li><a href="{{ route('layanan') }}">Layanan</a></li>
-          <li><a href="{{ route('galeri') }}">Galeri</a></li>
-          <li><a href="{{ route('mitra') }}" class="active">Mitra</a></li>
-          <li><a href="{{ route('kontak') }}">Kontak</a></li>
+        <li><a href="{{ route('home') }}">{{ __('msg.menu_beranda') }}</a></li>
+          <li><a href="{{ route('tentang-kami') }}">{{ __('msg.menu_tentang') }}</a></li>
+          <li><a href="{{ route('layanan') }}">{{ __('msg.menu_layanan') }}</a></li>
+          <li><a href="{{ route('galeri') }}">{{ __('msg.menu_galeri') }}</a></li>
+          <li><a href="{{ route('mitra') }}" class="active">{{ __('msg.menu_mitra') }}</a></li>
+          <li><a href="{{ route('kontak') }}">{{ __('msg.menu_kontak') }}</a></li>
+
+          <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom">
+              <a href="{{ url('/lang/id') }}" class="nav-link">
+                  <img src="{{ asset('assets/id.png') }}" alt="Bahasa Indonesia" width="20">
+              </a>
+              <a href="{{ url('/lang/en') }}" class="nav-link">
+                  <img src="{{ asset('assets/en.png') }}" alt="English" width="20">
+              </a>
+          </li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -61,7 +70,7 @@
             <div class="container">
             <div class="row d-flex justify-content-center text-center">
                 <div class="col-lg-8">
-                <h1>Mitra Kami</h1>
+                <h1>{{ __('msg.mitra_judul') }}</h1>
                 </div>
             </div>
             </div>
@@ -69,15 +78,15 @@
         <nav class="breadcrumbs">
             <div class="container">
             <ol>
-                <li><a href="{{ route('home') }}">Beranda</a></li>
-                <li class="current">Mitra</li>
+                <li><a href="{{ route('home') }}">{{ __('msg.menu_beranda') }}</a></li>
+                <li class="current">{{ __('msg.menu_mitra') }}</li>
             </ol>
             </div>
         </nav>
         </div><!-- End Page Title -->
 
         <section class="container my-5">
-            <h2 class="text-center mb-4" data-aos="fade-up">Daftar Mitra</h2>
+            <h2 class="text-center mb-4" data-aos="fade-up">{!! __('msg.mitra_label') !!}</h2>
             <div class="row text-center g-4">
                 @foreach ($mitra as $m)
                 <div class="col-md-4">

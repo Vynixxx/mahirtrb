@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Kontak - PT. Mahir Trans Bersaudara</title>
+  <title>{{ __('msg.menu_kontak') }} - PT. Mahir Trans Bersaudara</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -50,12 +50,21 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="{{ route('home') }}">Beranda</a></li>
-          <li><a href="{{ route('tentang-kami') }}" >Tentang</a></li>
-          <li><a href="{{ route('layanan') }}" >Layanan</a></li>
-          <li><a href="{{ route('galeri') }}" >Galeri</a></li>
-          <li><a href="{{ route('mitra') }}" >Mitra</a></li>
-          <li><a href="{{ route('kontak') }}" class="active">Kontak</a></li>
+          <li><a href="{{ route('home') }}">{{ __('msg.menu_beranda') }}</a></li>
+          <li><a href="{{ route('tentang-kami') }}">{{ __('msg.menu_tentang') }}</a></li>
+          <li><a href="{{ route('layanan') }}">{{ __('msg.menu_layanan') }}</a></li>
+          <li><a href="{{ route('galeri') }}">{{ __('msg.menu_galeri') }}</a></li>
+          <li><a href="{{ route('mitra') }}">{{ __('msg.menu_mitra') }}</a></li>
+          <li><a href="{{ route('kontak') }}" class="active">{{ __('msg.menu_kontak') }}</a></li>
+
+          <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom">
+              <a href="{{ url('/lang/id') }}" class="nav-link">
+                  <img src="{{ asset('assets/id.png') }}" alt="Bahasa Indonesia" width="20">
+              </a>
+              <a href="{{ url('/lang/en') }}" class="nav-link">
+                  <img src="{{ asset('assets/en.png') }}" alt="English" width="20">
+              </a>
+          </li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>

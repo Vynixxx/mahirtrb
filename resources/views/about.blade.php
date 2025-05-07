@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Tentang - PT. Mahir Trans Bersaudara</title>
+  <title>{{ __('msg.menu_tentang') }} - PT. Mahir Trans Bersaudara</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -70,7 +70,7 @@
             <div class="container">
             <div class="row d-flex justify-content-center text-center">
                 <div class="col-lg-8">
-                <h1>Tentang Kami</h1>
+                <h1>{{ __('msg.tentang_kami') }}</h1>
                 </div>
             </div>
             </div>
@@ -78,8 +78,8 @@
         <nav class="breadcrumbs">
             <div class="container">
             <ol>
-                <li><a href="{{ route('home') }}">Beranda</a></li>
-                <li class="current">Tentang</li>
+                <li><a href="{{ route('home') }}">{{ __('msg.menu_beranda') }}</a></li>
+                <li class="current">{{ __('msg.menu_tentang') }}</li>
             </ol>
             </div>
         </nav>
@@ -88,10 +88,9 @@
         <section class="container my-5" data-aos="fade-up">
       <div class="row">
         <div class="col-lg-6">
-          <h2>Tentang <span class="fw-bold text-primary">Perusahaan</span></h2>
+          <h2>{!! __('msg.tentang_perusahaan') !!}</h2>
           <p>
-          PT. Mahir Trans Bersaudara mulai beroperasi pada 23 Februari 2023 dengan komitmen tinggi dalam menyediakan layanan penyewaan, perbaikan, trucking atau ekspedisi, dan pabrikasi yang profesional, terpercaya, dan berkualitas guna mendukung berbagai proyek konstruksi, infrastruktur, serta kebutuhan logistik di seluruh Indonesia. Dengan pengalaman yang luas di industri ini, kami menyediakan berbagai jenis alat berat seperti Foco Truck, Crane, Triller, Head Truck, dan lain sebagainya, yang selalu dalam kondisi optimal untuk memastikan kelancaran proyek Anda. Kami didukung oleh operator berpengalaman dan tim teknisi handal yang siap memastikan setiap peralatan berfungsi dengan efisiensi dan keamanan tinggi. Selain itu, kami juga menawarkan layanan perbaikan alat berat, ekspedisi dan trucking untuk pengangkutan peralatan serta pabrikasi komponen yang mendukung kebutuhan industri. <br>
-          Dengan standar pelayanan yang profesional, kami menawarkan harga kompetitif, fleksibilitas penyewaan, serta layanan konsultasi untuk membantu pelanggan mendapatkan solusi terbaik sesuai dengan kebutuhan mereka. Seiring dengan pertumbuhan sektor konstruksi, infrastruktur, dan logistik di Indonesia, PT. Mahir Trans Bersaudara terus berinovasi dan berkembang untuk memberikan layanan yang lebih baik. Kami berkomitmen untuk menjadi mitra terpercaya bagi pelanggan kami, dengan mengutamakan kualitas, keselamatan, dan kepuasan pelanggan dalam setiap layanan yang kami berikan.
+          {{ __('msg.desc_tentang_perusahaan') }}<br>{{ __('msg.desc_tentang_perusahaan1') }}
           </p>
         </div>
         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
@@ -101,24 +100,21 @@
     </section>
 
     <section class="container my-5" data-aos="fade-up">
-      <h2 class="text-center"><span class="fw-bold text-primary">Visi</span> & <span class="fw-bold text-primary">Misi</span> Kami</h2>
-      <div class="row">
+    <h2 class="text-center">{!! __('msg.visi_misi_heading') !!}</h2>
+    <div class="row">
         <div class="col-md-6">
           <div class="p-4" data-aos="fade-up" data-aos-delay="100">
-            <h3>Visi</h3>
-            <p>
-            Menjadi perusahaan terkemuka di bidang penyewaan, perbaikan, ekspedisi, dan pabrikasi alat berat, dengan standar pelayanan terbaik, inovasi berkelanjutan, serta komitmen terhadap keselamatan dan kepuasan pelanggan di seluruh Indonesia terkhusus di wilayah provinsi RIau.
-            </p>
+            <h3>{{ __('msg.vision_title') }}</h3>
+            <p>{{ __('msg.vision_content') }}</p>
           </div>
         </div>
         <div class="col-md-6">
           <div class="p-4" data-aos="fade-up" data-aos-delay="100">
-            <h3>Misi</h3>
+            <h3>{{ __('msg.mission_title') }}</h3>
             <ul>
-              <li>Menyediakan layanan penyewaan alat berat yang berkualitas tinggi, dengan armada yang selalu dalam kondisi optimal untuk mendukung berbagai proyek konstruksi dan infrastruktur.</li>
-              <li>Menawarkan jasa perbaikan dan perawatan alat berat dengan standar teknis terbaik guna memastikan kinerja peralatan yang maksimal.</li>
-              <li>Mengembangkan layanan trucking dan ekspedisi yang efisien dan tepat waktu untuk memenuhi kebutuhan pengangkutan alat berat dan logistik industri.</li>
-              <li>Menyediakan solusi pabrikasi komponen yang presisi dan berkualitas tinggi guna mendukung berbagai sektor industri.</li>
+            @foreach(__('msg.mission_list') as $mission)
+                <li>{{ $mission }}</li>
+            @endforeach
             </ul>
           </div>
         </div>
@@ -127,7 +123,7 @@
 
    <!-- layanan Section -->
    <section id="layanan-kami" class="services section light-background py-5">
-    <h2 class="text-center mb-4" data-aos="fade-up"><span class="fw-bold text-primary">Layanan</span> Kami</h2>
+    <h2 class="text-center mb-4" data-aos="fade-up">{!! __('msg.layanan_heading') !!}</h2>
 
     <div class="container">
         <div class="row gy-4 justify-content-center text-center">
@@ -243,8 +239,8 @@
 
     <section class="container my-5 text-center">
     <div class="mb-4">
-        <h2 data-aos="zoom-in"><span class="fw-bold text-primary">Hubungi</span> Kami</h2>
-        <p class="text-muted" data-aos="fade-up" data-aos-delay="100">Kami siap membantu Anda!</p>
+        <h2 data-aos="zoom-in">{!! __('msg.hubungi_kami_heading') !!}</h2>
+        <p class="text-muted" data-aos="fade-up" data-aos-delay="100">{{ __('msg.hubungi_kami_sub') }}</p>
     </div>
 
     <div class="row justify-content-center">
@@ -252,8 +248,8 @@
             <div class="card border-0 shadow-sm py-3">
                 <div class="card-body">
                     <i class="bi bi-geo-alt text-danger fs-2"></i>
-                    <h5 class="fw-bold mt-2">Alamat</h5>
-                    <p class="text-muted">Jl. Lingkar Balairaja, Pinggir, Riau</p>
+                    <h5 class="fw-bold mt-2">{{ __('msg.alamat') }}</h5>
+                    <p class="text-muted">{{ __('msg.isi_alamat') }}</p>
                 </div>
             </div>
         </div>
@@ -262,8 +258,8 @@
             <div class="card border-0 shadow-sm py-3">
                 <div class="card-body">
                     <i class="bi bi-telephone text-success fs-2"></i>
-                    <h5 class="fw-bold mt-2">Telepon</h5>
-                    <p class="text-muted">+62 812-3456-7890</p>
+                    <h5 class="fw-bold mt-2">{{ __('msg.telepon') }}</h5>
+                    <p class="text-muted">{{ __('msg.isi_telepon') }}</p>
                 </div>
             </div>
         </div>
@@ -272,8 +268,8 @@
             <div class="card border-0 shadow-sm py-3">
                 <div class="card-body">
                     <i class="bi bi-envelope text-primary fs-2"></i>
-                    <h5 class="fw-bold mt-2">Email</h5>
-                    <p class="text-muted">info@mahirtb.com</p>
+                    <h5 class="fw-bold mt-2">{{ __('msg.email') }}</h5>
+                    <p class="text-muted">{{ __('msg.isi_email') }}</p>
                 </div>
             </div>
         </div>
@@ -282,9 +278,9 @@
             <div class="card border-0 shadow-sm py-3">
                 <div class="card-body">
                     <i class="bi bi-globe text-warning fs-2"></i>
-                    <h5 class="fw-bold mt-2">Website</h5>
+                    <h5 class="fw-bold mt-2">{{ __('msg.website') }}</h5>
                     <p class="text-muted">
-                        <a href="https://www.mahirtb.com" class="text-decoration-none fw-bold text-dark">www.mahirtb.com</a>
+                        <a href="https://www.mahirtb.com" class="text-decoration-none fw-bold text-dark"><a href="">www.mahirtransbersaudara.com</a></a>
                     </p>
                 </div>
             </div>

@@ -60,8 +60,6 @@
                                                 <option>Crane</option>
                                                 <option>Dozer</option>
                                                 <option>Lowbed</option>
-                                                <option>Pekerjaan</option>
-                                                <option>Tim</option>
                                                 <option>Triller</option>
                                                 <option>Truk Foco</option>
                                                 <option>Truk Kepala</option>

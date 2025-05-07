@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Layanan - PT. Mahir Trans Bersaudara</title>
+  <title>{{ __('msg.menu_layanan') }} - PT. Mahir Trans Bersaudara</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -41,12 +41,21 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="{{ route('home') }}">Beranda</a></li>
-          <li><a href="{{ route('tentang-kami') }}" >Tentang</a></li>
-          <li><a href="{{ route('layanan') }}" class="active">Layanan</a></li>
-          <li><a href="{{ route('galeri') }}">Galeri</a></li>
-          <li><a href="{{ route('mitra') }}" >Mitra</a></li>
-          <li><a href="{{ route('kontak') }}">Kontak</a></li>
+          <li><a href="{{ route('home') }}">{{ __('msg.menu_beranda') }}</a></li>
+          <li><a href="{{ route('tentang-kami') }}">{{ __('msg.menu_tentang') }}</a></li>
+          <li><a href="{{ route('layanan') }}" class="active">{{ __('msg.menu_layanan') }}</a></li>
+          <li><a href="{{ route('galeri') }}">{{ __('msg.menu_galeri') }}</a></li>
+          <li><a href="{{ route('mitra') }}">{{ __('msg.menu_mitra') }}</a></li>
+          <li><a href="{{ route('kontak') }}">{{ __('msg.menu_kontak') }}</a></li>
+
+          <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom">
+              <a href="{{ url('/lang/id') }}" class="nav-link">
+                  <img src="{{ asset('assets/id.png') }}" alt="Bahasa Indonesia" width="20">
+              </a>
+              <a href="{{ url('/lang/en') }}" class="nav-link">
+                  <img src="{{ asset('assets/en.png') }}" alt="English" width="20">
+              </a>
+          </li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -61,7 +70,7 @@
             <div class="container">
             <div class="row d-flex justify-content-center text-center">
                 <div class="col-lg-8">
-                <h1>Layanan Kami</h1>
+                <h1>{{ __('msg.layanan_heading1') }}</h1>
                 </div>
             </div>
             </div>
@@ -69,8 +78,8 @@
         <nav class="breadcrumbs">
             <div class="container">
             <ol>
-                <li><a href="{{ route('home') }}">Beranda</a></li>
-                <li class="current">Layanan</li>
+                <li><a href="{{ route('home') }}">{{ __('msg.menu_beranda') }}</a></li>
+                <li class="current">{{ __('msg.menu_layanan') }}</li>
             </ol>
             </div>
         </nav>
@@ -78,7 +87,7 @@
 
     <!-- layanan Section -->
     <section id="layanan-kami" class="services section light-background py-5">
-    <h2 class="text-center mb-4" data-aos="fade-up">Layanan yang <span class="fw-bold text-primary">Kami Tawarkan</span></h2>
+    <h2 class="text-center mb-4" data-aos="fade-up">{!! __('msg.layanan_kami_tawarkan_heading') !!}</h2>
 
 
       <div class="container">
@@ -86,15 +95,13 @@
         <!-- Service Item 1 -->
         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="50">
           <div class="card border-0 shadow-sm h-100">
-              <img src="assets/img/services/ekspedisi.png" class="card-img-top" alt="Layanan kami">
+              <img src="assets/img/services/ekspedisi.png" class="card-img-top" alt="Ekspedisi">
             <div class="card-body text-center">
-              <h5 class="card-title fw-bold">Ekspedisi</h5>
-              <p class="card-text text-muted">
-              PT. Mahir Trans Bersaudara hadir sebagai mitra terpercaya dalam penyewaan ekspedisi khusus untuk kendaraan alat berat. Dengan armada terbaik dan tenaga profesional berpengalaman, kami siap membantu pengangkutan alat berat Anda dengan aman, cepat, dan efisien ke berbagai lokasi di seluruh Indonesia terkhusus di wilayah Riau. Kami memahami bahwa setiap pengiriman memiliki tantangan tersendiri, oleh karena itu kami menawarkan layanan ekspedisi yang fleksibel dan disesuaikan dengan kebutuhan Anda. Dari pengiriman Truk Foco, bulldozer, crane, hingga kendaraan berat lainnya, kami memastikan proses transportasi berjalan lancar dengan standar keselamatan tinggi. Percayakan kebutuhan logistik alat berat Anda kepada PT. Mahir Trans Bersaudara untuk solusi ekspedisi yang andal dan profesional.              
-            </p>
+              <h5 class="card-title fw-bold">{{ __('msg.layanan_ekspedisi_judul') }}</h5>
+              <p class="card-text text-muted">{{ __('msg.layanan_ekspedisi_isi') }}</p>
             </div>
             <a href="{{ route('pesanekspedisi') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="200">
-              Pesan Sekarang
+            {{ __('msg.pesan_sekarang') }}
             </a>
           </div>
         </div>
@@ -103,11 +110,11 @@
             <div class="card border-0 shadow-sm h-100">
               <img src="assets/img/services/pabrikasi.png" class="card-img-top" alt="Layanan 1">
             <div class="card-body text-center">
-                <h5 class="card-title fw-bold">Pabrikasi</h5>
-                <p class="card-text text-muted">PT. Mahir Trans Bersaudara menawarkan layanan pabrikasi berkualitas tinggi untuk memenuhi kebutuhan industri Anda. Dengan tim ahli dan peralatan modern, kami siap memproduksi berbagai komponen dan struktur berbahan logam, baik untuk industri konstruksi, manufaktur, hingga alat berat. Kami berkomitmen untuk menghadirkan hasil pabrikasi yang presisi, kuat, dan sesuai dengan standar kualitas tinggi. Setiap proses produksi dilakukan dengan ketelitian dan pengawasan ketat untuk memastikan ketahanan serta keamanan produk yang kami hasilkan. Dengan pengalaman dan dedikasi dalam industri ini, PT. Mahir Trans Bersaudara menjadi pilihan tepat bagi Anda yang membutuhkan solusi pabrikasi profesional, efisien, dan terpercaya.</p>
+              <h5 class="card-title fw-bold">{{ __('msg.layanan_pabrikasi_judul') }}</h5>
+              <p class="card-text text-muted">{{ __('msg.layanan_pabrikasi_isi') }}</p>
               </div>
               <a href="{{ route('pesanpabrikasi') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="300">
-                    Pesan Sekarang
+              {{ __('msg.pesan_sekarang') }}
                 </a>
             </div>
           </div>
@@ -116,11 +123,11 @@
             <div class="card border-0 shadow-sm h-100">
               <img src="assets/img/services/perbaikan.png" class="card-img-top" alt="Layanan 1">
               <div class="card-body text-center">
-                <h5 class="card-title fw-bold">Perbaikan</h5>
-                <p class="card-text text-muted">PT. Mahir Trans Bersaudara menyediakan layanan perbaikan alat berat yang handal dan profesional untuk memastikan performa optimal mesin Anda. Dengan teknisi berpengalaman dan peralatan canggih, kami siap menangani berbagai jenis perbaikan, mulai dari perawatan rutin hingga perbaikan komponen utama seperti mesin, hidrolik, dan sistem kelistrikan. Kami memahami bahwa downtime alat berat dapat berdampak besar pada operasional bisnis, oleh karena itu kami berkomitmen untuk memberikan layanan yang cepat, efisien, dan berkualitas tinggi. Apapun jenis alat berat Anda, percayakan perbaikannya kepada kami. PT. Mahir Trans Bersaudara siap menjadi mitra terbaik Anda dalam menjaga kinerja dan keandalan alat berat di lapangan.</p>
+              <h5 class="card-title fw-bold">{{ __('msg.layanan_perbaikan_judul') }}</h5>
+              <p class="card-text text-muted">{{ __('msg.layanan_perbaikan_isi') }}</p>
               </div>
               <a href="{{ route('pesanperbaikan') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="400">
-                    Pesan Sekarang
+              {{ __('msg.pesan_sekarang') }}
                 </a>
             </div>
           </div>
@@ -129,11 +136,11 @@
             <div class="card border-0 shadow-sm h-100">
               <img src="assets/img/services/penyewaan.png" class="card-img-top" alt="Layanan 4">
               <div class="card-body text-center">
-                <h5 class="card-title fw-bold">Penyewaan</h5>
-                <p class="card-text text-muted">PT. Mahir Trans Bersaudara menyediakan layanan penyewaan alat berat dengan berbagai pilihan unit berkualitas tinggi untuk mendukung kelancaran proyek konstruksi, pertambangan, dan industri lainnya. Dengan armada yang terawat dan siap pakai, kami menawarkan beragam alat berat sesuai dengan kebutuhan operasional Anda. Kami memahami pentingnya efisiensi dan ketepatan waktu dalam setiap proyek, sehingga kami berkomitmen memberikan layanan sewa yang fleksibel, harga kompetitif, serta dukungan teknis profesional. Percayakan kebutuhan alat berat Anda kepada PT. Mahir Trans Bersaudara untuk solusi sewa yang andal, efisien, dan berkualitas tinggi.</p>
+              <h5 class="card-title fw-bold">{{ __('msg.layanan_penyewaan_judul') }}</h5>
+              <p class="card-text text-muted">{{ __('msg.layanan_penyewaan_isi') }}</p>
               </div>
               <a href="{{ route('pesanpenyewaan') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="200">
-                    Pesan Sekarang
+              {{ __('msg.pesan_sekarang') }}
                 </a>
             </div>
           </div>
@@ -142,11 +149,11 @@
             <div class="card border-0 shadow-sm h-100">
               <img src="assets/img/services/supplier.png" class="card-img-top" alt="Layanan 4">
               <div class="card-body text-center">
-                <h5 class="card-title fw-bold">Supplier</h5>
-                <p class="card-text text-muted">PT. Mahir Trans Bersaudara menyediakan layanan supplier kebutuhan dan peralatan alat berat untuk mendukung berbagai sektor industri, termasuk konstruksi, pertambangan, dan manufaktur. Kami menawarkan beragam produk berkualitas tinggi, mulai dari suku cadang, komponen hidrolik, hingga peralatan pendukung yang dirancang untuk memastikan kinerja optimal alat berat Anda. Dengan jaringan supplier terpercaya dan sistem distribusi yang efisien, kami berkomitmen menyediakan produk yang tepat waktu dan sesuai dengan spesifikasi yang dibutuhkan. Kami memahami pentingnya keandalan dan durabilitas dalam setiap peralatan yang digunakan di lingkungan kerja yang menuntut, sehingga kami hanya menyediakan produk terbaik dengan standar kualitas tinggi. </p>
+              <h5 class="card-title fw-bold">{{ __('msg.layanan_supplier_judul') }}</h5>
+              <p class="card-text text-muted">{{ __('msg.layanan_supplier_isi') }}</p>
               </div>
               <a href="{{ route('pesansupplier') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="200">
-                    Pesan Sekarang
+              {{ __('msg.pesan_sekarang') }}
                 </a>
             </div>
           </div>

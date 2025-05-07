@@ -158,7 +158,7 @@
                 <div class="card border-0 shadow-sm h-100 custom-service-card">
                     <img src="assets/img/services/ekspedisi.png" class="custom-card-img-top" alt="Ekspedisi">
                     <div class="card-body">
-                        <h5 class="card-title fw-bold">{{ __('msg.ekspedisi') }}</h5>
+                        <h5 class="card-title fw-bold">{{ __('msg.layanan_ekspedisi_judul') }}</h5>
                         <p class="card-text text-muted">
                           {{ __('msg.deskripsi_ekspedisi') }}
                         </p>
@@ -175,7 +175,7 @@
                 <div class="card border-0 shadow-sm h-100 custom-service-card">
                     <img src="assets/img/services/pabrikasi.png" class="custom-card-img-top" alt="Pabrikasi">
                     <div class="card-body">
-                        <h5 class="card-title fw-bold">{{ __('msg.pabrikasi') }}</h5>
+                        <h5 class="card-title fw-bold">{{ __('msg.layanan_pabrikasi_judul') }}</h5>
                         <p class="card-text text-muted">
                             {{ __('msg.deskripsi_pabrikasi') }}
                     </div>
@@ -191,7 +191,7 @@
                 <div class="card border-0 shadow-sm h-100 custom-service-card">
                     <img src="assets/img/services/perbaikan.png" class="custom-card-img-top" alt="Perbaikan">
                     <div class="card-body">
-                        <h5 class="card-title fw-bold">{{ __('msg.perbaikan') }}</h5>
+                        <h5 class="card-title fw-bold">{{ __('msg.layanan_perbaikan_judul') }}</h5>
                         <p class="card-text text-muted">
                         {{ __('msg.deskripsi_perbaikan') }}
                         </p>
@@ -208,7 +208,7 @@
                 <div class="card border-0 shadow-sm h-100 custom-service-card">
                     <img src="assets/img/services/penyewaan.png" class="custom-card-img-top" alt="Penyewaan">
                     <div class="card-body">
-                        <h5 class="card-title fw-bold">{{ __('msg.penyewaan') }}</h5>
+                        <h5 class="card-title fw-bold">{{ __('msg.layanan_penyewaan_judul') }}</h5>
                         <p class="card-text text-muted">
                         {{ __('msg.deskripsi_penyewaan') }}
                         </p>
@@ -225,7 +225,7 @@
                 <div class="card border-0 shadow-sm h-100 custom-service-card">
                     <img src="assets/img/services/supplier.png" class="custom-card-img-top" alt="Supplier">
                     <div class="card-body">
-                        <h5 class="card-title fw-bold">{{ __('msg.supplier') }}</h5>
+                        <h5 class="card-title fw-bold">{{ __('msg.layanan_supplier_judul') }}</h5>
                         <p class="card-text text-muted">
                         {{ __('msg.deskripsi_supplier') }}
                         </p>
