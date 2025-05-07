@@ -135,15 +135,6 @@ class pageuser extends Controller
             'whatsapp' => 'required|regex:/^[0-9]+$/|min:10|max:15',
             'subject' => 'required|string|max:255',
             'message' => 'required|string|min:10',
-        ],
-        [
-            'name.required' => 'Kolom ini wajib diisi.',
-            'whatsapp.required' => 'Kolom ini wajib diisi.',
-            'subject.required' => 'Kolom ini wajib diisi.',
-            'message.required' => 'Kolom ini wajib diisi.',
-            'email.required' => 'Kolom ini wajib diisi.',
-            'email.email' => 'Format yang Anda masukkan salah.',
-            'email.regex' => 'Format yang Anda masukkan salah.',
         ]);
 
         try {
@@ -166,9 +157,9 @@ class pageuser extends Controller
             // Simpan ke database
             kontak::create($safeData);
 
-            return back()->with('success', 'Pesan Anda telah dikirim! Tim kami akan segera menghubungi Anda.');
+            return back()->with('success', __('msg.feedback_success'));
         } catch (Exception $e) {
-            return back()->with('error', 'Terjadi kesalahan. Silakan coba lagi.');
+            return back()->with('error', __('msg.feedback_error'));
         }
     }
 

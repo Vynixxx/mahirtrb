@@ -53,12 +53,12 @@
           </div>
 
           <div class="col-lg-6  d-flex flex-column justify-content-center" data-aos="fade-in">
-            <h1>Butuh Kendaraan Berat untuk Proyek Anda? <span> Kami Siap Membantu!</span></h1>
-            <p>Mahir Trans Bersaudara hadir untuk memenuhi kebutuhan akan kendaraan berat dengan armada lengkap dan layanan terbaik.</p>
+            <h1>{{ __('msg.halaman_atas') }} <span> {{ __('msg.halaman_atasgaris') }}</span></h1>
+            <p>{{ __('msg.halaman_atasbawahgaris') }}</p>
             <div class="d-grid d-sm-flex gap-3 mt-3">
-                <a href="#tentang-kami" class="btn-get-started"><center>Selengkapnya</center></a>
+                <a href="#tentang-kami" class="btn-get-started"><center>{{ __('msg.selengkapnya') }}</center></a>
                 <a href="{{ url('profile-company/Profile_Company.pdf') }}" target="_blank" class="btn-get-started">
-                <center><i class="bi bi-file-earmark-pdf me-2"></i> Profil Perusahaan</center>
+                <center><i class="bi bi-file-earmark-pdf me-2"></i> {{ __('msg.profil_perusahaan') }}</center>
                 </a>            
               </div>
           </div>
@@ -90,14 +90,10 @@
         <div class="row align-items-xl-center gy-5">
 
           <div class="col-xl-5 content">
-            <h3>Tentang Kami</h3>
-            <h2>Siapa Kami?</h2>
-            <p>PT. Mahir Trans Bersaudara adalah perusahaan yang bergerak di bidang penyewaan, perbaikan, ekspedisi, dan pabrikasi alat berat. Beroperasi sejak 23 Februari 2023, kami berkomitmen menyediakan layanan profesional dan berkualitas untuk mendukung proyek konstruksi, infrastruktur, serta logistik, khususnya di Riau.
-
-            Kami menawarkan berbagai alat berat seperti Foco Truck, Crane, Triller, dan Head Truck yang selalu dalam kondisi optimal. Didukung operator berpengalaman dan teknisi handal, kami memastikan peralatan berfungsi dengan efisiensi dan keamanan tinggi. Selain itu, kami menyediakan layanan perbaikan alat berat, ekspedisi, trucking, serta pabrikasi komponen industri.
-
-            Dengan harga kompetitif, fleksibilitas penyewaan, dan layanan konsultasi, kami siap memberikan solusi terbaik bagi pelanggan. Seiring pertumbuhan sektor konstruksi dan logistik di Indonesia, PT. Mahir Trans Bersaudara terus berinovasi untuk menjadi mitra terpercaya yang mengutamakan kualitas, keselamatan, dan kepuasan pelanggan.</p>
-            <a href="{{ route('tentang-kami') }}" class="read-more"><span>Profil Perusahaan</span><i class="bi bi-arrow-right"></i></a>
+            <h3>{{ __('msg.tentang_kami') }}</h3>
+            <h2>{{ __('msg.siapa_kami') }}</h2>
+            <p>{{ __('msg.deskripsi_perusahaan') }}</p>
+            <a href="{{ route('tentang-kami') }}" class="read-more"><span>{{ __('msg.profil_perusahaan') }}</span><i class="bi bi-arrow-right"></i></a>
           </div>
 
           <div class="col-xl-7">
@@ -106,32 +102,32 @@
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
                 <div class="icon-box">
                   <i class="bi bi-award"></i>
-                  <h3>Komitmen Kami</h3>
-                  <p>Kami berkomitmen memberikan layanan penyewaan alat berat berkualitas tinggi dengan harga kompetitif.</p>
+                  <h3>{{ __('msg.komitmen_kami') }}</h3>
+                  <p>{{ __('msg.deskripsi_komitmen') }}</p>
                 </div>
               </div> <!-- End Icon Box -->
 
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
                 <div class="icon-box">
                   <i class="bi bi-star"></i>
-                  <h3>Keunggulan Layanan</h3>
-                  <p>PT Mahir Trans Bersaudara menawarkan fleksibilitas penyewaan alat berat untuk berbagai proyek industri.</p>
+                  <h3>{{ __('msg.keunggulan_layanan') }}</h3>
+                  <p>{{ __('msg.deskripsi_keunggulan') }}</p>
                 </div>
               </div> <!-- End Icon Box -->
 
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
                 <div class="icon-box">
                   <i class="bi bi-person-check"></i>
-                  <h3>Profesionalisme Tim</h3>
-                  <p>Dengan pengalaman oleh tim, kami didukung oleh tim profesional agar alat berat tetap optimal dan terawat dengan baik.</p>
+                  <h3>{{ __('msg.profesionalisme_tim') }}</h3>
+                  <p>{{ __('msg.deskripsi_profesionalisme') }}</p>
                 </div>
               </div> <!-- End Icon Box -->
 
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
                 <div class="icon-box">
                   <i class="bi bi-broadcast"></i>
-                  <h3>Jangkauan & MItra Kami</h3>
-                  <p>Kami telah bermitra dengan berbagai perusahaan konstruksi dan infrastruktur di seluruh Indonesia terkhusus di wilayah Riau.</p>
+                  <h3>{{ __('msg.jangkauan_mitra') }}</h3>
+                  <p>{{ __('msg.deskripsi_jangkauan') }}</p>
                 </div>
               </div> <!-- End Icon Box -->
 
@@ -148,10 +144,10 @@
       <!-- Section Title -->
       <div class="container section-title d-flex justify-content-between align-items-center flex-wrap gap-2" data-aos="fade-up">
           <div>
-              <h2 class="mb-0">Layanan</h2>
-              <div><span>Layanan yang</span> <span class="description-title">Tersedia</span></div>
+              <h2 class="mb-0">{{ __('msg.layanan') }}</h2>
+              <div><span>{{ __('msg.layanan_tersedia') }}</span></div>
           </div>
-          <a href="{{ route('pemesanan') }}">Selengkapnya <i class="bi bi-arrow-right"></i></a>
+          <a href="{{ route('pemesanan') }}">{{ __('msg.selengkapnya1') }} <i class="bi bi-arrow-right"></i></a>
       </div>
       <!-- End Section Title -->
 
@@ -162,14 +158,14 @@
                 <div class="card border-0 shadow-sm h-100 custom-service-card">
                     <img src="assets/img/services/ekspedisi.png" class="custom-card-img-top" alt="Ekspedisi">
                     <div class="card-body">
-                        <h5 class="card-title fw-bold">Ekspedisi</h5>
+                        <h5 class="card-title fw-bold">{{ __('msg.ekspedisi') }}</h5>
                         <p class="card-text text-muted">
-                            Layanan ekspedisi alat berat yang cepat, aman, dan efisien dengan armada terbaik dan tenaga profesional berpengalaman.
+                          {{ __('msg.deskripsi_ekspedisi') }}
                         </p>
                     </div>
                     <div class="card-footer bg-white border-0 text-center pb-4">
                         <a href="{{ route('pesanekspedisi') }}" class="btn btn-primary btn-lg custom-animate-btn">
-                            Pesan Sekarang
+                        {{ __('msg.pesan_sekarang') }}
                         </a>
                     </div>
                 </div>
@@ -179,14 +175,13 @@
                 <div class="card border-0 shadow-sm h-100 custom-service-card">
                     <img src="assets/img/services/pabrikasi.png" class="custom-card-img-top" alt="Pabrikasi">
                     <div class="card-body">
-                        <h5 class="card-title fw-bold">Pabrikasi</h5>
+                        <h5 class="card-title fw-bold">{{ __('msg.pabrikasi') }}</h5>
                         <p class="card-text text-muted">
-                            Produksi komponen logam presisi tinggi untuk industri konstruksi, manufaktur, dan alat berat dengan standar kualitas terbaik.
-                        </p>
+                            {{ __('msg.deskripsi_pabrikasi') }}
                     </div>
                     <div class="card-footer bg-white border-0 text-center pb-4">
                         <a href="{{ route('pesanpabrikasi') }}" class="btn btn-primary btn-lg custom-animate-btn">
-                            Pesan Sekarang
+                        {{ __('msg.pesan_sekarang') }}
                         </a>
                     </div>
                 </div>
@@ -196,14 +191,14 @@
                 <div class="card border-0 shadow-sm h-100 custom-service-card">
                     <img src="assets/img/services/perbaikan.png" class="custom-card-img-top" alt="Perbaikan">
                     <div class="card-body">
-                        <h5 class="card-title fw-bold">Perbaikan</h5>
+                        <h5 class="card-title fw-bold">{{ __('msg.perbaikan') }}</h5>
                         <p class="card-text text-muted">
-                            Layanan perbaikan alat berat dengan teknisi profesional dan peralatan canggih untuk memastikan performa optimal.
+                        {{ __('msg.deskripsi_perbaikan') }}
                         </p>
                     </div>
                     <div class="card-footer bg-white border-0 text-center pb-4">
                         <a href="{{ route('pesanperbaikan') }}" class="btn btn-primary btn-lg custom-animate-btn">
-                            Pesan Sekarang
+                        {{ __('msg.pesan_sekarang') }}
                         </a>
                     </div>
                 </div>
@@ -213,14 +208,14 @@
                 <div class="card border-0 shadow-sm h-100 custom-service-card">
                     <img src="assets/img/services/penyewaan.png" class="custom-card-img-top" alt="Penyewaan">
                     <div class="card-body">
-                        <h5 class="card-title fw-bold">Penyewaan</h5>
+                        <h5 class="card-title fw-bold">{{ __('msg.penyewaan') }}</h5>
                         <p class="card-text text-muted">
-                            Penyewaan alat berat dengan berbagai pilihan unit berkualitas tinggi, harga kompetitif, dan dukungan teknis profesional.
+                        {{ __('msg.deskripsi_penyewaan') }}
                         </p>
                     </div>
                     <div class="card-footer bg-white border-0 text-center pb-4">
                         <a href="{{ route('pesanpenyewaan') }}" class="btn btn-primary btn-lg custom-animate-btn">
-                            Pesan Sekarang
+                        {{ __('msg.pesan_sekarang') }}
                         </a>
                     </div>
                 </div>
@@ -230,14 +225,14 @@
                 <div class="card border-0 shadow-sm h-100 custom-service-card">
                     <img src="assets/img/services/supplier.png" class="custom-card-img-top" alt="Supplier">
                     <div class="card-body">
-                        <h5 class="card-title fw-bold">Supplier</h5>
+                        <h5 class="card-title fw-bold">{{ __('msg.supplier') }}</h5>
                         <p class="card-text text-muted">
-                        Supplier berbagai kebutuhan, suku cadang, serta peralatan pendukung untuk operasional dan pemeliharaan alat berat.
+                        {{ __('msg.deskripsi_supplier') }}
                         </p>
                     </div>
                     <div class="card-footer bg-white border-0 text-center pb-4">
                         <a href="{{ route('pesansupplier') }}" class="btn btn-primary btn-lg custom-animate-btn">
-                            Pesan Sekarang
+                        {{ __('msg.pesan_sekarang') }}
                         </a>
                     </div>
                 </div>
@@ -268,16 +263,16 @@
     </style>
     </section><!-- layanan section -->
 
-   <!-- Gallery Section -->
+    <!-- Gallery Section -->
     <section id="galeri" class="gallery section">
 
     <!-- Section Title -->
     <div class="container section-title d-flex justify-content-between align-items-center flex-wrap gap-2" data-aos="fade-up">
         <div>
-            <h2 class="mb-0">Galeri</h2>
-            <div><span>Dokumentasi</span></div>
+            <h2 class="mb-0">{{ __('msg.menu_galeri') }}</h2>
+            <div><span>{{ __('msg.dokumentasi') }}</span></div>
         </div>
-        <a href="{{ route('galeri') }}">Selengkapnya <i class="bi bi-arrow-right"></i></a>
+        <a href="{{ route('galeri') }}">{{ __('msg.selengkapnya1') }} <i class="bi bi-arrow-right"></i></a>
     </div>
     <!-- End Section Title -->
 
@@ -305,8 +300,8 @@
       <div class="container">
           <!-- Section Title -->
           <div class="container section-title" data-aos="fade-up">
-            <h2>Mitra</h2>
-            <div><span>Mitra</span> <span class="description-title">Kami</span></div>
+            <h2>{{ __('msg.menu_mitra') }}</h2>
+            <div><span>{{ __('msg.deskripsi_mitra') }}</span></div>
           </div><!-- End Section Title -->
           <!-- Swiper Wrapper -->
           <div class="swiper mySwiper" data-aos="fade-up">
@@ -332,8 +327,8 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Kontak Kami</h2>
-        <div><span>Silahkan Hubungi</span> <span class="description-title">Kami</span></div>
+        <h2>{{ __('msg.kontak_kami') }}</h2>
+        <div><span>{{ __('msg.silakan_hubungi') }}</span> </div>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade" data-aos-delay="100">
@@ -344,24 +339,24 @@
             <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
               <i class="bi bi-geo-alt flex-shrink-0"></i>
               <div>
-                <h3>Alamat</h3>
-                <p>Jalan Lingkar Timur Pinggir, Balairaja, Pinggir, Riau, 28784</p>
+                <h3>{{ __('msg.alamat') }}</h3>
+                <p>{{ __('msg.isi_alamat') }}</p>
               </div>
             </div><!-- End Info Item -->
 
             <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
               <i class="bi bi-telephone flex-shrink-0"></i>
               <div>
-                <h3>Telepon</h3>
-                <p>+1 5589 55488 55</p>
+                <h3>{{ __('msg.telepon') }}</h3>
+                <p>{{ __('msg.isi_telepon') }}</p>
               </div>
             </div><!-- End Info Item -->
 
             <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
               <i class="bi bi-envelope flex-shrink-0"></i>
               <div>
-                <h3>Email</h3>
-                <p>info@example.com</p>
+                <h3>{{ __('msg.email') }}</h3>
+                <p>{{ __('msg.isi_email') }}</p>
               </div>
             </div><!-- End Info Item -->
 
@@ -374,7 +369,7 @@
 
                   <div class="col-md-6">
                       <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
-                            placeholder="Nama / Perusahaan" value="{{ old('name') }}" required>
+                            placeholder="{{ __('msg.nama_perusahaan') }}" value="{{ old('name') }}" required>
                       @error('name')
                           <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
@@ -382,7 +377,7 @@
 
                   <div class="col-md-6">
                       <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
-                            placeholder="Email" value="{{ old('email') }}" required>
+                            placeholder="{{ __('msg.email') }}" value="{{ old('email') }}" required>
                       @error('email')
                           <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
@@ -390,7 +385,7 @@
 
                   <div class="col-md-6">
                       <input type="number" name="whatsapp" class="form-control @error('whatsapp') is-invalid @enderror"
-                            placeholder="Nomor WhatsApp" value="{{ old('whatsapp') }}">
+                            placeholder="{{ __('msg.nomor_wa') }}" value="{{ old('whatsapp') }}">
                       @error('whatsapp')
                           <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
@@ -398,7 +393,7 @@
 
                   <div class="col-md-6">
                       <input type="text" name="subject" class="form-control @error('subject') is-invalid @enderror"
-                            placeholder="Perihal" value="{{ old('subject') }}" required>
+                            placeholder="{{ __('msg.perihal') }}" value="{{ old('subject') }}" required>
                       @error('subject')
                           <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
@@ -406,7 +401,7 @@
 
                   <div class="col-md-12">
                       <textarea name="message" class="form-control @error('message') is-invalid @enderror"
-                                rows="6" placeholder="Pesan" required>{{ old('message') }}</textarea>
+                                rows="6" placeholder="{{ __('msg.pesan') }}" required>{{ old('message') }}</textarea>
                       @error('message')
                           <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
@@ -415,7 +410,7 @@
                       <button type="button" class="btn btn-primary btn-lg shadow-sm px-4 py-2 fw-bold d-flex align-items-center gap-2" 
                           data-bs-toggle="modal" data-bs-target="#confirmModal"
                           style="transition: all 0.3s ease-in-out;">
-                          <i class="bi bi-send"></i> Kirim Pesan
+                          <i class="bi bi-send"></i> {{ __('msg.kirim_pesan') }}
                       </button>
                   </div>
               </div>
@@ -426,15 +421,15 @@
               <div class="modal-dialog">
                   <div class="modal-content">
                       <div class="modal-header">
-                          <h5 class="modal-title" id="confirmModalLabel">Konfirmasi Pengiriman</h5>
+                          <h5 class="modal-title" id="confirmModalLabel">{{ __('msg.konfirmasi_pengiriman') }}</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
-                          Apakah Anda yakin ingin mengirim pesan ini?
+                      {{ __('msg.pesan_konfirmasi') }}
                       </div>
                       <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                          <button type="button" class="btn btn-primary" id="confirmSend">Ya, Kirim</button>
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('msg.batal') }}</button>
+                          <button type="button" class="btn btn-primary" id="confirmSend">{{ __('msg.ya_kirim') }}</button>
                       </div>
                   </div>
               </div>

@@ -5,31 +5,42 @@ use App\Http\Controllers\admin;
 use App\Http\Controllers\pageAdmin;
 use App\Http\Controllers\pageuser;
 use App\Http\Middleware\IsAdmin;
+use App\Http\Middleware\SetLocale;
+
 
 Route::fallback(function () {
     return response()->view('errors.404', [], 404);
 });
-Route::get('/', [pageuser::class, 'halamanhome'])->name('home');
-Route::get('/tentang-kami', [pageuser::class, 'halamanabout'])->name('tentang-kami');
-Route::get('/mitra-kami', [pageuser::class, 'halamanmitra'])->name('mitra');
-Route::get('/layanan-kami', [pageuser::class, 'halamanlayanan'])->name('layanan');
-Route::get('/galeri', [pageuser::class, 'halamangaleri'])->name('galeri');
-Route::get('/galeri/filter/{kategori}', [pageuser::class, 'filter']);
-Route::get('/kontak-kami', [pageuser::class, 'halamankontak'])->name('kontak');
-Route::get('/pemesanan', [pageuser::class, 'halamanpesan'])->name('pemesanan');
-Route::get('/jenis-alat-berat', [pageuser::class, 'halamanproduk'])->name('produk');
-Route::get('/syarat-dan-ketentuan', [pageuser::class, 'halamansk'])->name('sk');
-Route::get('/ekspedisi', [pageuser::class, 'halamanekspedisi'])->name('ekspedisi');
-Route::get('/pabrikasi', [pageuser::class, 'halamanpabrikasi'])->name('pabrikasi');
-Route::get('/penyewaan', [pageuser::class, 'halamansewa'])->name('penyewaan');
-Route::get('/perbaikan', [pageuser::class, 'halamanperbaikan'])->name('perbaikan');
-Route::get('/supplier', [pageuser::class, 'halamansupplier'])->name('supplier');
-Route::get('/pesan-ekspedisi', [pageuser::class, 'halamanpesanekspedisi'])->name('pesanekspedisi');
-Route::get('/pesan-pabrikasi', [pageuser::class, 'halamanpesanpabrikasi'])->name('pesanpabrikasi');
-Route::get('/pesan-penyewaan', [pageuser::class, 'halamanpesanpenyewaan'])->name('pesanpenyewaan');
-Route::get('/pesan-perbaikan', [pageuser::class, 'halamanpesanperbaikan'])->name('pesanperbaikan');
-Route::get('/pesan-supplier', [pageuser::class, 'halamanpesansupplier'])->name('pesansupplier');
+Route::get('/lang/{locale}', function ($locale) {
+    if (!in_array($locale, ['en', 'id'])) {
+        abort(400);
+    }
 
+    session()->put('locale', $locale);
+    return redirect()->back();
+})->name('setLocale');
+Route::middleware([SetLocale::class])->group(function () {
+    Route::get('/', [pageuser::class, 'halamanhome'])->name('home');
+    Route::get('/tentang-kami', [pageuser::class, 'halamanabout'])->name('tentang-kami');
+    Route::get('/mitra-kami', [pageuser::class, 'halamanmitra'])->name('mitra');
+    Route::get('/layanan-kami', [pageuser::class, 'halamanlayanan'])->name('layanan');
+    Route::get('/galeri', [pageuser::class, 'halamangaleri'])->name('galeri');
+    Route::get('/galeri/filter/{kategori}', [pageuser::class, 'filter']);
+    Route::get('/kontak-kami', [pageuser::class, 'halamankontak'])->name('kontak');
+    Route::get('/pemesanan', [pageuser::class, 'halamanpesan'])->name('pemesanan');
+    Route::get('/jenis-alat-berat', [pageuser::class, 'halamanproduk'])->name('produk');
+    Route::get('/syarat-dan-ketentuan', [pageuser::class, 'halamansk'])->name('sk');
+    Route::get('/ekspedisi', [pageuser::class, 'halamanekspedisi'])->name('ekspedisi');
+    Route::get('/pabrikasi', [pageuser::class, 'halamanpabrikasi'])->name('pabrikasi');
+    Route::get('/penyewaan', [pageuser::class, 'halamansewa'])->name('penyewaan');
+    Route::get('/perbaikan', [pageuser::class, 'halamanperbaikan'])->name('perbaikan');
+    Route::get('/supplier', [pageuser::class, 'halamansupplier'])->name('supplier');
+    Route::get('/pesan-ekspedisi', [pageuser::class, 'halamanpesanekspedisi'])->name('pesanekspedisi');
+    Route::get('/pesan-pabrikasi', [pageuser::class, 'halamanpesanpabrikasi'])->name('pesanpabrikasi');
+    Route::get('/pesan-penyewaan', [pageuser::class, 'halamanpesanpenyewaan'])->name('pesanpenyewaan');
+    Route::get('/pesan-perbaikan', [pageuser::class, 'halamanpesanperbaikan'])->name('pesanperbaikan');
+    Route::get('/pesan-supplier', [pageuser::class, 'halamanpesansupplier'])->name('pesansupplier');
+});
 
 //post
 Route::post('/postkontak', [pageuser::class, 'tambahkontak'])->name('postkontak');
