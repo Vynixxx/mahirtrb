@@ -191,4 +191,66 @@ return [
         ],
     ],
 
+    //modal
+    'konfirmasi_pemesanan' => 'Order Confirmation',
+    'yakin_pesan' => 'Are you sure you want to place the order?',
+    'ya_pesan' => 'Yes, Order',
+
+    //pesanmenu
+    'pesan_ekspedisi' => 'Order Expedition',
+    'pesan_pabrikasi' => 'Order Fabrication',
+    'pesan_penyewaan' => 'Order Rental',
+    'pesan_perbaikan' => 'Order Repair',
+    'pesan_supplier' => 'Order Supplier',
+
+    //pesanekspedisi
+    'detail_kebutuhan' => 'Requirement Details',
+    'jenis_kendaraan' => 'Vehicle Type',
+    'pilih_jenis_kendaraan' => 'Select Vehicle Type',
+    'jumlah_kebutuhan' => 'Required Quantity',
+    'awal_ekspedisi' => 'Start of Expedition',
+    'akhir_ekspedisi' => 'End of Expedition',
+    'catatan_tambahan' => 'Additional Notes',
+    'opsional' => '(Optional)',
+    'pesant' => 'Add notes if needed / Leave blank',
+
+    //pesanpabrikasi    
+    'jenis_pabrikasi_label' => 'Fabrication Type',
+    'pilih_jenis_pabrikasi' => 'Select Fabrication Type',
+    'material' => 'Material',
+    'jasa' => 'Service',
+    'material_jasa' => 'Material + Service',
+    'jenis_kendaraan' => 'Vehicle Type',
+    'pesan_material' => 'You have selected the material supply service. We will provide the heavy equipment materials according to your needs. Please include additional details in the notes section.',
+    'pesan_jasa' => 'You have selected the fabrication service. Please prepare the required materials, and our team will assist with the fabrication process.',
+    'pesan_material_jasa' => 'You have selected the complete service (Material + Service). We will supply all materials and carry out the fabrication process based on your requirements.',
+
+    //pesanpenyewaan
+    'durasi' => 'Duration',
+    'hari' => 'Day',
+    'minggu' => 'Week',
+    'bulan' => 'Month',
+    'tahun' => 'Year',
+    'awal_penyewaan' => 'Start of Rental',
+    'dengan_tim' => 'With Team?',
+    'ya' => 'Yes',
+    'tidak' => 'No',
+    
+    //pesanperbaikan
+    'detail_kendaraan' => 'Vehicle Details',
+    'plat_nomor' => 'License Plate',
+    'kendala_kendaraan' => 'Vehicle Problems',
+    'isi_kendala' => 'Please tell us about your vehicle problem',
+
+    //pesansupplier
+    'nama_barang' => 'Item Name',
+    'nama_barang_note' => 'Separate item names with commas (,)',
+    'merek_spesifikasi' => 'Brand / Specification',
+    'placeholder_merek' => 'If you have specific preferences / Leave it blank',
+    'jumlah_dipesan' => 'Quantity Ordered',
+    'unit' => 'Unit',
+    'liter' => 'Liter',
+    'kilogram' => 'Kilogram',
+    'meter' => 'Meter',
+    'tanggal_kebutuhan' => 'Required Date',
 ];

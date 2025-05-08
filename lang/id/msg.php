@@ -189,4 +189,67 @@ return [
         ],
     ],
 
+    //modal
+    'konfirmasi_pemesanan' => 'Konfirmasi Pemesanan',
+    'yakin_pesan' => 'Apakah Anda yakin ingin melakukan pemesanan?',
+    'ya_pesan' => 'Ya, Pesan',
+
+    //pesanmenu
+    'pesan_ekspedisi' => 'Pesan Ekspedisi',
+    'pesan_pabrikasi' => 'Pesan Pabrikasi',
+    'pesan_penyewaan' => 'Pesan Penyewaan',
+    'pesan_perbaikan' => 'Pesan Perbaikan',
+    'pesan_supplier' => 'Pesan Supplier',
+
+    //pesanekspedisi
+    'detail_kebutuhan' => 'Detail Kebutuhan',
+    'jenis_kendaraan' => 'Jenis Kendaraan',
+    'pilih_jenis_kendaraan' => 'Pilih Jenis Kendaraan',
+    'jumlah_kebutuhan' => 'Jumlah Kebutuhan',
+    'awal_ekspedisi' => 'Awal Ekspedisi',
+    'akhir_ekspedisi' => 'Akhir Ekspedisi',
+    'catatan_tambahan' => 'Catatan Tambahan',
+    'opsional' => '(Opsional)',
+    'pesant' => 'Tambahkan catatan jika diperlukan / Kosongkan saja',
+
+    //pesanpabrikasi
+    'jenis_pabrikasi_label' => 'Jenis Pabrikasi',
+    'pilih_jenis_pabrikasi' => 'Pilih Jenis Pabrikasi',
+    'material' => 'Material',
+    'jasa' => 'Jasa',
+    'material_jasa' => 'Material + Jasa',
+    'jenis_kendaraan' => 'Jenis Kendaraan',
+    'pesan_material' => 'Anda memilih layanan penyediaan material. Kami akan menyediakan material kendaraan berat sesuai kebutuhan Anda. Silakan cantumkan detail tambahan pada kolom catatan.',
+    'pesan_jasa' => 'Anda memilih layanan jasa pabrikasi. Silakan siapkan material yang diperlukan, dan tim kami akan membantu dalam proses pabrikasi.',
+    'pesan_material_jasa' => 'Anda memilih layanan lengkap (Material + Jasa). Kami akan menyediakan seluruh material serta melakukan proses pabrikasi sesuai kebutuhan Anda.',
+
+    //pesanpenyewaan
+    'durasi' => 'Durasi',
+    'hari' => 'Hari',
+    'minggu' => 'Minggu',
+    'bulan' => 'Bulan',
+    'tahun' => 'Tahun',
+    'awal_penyewaan' => 'Awal Penyewaan',
+    'dengan_tim' => 'Dengan Tim?',
+    'ya' => 'Ya',
+    'tidak' => 'Tidak',
+
+    //pesanperbaikan
+    'detail_kendaraan' => 'Detail Kendaraan',
+    'plat_nomor' => 'Plat Nomor',
+    'kendala_kendaraan' => 'Kendala Kendaraan',
+    'isi_kendala' => 'Silahkan beritahu kami kendala kendaraan Anda',
+
+    //pesansupplier
+    'nama_barang' => 'Nama Barang',
+    'nama_barang_note' => 'Pisahkan nama barang dengan tanda koma (,)',
+    'merek_spesifikasi' => 'Merek / Spesifikasi',
+    'placeholder_merek' => 'Jika ada preferensi tertentu / Kosongkan saja',
+    'jumlah_dipesan' => 'Jumlah yang Dipesan',
+    'unit' => 'Unit',
+    'liter' => 'Liter',
+    'kilogram' => 'Kilogram',
+    'meter' => 'Meter',
+    'tanggal_kebutuhan' => 'Tanggal Kebutuhan',
+
 ];

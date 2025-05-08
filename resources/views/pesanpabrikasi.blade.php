@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Pesan Pabrikasi | PT. Mahir Trans Bersaudara</title>
+  <title>{{ __('msg.pesan_pabrikasi') }} | PT. Mahir Trans Bersaudara</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -75,42 +75,42 @@
                                 <h5 class="card-title text-center">
                                 <nav class="d-flex justify-content-center">
                                 </nav>
-                                Pabrikasi</h5>
+                                {{ __('msg.pabrikasi') }}</h5>
                                 <div class="modal fade" id="confirmModalPabrikasi" tabindex="-1" aria-labelledby="confirmModalPabrikasiLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="confirmModalPabrikasiLabel">Konfirmasi Pemesanan</h5>
+                                                <h5 class="modal-title" id="confirmModalPabrikasiLabel">{{ __('msg.konfirmasi_pemesanan') }}</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                Apakah Anda yakin ingin melakukan pemesanan?
+                                            {{ __('msg.yakin_pesan') }}
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                                <button type="button" class="btn btn-success" id="confirmOrderPabrikasi">Ya, Pesan</button>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('msg.batal') }}</button>
+                                                <button type="button" class="btn btn-success" id="confirmOrderPabrikasi">{{ __('msg.ya_pesan') }}</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <form id="orderFormPabrikasi" action="{{ route('postPesanpabrikasi') }}" method="POST">
                                     @csrf
-                                    <h5>Detail Pemesan</h5>
+                                    <h5>{{ __('msg.detail_pemesan') }}</h5>
                                     
                                     <div class="form-group mb-3">
-                                        <label class="text-secondary mb-2">Nama Pemesan / Perusahaan</label>
+                                        <label class="text-secondary mb-2">{{ __('msg.nama_perusahaan') }}</label>
                                         <input class="form-control border border-secondary" name="nama" required type="text" value="{{ old('nama') }}">
                                         @error('nama') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
 
                                     <div class="row mb-4">
                                         <div class="col-md-6">
-                                            <label class="text-secondary mb-2">Nomor WhatsApp</label>
+                                            <label class="text-secondary mb-2">{{ __('msg.nomor_wa') }}</label>
                                             <input class="form-control border border-secondary" name="nohp" required type="number" value="{{ old('nohp') }}">
                                             @error('nohp') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                         <div class="col-md-6">
-                                            <label class="text-secondary mb-2">Email</label>
+                                            <label class="text-secondary mb-2">{{ __('msg.email') }}</label>
                                             <input class="form-control border border-secondary" name="email" required type="email" value="{{ old('email') }}">
                                             @error('email')
                                                 <span class="text-danger">
@@ -119,15 +119,15 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <h5>Detail Kebutuhan</h5>
+                                    <h5>{{ __('msg.detail_kebutuhan') }}</h5>
                                     <div class="row">
                                         <div class="col-md-12">
                                         <label class="text-secondary">Jenis Pabrikasi</label>
                                             <select class="form-select border border-secondary" name="jenis_pabrikasi" id="jenisPabrikasi" required>
-                                                <option value="" disabled {{ old('jenis_pabrikasi') ? '' : 'selected' }}>Pilih Jenis Pabrikasi</option>
-                                                <option value="Material" {{ old('jenis_pabrikasi') == 'Material' ? 'selected' : '' }}>Material</option>
-                                                <option value="Jasa" {{ old('jenis_pabrikasi') == 'Jasa' ? 'selected' : '' }}>Jasa</option>
-                                                <option value="Material + Jasa" {{ old('jenis_pabrikasi') == 'Material + Jasa' ? 'selected' : '' }}>Material + Jasa</option>
+                                                <option value="" disabled {{ old('jenis_pabrikasi') ? '' : 'selected' }}>{{ __('msg.pilih_jenis_pabrikasi') }}</option>
+                                                <option value="Material" {{ old('jenis_pabrikasi') == 'Material' ? 'selected' : '' }}>{{ __('msg.material') }}</option>
+                                                <option value="Jasa" {{ old('jenis_pabrikasi') == 'Jasa' ? 'selected' : '' }}>{{ __('msg.jasa') }}</option>
+                                                <option value="Material + Jasa" {{ old('jenis_pabrikasi') == 'Material + Jasa' ? 'selected' : '' }}>{{ __('msg.material_jasa') }}</option>
                                             </select>
                                             <span class="text-danger">@error('jenis_pabrikasi'){{ 'Kolom ini wajib diisi' }}@enderror</span>
                                             <div class="alert alert-info mt-2 d-none" id="notifPabrikasi"></div>
@@ -135,18 +135,18 @@
                                     </div>
 
                                     <div class="form-group mt-2">
-                                        <label class="text-secondary mb-2">Jenis Kendaraan</label>
+                                        <label class="text-secondary mb-2">{{ __('msg.jenis_kendaraan') }}</label>
                                         <input class="form-control border border-secondary" name="jenis_kendaraan" required type="text" value="{{ old('jenis_kendaraan') }}">
                                         @error('jenis_kendaraan') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
 
                                     <div class="form-group mt-3">
-                                        <label class="text-secondary mb-2">Catatan Tambahan</label> <span class="text-danger">(Opsional)</span>
-                                        <textarea class="form-control border border-secondary" name="isi" placeholder="Tambahkan catatan jika diperlukan / Kosongkan saja">{{ old('isi') }}</textarea>
+                                        <label class="text-secondary mb-2">{{ __('msg.catatan_tambahan') }} </label> <span class="text-danger">{{ __('msg.opsional') }}</span>
+                                        <textarea class="form-control border border-secondary" name="isi" placeholder="{{ __('msg.pesant') }}">{{ old('isi') }}</textarea>
                                     </div>
 
                                     <button type="button" class="btn btn-success mt-5 w-100" data-bs-toggle="modal" data-bs-target="#confirmModalPabrikasi">
-                                        <i class="bi bi-cart"></i> Pesan Sekarang
+                                        <i class="bi bi-cart"></i> {{ __('msg.pesan_sekarang') }}
                                     </button>
                                 </form>
                             </div>
@@ -163,14 +163,19 @@
             let notif = document.getElementById('notifPabrikasi');
             let selectedValue = this.value;
 
-            // Menentukan pesan sesuai pilihan
+            // Ambil pesan multibahasa dari Laravel
+            const pesanMaterial = @json(__('msg.pesan_material'));
+            const pesanJasa = @json(__('msg.pesan_jasa'));
+            const pesanMaterialJasa = @json(__('msg.pesan_material_jasa'));
+
+            // Tentukan pesan sesuai pilihan
             let message = "";
             if (selectedValue === "Material") {
-                message = "Anda memilih layanan penyediaan material. Kami akan menyediakan material kendaraan berat sesuai kebutuhan Anda. Silakan cantumkan detail tambahan pada kolom catatan.";
+                message = pesanMaterial;
             } else if (selectedValue === "Jasa") {
-                message = "Anda memilih layanan jasa pabrikasi. Silakan siapkan material yang diperlukan, dan tim kami akan membantu dalam proses pabrikasi.";
+                message = pesanJasa;
             } else if (selectedValue === "Material + Jasa") {
-                message = "Anda memilih layanan lengkap (Material + Jasa). Kami akan menyediakan seluruh material serta melakukan proses pabrikasi sesuai kebutuhan Anda.";
+                message = pesanMaterialJasa;
             }
 
             // Menampilkan notifikasi

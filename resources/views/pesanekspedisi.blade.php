@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Pesan Ekspedisi | PT. Mahir Trans Bersaudara</title>
+  <title>{{ __('msg.pesan_ekspedisi') }} | PT. Mahir Trans Bersaudara</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -81,15 +81,15 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="confirmModalLabel">Konfirmasi Pemesanan</h5>
+                                                <h5 class="modal-title" id="confirmModalLabel">{{ __('msg.konfirmasi_pemesanan') }}</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                Apakah Anda yakin ingin melakukan pemesanan?
+                                            {{ __('msg.yakin_pesan') }}
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                                <button type="button" class="btn btn-success" id="confirmOrder">Ya, Pesan</button>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('msg.batal') }}</button>
+                                                <button type="button" class="btn btn-success" id="confirmOrder">{{ __('msg.ya_pesan') }}</button>
                                             </div>
                                         </div>
                                     </div>
@@ -98,31 +98,31 @@
                                     @csrf
                                     <h5>{{ __('msg.detail_pemesan') }}</h5>
                                     <div class="mb-3">
-                                        <label class="form-label">Nama Pemesan / Perusahaan</label>
+                                        <label class="form-label">{{ __('msg.nama_perusahaan') }}</label>
                                         <input type="text" class="form-control border border-secondary" name="nama" required value="{{ old('nama') }}">
                                         @error('nama') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
 
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
-                                            <label class="form-label">Nomor WhatsApp</label>
+                                            <label class="form-label">{{ __('msg.nomor_wa') }}</label>
                                             <input type="number" class="form-control border border-secondary" name="nohp" required value="{{ old('nohp') }}">
                                             @error('nohp') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
 
                                         <div class="col-md-6 mb-3">
-                                            <label class="form-label">Email</label>
+                                            <label class="form-label">{{ __('msg.email') }}</label>
                                             <input type="email" class="form-control border border-secondary" name="email" required value="{{ old('email') }}">
                                             @error('email') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
 
-                                    <h5>Detail Kebutuhan</h5>
+                                    <h5>{{ __('msg.detail_kebutuhan') }}</h5>
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
-                                            <label class="form-label">Jenis Kendaraan</label>
+                                            <label class="form-label">{{ __('msg.jenis_kendaraan') }}</label>
                                             <select class="form-select border border-secondary" name="jenis" required>
-                                                <option value="" disabled {{ old('jenis') ? '' : 'selected' }}>Pilih Jenis Kendaraan</option>
+                                                <option value="" disabled {{ old('jenis') ? '' : 'selected' }}>    {{ __('msg.pilih_jenis_kendaraan') }}</option>
                                                 <option value="Bulldozer" {{ old('jenis') == 'Bulldozer' ? 'selected' : '' }}>Bulldozer</option>
                                                 <option value="Crane" {{ old('jenis') == 'Crane' ? 'selected' : '' }}>Crane</option>
                                                 <option value="Foco Truck" {{ old('jenis') == 'Foco Truck' ? 'selected' : '' }}>Foco Truck</option>
@@ -137,31 +137,31 @@
                                         </div>
 
                                         <div class="col-md-6 mb-3">
-                                            <label class="form-label">Jumlah Kebutuhan</label>
+                                            <label class="form-label">{{ __('msg.jumlah_kebutuhan') }}</label>
                                             <input type="number" class="form-control border border-secondary" name="jml" required min="1" value="{{ old('jml') }}">
                                             @error('jml') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                     </div>      
                                     <div class="row mt-4">
                                         <div class="col-md-6 mb-3">
-                                            <label class="form-label">Awal Ekspedisi</label>
+                                            <label class="form-label">{{ __('msg.awal_ekspedisi') }}</label>
                                             <input type="date" class="form-control border border-secondary" name="awal" required value="{{ old('awal') }}">
                                             @error('awal') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
 
                                         <div class="col-md-6 mb-3">
-                                            <label class="form-label">Akhir Ekspedisi</label>
+                                            <label class="form-label">{{ __('msg.akhir_ekspedisi') }}</label>
                                             <input type="date" class="form-control border border-secondary" name="akhir" required value="{{ old('akhir') }}">
                                             @error('akhir') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                     </div>                       
                                     <div class="form-group mb-3">
-                                        <label class="text-secondary mb-2">Catatan Tambahan </label> <span class="text-danger">(Opsional)</span>
-                                        <textarea class="form-control border border-secondary form-control" name="isi" placeholder="Tambahkan catatan jika diperlukan / Kosongkan saja">{{ old('isi') }}</textarea>
+                                        <label class="text-secondary mb-2">{{ __('msg.catatan_tambahan') }} </label> <span class="text-danger">{{ __('msg.opsional') }}</span>
+                                        <textarea class="form-control border border-secondary form-control" name="isi" placeholder="{{ __('msg.pesant') }}">{{ old('isi') }}</textarea>
                                     </div>
                                     
                                     <button type="button" class="btn btn-success mt-5 w-100" data-bs-toggle="modal" data-bs-target="#confirmModal">
-                                        <i class="bi bi-cart"></i> Pesan Sekarang
+                                        <i class="bi bi-cart"></i> {{ __('msg.pesan_sekarang') }}
                                     </button>
                                 </form>
                             </div>

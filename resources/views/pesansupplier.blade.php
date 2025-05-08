@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Pesan Supplier | PT. Mahir Trans Bersaudara</title>
+  <title>{{ __('msg.pesan_supplier') }} | PT. Mahir Trans Bersaudara</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -46,41 +46,41 @@
                                 <h5 class="card-title text-center">
                                 <nav class="d-flex justify-content-center">
                                 </nav>
-                                Pemesanan Barang</h5>
+                                {{ __('msg.supplier') }}</h5>
                                 <div class="modal fade" id="confirmModalSupplier" tabindex="-1" aria-labelledby="confirmModalSupplierLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="confirmModalSupplierLabel">Konfirmasi Pemesanan</h5>
+                                                <h5 class="modal-title" id="confirmModalSupplierLabel">{{ __('msg.konfirmasi_pemesanan') }}</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                Apakah Anda yakin ingin melakukan pemesanan barang ini?
+                                            {{ __('msg.yakin_pesan') }}
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                                <button type="button" class="btn btn-success" id="confirmOrderSupplier">Ya, Pesan</button>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('msg.batal') }}</button>
+                                                <button type="button" class="btn btn-success" id="confirmOrderSupplier">{{ __('msg.ya_pesan') }}</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <form id="orderFormSupplier" action="{{ route('postPesansupplier') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    <h5>Detail Pemesan</h5>
+                                    <h5>{{ __('msg.detail_pemesan') }}</h5>
                                     <div class="form-group mb-3">
-                                        <label class="text-secondary mb-2">Nama Pemesan / Perusahaan</label>
+                                        <label class="text-secondary mb-2">{{ __('msg.nama_perusahaan') }}</label>
                                         <input class="form-control border border-secondary" name="nama" required type="text" value="{{ old('nama') }}">
                                         @error('nama') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
 
                                     <div class="row mb-4">
                                         <div class="col-md-6">
-                                            <label class="text-secondary mb-2">Nomor WhatsApp</label>
+                                            <label class="text-secondary mb-2">{{ __('msg.nomor_wa') }}</label>
                                             <input class="form-control border border-secondary" name="nohp" required type="number" value="{{ old('nohp') }}">
                                             @error('nohp') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                         <div class="col-md-6">
-                                            <label class="text-secondary mb-2">Email</label>
+                                            <label class="text-secondary mb-2">{{ __('msg.email') }}</label>
                                             <input class="form-control border border-secondary" name="email" required type="email" value="{{ old('email') }}">
                                             @error('email')
                                                 <span class="text-danger">
@@ -89,46 +89,48 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <h5>Detail Kebutuhan</h5>
+                                    <h5>{{ __('msg.detail_kebutuhan') }}</h5>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label class="text-secondary mb-2">Nama Barang</label>
+                                            <label class="text-secondary mb-2">{{ __('msg.nama_barang') }}</label>
                                             <input type="text" class="form-control border border-secondary" name="nama_barang" required value="{{ old('nama_barang') }}">
-                                            <p class="text-secondary">Pisahkan nama barang dengan tanda koma (,)</p>
+                                            <p class="text-secondary">{{ __('msg.nama_barang_note') }}</p>
                                             @error('nama_barang') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                         <div class="col-md-6">
-                                            <label class="text-secondary mb-2">Merek / Spesifikasi <span class="text-danger">(Opsional)</span></label>
-                                            <input type="text" class="form-control border border-secondary" name="merek_spesifikasi" placeholder="Jika ada preferensi tertentu / Kosongkan saja" value="{{ old('merek_spesifikasi') }}">
+                                        <label class="text-secondary mb-2">
+                                            {{ __('msg.merek_spesifikasi') }} <span class="text-danger">{{ __('msg.opsional') }}</span>
+                                        </label>
+                                        <input type="text" class="form-control border border-secondary" name="merek_spesifikasi" placeholder="{{ __('msg.placeholder_merek') }}" value="{{ old('merek_spesifikasi') }}">
                                         </div>
                                     </div>
                                     <div class="row mt-3">
                                         <div class="col-md-6">
-                                                <label class="text-secondary mb-2">Jumlah yang Dipesan</label>
+                                                <label class="text-secondary mb-2">{{ __('msg.jumlah_dipesan') }}</label>
                                                 <div class="input-group">
                                                     <input type="number" class="form-control border border-secondary" name="jumlah" min="1" required value="{{ old('jumlah') }}">
                                                     <select class="form-select border border-secondary" name="satuan">
-                                                        <option value="unit" {{ old('satuan') == 'unit' ? 'selected' : '' }}>Unit</option>
-                                                        <option value="liter" {{ old('satuan') == 'liter' ? 'selected' : '' }}>Liter</option>
-                                                        <option value="kilogram" {{ old('satuan') == 'kilogram' ? 'selected' : '' }}>Kilogram</option>
-                                                        <option value="meter" {{ old('satuan') == 'meter' ? 'selected' : '' }}>Meter</option>
+                                                        <option value="unit" {{ old('satuan') == 'unit' ? 'selected' : '' }}>{{ __('msg.unit') }}</option>
+                                                        <option value="liter" {{ old('satuan') == 'liter' ? 'selected' : '' }}>{{ __('msg.liter') }}</option>
+                                                        <option value="kilogram" {{ old('satuan') == 'kilogram' ? 'selected' : '' }}>{{ __('msg.kilogram') }}</option>
+                                                        <option value="meter" {{ old('satuan') == 'meter' ? 'selected' : '' }}>{{ __('msg.meter') }}</option>
                                                     </select>
                                                 </div>
                                                 @error('jumlah') <span class="text-danger">{{ $message }}</span> @enderror
                                                 @error('satuan') <span class="text-danger">{{ $message }}</span> @enderror
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="text-secondary mb-2">Tanggal Kebutuhan</label>
+                                                <label class="text-secondary mb-2">{{ __('msg.tanggal_kebutuhan') }}</label>
                                                 <input type="date" class="form-control border border-secondary" name="tanggal_kebutuhan" required value="{{ old('tanggal_kebutuhan') }}">
                                                 @error('tanggal_kebutuhan') <span class="text-danger">{{ $message }}</span> @enderror
                                             </div>
                                     </div>
                                     <div class="form-group mt-3">
-                                        <label class="text-secondary mb-2">Catatan Tambahan <span class="text-danger">(Opsional)</span></label>
-                                        <textarea class="form-control border border-secondary" name="catatan" rows="3" placeholder="Tambahkan catatan jika diperlukan / Kosongkan saja">{{ old('catatan') }}</textarea>
+                                        <label class="text-secondary mb-2">{{ __('msg.catatan_tambahan') }} <span class="text-danger">{{ __('msg.opsional') }}</span></label>
+                                        <textarea class="form-control border border-secondary" name="catatan" rows="3" placeholder="{{ __('msg.pesant') }}">{{ old('catatan') }}</textarea>
                                     </div>
                                     <button type="button" class="btn btn-success mt-5 w-100" data-bs-toggle="modal" data-bs-target="#confirmModalSupplier">
-                                        <i class="bi bi-cart"></i> Pesan Sekarang
+                                        <i class="bi bi-cart"></i> {{ __('msg.pesan_sekarang') }}
                                     </button>
                                 </form>
                             </div>
