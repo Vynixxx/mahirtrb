@@ -175,17 +175,6 @@ class pageuser extends Controller
             'awal' => 'required|date',
             'akhir' => 'required|date|after_or_equal:awal',
             'isi' => 'nullable|string'
-        ],
-        [
-            'nama.required' => 'Kolom ini wajib diisi.',
-            'nohp.required' => 'Kolom ini wajib diisi.',
-            'jenis.required' => 'Kolom ini wajib diisi.',
-            'jml.required' => 'Kolom ini wajib diisi.',
-            'awal.required' => 'Tanggal wajib dipilih.',
-            'akhir.required' => 'Tangal wajib dipilih.',
-            'email.required' => 'Kolom ini wajib diisi.',
-            'email.email' => 'Format yang Anda masukkan salah.',
-            'email.regex' => 'Format yang Anda masukkan salah.',
         ]);
 
         try {
@@ -213,9 +202,9 @@ class pageuser extends Controller
         // Simpan data ke database
         ekspedisi::create($safeData);
 
-            return redirect()->route('home')->with('success', 'Pesanan Anda berhasil dibuat. Tim kami akan segera menghubungi Anda.');
+            return redirect()->route('home')->with('success', __('validation.order_success'));
         } catch (Exception $e) {
-            return back()->with('error', 'Terjadi kesalahan. Silakan coba lagi.');
+            return back()->with('error',  __('validation.order_error'));
         }
     }
 
@@ -229,15 +218,6 @@ class pageuser extends Controller
             'jenis_pabrikasi' => 'required|string|in:Material,Jasa,Material + Jasa',
             'jenis_kendaraan' => 'required|string|max:255',
             'isi' => 'nullable|string',
-        ],
-        [
-            'nama.required' => 'Kolom ini wajib diisi.',
-            'nohp.required' => 'Kolom ini wajib diisi.',
-            'jenis_pabrikasi.required' => 'Kolom ini wajib diisi.',
-            'jenis_kendaraan.required' => 'Kolom ini wajib diisi.',
-            'email.required' => 'Kolom ini wajib diisi.',
-            'email.email' => 'Format yang Anda masukkan salah.',
-            'email.regex' => 'Format yang Anda masukkan salah.',
         ]);
 
         try {
@@ -262,9 +242,9 @@ class pageuser extends Controller
             // Simpan data ke database
             pabrikasi::create($safeData);
 
-            return redirect()->route('home')->with('success', 'Pesanan Anda berhasil dibuat. Tim kami akan segera menghubungi Anda.');
+            return redirect()->route('home')->with('success', __('validation.order_success'));
         } catch (\Exception $e) {
-            return back()->with('failed', 'Terjadi kesalahan. Silakan coba lagi.');
+            return back()->with('failed', __('validation.order_error'));
         }
     }
 
@@ -282,19 +262,6 @@ class pageuser extends Controller
             'awal_penyewaan' => 'required|date',
             'dengan_tim' => 'required|string', 
             'catatan_tambahan' => 'nullable|string',
-        ],
-        [
-            'nama.required' => 'Kolom ini wajib diisi.',
-            'nohp.required' => 'Kolom ini wajib diisi.',
-            'jenis_kendaraan.required' => 'Kolom ini wajib diisi.',
-            'jumlah_kebutuhan.required' => 'Kolom ini wajib diisi.',
-            'durasi.required' => 'Kolom ini wajib diisi.',
-            'satuan_durasi.required' => 'Opsi ini wajib dipilih.',
-            'awal_penyewaan.required' => 'Tanggal wajib dipilih.',
-            'dengan_tim.required' => 'Opsi ini wajib dipilih.',
-            'email.required' => 'Kolom ini wajib diisi.',
-            'email.email' => 'Format yang Anda masukkan salah.',
-            'email.regex' => 'Format yang Anda masukkan salah.',
         ]);
 
         try {
@@ -321,9 +288,9 @@ class pageuser extends Controller
             // Simpan ke database
             penyewaan::create($safeData);
 
-            return redirect()->route('home')->with('success', 'Pesanan Anda berhasil dibuat. Tim kami akan segera menghubungi Anda.');
+            return redirect()->route('home')->with('success', __('validation.order_success'));
         } catch (Exception $e) {
-            return redirect()->back()->with('error', 'Terjadi kesalahan, silakan coba lagi.');
+            return redirect()->back()->with('error', __('validation.order_error'));
         }
     }
 
@@ -338,16 +305,6 @@ class pageuser extends Controller
             'jenis' => 'required|string|max:255',
             'kendala_kendaraan' => 'required|string',
             'catatan_tambahan' => 'nullable|string',
-        ],
-        [
-            'nama.required' => 'Kolom ini wajib diisi.',
-            'nohp.required' => 'Kolom ini wajib diisi.',
-            'nopol.required' => 'Kolom ini wajib diisi.',
-            'jenis.required' => 'Kolom ini wajib diisi.',
-            'kendala_kendaraan.required' => 'Kolom ini wajib diisi.',
-            'email.required' => 'Kolom ini wajib diisi.',
-            'email.email' => 'Format yang Anda masukkan salah.',
-            'email.regex' => 'Format yang Anda masukkan salah.',
         ]);
 
         try {
@@ -374,9 +331,9 @@ class pageuser extends Controller
             // Simpan ke database
             perbaikan::create($safeData);
 
-            return redirect()->route('home')->with('success', 'Pesanan Anda berhasil dibuat. Tim kami akan segera menghubungi Anda.');
+            return redirect()->route('home')->with('success', __('validation.order_success'));
         } catch (Exception $e) {
-            return back()->with('error', 'Terjadi kesalahan. Silakan coba lagi.');
+            return back()->with('error', __('validation.order_error'));
         }
     }
 
@@ -393,17 +350,6 @@ class pageuser extends Controller
             'satuan' => 'required|string|in:unit,liter,kilogram,meter',
             'tanggal_kebutuhan' => 'required|date',
             'catatan' => 'nullable|string',
-        ],
-        [
-            'nama.required' => 'Kolom ini wajib diisi.',
-            'nohp.required' => 'Kolom ini wajib diisi.',
-            'nama_barang.required' => 'Kolom ini wajib diisi.',
-            'jumlah.required' => 'Kolom ini wajib diisi.',
-            'satuan.required' => 'Kolom ini wajib diisi.',
-            'tanggal_kebutuhan.required' => 'Tanggal wajib dipilih.',
-            'email.required' => 'Kolom ini wajib diisi.',
-            'email.email' => 'Format yang Anda masukkan salah.',
-            'email.regex' => 'Format yang Anda masukkan salah.',
         ]);
         
         try {
@@ -429,9 +375,9 @@ class pageuser extends Controller
             // Simpan data ke database
             supplier::create($safeData);
 
-            return redirect()->route('home')->with('success', 'Pesanan Anda berhasil dibuat. Tim kami akan segera menghubungi Anda.');
+            return redirect()->route('home')->with('success', __('validation.order_success'));
         } catch (\Exception $e) {
-            return back()->with('error', 'Terjadi kesalahan. Silakan coba lagi.');
+            return back()->with('error', __('validation.order_error'));
         }
     }
 

@@ -129,7 +129,7 @@
                                                 <option value="Jasa" {{ old('jenis_pabrikasi') == 'Jasa' ? 'selected' : '' }}>{{ __('msg.jasa') }}</option>
                                                 <option value="Material + Jasa" {{ old('jenis_pabrikasi') == 'Material + Jasa' ? 'selected' : '' }}>{{ __('msg.material_jasa') }}</option>
                                             </select>
-                                            <span class="text-danger">@error('jenis_pabrikasi'){{ 'Kolom ini wajib diisi' }}@enderror</span>
+                                            <span class="text-danger">@error('jenis_pabrikasi'){{ $message }}@enderror</span>
                                             <div class="alert alert-info mt-2 d-none" id="notifPabrikasi"></div>
                                         </div>
                                     </div>

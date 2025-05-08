@@ -94,8 +94,8 @@
                                         <div class="col-md-6">
                                             <label class="text-secondary mb-2">{{ __('msg.nama_barang') }}</label>
                                             <input type="text" class="form-control border border-secondary" name="nama_barang" required value="{{ old('nama_barang') }}">
-                                            <p class="text-secondary">{{ __('msg.nama_barang_note') }}</p>
-                                            @error('nama_barang') <span class="text-danger">{{ $message }}</span> @enderror
+                                            <p class="text-secondary">{{ __('msg.nama_barang_note') }} <br>
+                                            @error('nama_barang') <span class="text-danger">{{ $message }}</span> @enderror </p>
                                         </div>
                                         <div class="col-md-6">
                                         <label class="text-secondary mb-2">
