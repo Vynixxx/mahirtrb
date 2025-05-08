@@ -13,6 +13,6 @@ class layanankendaraan extends Model
     protected $table = 'layanankendaraan';
 
     protected $fillable = [
-        'gambar', 'nama', 'isi',
+        'gambar', 'nama', 'isi', 'isi_en',
     ];
 }

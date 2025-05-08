@@ -56,16 +56,16 @@
                                     <div class="form-group mt-1">
                                     <label class="form-label">Kategori</label>
                                             <select class="form-select" name="kategori" required value="{{ old('kategori') }}">
-                                                <option selected>Pilih kategori Kendaraan</option>
-                                                <option>Crane</option>
-                                                <option>Dozer</option>
-                                                <option>Lowbed</option>
-                                                <option>Triller</option>
-                                                <option>Truk Foco</option>
-                                                <option>Truk Kepala</option>
-                                                <option>Truk Tandem</option>
-                                                <option>Truk Vakum</option>
-                                                <option>Tangki Air</option>
+                                                <option value="" disabled {{ old('jenis_kendaraan') ? '' : 'selected' }}>Pilih Jenis Kendaraan</option>
+                                                <option value="Bulldozer" {{ old('kategori') == 'Bulldozer' ? 'selected' : '' }}>Bulldozer</option>
+                                                <option value="Crane" {{ old('kategori') == 'Crane' ? 'selected' : '' }}>Crane</option>
+                                                <option value="Foco Truck" {{ old('kategori') == 'Foco Truck' ? 'selected' : '' }}>Foco Truck</option>
+                                                <option value="Trailer" {{ old('kategori') == 'Trailer' ? 'selected' : '' }}>Trailer</option>
+                                                <option value="Lowbed Trailer" {{ old('kategori') == 'Lowbed Trailer' ? 'selected' : '' }}>Lowbed Trailer</option>
+                                                <option value="Prime Mover" {{ old('kategori') == 'Prime Mover' ? 'selected' : '' }}>Prime Mover</option>
+                                                <option value="Tandem Roller" {{ old('kategori') == 'Tandem Roller' ? 'selected' : '' }}>Tandem Roller</option>
+                                                <option value="Vacuum Truck" {{ old('kategori') == 'Vacuum Truck' ? 'selected' : '' }}>Vacuum Truck</option>
+                                                <option value="Water Tank Truck" {{ old('kategori') == 'Water Tank Truck' ? 'selected' : '' }}>Water Tank Truck</option>
                                             </select>
                                             <span class="text-danger">
                                                 @error('kategori')
@@ -75,7 +75,7 @@
                                     </div>
                                     <div class="form-group mt-3">
                                         <label class="text-secondary mb-2">Foto</label>
-                                        <input class="form-control border border-secondary form-control" name="gambar" required value="" type="file">
+                                        <input class="form-control border border-secondary form-control" name="gambar" required value="{{ old('gambar') }}" type="file">
                                         <div class="form-text">Maksimal ukuran foto 5MB
                                         <span class="text-danger">
                                             @error('gambar')

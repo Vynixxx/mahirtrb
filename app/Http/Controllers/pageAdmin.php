@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Stichoza\GoogleTranslate\GoogleTranslate;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\LayananKendaraan;
@@ -249,10 +251,20 @@ class pageAdmin extends Controller
             'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120', // Maksimal ukuran 5MB
         ]);
     
-        // Menyimpan berita ke database
+        // Ambil input
+        $nama = $request->input('nama');
+        $isi = $request->input('isi');
+
+        // Cek apakah terjemahan sudah ada dalam cache
+        $translatedIsi = Cache::remember('translation_'.md5($isi), 3600, function () use ($isi) {
+            return GoogleTranslate::trans($isi, 'en', 'id'); // Translate text and cache it
+        });
+
+        // Simpan data ke database
         $kendaraan = new LayananKendaraan;
-        $kendaraan->nama = $request->input('nama');
-        $kendaraan->isi = $request->input('isi');
+        $kendaraan->nama = $nama;
+        $kendaraan->isi = $isi; // Isi untuk Bahasa Indonesia
+        $kendaraan->isi_en = $translatedIsi; // Isi yang diterjemahkan ke Bahasa Inggris
     
         // Proses penyimpanan gambar
         if ($request->hasFile('gambar')) {

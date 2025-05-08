@@ -54,9 +54,20 @@
                                 <form action="{{ route('postTambahlayanan') }}" method="POST" enctype="multipart/form-data" >
                                     @csrf
                                     <div class="form-group mt-4">
-                                        <label class="text-secondary mb-2">Nama Kendaraan</label>
-                                        <input class="form-control border border-secondary form-control" name="nama" required value="" type="text" >
-                                        <span class="text-danger">
+                                        <label class="text-secondary mb-2">Jenis Kendaraan</label>
+                                        <select class="form-select" name="nama" required value="{{ old('nama') }}">
+                                                <option value="" disabled {{ old('jenis_kendaraan') ? '' : 'selected' }}>Pilih Jenis Kendaraan</option>
+                                                <option value="Bulldozer" {{ old('nama') == 'Bulldozer' ? 'selected' : '' }}>Bulldozer</option>
+                                                <option value="Crane" {{ old('nama') == 'Crane' ? 'selected' : '' }}>Crane</option>
+                                                <option value="Foco Truck" {{ old('nama') == 'Foco Truck' ? 'selected' : '' }}>Foco Truck</option>
+                                                <option value="Trailer" {{ old('nama') == 'Trailer' ? 'selected' : '' }}>Trailer</option>
+                                                <option value="Lowbed Trailer" {{ old('nama') == 'Lowbed Trailer' ? 'selected' : '' }}>Lowbed Trailer</option>
+                                                <option value="Prime Mover" {{ old('nama') == 'Prime Mover' ? 'selected' : '' }}>Prime Mover</option>
+                                                <option value="Tandem Roller" {{ old('nama') == 'Tandem Roller' ? 'selected' : '' }}>Tandem Roller</option>
+                                                <option value="Vacuum Truck" {{ old('nama') == 'Vacuum Truck' ? 'selected' : '' }}>Vacuum Truck</option>
+                                                <option value="Water Tank Truck" {{ old('nama') == 'Water Tank Truck' ? 'selected' : '' }}>Water Tank Truck</option>
+                                            </select>                                        
+                                            <span class="text-danger">
                                             @error('nama')
                                               {{ $message }}
                                             @enderror
@@ -64,7 +75,7 @@
                                     </div><br>
                                     <div class="form-group mt-1">
                                         <label class="text-secondary mb-2">Deskripsi</label>
-                                        <textarea  type="text" class="form-control border border-secondary form-control" name="isi" value=""></textarea>
+                                        <textarea  type="text" class="form-control border border-secondary form-control" name="isi" value="{{ old('isi') }}"></textarea>
                                         <span class="text-danger">
                                             @error('isi')
                                             {{ $message }}
@@ -73,7 +84,7 @@
                                     </div><br>
                                     <div class="form-group mt-1">
                                         <label class="text-secondary mb-2">Gambar</label>
-                                        <input class="form-control border border-secondary form-control" name="gambar" required value="" type="file">
+                                        <input class="form-control border border-secondary form-control" name="gambar" required value="{{ old('gambar') }}" type="file">
                                         <div class="form-text">Maksimal ukuran Gambar 5MB
                                         <span class="text-danger">
                                             @error('gambar')

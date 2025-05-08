@@ -57,7 +57,8 @@
                     <th scope="col">No</th>
                     <th scope="col">Gambar</th>
                     <th scope="col">Nama Kendaraan</th>
-                    <th scope="col">Deskripsi</th>
+                    <th scope="col">Deskripsi (Bahasa Indonesia)</th>
+                    <th scope="col">Deskripsi (Bahasa Inggris)</th>
                     <th scope="col">Aksi</th>
                   </tr>
                 </thead>
@@ -70,6 +71,7 @@
                   </td>
                     <td>{{ $lk->nama }}</td>
                     <td>{{ $lk->isi }}</td>
+                    <td>{{ $lk->isi_en }}</td>
                     <td>
                       <a class="btn btn-outline-warning" href="/admin/editlayanan/{{ $lk->id }}" title="Edit"><i class="bi bi-pen"></i></a>
                       <button class="btn btn-outline-danger btn-delete" 

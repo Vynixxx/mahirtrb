@@ -12,6 +12,7 @@ use App\Models\pabrikasi;
 use App\Models\penyewaan;
 use App\Models\perbaikan;
 use App\Models\supplier;
+use Illuminate\Support\Facades\Session;
 use Exception;
 
 
@@ -49,7 +50,18 @@ class pageuser extends Controller
 
     public function halamanproduk()
     {
-        $layanan = layanankendaraan::get();
+        // Cek bahasa yang dipilih dari session (default bahasa Indonesia)
+        $locale = session()->get('locale', 'id'); // 'id' adalah default jika tidak ada di session
+
+        // Mengambil data layanan dari database
+        $layanan = LayananKendaraan::all();
+
+        // Memilih kolom 'isi' atau 'isi_en' berdasarkan bahasa yang dipilih
+        foreach ($layanan as $p) {
+            if ($locale == 'en') {
+                $p->isi = $p->isi_en; // Ganti 'isi' dengan 'isi_en' jika bahasa yang dipilih adalah 'en'
+            }
+        }
         return view('produk', compact('layanan'));
     }
 
