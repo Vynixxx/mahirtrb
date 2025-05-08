@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Syarat & Ketentuan - PT. Mahir Trans Bersaudara</title>
+  <title>{{ __('msg.syarat_ketentuan') }} - PT. Mahir Trans Bersaudara</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -41,12 +41,12 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#beranda">{{ __('msg.menu_beranda') }}</a></li>
-          <li><a href="#tentang-kami">{{ __('msg.menu_tentang') }}</a></li>
-          <li><a href="#layanan-kami">{{ __('msg.menu_layanan') }}</a></li>
-          <li><a href="#galeri">{{ __('msg.menu_galeri') }}</a></li>
-          <li><a href="#mitra">{{ __('msg.menu_mitra') }}</a></li>
-          <li><a href="#kontak">{{ __('msg.menu_kontak') }}</a></li>
+            <li><a href="{{ route('home') }}">{{ __('msg.menu_beranda') }}</a></li>
+            <li><a href="{{ route('tentang-kami') }}">{{ __('msg.menu_tentang') }}</a></li>
+            <li><a href="{{ route('layanan') }}">{{ __('msg.menu_layanan') }}</a></li>
+            <li><a href="{{ route('galeri') }}">{{ __('msg.menu_galeri') }}</a></li>
+            <li><a href="{{ route('mitra') }}">{{ __('msg.menu_mitra') }}</a></li>
+            <li><a href="{{ route('kontak') }}"">{{ __('msg.menu_kontak') }}</a></li>
 
           <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom">
               <a href="{{ url('/lang/id') }}" class="nav-link">
@@ -70,7 +70,7 @@
             <div class="container">
             <div class="row d-flex justify-content-center text-center">
                 <div class="col-lg-8">
-                <h1>Syarat & Ketentuan</h1>
+                <h1>{{ __('msg.syarat_ketentuan') }}</h1>
                 </div>
             </div>
             </div>
@@ -78,8 +78,8 @@
         <nav class="breadcrumbs">
             <div class="container">
             <ol>
-                <li><a href="{{ route('home') }}">Beranda</a></li>
-                <li class="current">Syarat & Ketentuan</li>
+                <li><a href="{{ route('home') }}">{{ __('msg.menu_beranda') }}</a></li>
+                <li class="current">{{ __('msg.syarat_ketentuan') }}</li>
             </ol>
             </div>
         </nav>
@@ -90,79 +90,43 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
-                    <div class="terms-content" data-aos="fade-up">
-                        <h2 class="text-center">Ketentuan Umum</h2>
-                        <p class="text-center">Dengan menggunakan layanan kami, Anda setuju untuk mematuhi semua ketentuan yang tercantum di bawah ini.</p>
+                <div class="terms-content" data-aos="fade-up">
+                        <h2 class="text-center">{!! __('msg.ketentuan.judul') !!}</h2>
+                        <p class="text-center">{{ __('msg.ketentuan.deskripsi') }}</p>
                     </div>
-                    <div class="terms-item" data-aos="fade-left">
-                        <h4>1. Persyaratan Penyewaan</h4>
-                        <p>Untuk menyewa alat berat, pelanggan harus memiliki dokumen identitas yang sah dan memenuhi kriteria yang ditentukan oleh perusahaan.</p>
-                    </div>
-                    <div class="terms-item" data-aos="fade-right">
-                        <h4>2. Biaya & Pembayaran</h4>
-                        <p>Pembayaran harus dilakukan sesuai dengan perjanjian yang telah disepakati, dan keterlambatan pembayaran dapat dikenakan denda.</p>
-                    </div>
-                    <div class="terms-item" data-aos="fade-left">
-                        <h4>3. Penggunaan Alat</h4>
-                        <p>Alat berat hanya boleh digunakan untuk keperluan yang sesuai dengan peraturan yang berlaku dan tidak boleh disewakan kembali kepada pihak lain.</p>
-                    </div>
-                    <div class="terms-item" data-aos="fade-right">
-                        <h4>4. Kerusakan & Tanggung Jawab</h4>
-                        <p>Penyewa bertanggung jawab atas segala bentuk kerusakan yang terjadi akibat kelalaian selama masa penyewaan.</p>
-                    </div>
-                    <div class="terms-item" data-aos="fade-left">
-                        <h4>5. Pembatalan & Pengembalian Dana</h4>
-                        <p>Pembatalan penyewaan harus dilakukan dalam batas waktu tertentu untuk mendapatkan pengembalian dana sesuai kebijakan perusahaan.</p>
-                    </div>
+
+                    @foreach(__('msg.ketentuan.items') as $index => $term)
+                        <div class="terms-item" data-aos="{{ $index % 2 == 0 ? 'fade-left' : 'fade-right' }}">
+                            <h4>{{ $term['judul'] }}</h4>
+                            <p>{{ $term['deskripsi'] }}</p>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
     </section>
 
-     <!-- Penggunaan Alat Berat -->
-     <section class="usage-section py-5 bg-light">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="terms-item">
-                        <h2 class="text-center" data-aos="fade-left">Penggunaan Alat Berat</h2>
-                        <p data-aos="fade-right">a. Penyewa bertanggung jawab atas penggunaan alat berat sesuai dengan spesifikasi dan aturan yang berlaku.</p>
-                        <p data-aos="fade-left">b. Dilarang menggunakan alat berat untuk kegiatan ilegal atau merusak lingkungan.</p>
-                        <p data-aos="fade-right">c. Setiap penyalahgunaan alat berat akan dikenakan <strong>sanksi hukum dan denda</strong>.</p>
+    @foreach(__('msg.ketentuan_detail') as $index => $section)
+        <section class="py-5 {{ $index % 2 == 1 ? 'bg-light' : '' }}">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="terms-item">
+                            <h2 class="text-center" data-aos="{{ $index % 2 == 0 ? 'fade-left' : 'fade-right' }}">
+                                {!! $section['judul'] !!}
+                            </h2>
+                            @foreach($section['deskripsi'] as $i => $point)
+                                <p data-aos="{{ $i % 2 == 0 ? 'fade-right' : 'fade-left' }}">
+                                    {!! $point !!}
+                                </p>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endforeach
 
-    <!-- Kerusakan & Tanggung Jawab -->
-    <section class="damage-section py-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="terms-item" >
-                        <h2 class="text-center" data-aos="fade-right">Kerusakan & Tanggung Jawab</h2>
-                        <p data-aos="fade-left">a. Penyewa wajib melakukan <strong>pengecekan kondisi alat</strong> sebelum digunakan.</p>
-                        <p data-aos="fade-right">b. Jika terjadi <strong>kerusakan teknis bukan akibat penyewa</strong>, segera hubungi tim support kami.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pembatalan & Pengembalian Dana -->
-    <section class="cancellation-section py-5 bg-light">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="terms-item">
-                        <h2 class="text-center" data-aos="fade-left">Pembatalan & Pengembalian Dana</h2>
-                        <p data-aos="fade-right">Pembatalan penyewaan harus dilakukan dalam batas waktu tertentu untuk mendapatkan pengembalian dana sesuai kebijakan perusahaan.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     </main>
 
   @include('layouts.footer')

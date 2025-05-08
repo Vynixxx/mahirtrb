@@ -359,7 +359,6 @@
                 <p>{{ __('msg.isi_email') }}</p>
               </div>
             </div><!-- End Info Item -->
-
           </div>
 
           <div class="col-lg-8">

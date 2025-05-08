@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Penyewaan - PT. Mahir Trans Bersaudara</title>
+  <title>{{ __('msg.penyewaan') }} - PT. Mahir Trans Bersaudara</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -45,12 +45,12 @@
 
         <nav id="navmenu" class="navmenu">
             <ul>
-            <li><a href="#beranda">{{ __('msg.menu_beranda') }}</a></li>
-            <li><a href="#tentang-kami">{{ __('msg.menu_tentang') }}</a></li>
-            <li><a href="#layanan-kami">{{ __('msg.menu_layanan') }}</a></li>
-            <li><a href="#galeri">{{ __('msg.menu_galeri') }}</a></li>
-            <li><a href="#mitra">{{ __('msg.menu_mitra') }}</a></li>
-            <li><a href="#kontak">{{ __('msg.menu_kontak') }}</a></li>
+            <li><a href="{{ route('home') }}">{{ __('msg.menu_beranda') }}</a></li>
+            <li><a href="{{ route('tentang-kami') }}">{{ __('msg.menu_tentang') }}</a></li>
+            <li><a href="{{ route('layanan') }}">{{ __('msg.menu_layanan') }}</a></li>
+            <li><a href="{{ route('galeri') }}">{{ __('msg.menu_galeri') }}</a></li>
+            <li><a href="{{ route('mitra') }}">{{ __('msg.menu_mitra') }}</a></li>
+            <li><a href="{{ route('kontak') }}"">{{ __('msg.menu_kontak') }}</a></li>
 
             <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom">
                 <a href="{{ url('/lang/id') }}" class="nav-link">
@@ -74,7 +74,7 @@
             <div class="container">
             <div class="row d-flex justify-content-center text-center">
                 <div class="col-lg-8">
-                <h1 class="mb-4">Penyewaan</h1>
+                <h1 class="mb-4">{{ __('msg.penyewaan') }}</h1>
                 </div>
             </div>
             </div>
@@ -82,8 +82,8 @@
         <nav class="breadcrumbs">
             <div class="container">
             <ol>
-                <li><a href="{{ route('home') }}">Beranda</a></li>
-                <li class="current">Penyewaan</li>
+                <li><a href="{{ route('home') }}">{{ __('msg.menu_beranda') }}</a></li>
+                <li class="current">{{ __('msg.penyewaan') }}</li>
             </ol>
             </div>
         </nav>
@@ -92,60 +92,27 @@
         <!-- Timeline Penyewaan Kendaraan Berat -->
         <div class="container py-5">
             <h2 class="text-center mb-4" data-aos="fade-up" data-aos-delay="100">
-            Prosedur Penyewaan Kendaraan Berat <br> <span class="text-primary">PT. Mahir Trans Bersaudara</span></h2>
+                {!! __('prosedur.penyewaan.judul') !!}
+            </h2>
 
             <div class="timeline">
-                <!-- Langkah 1 -->
-                <div class="timeline-step" data-aos="fade-up" data-aos-delay="100">
-                    <div class="circle bg-primary"><i class="fas fa-file-alt"></i></div>
-                    <h6>Isi Formulir Penyewaan</h6>
-                    <p class="custom">Lengkapi <a href="{{ route('pesanpenyewaan') }}">formulir pemesanan</a> dengan detail kendaraan yang dibutuhkan, periode sewa, dan informasi kontak Anda.</p>
-                </div>
+                @foreach(__('prosedur.penyewaan.langkah') as $index => $step)
+                    <div class="timeline-step" data-aos="fade-up" data-aos-delay="{{ 100 * ($index + 1) }}">
+                        <div class="circle bg-{{ ['primary','warning','success','danger','info','secondary'][$index] }}">
+                            <i class="{{ $step['ikon'] }}"></i>
+                        </div>
+                        <h6>{{ $step['judul'] }}</h6>
+                        <p class="custom">
+                            {!! Str::replaceArray(':route', [
+                                $index === 0 ? route('pesanpenyewaan') : '#'
+                            ], $step['deskripsi']) !!}
+                        </p>
+                    </div>
 
-                <div class="line" data-aos="fade-up" data-aos-delay="100"></div>
-
-                <!-- Langkah 2 -->
-                <div class="timeline-step" data-aos="fade-up" data-aos-delay="200">
-                    <div class="circle bg-warning"><i class="fas fa-comments"></i></div>
-                    <h6>Konfirmasi & Diskusi</h6>
-                    <p class="custom">Admin akan menghubungi Anda melalui WhatsApp dan email untuk mendiskusikan detail penyewaan.</p>
-                </div>
-
-                <div class="line" data-aos="fade-up" data-aos-delay="200"></div>
-
-                <!-- Langkah 3 -->
-                <div class="timeline-step" data-aos="fade-up" data-aos-delay="300">
-                    <div class="circle bg-success"><i class="fas fa-handshake"></i></div>
-                    <h6>Negosiasi Harga & Ketentuan</h6>
-                    <p class="custom">Setelah kesepakatan dicapai, penyewa melakukan pembayaran sesuai dengan harga yang telah disepakati.</p>
-                </div>
-
-                <div class="line" data-aos="fade-up" data-aos-delay="300"></div>
-
-                <!-- Langkah 4 -->
-                <div class="timeline-step" data-aos="fade-up" data-aos-delay="400">
-                    <div class="circle bg-danger"><i class="fas fa-truck"></i></div>
-                    <h6>Pengiriman Kendaraan</h6>
-                    <p class="custom">Kendaraan yang disewa akan dikirim ke lokasi yang telah ditentukan.</p>
-                </div>
-
-                <div class="line" data-aos="fade-up" data-aos-delay="400"></div> <!-- Garis Penghubung -->
-
-                <!-- Langkah 5 -->
-                <div class="timeline-step" data-aos="fade-up" data-aos-delay="500">
-                    <div class="circle bg-info"><i class="fas fa-cogs"></i></div>
-                    <h6>Masa Penggunaan</h6>
-                    <p class="custom">Penyewa menggunakan kendaraan sesuai dengan durasi yang telah disepakati.</p>
-                </div>
-
-                <div class="line" data-aos="fade-up" data-aos-delay="500"></div> <!-- Garis Penghubung -->
-
-                <!-- Langkah 6 -->
-                <div class="timeline-step" data-aos="fade-up" data-aos-delay="600">
-                    <div class="circle bg-secondary"><i class="fas fa-undo-alt"></i></div>
-                    <h6>Pengembalian Kendaraan</h6>
-                    <p class="custom">Setelah masa sewa berakhir, penyewa mengembalikan kendaraan dalam kondisi sesuai perjanjian.</p>
-                </div>
+                    @if($index < count(__('prosedur.penyewaan.langkah')) - 1)
+                        <div class="line" data-aos="fade-up" data-aos-delay="{{ 100 * ($index + 1) }}"></div>
+                    @endif
+                @endforeach
             </div>
         </div>
 
@@ -226,13 +193,13 @@
          <section id="sewa" class="text-center py-5 mt-5 mb-5">
             <div class="container mt-5">
                 <h2 class="fw-bold animate-title" data-aos="fade-down">
-                    <span class="fw-bold text-primary">Optimalkan Proyek Anda</span> dengan Kendaraan Terbaik!
+                {!! __('msg.cta_judul') !!}
                 </h2>
                 <p class="animate-text" data-aos="fade-up" data-aos-delay="200">
-                    Jangan ragu untuk menghubungi kami dan dapatkan layanan terbaik.
+                {{ __('msg.cta_desc') }}
                 </p>
                 <a href="{{ route('pesanpenyewaan') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="400">
-                    Pesan Sekarang
+                {{ __('msg.pesan_sekarang') }}
                 </a>
             </div>
         </section>

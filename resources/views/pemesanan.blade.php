@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Pemesanan - PT. Mahir Trans Bersaudara</title>
+  <title>{{ __('msg.pemesanan') }} - PT. Mahir Trans Bersaudara</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -43,12 +43,12 @@
 
         <nav id="navmenu" class="navmenu">
             <ul>
-            <li><a href="#beranda">{{ __('msg.menu_beranda') }}</a></li>
-            <li><a href="#tentang-kami">{{ __('msg.menu_tentang') }}</a></li>
-            <li><a href="#layanan-kami">{{ __('msg.menu_layanan') }}</a></li>
-            <li><a href="#galeri">{{ __('msg.menu_galeri') }}</a></li>
-            <li><a href="#mitra">{{ __('msg.menu_mitra') }}</a></li>
-            <li><a href="#kontak">{{ __('msg.menu_kontak') }}</a></li>
+            <li><a href="{{ route('home') }}">{{ __('msg.menu_beranda') }}</a></li>
+            <li><a href="{{ route('tentang-kami') }}">{{ __('msg.menu_tentang') }}</a></li>
+            <li><a href="{{ route('layanan') }}">{{ __('msg.menu_layanan') }}</a></li>
+            <li><a href="{{ route('galeri') }}">{{ __('msg.menu_galeri') }}</a></li>
+            <li><a href="{{ route('mitra') }}">{{ __('msg.menu_mitra') }}</a></li>
+            <li><a href="{{ route('kontak') }}"">{{ __('msg.menu_kontak') }}</a></li>
 
             <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom">
                 <a href="{{ url('/lang/id') }}" class="nav-link">
@@ -72,7 +72,7 @@
             <div class="container">
             <div class="row d-flex justify-content-center text-center">
                 <div class="col-lg-8">
-                <h1 class="mb-4">Pemesanan</h1>
+                <h1 class="mb-4">{{ __('msg.pemesanan') }}</h1>
                 </div>
             </div>
             </div>
@@ -80,8 +80,8 @@
         <nav class="breadcrumbs">
             <div class="container">
             <ol>
-                <li><a href="{{ route('home') }}">Beranda</a></li>
-                <li class="current">Pemesanan</li>
+                <li><a href="{{ route('home') }}">{{ __('msg.menu_beranda') }}</a></li>
+                <li class="current">{{ __('msg.pemesanan') }}</li>
             </ol>
             </div>
         </nav>
@@ -90,7 +90,7 @@
         <!-- Keunggulan Section -->
         <section class="about section">
             <div class="container" data-aos="fade-up" data-aos-delay="200">
-            <h2 class="text-center mb-4">Mengapa <span class="fw-bold text-primary">Memilih</span> Kami?</h2>
+            <h2 class="text-center mb-4">{!! __('msg.mengapa_memilih') !!}</h2>
                 <div class="row align-items-xl-center">
                 <div class="col-xl-12 d-flex justify-content-center">
                     <div class="row row-cols-1 row-cols-sm-2 g-4 text-center"> 
@@ -98,32 +98,32 @@
                         <div class="col" data-aos="fade-up" data-aos-delay="300">
                             <div class="icon-box">
                                 <i class="bi bi-check-circle"></i>
-                                <h3>Harga Terjangkau</h3>
-                                <p>Kami menawarkan harga yang kompetitif dengan layanan berkualitas tinggi.</p>
+                                <h3>{{ __('msg.fitur_harga') }}</h3>
+                                <p>{{ __('msg.fitur_harga_desc') }}</p>
                             </div>
                         </div> <!-- End Icon Box -->
 
                         <div class="col" data-aos="fade-up" data-aos-delay="400">
                             <div class="icon-box">
                                 <i class="bi bi-check-circle"></i>
-                                <h3>Pilihan Kendaraan Lengkap</h3>
-                                <p>Berbagai jenis kendaraan berat tersedia untuk berbagai kebutuhan proyek Anda.</p>
+                                <h3>{{ __('msg.fitur_pilihan') }}</h3>
+                                <p>{{ __('msg.fitur_pilihan_desc') }}</p>
                             </div>
                         </div> <!-- End Icon Box -->
 
                         <div class="col" data-aos="fade-up" data-aos-delay="400">
                             <div class="icon-box">
                                 <i class="bi bi-check-circle"></i>
-                                <h3>Pelayanan Cepat</h3>
-                                <p>Tim kami siap membantu Anda dengan proses penyewaan yang cepat dan mudah.</p>
+                                <h3>{{ __('msg.fitur_pelayanan') }}</h3>
+                                <p>{{ __('msg.fitur_pelayanan_desc') }}</p>
                             </div>
                         </div> <!-- End Icon Box -->
 
                         <div class="col" data-aos="fade-up" data-aos-delay="500">
                             <div class="icon-box">
                                 <i class="bi bi-check-circle"></i>
-                                <h3>Keamanan & Keandalan</h3>
-                                <p>Kami memastikan setiap kendaraan berat dalam kondisi prima dengan perawatan rutin, sehingga aman dan andal untuk proyek Anda.</p>
+                                <h3>{{ __('msg.fitur_keamanan') }}</h3>
+                                <p>{{ __('msg.fitur_keamanan_desc') }}</p>
                             </div>
                         </div> <!-- End Icon Box -->
 
@@ -135,7 +135,7 @@
         <!-- layanan Section -->
         <section id="layanan-kami" class="services section light-background py-5">
             <!-- Section Title -->
-            <h2 class="text-center mb-4"><span class="fw-bold text-primary">Layanan</span> Kami</h2>
+            <h2 class="text-center mb-4">{!! __('msg.layanan_heading') !!}</h2>
             <!-- End Section Title -->
 
             <div class="container">
@@ -145,14 +145,14 @@
                         <div class="card border-0 shadow-sm h-100 custom-service-card">
                             <img src="assets/img/services/ekspedisi.png" class="custom-card-img-top" alt="Ekspedisi">
                             <div class="card-body">
-                                <h5 class="card-title fw-bold">Ekspedisi</h5>
+                                <h5 class="card-title fw-bold">{{ __('msg.layanan_ekspedisi_judul') }}</h5>
                                 <p class="card-text text-muted">
-                                    Layanan ekspedisi alat berat yang cepat, aman, dan efisien dengan armada terbaik dan tenaga profesional berpengalaman.
+                                {{ __('msg.deskripsi_ekspedisi') }}
                                 </p>
                             </div>
                             <div class="card-footer bg-white border-0 text-center pb-4">
                                 <a href="{{ route('pesanekspedisi') }}" class="btn btn-primary btn-lg custom-animate-btn">
-                                    Pesan Sekarang
+                                {{ __('msg.pesan_sekarang') }}
                                 </a>
                             </div>
                         </div>
@@ -162,14 +162,13 @@
                         <div class="card border-0 shadow-sm h-100 custom-service-card">
                             <img src="assets/img/services/pabrikasi.png" class="custom-card-img-top" alt="Pabrikasi">
                             <div class="card-body">
-                                <h5 class="card-title fw-bold">Pabrikasi</h5>
+                                <h5 class="card-title fw-bold">{{ __('msg.layanan_pabrikasi_judul') }}</h5>
                                 <p class="card-text text-muted">
-                                    Produksi komponen logam presisi tinggi untuk industri konstruksi, manufaktur, dan alat berat dengan standar kualitas terbaik.
-                                </p>
+                                    {{ __('msg.deskripsi_pabrikasi') }}
                             </div>
                             <div class="card-footer bg-white border-0 text-center pb-4">
                                 <a href="{{ route('pesanpabrikasi') }}" class="btn btn-primary btn-lg custom-animate-btn">
-                                    Pesan Sekarang
+                                {{ __('msg.pesan_sekarang') }}
                                 </a>
                             </div>
                         </div>
@@ -179,14 +178,14 @@
                         <div class="card border-0 shadow-sm h-100 custom-service-card">
                             <img src="assets/img/services/perbaikan.png" class="custom-card-img-top" alt="Perbaikan">
                             <div class="card-body">
-                                <h5 class="card-title fw-bold">Perbaikan</h5>
+                                <h5 class="card-title fw-bold">{{ __('msg.layanan_perbaikan_judul') }}</h5>
                                 <p class="card-text text-muted">
-                                    Layanan perbaikan alat berat dengan teknisi profesional dan peralatan canggih untuk memastikan performa optimal.
+                                {{ __('msg.deskripsi_perbaikan') }}
                                 </p>
                             </div>
                             <div class="card-footer bg-white border-0 text-center pb-4">
                                 <a href="{{ route('pesanperbaikan') }}" class="btn btn-primary btn-lg custom-animate-btn">
-                                    Pesan Sekarang
+                                {{ __('msg.pesan_sekarang') }}
                                 </a>
                             </div>
                         </div>
@@ -196,14 +195,14 @@
                         <div class="card border-0 shadow-sm h-100 custom-service-card">
                             <img src="assets/img/services/penyewaan.png" class="custom-card-img-top" alt="Penyewaan">
                             <div class="card-body">
-                                <h5 class="card-title fw-bold">Penyewaan</h5>
+                                <h5 class="card-title fw-bold">{{ __('msg.layanan_penyewaan_judul') }}</h5>
                                 <p class="card-text text-muted">
-                                    Penyewaan alat berat dengan berbagai pilihan unit berkualitas tinggi, harga kompetitif, dan dukungan teknis profesional.
+                                {{ __('msg.deskripsi_penyewaan') }}
                                 </p>
                             </div>
                             <div class="card-footer bg-white border-0 text-center pb-4">
                                 <a href="{{ route('pesanpenyewaan') }}" class="btn btn-primary btn-lg custom-animate-btn">
-                                    Pesan Sekarang
+                                {{ __('msg.pesan_sekarang') }}
                                 </a>
                             </div>
                         </div>
@@ -213,14 +212,14 @@
                         <div class="card border-0 shadow-sm h-100 custom-service-card">
                             <img src="assets/img/services/supplier.png" class="custom-card-img-top" alt="Supplier">
                             <div class="card-body">
-                                <h5 class="card-title fw-bold">Supplier</h5>
+                                <h5 class="card-title fw-bold">{{ __('msg.layanan_supplier_judul') }}</h5>
                                 <p class="card-text text-muted">
-                                Supplier berbagai kebutuhan, suku cadang, serta peralatan pendukung untuk operasional dan pemeliharaan alat berat.
+                                {{ __('msg.deskripsi_supplier') }}
                                 </p>
                             </div>
                             <div class="card-footer bg-white border-0 text-center pb-4">
                                 <a href="{{ route('pesansupplier') }}" class="btn btn-primary btn-lg custom-animate-btn">
-                                    Pesan Sekarang
+                                {{ __('msg.pesan_sekarang') }}
                                 </a>
                             </div>
                         </div>
@@ -257,13 +256,13 @@
         <section id="sewa" class="text-center py-5 mt-5 mb-5">
             <div class="container mt-5">
                 <h2 class="fw-bold animate-title" data-aos="fade-down">
-                    <span class="fw-bold text-primary">Optimalkan Proyek Anda</span> dengan Kendaraan Terbaik!
+                {!! __('msg.cta_judul') !!}
                 </h2>
                 <p class="animate-text" data-aos="fade-up" data-aos-delay="200">
-                    Jangan ragu untuk menghubungi kami dan dapatkan layanan terbaik.
+                {{ __('msg.cta_desc') }}
                 </p>
                 <a href="{{ route('kontak') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="400">
-                    Hubungi Kami
+                {{ __('msg.cta_tombol') }}
                 </a>
             </div>
         </section>

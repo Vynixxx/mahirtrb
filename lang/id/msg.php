@@ -34,6 +34,7 @@ return [
     'dokumentasi' => 'Dokumentasi',
     'deskripsi_mitra' => 'Mitra Kami',
     'kontak_kami' => 'Kontak Kami',
+    'kontak_kami1' => '<span class="fw-bold text-primary">Kontak</span> Kami',
     'silakan_hubungi' => 'Silahkan Hubungi Kami',
     'alamat' => 'Alamat',
     'isi_alamat' => 'Jalan Lingkar Timur Pinggir, Balairaja, Pinggir, Riau, 28784',
@@ -103,4 +104,89 @@ return [
     'galeri_label' => '<span class="fw-bold text-primary">Galeri</span> Kami',
     'mitra_judul' => 'Mitra Kami',
     'mitra_label' => '<span class="fw-bold text-primary">Mitra</span> Kami',
+    'halaman' => 'Halaman',
+    'detail_pemesan' => 'Detail Pemesan',
+    // penawaran
+    'mengapa_memilih' => 'Mengapa <span class="fw-bold text-primary">Memilih</span> Kami?',
+    'fitur_harga' => 'Harga Terjangkau',
+    'fitur_harga_desc' => 'Kami menawarkan harga yang kompetitif dengan layanan berkualitas tinggi.',
+
+    'fitur_pilihan' => 'Pilihan Kendaraan Lengkap',
+    'fitur_pilihan_desc' => 'Berbagai jenis kendaraan berat tersedia untuk berbagai kebutuhan proyek Anda.',
+
+    'fitur_pelayanan' => 'Pelayanan Cepat',
+    'fitur_pelayanan_desc' => 'Tim kami siap membantu Anda dengan proses penyewaan yang cepat dan mudah.',
+
+    'fitur_keamanan' => 'Keamanan & Keandalan',
+    'fitur_keamanan_desc' => 'Kami memastikan setiap kendaraan berat dalam kondisi prima dengan perawatan rutin, sehingga aman dan andal untuk proyek Anda.',
+    'cta_judul' => '<span class="fw-bold text-primary">Optimalkan Proyek Anda</span> dengan Kendaraan Terbaik!',
+    'cta_desc' => 'Jangan ragu untuk menghubungi kami dan dapatkan layanan terbaik.',
+    'cta_tombol' => 'Hubungi Kami',
+
+    //testimoni
+    'testimonial_1_name' => 'Andi Prasetyo',
+    'testimonial_1_role' => 'Manajer Proyek Tambang',
+    'testimonial_1_text' => 'Armada alat berat yang disediakan sangat andal dan efisien untuk operasional tambang kami. Harga kompetitif, pelayanan profesional, dan tidak ada kendala berarti selama masa sewa. Terima kasih!',
+
+    'testimonial_2_name' => 'Dewi Lestari',
+    'testimonial_2_role' => 'Site Engineer Konstruksi',
+    'testimonial_2_text' => 'Pelayanan sangat baik — alat berat dalam kondisi optimal, dan teknisi selalu siap membantu. Terima kasih atas dukungannya, proyek kami berjalan lancar berkat layanan profesional Anda!',
+
+    'testimonial_3_name' => 'Reza Saputra',
+    'testimonial_3_role' => 'Supervisor Logistik',
+    'testimonial_3_text' => 'Kami sangat puas dengan layanan sewa alat berat dari PT. Mahir Trans Bersaudara. Unit dalam kondisi prima, selalu tepat waktu, dan didukung tim yang responsif. Sangat direkomendasikan untuk proyek skala besar!',
+
+    //jenis alat berat
+    'jenis_alat_berat1' => 'Jenis <span class="fw-bold text-primary">Alat Berat</span> Kami',
+
+    'ketentuan' => [
+        'judul' => '<span class="fw-bold text-primary">Ketentuan</span> Umum',
+        'deskripsi' => 'Dengan menggunakan layanan kami, Anda setuju untuk mematuhi semua ketentuan yang tercantum di bawah ini.',
+        'items' => [
+            [
+                'judul' => '1. Persyaratan Penyewaan',
+                'deskripsi' => 'Untuk menyewa alat berat, pelanggan harus memiliki dokumen identitas yang sah dan memenuhi kriteria yang ditentukan oleh perusahaan.',
+            ],
+            [
+                'judul' => '2. Biaya & Pembayaran',
+                'deskripsi' => 'Pembayaran harus dilakukan sesuai dengan perjanjian yang telah disepakati, dan keterlambatan pembayaran dapat dikenakan denda.',
+            ],
+            [
+                'judul' => '3. Penggunaan Alat',
+                'deskripsi' => 'Alat berat hanya boleh digunakan untuk keperluan yang sesuai dengan peraturan yang berlaku dan tidak boleh disewakan kembali kepada pihak lain.',
+            ],
+            [
+                'judul' => '4. Kerusakan & Tanggung Jawab',
+                'deskripsi' => 'Penyewa bertanggung jawab atas segala bentuk kerusakan yang terjadi akibat kelalaian selama masa penyewaan.',
+            ],
+            [
+                'judul' => '5. Pembatalan & Pengembalian Dana',
+                'deskripsi' => 'Pembatalan penyewaan harus dilakukan dalam batas waktu tertentu untuk mendapatkan pengembalian dana sesuai kebijakan perusahaan.',
+            ],
+        ],
+    ],
+    'ketentuan_detail' => [
+        [
+            'judul' => '<span class="fw-bold text-primary">Penggunaan</span> Alat Berat',
+            'deskripsi' => [
+                'a. Penyewa bertanggung jawab atas penggunaan alat berat sesuai dengan spesifikasi dan aturan yang berlaku.',
+                'b. Dilarang menggunakan alat berat untuk kegiatan ilegal atau merusak lingkungan.',
+                'c. Setiap penyalahgunaan alat berat akan dikenakan <strong>sanksi hukum dan denda</strong>.',
+            ],
+        ],
+        [
+            'judul' => '<span class="fw-bold text-primary">Kerusakan</span> & <span class="fw-bold text-primary">Tanggung Jawab</span>',
+            'deskripsi' => [
+                'a. Penyewa wajib melakukan <strong>pengecekan kondisi alat</strong> sebelum digunakan.',
+                'b. Jika terjadi <strong>kerusakan teknis bukan akibat penyewa</strong>, segera hubungi tim support kami.',
+            ],
+        ],
+        [
+            'judul' => '<span class="fw-bold text-primary">Pembatalan</span> & <span class="fw-bold text-primary">Pengembalian Dana</span>',
+            'deskripsi' => [
+                'Pembatalan penyewaan harus dilakukan dalam batas waktu tertentu untuk mendapatkan pengembalian dana sesuai kebijakan perusahaan.',
+            ],
+        ],
+    ],
+
 ];

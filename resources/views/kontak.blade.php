@@ -88,7 +88,7 @@
             <div class="container">
             <div class="row d-flex justify-content-center text-center">
                 <div class="col-lg-8">
-                <h1>Kontak</h1>
+                <h1>{{ __('msg.menu_kontak') }}</h1>
                 </div>
             </div>
             </div>
@@ -96,8 +96,8 @@
         <nav class="breadcrumbs">
             <div class="container">
             <ol>
-                <li><a href="{{ route('home') }}">Beranda</a></li>
-                <li class="current">Kontak</li>
+                <li><a href="{{ route('home') }}">{{ __('msg.menu_beranda') }}</a></li>
+                <li class="current">{{ __('msg.menu_kontak') }}</li>
             </ol>
             </div>
         </nav>
@@ -107,7 +107,7 @@
       <section id="kontak" class="contact section">
 
       <!-- Section Title -->
-      <h2 class="text-center mb-4" data-aos="fade-up"><span class="fw-bold text-primary">Kontak</span> Kami</h2>
+      <h2 class="text-center mb-4" data-aos="fade-up">{!! __('msg.kontak_kami1') !!}</h2>
       <!-- End Section Title -->
 
       <div class="container" data-aos="fade" data-aos-delay="100">
@@ -117,29 +117,28 @@
 
           <div class="col-lg-4">
             <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
-              <i class="bi bi-geo-alt flex-shrink-0"></i>
-              <div>
-                <h3>Alamat</h3>
-                <p>Jalan Lingkar, Balairaja, Pinggir, Riau, 28784</p>
-              </div>
-            </div><!-- End Info Item -->
+                <i class="bi bi-geo-alt flex-shrink-0"></i>
+                <div>
+                  <h3>{{ __('msg.alamat') }}</h3>
+                  <p>{{ __('msg.isi_alamat') }}</p>
+                </div>
+              </div><!-- End Info Item -->
 
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-              <i class="bi bi-telephone flex-shrink-0"></i>
-              <div>
-                <h3>Telepon</h3>
-                <p>+1 5589 55488 55</p>
-              </div>
-            </div><!-- End Info Item -->
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                <i class="bi bi-telephone flex-shrink-0"></i>
+                <div>
+                  <h3>{{ __('msg.telepon') }}</h3>
+                  <p>{{ __('msg.isi_telepon') }}</p>
+                </div>
+              </div><!-- End Info Item -->
 
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-              <i class="bi bi-envelope flex-shrink-0"></i>
-              <div>
-                <h3>Email</h3>
-                <p>info@example.com</p>
-              </div>
-            </div><!-- End Info Item -->
-
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                <i class="bi bi-envelope flex-shrink-0"></i>
+                <div>
+                  <h3>{{ __('msg.email') }}</h3>
+                  <p>{{ __('msg.isi_email') }}</p>
+                </div>
+              </div><!-- End Info Item -->
           </div>
 
           <div class="col-lg-8">
@@ -148,7 +147,7 @@
                 <div class="row gy-4">
                   <div class="col-md-6">
                       <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
-                            placeholder="Nama / Perusahaan" value="{{ old('name') }}" required>
+                            placeholder="{{ __('msg.nama_perusahaan') }}" value="{{ old('name') }}" required>
                       @error('name')
                           <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
@@ -156,7 +155,7 @@
 
                   <div class="col-md-6">
                       <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
-                            placeholder="Email" value="{{ old('email') }}" required>
+                            placeholder="{{ __('msg.email') }}" value="{{ old('email') }}" required>
                       @error('email')
                           <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
@@ -164,7 +163,7 @@
 
                   <div class="col-md-6">
                       <input type="number" name="whatsapp" class="form-control @error('whatsapp') is-invalid @enderror"
-                            placeholder="Nomor WhatsApp" value="{{ old('whatsapp') }}">
+                            placeholder="{{ __('msg.nomor_wa') }}" value="{{ old('whatsapp') }}">
                       @error('whatsapp')
                           <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
@@ -172,7 +171,7 @@
 
                   <div class="col-md-6">
                       <input type="text" name="subject" class="form-control @error('subject') is-invalid @enderror"
-                            placeholder="Perihal" value="{{ old('subject') }}" required>
+                            placeholder="{{ __('msg.perihal') }}" value="{{ old('subject') }}" required>
                       @error('subject')
                           <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
@@ -180,7 +179,7 @@
 
                   <div class="col-md-12">
                       <textarea name="message" class="form-control @error('message') is-invalid @enderror"
-                                rows="6" placeholder="Pesan" required>{{ old('message') }}</textarea>
+                                rows="6" placeholder="{{ __('msg.pesan') }}" required>{{ old('message') }}</textarea>
                       @error('message')
                           <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
@@ -190,7 +189,7 @@
                       <button type="button" class="btn btn-primary btn-lg shadow-sm px-4 py-2 fw-bold d-flex align-items-center gap-2" 
                           data-bs-toggle="modal" data-bs-target="#confirmModal"
                           style="transition: all 0.3s ease-in-out;">
-                          <i class="bi bi-send"></i> Kirim Pesan
+                          <i class="bi bi-send"></i> {{ __('msg.kirim_pesan') }}
                       </button>
                   </div>
                 </div>

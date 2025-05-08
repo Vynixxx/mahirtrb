@@ -75,7 +75,7 @@
                                 <h5 class="card-title text-center">
                                 <nav class="d-flex justify-content-center">
                                 </nav>
-                                Ekspedisi</h5>
+                                {{ __('msg.ekspedisi') }}</h5>
                                 <!-- Tambahkan Modal Konfirmasi -->
                                 <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
@@ -96,7 +96,7 @@
                                 </div>
                                 <form id="orderForm" action="{{ route('postPesanEkspedisi') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    <h5>Detail Pemesan</h5>
+                                    <h5>{{ __('msg.detail_pemesan') }}</h5>
                                     <div class="mb-3">
                                         <label class="form-label">Nama Pemesan / Perusahaan</label>
                                         <input type="text" class="form-control border border-secondary" name="nama" required value="{{ old('nama') }}">

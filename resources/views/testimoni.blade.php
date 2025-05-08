@@ -25,15 +25,15 @@
 
         <div class="swiper-slide">
         <div class="testimonial-item">
-            <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-            <h3>Saul Goodman</h3>
-            <h4>Ceo &amp; Founder</h4>
+            <img src="assets/img/testimonials/testimonials-80.png" class="testimonial-img" alt="">
+            <h3>{{ __('msg.testimonial_1_name') }}</h3>
+            <h4>{{ __('msg.testimonial_1_role') }}</h4>
             <div class="stars">
             <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
             </div>
             <p>
             <i class="bi bi-quote quote-icon-left"></i>
-            <span>Armada kendaraan berat yang disediakan sangat andal dan efisien untuk operasional tambang kami. Harga kompetitif, pelayanan profesional, dan tidak ada kendala berarti selama masa sewa. Terima kasih!</span>
+            <span>{{ __('msg.testimonial_1_text') }}</span>
             <i class="bi bi-quote quote-icon-right"></i>
             </p>
         </div>
@@ -41,15 +41,15 @@
 
         <div class="swiper-slide">
         <div class="testimonial-item">
-            <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-            <h3>Sara Wilsson</h3>
-            <h4>Designer</h4>
+            <img src="assets/img/testimonials/testimonials-7.png" class="testimonial-img" alt="">
+            <h3>{{ __('msg.testimonial_2_name') }}</h3>
+            <h4>{{ __('msg.testimonial_2_role') }}</h4>
             <div class="stars">
             <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
             </div>
             <p>
             <i class="bi bi-quote quote-icon-left"></i>
-            <span>Pelayanan sangat baik, kendaraan berat dalam kondisi optimal, dan teknisi siap membantu jika ada kendala. Terima kasih atas dukungannya, proyek kami berjalan lancar berkat layanan yang profesional!.</span>
+            <span>{{ __('msg.testimonial_2_text') }}</span>
             <i class="bi bi-quote quote-icon-right"></i>
             </p>
         </div>
@@ -57,15 +57,15 @@
 
         <div class="swiper-slide">
         <div class="testimonial-item">
-            <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-            <h3>Jena Karlis</h3>
-            <h4>Store Owner</h4>
+            <img src="assets/img/testimonials/testimonials-20belas.png" class="testimonial-img" alt="">
+            <h3>{{ __('msg.testimonial_3_name') }}</h3>
+            <h4>{{ __('msg.testimonial_3_role') }}</h4>
             <div class="stars">
             <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
             </div>
             <p>
             <i class="bi bi-quote quote-icon-left"></i>
-            <span>Kami sangat puas dengan layanan kendaraan berat yang tersedia dari PT. Mahir Trans Bersaudara. Unit yang disediakan dalam kondisi prima, selalu tepat waktu, dan didukung oleh tim yang responsif. Sangat direkomendasikan untuk proyek konstruksi besar!</span>
+            <span>{{ __('msg.testimonial_3_text') }}</span>
             <i class="bi bi-quote quote-icon-right"></i>
             </p>
         </div>

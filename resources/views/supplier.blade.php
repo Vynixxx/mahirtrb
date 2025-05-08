@@ -43,12 +43,12 @@
 
         <nav id="navmenu" class="navmenu">
             <ul>
-            <li><a href="#beranda">{{ __('msg.menu_beranda') }}</a></li>
-            <li><a href="#tentang-kami">{{ __('msg.menu_tentang') }}</a></li>
-            <li><a href="#layanan-kami">{{ __('msg.menu_layanan') }}</a></li>
-            <li><a href="#galeri">{{ __('msg.menu_galeri') }}</a></li>
-            <li><a href="#mitra">{{ __('msg.menu_mitra') }}</a></li>
-            <li><a href="#kontak">{{ __('msg.menu_kontak') }}</a></li>
+            <li><a href="{{ route('home') }}">{{ __('msg.menu_beranda') }}</a></li>
+            <li><a href="{{ route('tentang-kami') }}">{{ __('msg.menu_tentang') }}</a></li>
+            <li><a href="{{ route('layanan') }}">{{ __('msg.menu_layanan') }}</a></li>
+            <li><a href="{{ route('galeri') }}">{{ __('msg.menu_galeri') }}</a></li>
+            <li><a href="{{ route('mitra') }}">{{ __('msg.menu_mitra') }}</a></li>
+            <li><a href="{{ route('kontak') }}"">{{ __('msg.menu_kontak') }}</a></li>
 
             <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom">
                 <a href="{{ url('/lang/id') }}" class="nav-link">
@@ -89,57 +89,30 @@
 
         <!-- Timeline -->
         <div class="container py-5">
-            <h2 class="text-center mb-4" data-aos="fade-up" data-aos-delay="100">
-                Prosedur Pemesanan Barang Kendaraan Berat <br> <span class="text-primary">PT. Mahir Trans Bersaudara</span></h2>
-                
-                <div class="timeline">
-                    <!-- Langkah 1: Isi Formulir -->
-                    <div class="timeline-step" data-aos="fade-up" data-aos-delay="100">
-                        <div class="circle bg-success"><i class="fas fa-file-alt"></i></div>
-                        <h6>Isi Formulir</h6>
-                        <p class="custom">Lengkapi<a href="{{ route('pesansupplier') }}"> formulir pemesanan</a> dengan detail barang yang akan dipesan.</p>
+        <h2 class="text-center mb-4" data-aos="fade-up" data-aos-delay="100">
+            {!! __('prosedur.pemesanan.judul') !!}
+        </h2>
+
+        <div class="timeline">
+            @foreach(__('prosedur.pemesanan.langkah') as $index => $step)
+                <div class="timeline-step" data-aos="fade-up" data-aos-delay="{{ 100 * ($index + 1) }}">
+                    <div class="circle bg-{{ ['success','warning','primary','danger','info','secondary'][$index] }}">
+                        <i class="{{ $step['ikon'] }}"></i>
                     </div>
-                    <div class="line" data-aos="fade-up" data-aos-delay="100"></div>
-                    
-                    <!-- Langkah 2: Konfirmasi & Diskusi -->
-                    <div class="timeline-step" data-aos="fade-up" data-aos-delay="200">
-                        <div class="circle bg-warning"><i class="fas fa-comments"></i></div>
-                        <h6>Konfirmasi & Diskusi</h6>
-                        <p class="custom">Admin akan menghubungi Anda melalui WhatsApp atau email untuk mendiskusikan detail pemesanan.</p>
-                    </div>
-                    <div class="line" data-aos="fade-up" data-aos-delay="200"></div>
-                    
-                    <!-- Langkah 3: Penawaran & Kesepakatan -->
-                    <div class="timeline-step" data-aos="fade-up" data-aos-delay="300">
-                        <div class="circle bg-primary"><i class="fas fa-handshake"></i></div>
-                        <h6>Penawaran & Kesepakatan</h6>
-                        <p class="custom">Pembeli dan penjual mencapai kesepakatan mengenai harga dan waktu pengiriman.</p>
-                    </div>
-                    <div class="line" data-aos="fade-up" data-aos-delay="300"></div>
-                    
-                    <!-- Langkah 4: Pembayaran -->
-                    <div class="timeline-step" data-aos="fade-up" data-aos-delay="400">
-                        <div class="circle bg-danger"><i class="fas fa-credit-card"></i></div>
-                        <h6>Pembayaran</h6>
-                        <p class="custom">Pembeli melakukan pembayaran sesuai dengan kesepakatan.</p>
-                    </div>
-                    <div class="line" data-aos="fade-up" data-aos-delay="400"></div>
-                    
-                    <!-- Langkah 5: Proses Pengemasan -->
-                    <div class="timeline-step" data-aos="fade-up" data-aos-delay="400">
-                        <div class="circle bg-info"><i class="fas fa-box"></i></div>
-                        <h6>Proses Pengemasan</h6>
-                        <p class="custom">Barang dikemas dengan aman sebelum dikirim ke alamat tujuan.</p>
-                    </div>
-                    <div class="line" data-aos="fade-up" data-aos-delay="400"></div>
-                    
-                    <!-- Langkah 6: Pengiriman -->
-                    <div class="timeline-step" data-aos="fade-up" data-aos-delay="400">
-                        <div class="circle bg-secondary"><i class="fas fa-truck"></i></div>
-                        <h6>Pengiriman</h6>
-                        <p class="custom">Barang dikirim ke alamat pelanggan sesuai jadwal yang telah disepakati.</p>
-                    </div>
+                    <h6>{{ $step['judul'] }}</h6>
+                    <p class="custom">
+                        {!! Str::replaceArray(':route', [
+                            $index === 0 ? route('pesansupplier') : '#'
+                        ], $step['deskripsi']) !!}
+                    </p>
                 </div>
+
+                @if($index < count(__('prosedur.pemesanan.langkah')) - 1)
+                    <div class="line" data-aos="fade-up" data-aos-delay="{{ 100 * ($index + 1) }}"></div>
+                @endif
+            @endforeach
+        </div>
+
             </div>
 
         <!-- CSS -->
@@ -216,13 +189,13 @@
         <section id="sewa" class="text-center py-5 mt-5 mb-5">
             <div class="container mt-5">
                 <h2 class="fw-bold animate-title" data-aos="fade-down">
-                    <span class="fw-bold text-primary">Optimalkan Proyek Anda</span> dengan Kendaraan Terbaik!
+                {!! __('msg.cta_judul') !!}
                 </h2>
                 <p class="animate-text" data-aos="fade-up" data-aos-delay="200">
-                    Jangan ragu untuk menghubungi kami dan dapatkan layanan terbaik.
+                {{ __('msg.cta_desc') }}
                 </p>
                 <a href="{{ route('pesanperbaikan') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="400">
-                    Pesan Sekarang
+                {{ __('msg.pesan_sekarang') }}
                 </a>
             </div>
         </section>

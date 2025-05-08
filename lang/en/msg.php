@@ -35,9 +35,10 @@ return [
     'dokumentasi' => 'Documentations',
     'deskripsi_mitra' => 'Our Patners',
     'kontak_kami' => 'Contact Us',
+    'kontak_kami1' => '<span class="fw-bold text-primary">Contact</span> Us',
     'silakan_hubungi' => 'Get in Touch',
     'alamat' => 'Address',
-    'isi_alamat' => 'Jalan Lingkar Timur Pinggir, Balairaja, Pinggir, Riau, 28784',
+    'isi_alamat' => 'East Ring Road, Pinggir, Balairaja, Riau, 28784',
     'telepon' => 'Phone',
     'isi_telepon' => '+62 853-7600-3238',
     'email' => 'Email',
@@ -104,4 +105,90 @@ return [
     'galeri_label' => 'Our <span class="fw-bold text-primary">Gallery</span>',
     'mitra_judul' => 'Our Partners',
     'mitra_label' => 'Our <span class="fw-bold text-primary">Partners</span>',
+    'halaman' => 'Pages',
+    'detail_pemesan' => 'Orderer Details',
+
+    // penawaran
+    'mengapa_memilih' => 'Why <span class="fw-bold text-primary">Choose</span> Us?',
+    'fitur_harga' => 'Affordable Pricing',
+    'fitur_harga_desc' => 'We offer competitive rates without compromising on quality service.',
+
+    'fitur_pilihan' => 'Wide Vehicle Selection',
+    'fitur_pilihan_desc' => 'A full range of heavy equipment is available to meet your project needs.',
+
+    'fitur_pelayanan' => 'Fast Service',
+    'fitur_pelayanan_desc' => 'Our team is ready to assist you with a quick and hassle-free rental process.',
+
+    'fitur_keamanan' => 'Safety & Reliability',
+    'fitur_keamanan_desc' => 'We keep all our heavy vehicles in top condition with regular maintenance to ensure safe and reliable operation for your projects.',
+    'cta_judul' => '<span class="fw-bold text-primary">Maximize Your Project</span> with the Best Equipment!',
+    'cta_desc' => 'Feel free to reach out to us and get the best service.',
+    'cta_tombol' => 'Contact Us',
+
+    //testimoni
+    'testimonial_1_name' => 'Andi Prasetyo',
+    'testimonial_1_role' => 'Mining Project Manager',
+    'testimonial_1_text' => 'The heavy equipment fleet provided was highly reliable and efficient for our mining operations. Competitive pricing, professional service, and no major issues during the rental period. Thank you!',
+
+    'testimonial_2_name' => 'Dewi Lestari',
+    'testimonial_2_role' => 'Construction Site Engineer',
+    'testimonial_2_text' => 'Excellent service — the machines were in top condition, and the technicians were always ready to assist. Thank you for the support; our project ran smoothly thanks to your professionalism!',
+
+    'testimonial_3_name' => 'Reza Saputra',
+    'testimonial_3_role' => 'Logistics Supervisor',
+    'testimonial_3_text' => 'We\'re very satisfied with the equipment rental service from PT. Mahir Trans Bersaudara. The units were well-maintained, always arrived on time, and supported by a responsive team. Highly recommended for large-scale construction projects!',
+
+    //jenis alat berat
+    'jenis_alat_berat1' => 'Our <span class="fw-bold text-primary">Heavy Equipment</span> Types',
+
+    'ketentuan' => [
+        'judul' => 'General <span class="fw-bold text-primary">Terms and Conditions</span>',
+        'deskripsi' => 'By using our services, you agree to comply with all the terms listed below.',
+        'items' => [
+            [
+                'judul' => '1. Rental Requirements',
+                'deskripsi' => 'To rent heavy equipment, customers must present valid identification and meet the criteria set by the company.',
+            ],
+            [
+                'judul' => '2. Fees & Payment',
+                'deskripsi' => 'Payment must be made according to the agreed terms, and late payments may be subject to penalties.',
+            ],
+            [
+                'judul' => '3. Equipment Use',
+                'deskripsi' => 'Heavy equipment may only be used for lawful purposes and may not be subleased to third parties.',
+            ],
+            [
+                'judul' => '4. Damage & Liability',
+                'deskripsi' => 'The renter is responsible for any damage caused due to negligence during the rental period.',
+            ],
+            [
+                'judul' => '5. Cancellation & Refunds',
+                'deskripsi' => 'Cancellations must be made within a specified time to be eligible for a refund based on company policy.',
+            ],
+        ],
+    ],
+    'ketentuan_detail' => [
+        [
+            'judul' => 'Heavy Equipment <span class="fw-bold text-primary">Usage</span>',
+            'deskripsi' => [
+                'a. Renters are responsible for using the equipment according to specifications and applicable regulations.',
+                'b. It is prohibited to use heavy equipment for illegal or environmentally harmful activities.',
+                'c. Any misuse of the equipment will result in <strong>legal sanctions and fines</strong>.',
+            ],
+        ],
+        [
+            'judul' => '<span class="fw-bold text-primary">Damage</span> & <span class="fw-bold text-primary">Responsibility</span>',
+            'deskripsi' => [
+                'a. Renters must perform a <strong>condition check</strong> on the equipment before use.',
+                'b. If <strong>technical damage not caused by the renter</strong> occurs, please contact our support team immediately.',
+            ],
+        ],
+        [
+            'judul' => '<span class="fw-bold text-primary">Cancellation</span> & <span class="fw-bold text-primary">Refund Policy</span>',
+            'deskripsi' => [
+                'Cancellations must be made within the specified timeframe to receive a refund according to company policy.',
+            ],
+        ],
+    ],
+
 ];

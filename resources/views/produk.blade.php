@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Jenis Alat Berat - PT. Mahir Trans Bersaudara</title>
+  <title>{{ __('msg.jenis_alat_berat') }} - PT. Mahir Trans Bersaudara</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -41,12 +41,12 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#beranda">{{ __('msg.menu_beranda') }}</a></li>
-          <li><a href="#tentang-kami">{{ __('msg.menu_tentang') }}</a></li>
-          <li><a href="#layanan-kami">{{ __('msg.menu_layanan') }}</a></li>
-          <li><a href="#galeri">{{ __('msg.menu_galeri') }}</a></li>
-          <li><a href="#mitra">{{ __('msg.menu_mitra') }}</a></li>
-          <li><a href="#kontak">{{ __('msg.menu_kontak') }}</a></li>
+            <li><a href="{{ route('home') }}">{{ __('msg.menu_beranda') }}</a></li>
+            <li><a href="{{ route('tentang-kami') }}">{{ __('msg.menu_tentang') }}</a></li>
+            <li><a href="{{ route('layanan') }}">{{ __('msg.menu_layanan') }}</a></li>
+            <li><a href="{{ route('galeri') }}">{{ __('msg.menu_galeri') }}</a></li>
+            <li><a href="{{ route('mitra') }}">{{ __('msg.menu_mitra') }}</a></li>
+            <li><a href="{{ route('kontak') }}"">{{ __('msg.menu_kontak') }}</a></li>
 
           <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom">
               <a href="{{ url('/lang/id') }}" class="nav-link">
@@ -70,7 +70,7 @@
             <div class="container">
             <div class="row d-flex justify-content-center text-center">
                 <div class="col-lg-8">
-                <h1 class="mb-4">Jenis Alat Berat</h1>
+                <h1 class="mb-4">{{ __('msg.jenis_alat_berat') }}</h1>
                 </div>
             </div>
             </div>
@@ -78,8 +78,8 @@
         <nav class="breadcrumbs">
             <div class="container">
             <ol>
-                <li><a href="{{ route('home') }}">Beranda</a></li>
-                <li class="current">Jenis Alat Berat</li>
+                <li><a href="{{ route('home') }}">{{ __('msg.menu_beranda') }}</a></li>
+                <li class="current">{{ __('msg.jenis_alat_berat') }}</li>
             </ol>
             </div>
         </nav>
@@ -87,6 +87,9 @@
         
         <!-- Layanan Section -->
         <section class="container py-5">
+        <h2 class="text-center mb-4" data-aos="fade-up">
+                {!! __('msg.jenis_alat_berat1') !!}
+            </h2>
             <div class="row g-4">
                 @foreach ($layanan as $p)
                 <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ $loop->index * 150 }}">
@@ -119,15 +122,15 @@
           <!-- Call to Action -->
           <section id="sewa" class="text-center py-5 mt-5 mb-5">
               <div class="container mt-5">
-                  <h2 class="fw-bold animate-title" data-aos="fade-down">
-                      <span class="fw-bold text-primary">Optimalkan Proyek Anda</span> dengan Kendaraan Terbaik!
-                  </h2>
-                  <p class="animate-text" data-aos="fade-up" data-aos-delay="200">
-                      Jangan ragu untuk menghubungi kami dan dapatkan layanan terbaik.
-                  </p>
-                  <a href="{{ route('kontak') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="400">
-                      Hubungi Kami
-                  </a>
+                <h2 class="fw-bold animate-title" data-aos="fade-down">
+                {!! __('msg.cta_judul') !!}
+                </h2>
+                <p class="animate-text" data-aos="fade-up" data-aos-delay="200">
+                {{ __('msg.cta_desc') }}
+                </p>
+                <a href="{{ route('kontak') }}" class="btn btn-primary btn-lg mb-5 animate-btn" data-aos="zoom-in" data-aos-delay="400">
+                {{ __('msg.cta_tombol') }}
+                </a>
               </div>
           </section>
     </main>
