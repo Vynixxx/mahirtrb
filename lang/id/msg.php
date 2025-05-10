@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'bahasa' => 'Bahasa',
     'menu_beranda' => 'Beranda',
     'menu_tentang' => 'Tentang',
     'menu_layanan' => 'Layanan',
@@ -88,15 +89,15 @@ return [
     'hubungi_kami_sub' => 'Kami siap membantu Anda!',
     'website' => 'Situs Resmi',
     'layanan_kami_tawarkan_heading' => 'Layanan yang <span class="fw-bold text-primary">Kami Tawarkan</span>',
-    'layanan_ekspedisi_judul' => 'Ekspedisi',
+    'layanan_ekspedisi_judul' => 'Ekspedisi & Transportasi Alat Berat',
     'layanan_ekspedisi_isi' => 'PT. Mahir Trans Bersaudara hadir sebagai mitra terpercaya dalam penyewaan ekspedisi khusus untuk kendaraan alat berat. Dengan armada terbaik dan tenaga profesional berpengalaman, kami siap membantu pengangkutan alat berat Anda dengan aman, cepat, dan efisien ke berbagai lokasi di seluruh Indonesia, terkhusus di wilayah Riau. Kami memahami bahwa setiap pengiriman memiliki tantangan tersendiri, oleh karena itu kami menawarkan layanan ekspedisi yang fleksibel dan disesuaikan dengan kebutuhan Anda. Dari pengiriman Truk Foco, bulldozer, crane, hingga kendaraan berat lainnya, kami memastikan proses transportasi berjalan lancar dengan standar keselamatan tinggi. Percayakan kebutuhan logistik alat berat Anda kepada PT. Mahir Trans Bersaudara untuk solusi ekspedisi yang andal dan profesional.',
-    'layanan_pabrikasi_judul' => 'Pabrikasi',
+    'layanan_pabrikasi_judul' => 'Jasa Pabrikasi',
     'layanan_pabrikasi_isi' => 'PT. Mahir Trans Bersaudara menawarkan layanan pabrikasi berkualitas tinggi untuk memenuhi kebutuhan industri Anda. Dengan tim ahli dan peralatan modern, kami siap memproduksi berbagai komponen dan struktur berbahan logam, baik untuk industri konstruksi, manufaktur, hingga alat berat. Kami berkomitmen untuk menghadirkan hasil pabrikasi yang presisi, kuat, dan sesuai dengan standar kualitas tinggi. Setiap proses produksi dilakukan dengan ketelitian dan pengawasan ketat untuk memastikan ketahanan serta keamanan produk yang kami hasilkan. Dengan pengalaman dan dedikasi dalam industri ini, PT. Mahir Trans Bersaudara menjadi pilihan tepat bagi Anda yang membutuhkan solusi pabrikasi profesional, efisien, dan terpercaya.',
-    'layanan_perbaikan_judul' => 'Perbaikan',
+    'layanan_perbaikan_judul' => 'Jasa Perbaikan',
     'layanan_perbaikan_isi' => 'PT. Mahir Trans Bersaudara menyediakan layanan perbaikan alat berat yang handal dan profesional untuk memastikan performa optimal mesin Anda. Dengan teknisi berpengalaman dan peralatan canggih, kami siap menangani berbagai jenis perbaikan, mulai dari perawatan rutin hingga perbaikan komponen utama seperti mesin, hidrolik, dan sistem kelistrikan. Kami memahami bahwa downtime alat berat dapat berdampak besar pada operasional bisnis, oleh karena itu kami berkomitmen untuk memberikan layanan yang cepat, efisien, dan berkualitas tinggi. Apapun jenis alat berat Anda, percayakan perbaikannya kepada kami. PT. Mahir Trans Bersaudara siap menjadi mitra terbaik Anda dalam menjaga kinerja dan keandalan alat berat di lapangan.',
-    'layanan_penyewaan_judul' => 'Penyewaan',
+    'layanan_penyewaan_judul' => 'Jasa Penyewaan',
     'layanan_penyewaan_isi' => 'PT. Mahir Trans Bersaudara menyediakan layanan penyewaan alat berat dengan berbagai pilihan unit berkualitas tinggi untuk mendukung kelancaran proyek konstruksi, pertambangan, dan industri lainnya. Dengan armada yang terawat dan siap pakai, kami menawarkan beragam alat berat sesuai dengan kebutuhan operasional Anda. Kami memahami pentingnya efisiensi dan ketepatan waktu dalam setiap proyek, sehingga kami berkomitmen memberikan layanan sewa yang fleksibel, harga kompetitif, serta dukungan teknis profesional. Percayakan kebutuhan alat berat Anda kepada PT. Mahir Trans Bersaudara untuk solusi sewa yang andal, efisien, dan berkualitas tinggi.',
-    'layanan_supplier_judul' => 'Supplier',
+    'layanan_supplier_judul' => 'Jasa Supplier',
     'layanan_supplier_isi' => 'PT. Mahir Trans Bersaudara menyediakan layanan supplier kebutuhan dan peralatan alat berat untuk mendukung berbagai sektor industri, termasuk konstruksi, pertambangan, dan manufaktur. Kami menawarkan beragam produk berkualitas tinggi, mulai dari suku cadang, komponen hidrolik, hingga peralatan pendukung yang dirancang untuk memastikan kinerja optimal alat berat Anda. Dengan jaringan supplier terpercaya dan sistem distribusi yang efisien, kami berkomitmen menyediakan produk yang tepat waktu dan sesuai dengan spesifikasi yang dibutuhkan. Kami memahami pentingnya keandalan dan durabilitas dalam setiap peralatan yang digunakan di lingkungan kerja yang menuntut, sehingga kami hanya menyediakan produk terbaik dengan standar kualitas tinggi.',
     'galeri_judul' => 'Galeri Kami',
     'galeri_filter_semua' => 'Semua Kategori',

@@ -1,4 +1,3 @@
-
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
 
@@ -47,14 +46,16 @@
         </a>
       </li><!-- End pemesanan Page Nav --> 
      
-       <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom">
-              <a href="{{ url('/lang/id') }}" class="nav-link collapsed">
-                  <img src="{{ asset('assets/id.png') }}" alt="Bahasa Indonesia" width="17"> <span class="ms-2">Bahasa Indonesia</span>
-              </a>
-              <a href="{{ url('/lang/en') }}" class="nav-link collapsed">
-                  <img src="{{ asset('assets/en.png') }}" alt="English" width="17"> <span class="ms-2">English</span>
-              </a>
-        </li>
+      <li class="nav-heading">{{ __('msg.bahasa') }}</li>
+      <li class="nav-item">
+          <a href="{{ url('/lang/id') }}" class="nav-link collapsed">
+              <img src="{{ asset('assets/id.png') }}" width="17"> <span class="ms-2">Bahasa Indonesia</span>
+          </a>
+          <a href="{{ url('/lang/en') }}" class="nav-link collapsed">
+              <img src="{{ asset('assets/en.png') }}" width="17"> <span class="ms-2">English</span>
+          </a>
+      </li>
+
     </ul>
 
   </aside><!-- End Sidebar-->

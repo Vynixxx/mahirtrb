@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'bahasa' => 'Language',
     'menu_beranda' => 'Home',
     'menu_tentang' => 'About',
     'menu_layanan' => 'Services',
