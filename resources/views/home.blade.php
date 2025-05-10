@@ -56,8 +56,10 @@
             <h1>{{ __('msg.halaman_atas') }} <span> {{ __('msg.halaman_atasgaris') }}</span></h1>
             <p>{{ __('msg.halaman_atasbawahgaris') }}</p>
             <div class="d-grid d-sm-flex gap-3 mt-3">
-                <a href="#tentang-kami" class="btn-get-started"><center>{{ __('msg.selengkapnya') }}</center></a>
-                <a href="{{ url('profile-company/Profile_Company.pdf') }}" target="_blank" class="btn-get-started">
+                <a href="#about" class="btn-get-started"><center>{{ __('msg.selengkapnya') }}</center></a>
+                <a href="{{ url('profile-company/' . (app()->getLocale() === 'en' ? 'Profile_Company_En.pdf' : 'Profile_Company_Id.pdf')) }}" 
+                target="_blank" 
+                class="btn-get-started">
                 <center><i class="bi bi-file-earmark-pdf me-2"></i> {{ __('msg.profil_perusahaan') }}</center>
                 </a>            
               </div>
