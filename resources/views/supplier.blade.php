@@ -53,9 +53,11 @@
             <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom">
                 <a href="{{ url('/lang/id') }}" class="nav-link">
                     <img src="{{ asset('assets/id.png') }}" alt="Bahasa Indonesia" width="20">
+                    <span class="d-xl-none ms-1">Bahasa Indonesia</span>
                 </a>
                 <a href="{{ url('/lang/en') }}" class="nav-link">
                     <img src="{{ asset('assets/en.png') }}" alt="English" width="20">
+                    <span class="d-xl-none ms-1">English</span>
                 </a>
             </li>
             </ul>

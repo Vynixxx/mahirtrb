@@ -43,7 +43,7 @@
       </div>
     </div>
     <!-- Beranda Section -->
-    <section id="beranda" class="hero section dark-background">
+    <section id="home" class="hero section dark-background">
       <img src="assets/img/hero-bg-2.jpg" alt="" class="hero-bg">
 
       <div class="container">
@@ -84,7 +84,7 @@
     </section><!-- /Hero Section -->
 
     <!-- About Section -->
-    <section id="tentang-kami" class="about section">
+    <section id="about" class="about section">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row align-items-xl-center gy-5">
@@ -140,7 +140,7 @@
     </section><!-- /About Section -->
 
     <!-- layanan Section -->
-    <section id="layanan-kami" class="services section light-background py-5">
+    <section id="services" class="services section light-background py-5">
       <!-- Section Title -->
       <div class="container section-title d-flex justify-content-between align-items-center flex-wrap gap-2" data-aos="fade-up">
           <div>
@@ -264,7 +264,7 @@
     </section><!-- layanan section -->
 
     <!-- Gallery Section -->
-    <section id="galeri" class="gallery section">
+    <section id="gallery" class="gallery section">
 
     <!-- Section Title -->
     <div class="container section-title d-flex justify-content-between align-items-center flex-wrap gap-2" data-aos="fade-up">
@@ -295,7 +295,7 @@
     </section><!-- /Gallery Section -->
 
     <!-- Features Section -->
-    <section id="mitra" class="features section">
+    <section id="partners" class="features section">
 
       <div class="container">
           <!-- Section Title -->
@@ -323,7 +323,7 @@
           </div>
     </section><!-- /Features Section -->
     <!-- Contact Section -->
-    <section id="kontak" class="contact section">
+    <section id="contact" class="contact section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">

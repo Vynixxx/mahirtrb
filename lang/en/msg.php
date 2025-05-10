@@ -53,7 +53,7 @@ return [
     'pesan_konfirmasi' => 'Are you sure you want to send this message?',
     'batal' => 'Cancel',
     'ya_kirim' => 'Yes, Send',
-    'alamat_1' => 'Jalan Lingkar Timur Pinggir',
+    'alamat_1' => 'East Ring Road, Pinggir',
     'alamat_2' => 'Balairaja, Pinggir, Riau',
     'link_terkait' => 'Related Links',
     'penawaran' => 'Offers',

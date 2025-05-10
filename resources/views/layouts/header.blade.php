@@ -9,12 +9,12 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#beranda" class="active">{{ __('msg.menu_beranda') }}</a></li>
-          <li><a href="#tentang-kami">{{ __('msg.menu_tentang') }}</a></li>
-          <li><a href="#layanan-kami">{{ __('msg.menu_layanan') }}</a></li>
-          <li><a href="#galeri">{{ __('msg.menu_galeri') }}</a></li>
-          <li><a href="#mitra">{{ __('msg.menu_mitra') }}</a></li>
-          <li><a href="#kontak">{{ __('msg.menu_kontak') }}</a></li>
+          <li><a href="#home" class="active">{{ __('msg.menu_beranda') }}</a></li>
+          <li><a href="#about">{{ __('msg.menu_tentang') }}</a></li>
+          <li><a href="#services">{{ __('msg.menu_layanan') }}</a></li>
+          <li><a href="#gallery">{{ __('msg.menu_galeri') }}</a></li>
+          <li><a href="#partners">{{ __('msg.menu_mitra') }}</a></li>
+          <li><a href="#contact">{{ __('msg.menu_kontak') }}</a></li>
 
           <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="bottom">
               <a href="{{ url('/lang/id') }}" class="nav-link">
