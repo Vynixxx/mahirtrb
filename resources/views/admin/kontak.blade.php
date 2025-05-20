@@ -40,16 +40,24 @@
   <div class="container">
         <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Kontak
-              <nav>
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                  <li class="breadcrumb-item active">Kontak</li>
-                </ol>
-              </nav>  
-              </h5>
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h5 class="card-title mb-0">Kontak</h5>
+                    <nav>
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Kontak</li>
+                        </ol>
+                    </nav>
+                </div>
 
-              <!-- Default Table -->
+                <!-- Form Search -->
+                <form action="{{ route('admin.kontak') }}" method="GET" class="d-flex" style="max-width: 300px;">
+                    <input type="text" name="search" class="form-control me-2" placeholder="Cari..." value="{{ request('search') }}">
+                    <button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i></button>
+                </form>
+            </div>
+
               <div class="table-responsive">
               <table class="table">
                 <thead>

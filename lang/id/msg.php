@@ -107,6 +107,7 @@ return [
     'mitra_label' => '<span class="fw-bold text-primary">Mitra</span> Kami',
     'halaman' => 'Halaman',
     'detail_pemesan' => 'Detail Pemesan',
+    'display' => 'Tampilan',
     // penawaran
     'mengapa_memilih' => 'Mengapa <span class="fw-bold text-primary">Memilih</span> Kami?',
     'fitur_harga' => 'Harga Terjangkau',

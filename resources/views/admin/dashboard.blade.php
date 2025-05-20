@@ -389,6 +389,13 @@
   <script src="{{ asset('assetsadmin/js/main.js') }}"></script>
 
   <script>
+      history.pushState(null, null, location.href);
+      window.onpopstate = function () {
+          history.go(1);
+      };
+  </script>
+
+  <script>
       (function () {
           window.history.pushState(null, "", window.location.href);
           window.onpopstate = function () {

@@ -78,12 +78,12 @@
       </li><!-- End Pemesanan Nav -->
 
       <li class="nav-item">
-      <a href="javascript:void(0);" class="nav-link" id="toggle-theme">
-        <i class="bi bi-circle-half"></i>
-        <span id="theme-label">Dark Mode</span>
-        <span class="ms-auto" id="theme-icon">🌙</span>
-      </a>
-    </li>
+        <a href="javascript:void(0);" class="nav-link" id="toggle-theme">
+          <i class="bi bi-circle-half"></i>
+          <span id="theme-label">Dark Mode</span>
+          <span class="ms-auto" id="theme-icon">🌙</span>
+        </a>
+      </li>
     </ul>
     
 

@@ -21,21 +21,34 @@ class pageAdmin extends Controller
 {
     public function halamanlayanan()
     {
-        $layanankendaraan = layanankendaraan::get();
+        $layanankendaraan = layanankendaraan::orderBy('created_at', 'desc')->get();
         return view('admin.layanan', compact('layanankendaraan'));
     }
 
     public function halamangaleri()
     {
-        $galeri = galeri::get();
+        $galeri = galeri::orderBy('created_at', 'desc')->get();
         return view('admin.galeri', compact('galeri'));
     }
 
-    public function halamankontak()
-    {
-        $kontak = kontak::get();
-        return view('admin.kontak', compact('kontak'));
+    public function halamankontak(Request $request)
+{
+    $query = kontak::query();
+
+    if ($request->has('search') && !empty($request->search)) {
+        $search = $request->search;
+        $query->where(function ($q) use ($search) {
+            $q->where('name', 'like', "%{$search}%")
+              ->orWhere('email', 'like', "%{$search}%")
+              ->orWhere('whatsapp', 'like', "%{$search}%");
+        });
     }
+
+    $kontak = $query->orderBy('created_at', 'desc')->get();
+
+    return view('admin.kontak', compact('kontak'));
+}
+
 
     public function halamanprofile()
     {
@@ -50,31 +63,31 @@ class pageAdmin extends Controller
 
     public function halamanekspedisi()
     {
-        $eks = ekspedisi::get();
+        $eks = ekspedisi::orderBy('created_at', 'desc')->get();
         return view('admin.pemesanan.ekspedisi', compact('eks'));
     }
 
     public function halamanpabrikasi()
     {
-        $pabs = pabrikasi::get();
+        $pabs = pabrikasi::orderBy('created_at', 'desc')->get();
         return view('admin.pemesanan.pabrikasi', compact('pabs'));
     }
 
     public function halamanpenyewaan()
     {
-        $sewa = penyewaan::get();
+        $sewa = penyewaan::orderBy('created_at', 'desc')->get();
         return view('admin.pemesanan.penyewaan', compact('sewa'));
     }
 
     public function halamanperbaikan()
     {
-        $perb = perbaikan::get();
+        $perb = perbaikan::orderBy('created_at', 'desc')->get();
         return view('admin.pemesanan.perbaikan', compact('perb'));
     }
 
     public function halamansupplier()
     {
-        $sup = supplier::get();
+        $sup = supplier::orderBy('created_at', 'desc')->get();
         return view('admin.pemesanan.supplier', compact('sup'));
     }
 
@@ -84,7 +97,7 @@ class pageAdmin extends Controller
         if (!$kontak) {
             return back()->with('error', 'Pesan tidak ditemukan.');
         }
-    
+
         // Pola regex untuk mendeteksi XSS
         $xssPattern = '/(&lt;|&gt;|&quot;|&amp;#\d+;|<script.*?>.*?<\/script>|javascript:|onerror=|onload=|onmouseover=|<iframe.*?>)/i';
     

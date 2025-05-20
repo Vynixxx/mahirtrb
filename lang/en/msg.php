@@ -108,6 +108,8 @@ return [
     'mitra_label' => 'Our <span class="fw-bold text-primary">Partners</span>',
     'halaman' => 'Pages',
     'detail_pemesan' => 'Orderer Details',
+    'display' => 'Display',
+
 
     // penawaran
     'mengapa_memilih' => 'Why <span class="fw-bold text-primary">Choose</span> Us?',

@@ -55,7 +55,45 @@
               <img src="{{ asset('assets/en.png') }}" width="17"> <span class="ms-2">English</span>
           </a>
       </li>
+      <li class="nav-heading">{{ __('msg.display') }}</li>
+      <li class="nav-item">
+        <a href="javascript:void(0);" class="nav-link" id="toggle-theme">
+          <i class="bi bi-circle-half"></i>
+          <span id="theme-label">Dark Mode</span>
+          <span class="ms-auto" id="theme-icon">🌙</span>
+        </a>
+      </li>
 
     </ul>
 
   </aside><!-- End Sidebar-->
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggle = document.getElementById("toggle-theme");
+      const icon = document.getElementById("theme-icon");
+      const label = document.getElementById("theme-label");
+      const currentTheme = localStorage.getItem("theme");
+
+      function applyTheme(theme) {
+          if (theme === "dark") {
+              document.body.classList.add("dark-mode");
+              icon.textContent = "🌞";
+              label.textContent = "Light Mode";
+          } else {
+              document.body.classList.remove("dark-mode");
+              icon.textContent = "🌙";
+              label.textContent = "Dark Mode";
+          }
+      }
+
+      applyTheme(currentTheme);
+
+      toggle?.addEventListener("click", function () {
+          const isDark = document.body.classList.contains("dark-mode");
+          const newTheme = isDark ? "light" : "dark";
+          localStorage.setItem("theme", newTheme);
+          applyTheme(newTheme);
+      });
+  });
+  </script>
