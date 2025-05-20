@@ -19,6 +19,431 @@ body {
   color: #444444;
 }
 
+/* Tambahan dark mode menyeluruh */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+/* Header */
+body.dark-mode .header {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  box-shadow: none;
+}
+
+body.dark-mode .header .toggle-sidebar-btn,
+body.dark-mode .header .search-form input,
+body.dark-mode .header-nav .nav-icon,
+body.dark-mode .header-nav .nav-profile,
+body.dark-mode .header .search-form button i {
+  color: #ccc !important;
+}
+
+body.dark-mode .header .search-form input {
+  background-color: #2c2c2c;
+  border-color: #555;
+}
+
+/* Sidebar */
+body.dark-mode .sidebar {
+  background-color: #1e1e1e;
+  box-shadow: none;
+}
+
+body.dark-mode .sidebar-nav .nav-link {
+  background-color: transparent;
+  color: #ccc;
+}
+
+body.dark-mode .sidebar-nav .nav-link:hover {
+  background-color: #2c2c2c;
+  color: #fff;
+}
+
+/* Card */
+body.dark-mode .card,
+body.dark-mode .card-header,
+body.dark-mode .card-footer {
+  background-color: #1e1e1e !important;
+  color: #ddd !important;
+  border-color: #333;
+  box-shadow: none;
+}
+
+/* Chart background (jika pakai chart) */
+body.dark-mode .card .chart {
+  background-color: #1e1e1e !important;
+}
+
+/* Dashboard Icons */
+body.dark-mode .dashboard .card-icon {
+  background-color: #2c2c2c;
+  color: #ddd;
+}
+
+/* Headings */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6,
+body.dark-mode .card-title {
+  color: #4154f1 !important;
+}
+
+/* Table header */
+body.dark-mode table thead {
+  background-color: #222;
+  color: #eee;
+}
+
+body.dark-mode table tbody {
+  background-color: #1a1a1a;
+  color: #ddd;
+}
+
+/* Link style */
+body.dark-mode a {
+  color: #80bfff;
+}
+
+body.dark-mode a:hover {
+  color: #aaccff;
+}
+
+/* Footer */
+body.dark-mode .footer {
+  border-top-color: #333;
+  background-color: #1a1a1a;
+}
+
+body.dark-mode .footer .copyright,
+body.dark-mode .footer .credits {
+  color: #ccc;
+}
+
+/* Breadcrumbs */
+body.dark-mode .breadcrumb a,
+body.dark-mode .breadcrumb .breadcrumb-item::before {
+  color: #999;
+}
+
+body.dark-mode .breadcrumb .active {
+  color: #fff;
+}
+
+/* Misc */
+body.dark-mode .accordion-button {
+  background-color: #2a2a2a;
+  color: #eee;
+}
+
+body.dark-mode .accordion-body {
+  color: #ccc;
+}
+
+body.dark-mode .form-control,
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  background-color: #2c2c2c;
+  color: #eee;
+  border-color: #555;
+}
+
+/* ================================
+   DARK MODE: Tambahan Profesional
+================================== */
+
+/* Dropdown (global) */
+body.dark-mode .dropdown-menu {
+  background-color: #2a2a2a;
+  color: #eee;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .dropdown-item {
+  color: #ccc;
+}
+
+body.dark-mode .dropdown-item:hover {
+  background-color: #3a3a3a;
+  color: #fff;
+}
+
+body.dark-mode .dropdown-divider {
+  border-color: #444;
+}
+
+/* DataTable */
+body.dark-mode .dataTable-wrapper,
+body.dark-mode .dataTable-top,
+body.dark-mode .dataTable-bottom,
+body.dark-mode .dataTable-container {
+  background-color: #1f1f1f;
+  color: #ccc;
+}
+
+body.dark-mode table.dataTable {
+  background-color: #1f1f1f;
+  color: #ddd;
+}
+
+body.dark-mode table.dataTable thead {
+  background-color: #222;
+  color: #eee;
+}
+
+body.dark-mode table.dataTable tbody {
+  background-color: #1a1a1a;
+  color: #ccc;
+}
+
+body.dark-mode .dataTable-pagination .datatable-active a {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Tabs */
+body.dark-mode .nav-tabs-bordered {
+  border-bottom-color: #444;
+}
+
+body.dark-mode .nav-tabs-bordered .nav-link {
+  color: #bbb;
+}
+
+body.dark-mode .nav-tabs-bordered .nav-link.active {
+  background-color: #1e1e1e;
+  border-bottom-color: #80bfff;
+  color: #80bfff;
+}
+
+/* Breadcrumb */
+body.dark-mode .breadcrumb {
+  color: #aaa;
+}
+
+body.dark-mode .breadcrumb a {
+  color: #80bfff;
+}
+
+body.dark-mode .breadcrumb a:hover {
+  color: #aaccff;
+}
+
+body.dark-mode .breadcrumb .active {
+  color: #fff;
+}
+
+/* Notification & Messages */
+body.dark-mode .header-nav .notifications .notification-item:hover,
+body.dark-mode .header-nav .messages .message-item:hover {
+  background-color: #2a2a2a;
+}
+
+body.dark-mode .header-nav .notifications .notification-item p,
+body.dark-mode .header-nav .messages .message-item p {
+  color: #aaa;
+}
+
+body.dark-mode .header-nav .profile .dropdown-header h6,
+body.dark-mode .header-nav .profile .dropdown-header span,
+body.dark-mode .header-nav .profile .dropdown-item {
+  color: #ddd;
+}
+
+body.dark-mode .header-nav .profile .dropdown-item:hover {
+  background-color: #2d2d2d;
+  color: #fff;
+}
+
+/* Dashboard Card Icons */
+body.dark-mode .dashboard .sales-card .card-icon,
+body.dark-mode .dashboard .revenue-card .card-icon,
+body.dark-mode .dashboard .customers-card .card-icon {
+  background-color: #2a2a2a;
+}
+
+/* Profile Page */
+body.dark-mode .profile .profile-card h2,
+body.dark-mode .profile .profile-overview .card-title {
+  color: #eee;
+}
+
+body.dark-mode .profile .profile-overview .label,
+body.dark-mode .profile .profile-edit label {
+  color: #aaa;
+}
+
+/* FAQ */
+body.dark-mode .faq .basic h6 {
+  color: #80bfff;
+}
+
+body.dark-mode .faq .basic p {
+  color: #bbb;
+}
+
+/* Contact Form */
+body.dark-mode .contact .info-box {
+  background-color: #1e1e1e;
+  color: #ddd;
+}
+
+body.dark-mode .contact .info-box i {
+  color: #80bfff;
+}
+
+body.dark-mode .contact .info-box h3 {
+  color: #fff;
+}
+
+body.dark-mode .contact .php-email-form input,
+body.dark-mode .contact .php-email-form textarea {
+  background-color: #2c2c2c;
+  color: #eee;
+  border-color: #444;
+}
+
+body.dark-mode .contact .php-email-form .loading {
+  background-color: #2a2a2a;
+  color: #fff;
+}
+
+/* Error Page */
+body.dark-mode .error-404 h1 {
+  color: #80bfff;
+}
+
+body.dark-mode .error-404 h2 {
+  color: #eee;
+}
+
+body.dark-mode .error-404 .btn {
+  background-color: #3a3a3a;
+  color: #fff;
+}
+
+body.dark-mode .error-404 .btn:hover {
+  background-color: #444;
+}
+
+/* Scrollbar */
+body.dark-mode ::-webkit-scrollbar {
+  background-color: #1a1a1a;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+  background-color: #555;
+}
+
+/* Hover states and transitions */
+body.dark-mode .btn,
+body.dark-mode .form-control,
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* ========================
+   DARK MODE TABLE FIX
+======================== */
+body.dark-mode table.table {
+  background-color: transparent !important;
+  color: #f8f8f8 !important;
+}
+
+body.dark-mode table.table thead {
+  background-color: #1f1f1f !important;
+}
+
+body.dark-mode table.table thead th {
+  background-color: #1f1f1f !important;
+  color: #ffffff !important;
+  border-color: #3a3a3a !important;
+}
+
+/* ===============================
+   FIX DARK MODE - TABLE BODY
+=============================== */
+body.dark-mode table.table tbody tr {
+  background-color: #1e1e1e !important;
+}
+
+body.dark-mode table.table tbody tr td,
+body.dark-mode table.table tbody tr th {
+  color: #f0f0f0 !important;
+  background-color: #1e1e1e !important;
+  border-color: #444 !important;
+}
+
+body.dark-mode table.table tbody tr:hover {
+  background-color: #2a2a2a !important;
+}
+
+body.dark-mode table.table tbody tr:nth-child(even) {
+  background-color: #262626 !important;
+}
+
+
+body.dark-mode table.table tbody tr:nth-child(even) {
+  background-color: #1b1b1b !important;
+}
+
+body.dark-mode table.table tbody tr:hover {
+  background-color: #2b2b2b !important;
+}
+
+body.dark-mode table.table td,
+body.dark-mode table.table th {
+  color: #f8f8f8 !important;
+  border-color: #3a3a3a !important;
+}
+
+/* Perbaikan tombol aksi */
+body.dark-mode .btn-outline-info {
+  color: #66ccff !important;
+  border-color: #66ccff !important;
+  background-color: transparent !important;
+}
+
+body.dark-mode .btn-outline-info:hover {
+  background-color: #66ccff !important;
+  color: #000 !important;
+}
+
+body.dark-mode .btn-outline-danger {
+  color: #ff6b6b !important;
+  border-color: #ff6b6b !important;
+  background-color: transparent !important;
+}
+
+body.dark-mode .btn-outline-danger:hover {
+  background-color: #ff6b6b !important;
+  color: #fff !important;
+}
+
+/* =======================================
+   DARK MODE - SIDEBAR NAV DROPDOWN
+======================================= */
+body.dark-mode .sidebar .nav-content a {
+  color: #cccccc !important;
+}
+
+body.dark-mode .sidebar .nav-content a:hover {
+  color: #ffffff !important;
+  background-color: #2b2b2b !important;
+}
+
+body.dark-mode .sidebar .nav-content i {
+  color: #999 !important;
+}
+
+
 a {
   color: #4154f1;
   text-decoration: none;

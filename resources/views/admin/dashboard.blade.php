@@ -92,14 +92,14 @@
                 </div>
 
               </div>
-            </div><!-- End Revenue Card -->
+            </div><!-- End mitra Card -->
 
             <!-- Pemesanan Card -->
             <div class="col-xxl-4 col-xl-12">
                 <div class="card info-card customers-card">
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between">
-                            <h5 class="card-title mb-0">Total Pemesanan</h5>
+                            <h5 class="card-title">Total Pemesanan</h5>
                             <!-- Three-dots dropdown -->
                             <div class="dropdown">
                                 <button class="btn btn-light border-0 p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">

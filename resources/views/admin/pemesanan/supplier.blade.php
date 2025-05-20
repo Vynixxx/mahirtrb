@@ -50,6 +50,7 @@
               </nav>  
               </h5>
 
+              <div class="table-responsive">
               <table class="table">
                 <thead>
                   <tr>
@@ -81,6 +82,7 @@
               @endforeach
                 </tbody>
               </table>
+              </div>
               <!-- Modal Konfirmasi Hapus -->
               <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                   <div class="modal-dialog">

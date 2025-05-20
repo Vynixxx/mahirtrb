@@ -26,66 +26,73 @@
         </script>
     @endif
     <nav class="header-nav ms-auto">
-      <ul class="d-flex align-items-center">
+        <ul class="d-flex align-items-center">
 
+            {{-- Notifikasi Pemesanan --}}
             <li class="nav-item dropdown">
-              <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                  <i class="bi bi-bell"></i>
-                  <span class="badge bg-primary badge-number">{{ count($latestOrders) }}</span>
-              </a><!-- End Notification Icon -->
-
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-                  <li class="dropdown-header">
-                      Anda memiliki {{ count($latestOrders) }} pemesanan baru
-                  </li>
-
-                  <li><hr class="dropdown-divider"></li>
-
-                  @forelse ($latestOrders as $order)
-                      <li class="notification-item">
-                          <i class="bi bi-box text-success"></i>
-                          <div>
-                            <h4>{{ $order->nama ?? 'Pelanggan' }}</h4>
-                            <p>
+                <a class="nav-link nav-icon position-relative" href="#" data-bs-toggle="dropdown" data-bs-toggle="tooltip" title="Notifikasi Pemesanan">
+                    <i class="bi bi-bell fs-5"></i>
+                    @if(count($latestOrders))
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
+                        {{ count($latestOrders) }}
+                    </span>
+                    @endif
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications shadow">
+                    <li class="dropdown-header text-primary fw-bold">
+                        Anda memiliki {{ count($latestOrders) }} pemesanan baru
+                    </li>
+                    <li><hr class="dropdown-divider"></li>
+                    @forelse ($latestOrders as $order)
+                    <li class="notification-item">
+                        <i class="bi bi-box text-success"></i>
+                        <div>
+                            <h6 class="mb-1">{{ $order->nama ?? 'Pelanggan' }}</h6>
+                            <p class="mb-0">
                                 Pesanan dari 
-                                @if ($order instanceof \App\Models\Ekspedisi)
-                                    <strong>Ekspedisi</strong>
-                                @elseif ($order instanceof \App\Models\Pabrikasi)
-                                    <strong>Pabrikasi</strong>
-                                @elseif ($order instanceof \App\Models\Penyewaan)
-                                    <strong>Penyewaan</strong>
-                                @elseif ($order instanceof \App\Models\Perbaikan)
-                                    <strong>Perbaikan</strong>
-                                @elseif ($order instanceof \App\Models\Supplier)
-                                    <strong>Supplier</strong>
-                                @else
-                                    <strong>Tidak Diketahui</strong>
-                                @endif
+                                <strong>
+                                    @if ($order instanceof \App\Models\Ekspedisi)
+                                        Ekspedisi
+                                    @elseif ($order instanceof \App\Models\Pabrikasi)
+                                        Pabrikasi
+                                    @elseif ($order instanceof \App\Models\Penyewaan)
+                                        Penyewaan
+                                    @elseif ($order instanceof \App\Models\Perbaikan)
+                                        Perbaikan
+                                    @elseif ($order instanceof \App\Models\Supplier)
+                                        Supplier
+                                    @else
+                                        Tidak Diketahui
+                                    @endif
+                                </strong>
                             </p>
-                            <p><small class="text-muted">{{ \Carbon\Carbon::parse($order->created_at)->diffForHumans() }}</small></p>
+                            <small class="text-muted">{{ $order->created_at->diffForHumans() }}</small>
                         </div>
-                      </li>
-                      <li><hr class="dropdown-divider"></li>
-                  @empty
-                      <li class="text-center text-muted p-3">Tidak ada pemesanan baru</li>
-                  @endforelse
-              </ul><!-- End Notification Dropdown Items -->
-          </li><!-- End Notification Nav -->
+                    </li>
+                    <li><hr class="dropdown-divider"></li>
+                    @empty
+                    <li class="text-center text-muted p-3">Tidak ada pemesanan baru</li>
+                    @endforelse
+                </ul>
+            </li>
 
-          <li class="nav-item dropdown">
-            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                <i class="bi bi-chat-left-text"></i>
-                <span class="badge bg-success badge-number">{{ $messages->count() }}</span>
-            </a>
-
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-                <li class="dropdown-header">
-                    Anda memiliki {{ $messages->count() }} pesan baru
-                </li>
-                <li><hr class="dropdown-divider"></li>
-
-                @forelse($messages as $message)
-                <li class="message-item">
+            {{-- Pesan Masuk --}}
+            <li class="nav-item dropdown">
+                <a class="nav-link nav-icon position-relative" href="#" data-bs-toggle="dropdown" data-bs-toggle="tooltip" title="Pesan Masuk">
+                    <i class="bi bi-chat-left-text fs-5"></i>
+                    @if($messages->count())
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                        {{ $messages->count() }}
+                    </span>
+                    @endif
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages shadow">
+                    <li class="dropdown-header text-success fw-bold">
+                        Anda memiliki {{ $messages->count() }} pesan baru
+                    </li>
+                    <li><hr class="dropdown-divider"></li>
+                    @forelse($messages as $message)
+                    <li class="message-item">
                     <a href="{{ route('admin.kontak') }}">
                         <img src="{{ asset('assetsadmin/img/default-user.png') }}" alt="" class="rounded-circle">
                         <div>
@@ -98,62 +105,49 @@
                 <li><hr class="dropdown-divider"></li>
                 @empty
                 <li class="dropdown-header text-center">Tidak ada pesan baru</li>
-                @endforelse
-
-                <li class="dropdown-footer">
-                    <a href="{{ route('admin.kontak') }}">Lihat semua pesan</a>
-                </li>
-            </ul>
-        </li>
-        <li class="nav-item dropdown pe-3">
-
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <span class="d-none d-md-block dropdown-toggle ps-2">Profil</span>
-          </a><!-- End Profile Iamge Icon -->
-
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile shadow-lg">
-            <!-- Header dengan Avatar -->
-            <li class="dropdown-header text-center">
-                <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=random&size=150&bold=true" 
-                alt="Profile Picture" class="rounded-circle shadow mt-3 mb-3">
-                <h6 class="mb-0">PT. Mahir Trans Bersaudara</h6>
-                <small class="text-muted">Administrator</small>
+                    @endforelse
+                    <li class="dropdown-footer text-center">
+                        <a href="{{ route('admin.kontak') }}" class="text-primary fw-bold">Lihat semua pesan</a>
+                    </li>
+                </ul>
             </li>
-            <li><hr class="dropdown-divider"></li>
 
-            <!-- Profil -->
-            <li>
-                <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.profile') }}">
-                    <i class="bi bi-person me-2"></i>
-                    <span>Profil</span>
+            {{-- Profil --}}
+            <li class="nav-item dropdown pe-3">
+                <a class="nav-link nav-profile d-flex align-items-center" href="#" data-bs-toggle="dropdown">
+                    <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=random&size=128&bold=true" alt="Profile" class="rounded-circle" width="32" height="32">
+                    <span class="d-none d-md-inline ps-2">Profil</span>
                 </a>
-            </li>
-            <li><hr class="dropdown-divider"></li>
-
-            <!-- Bantuan -->
-            <li>
-                <a class="dropdown-item d-flex align-items-center" href="https://wa.me/6285162669547?text=Halo+aku+butuh+bantuan+nih">
-                    <i class="bi bi-question-circle me-2"></i>
-                    <span>Bantuan</span>
-                </a>
-            </li>
-            <li><hr class="dropdown-divider"></li>
-
-            <!-- Logout -->
-            <li class="px-3 py-2">
-                <form action="{{ route('cred.logout') }}" method="POST">
-                    @csrf
-                    <button class="btn btn-danger w-100 d-flex align-items-center justify-content-center">
-                        <i class="bi bi-box-arrow-right me-2"></i>
-                        <span>Keluar</span>
-                    </button>
-                </form>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile shadow">
+                    <li class="dropdown-header text-center">
+                        <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=random&size=150&bold=true" class="rounded-circle shadow mb-2" width="60" height="60">
+                        <h6 class="mb-0">PT. Mahir Trans Bersaudara</h6>
+                        <small class="text-muted">Administrator</small>
+                    </li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.profile') }}">
+                            <i class="bi bi-person me-2"></i> <span>Profil</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="https://wa.me/6285162669547?text=Halo+aku+butuh+bantuan+nih" target="_blank">
+                            <i class="bi bi-question-circle me-2"></i> <span>Bantuan</span>
+                        </a>
+                    </li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li class="px-3 py-2">
+                        <form action="{{ route('cred.logout') }}" method="POST">
+                            @csrf
+                            <button class="btn btn-danger w-100 d-flex align-items-center justify-content-center">
+                                <i class="bi bi-box-arrow-right me-2"></i> <span>Keluar</span>
+                            </button>
+                        </form>
+                    </li>
+                </ul>
             </li>
         </ul>
+    </nav>
 
-        </li><!-- End Profile Nav -->
-
-      </ul>
-    </nav><!-- End Icons Navigation -->
 
   </header><!-- End Header -->
