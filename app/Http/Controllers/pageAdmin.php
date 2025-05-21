@@ -19,35 +19,53 @@ use App\Models\penyewaan;
 
 class pageAdmin extends Controller
 {
-    public function halamanlayanan()
+    public function halamanlayanan(Request $request)
     {
-        $layanankendaraan = layanankendaraan::orderBy('created_at', 'desc')->get();
+        $query = layanankendaraan::query();
+
+        if ($request->has('search') && !empty($request->search)) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('nama', 'like', "%{$search}%");
+            });
+        }
+
+        $layanankendaraan = $query->orderBy('created_at', 'desc')->paginate(5);
         return view('admin.layanan', compact('layanankendaraan'));
     }
 
-    public function halamangaleri()
+    public function halamangaleri(Request $request)
     {
-        $galeri = galeri::orderBy('created_at', 'desc')->get();
+        $query = galeri::query();
+
+        if ($request->has('search') && !empty($request->search)) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('kategori', 'like', "%{$search}%");
+            });
+        }
+
+        $galeri = $query->orderBy('created_at', 'desc')->paginate(5);
         return view('admin.galeri', compact('galeri'));
     }
 
     public function halamankontak(Request $request)
-{
-    $query = kontak::query();
+    {
+        $query = kontak::query();
 
-    if ($request->has('search') && !empty($request->search)) {
-        $search = $request->search;
-        $query->where(function ($q) use ($search) {
-            $q->where('name', 'like', "%{$search}%")
-              ->orWhere('email', 'like', "%{$search}%")
-              ->orWhere('whatsapp', 'like', "%{$search}%");
-        });
+        if ($request->has('search') && !empty($request->search)) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                ->orWhere('email', 'like', "%{$search}%")
+                ->orWhere('whatsapp', 'like', "%{$search}%");
+            });
+        }
+
+        $kontak = $query->orderBy('created_at', 'desc')->paginate(5);
+
+        return view('admin.kontak', compact('kontak'));
     }
-
-    $kontak = $query->orderBy('created_at', 'desc')->get();
-
-    return view('admin.kontak', compact('kontak'));
-}
 
 
     public function halamanprofile()
@@ -55,39 +73,87 @@ class pageAdmin extends Controller
         return view('admin.profile');
     }
 
-    public function halamanmitra()
+    public function halamanmitra(Request $request)
     {
-        $mitra = mitra::get();
+        $query = mitra::query();
+
+        if ($request->has('search') && !empty($request->search)) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('nama', 'like', "%{$search}%");
+            });
+        }
+        $mitra = $query->paginate(5);
         return view('admin.mitra', compact('mitra'));
     }
 
-    public function halamanekspedisi()
+    public function halamanekspedisi(Request $request)
     {
-        $eks = ekspedisi::orderBy('created_at', 'desc')->get();
+        $query = ekspedisi::query();
+
+        if ($request->has('search') && !empty($request->search)) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('nama', 'like', "%{$search}%");
+            });
+        }
+        $eks = $query->orderBy('created_at', 'desc')->paginate(5);
         return view('admin.pemesanan.ekspedisi', compact('eks'));
     }
 
-    public function halamanpabrikasi()
+    public function halamanpabrikasi(Request $request)
     {
-        $pabs = pabrikasi::orderBy('created_at', 'desc')->get();
+        $query = pabrikasi::query();
+
+        if ($request->has('search') && !empty($request->search)) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('nama', 'like', "%{$search}%");
+            });
+        }
+        $pabs = $query->orderBy('created_at', 'desc')->paginate(5);
         return view('admin.pemesanan.pabrikasi', compact('pabs'));
     }
 
-    public function halamanpenyewaan()
+    public function halamanpenyewaan(Request $request)
     {
-        $sewa = penyewaan::orderBy('created_at', 'desc')->get();
+        $query = penyewaan::query();
+
+        if ($request->has('search') && !empty($request->search)) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('nama', 'like', "%{$search}%");
+            });
+        }
+        $sewa = $query->orderBy('created_at', 'desc')->paginate(5);
         return view('admin.pemesanan.penyewaan', compact('sewa'));
     }
 
-    public function halamanperbaikan()
+    public function halamanperbaikan(Request $request)
     {
-        $perb = perbaikan::orderBy('created_at', 'desc')->get();
+        $query = perbaikan::query();
+
+        if ($request->has('search') && !empty($request->search)) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('nama', 'like', "%{$search}%");
+            });
+        }
+        $perb = $query->orderBy('created_at', 'desc')->paginate(5);
         return view('admin.pemesanan.perbaikan', compact('perb'));
     }
 
-    public function halamansupplier()
+    public function halamansupplier(Request $request)
     {
-        $sup = supplier::orderBy('created_at', 'desc')->get();
+        $query = supplier::query();
+
+        if ($request->has('search') && !empty($request->search)) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('nama', 'like', "%{$search}%");
+            });
+        }
+        $sup = $query->orderBy('created_at', 'desc')->paginate(5);
         return view('admin.pemesanan.supplier', compact('sup'));
     }
 
@@ -372,9 +438,23 @@ class pageAdmin extends Controller
             return redirect()->route('admin.tambahlayanan')->with('failed', 'Data tidak ditemukan.');
         }
 
+        // Ambil input
+        $nama = $request->input('nama');
+        $isi = $request->input('isi');
+
+        // Cek apakah isi baru berbeda dari yang lama
+        if ($layanankendaraan->isi !== $isi) {
+            // Lakukan terjemahan ulang jika isi berubah
+            $translatedIsi = Cache::remember('translation_' . md5($isi), 3600, function () use ($isi) {
+                return GoogleTranslate::trans($isi, 'en', 'id');
+            });
+
+            $layanankendaraan->isi_en = $translatedIsi; // Update terjemahan
+        }
+
         // Update data layanan
-        $layanankendaraan->nama = $request->input('nama');
-        $layanankendaraan->isi = $request->input('isi');
+        $layanankendaraan->nama = $nama;
+        $layanankendaraan->isi = $isi;
 
         // Proses penyimpanan gambar jika ada gambar baru
         if ($request->hasFile('gambar')) {

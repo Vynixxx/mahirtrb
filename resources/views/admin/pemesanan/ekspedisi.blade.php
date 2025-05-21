@@ -40,15 +40,24 @@
     <div class="container">
         <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Ekspedisi
-              <nav>
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                  <li class="breadcrumb-item active">Pemesanan</li>
-                  <li class="breadcrumb-item active">Ekspedisi</li>
-                </ol>
-              </nav>  
-              </h5>
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h5 class="card-title mb-0">Ekspedisi
+                    <nav>
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Pemesanan</li>
+                            <li class="breadcrumb-item active">Ekspedisi</li>
+                        </ol>
+                    </nav>
+                </div></h5>
+
+                <!-- Form Search -->
+                <form action="{{ route('admin.ekspedisi') }}" method="GET" class="d-flex" style="max-width: 300px;">
+                    <input type="text" name="search" class="form-control me-2" placeholder="Cari..." value="{{ request('search') }}">
+                    <button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i></button>
+                </form>
+            </div>
 
               <!-- Default Table -->
               <div class="table-responsive">
@@ -63,26 +72,64 @@
                   </tr>
                 </thead>
                 <tbody>
-                @foreach ($eks as $eks)
+                @forelse ($eks as $e)
                 <tr>
                   <th scope="row">{{ $loop->iteration }}</th>
-                    <td>{{ $eks->nama }}</td>
-                    <td>{{ $eks->jenis }}</td>
-                    <td>{{ $eks->jml }}</td>
+                    <td>{{ $e->nama }}</td>
+                    <td>{{ $e->jenis }}</td>
+                    <td>{{ $e->jml }}</td>
                     <td>
-                      <a class="btn btn-outline-info" href="/admin/eksselengkapnya/{{ $eks->id }}" title="Detail"><i class="bi bi-eye"></i></a>
+                      <a class="btn btn-outline-info" href="/admin/eksselengkapnya/{{ $e->id }}" title="Detail"><i class="bi bi-eye"></i></a>
                       <button class="btn btn-outline-danger btn-delete" 
-                              data-id="{{ $eks->id }}" 
-                              data-nama="{{ $eks->nama }}"
-                              data-url="{{ route('admin.deleteks', $eks->id) }}"
+                              data-id="{{ $e->id }}" 
+                              data-nama="{{ $e->nama }}"
+                              data-url="{{ route('admin.deleteks', $e->id) }}"
                               title="Hapus">
                           <i class="bi bi-trash3"></i>
                       </button>
                     </td>
                 </tr>
-              @endforeach
-                </tbody>
+                @empty
+                  <tr>
+                    <td colspan="5" class="text-center text-muted">Tidak ada data terkait pencarian.</td>
+                  </tr>
+                @endforelse                
+              </tbody>
               </table>
+              @if ($eks->hasPages())
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                      {{-- Tombol sebelumnya --}}
+                      @if ($eks->onFirstPage())
+                        <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                      @else
+                        <li class="page-item">
+                          <a class="page-link" href="{{ $eks->previousPageUrl() }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                          </a>
+                        </li>
+                      @endif
+
+                      {{-- Tombol angka halaman --}}
+                      @foreach ($eks->getUrlRange(1, $eks->lastPage()) as $page => $url)
+                        <li class="page-item {{ $page == $eks->currentPage() ? 'active' : '' }}">
+                          <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                        </li>
+                      @endforeach
+
+                      {{-- Tombol berikutnya --}}
+                      @if ($eks->hasMorePages())
+                        <li class="page-item">
+                          <a class="page-link" href="{{ $eks->nextPageUrl() }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                          </a>
+                        </li>
+                      @else
+                        <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                      @endif
+                    </ul>
+                  </nav>
+                @endif             
               </div>
               <!-- End Default Table Example -->
               <!-- Modal Konfirmasi Hapus -->

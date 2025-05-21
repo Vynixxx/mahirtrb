@@ -546,7 +546,31 @@ body.dark-mode .btn-close {
   filter: invert(1) grayscale(100%) brightness(150%);
 }
 
+  /* Dark mode support */
+  body.dark-mode .pagination .page-link {
+    background-color: #2b2b2b;
+    color: #e0e0e0;
+    border-color: #444;
+  }
 
+  body.dark-mode .pagination .page-link:hover {
+    background-color: #3a3a3a;
+    color: #fff;
+  }
+
+  body.dark-mode .pagination .page-item.active .page-link {
+    background-color: #4a90e2;
+    border-color: #4a90e2;
+    color: #fff;
+  }
+
+  body.dark-mode .pagination .page-item.disabled .page-link {
+    background-color: #2b2b2b;
+    color: #666;
+    border-color: #444;
+  }
+
+  
 a {
   color: #4154f1;
   text-decoration: none;

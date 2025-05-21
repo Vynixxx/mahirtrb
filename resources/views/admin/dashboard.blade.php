@@ -131,54 +131,110 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <h5 class="card-title mb-0">Laporan Pemesanan</h5>
-                        </div>
+                      <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap">
+                          <h5 class="card-title mb-0">Laporan Pemesanan</h5>
+                      </div>
 
-                        <!-- Chart -->
-                        <div id="reportsChart"></div>
+                      <!-- Filter Form -->
+                      <form method="GET" action="{{ route('admin.dashboard') }}" class="row g-2 align-items-end mb-4">
+                          <div class="col-12 col-md-auto">
+                              <label for="bulan" class="form-label mb-0 small text-muted">Bulan</label>
+                              <select name="bulan" id="bulan" class="form-select">
+                                  <option value="">-- Pilih Bulan --</option>
+                                  @foreach(range(1, 12) as $bln)
+                                      <option value="{{ $bln }}" {{ request('bulan') == $bln ? 'selected' : '' }}>
+                                          {{ \Carbon\Carbon::create()->month((int)$bln)->locale('id')->translatedFormat('F') }}
+                                      </option>
+                                  @endforeach
+                              </select>
+                          </div>
 
-                        <script>
-                            document.addEventListener("DOMContentLoaded", () => {
-                                let dataPemesanan = {
-                                    totalPemesanan: {{ $totalPemesanan }},
-                                    totalekspedisi: {{ $totalekspedisi }},
-                                    totalpabrikasi: {{ $totalpabrikasi }},
-                                    totalpenyewaan: {{ $totalpenyewaan }},
-                                    totalperbaikan: {{ $totalperbaikan }},
-                                    totalsupplier: {{ $totalsupplier }}
-                                };
+                          <div class="col-12 col-md-auto">
+                              <label for="tahun" class="form-label mb-0 small text-muted">Tahun</label>
+                              <select name="tahun" id="tahun" class="form-select">
+                                  <option value="">-- Pilih Tahun --</option>
+                                  @foreach(range(now()->year, 2020) as $thn)
+                                      <option value="{{ $thn }}" {{ request('tahun') == $thn ? 'selected' : '' }}>{{ $thn }}</option>
+                                  @endforeach
+                              </select>
+                          </div>
 
-                                let chartOptions = {
-                                    series: [{
-                                        name: "Jumlah Pesanan",
-                                        data: [dataPemesanan.totalPemesanan, dataPemesanan.totalekspedisi, dataPemesanan.totalpabrikasi, dataPemesanan.totalpenyewaan, dataPemesanan.totalperbaikan, dataPemesanan.totalsupplier]
-                                    }],
-                                    chart: {
-                                        height: 350,
-                                        type: 'bar'
-                                    },
-                                    plotOptions: {
-                                        bar: { horizontal: false }
-                                    },
-                                    dataLabels: { enabled: false },
-                                    xaxis: {
-                                        categories: ["Semua", "Ekspedisi", "Pabrikasi", "Penyewaan", "Perbaikan", "Supplier"]
-                                    }
-                                };
+                          <div class="col-12 col-md-auto">
+                              <button type="submit" class="btn btn-primary w-100">Tampilkan</button>
+                          </div>
 
-                                let chart = new ApexCharts(document.querySelector("#reportsChart"), chartOptions);
-                                chart.render();
+                          <div class="col-12 col-md-auto">
+                              <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary w-100">Reset</a>
+                          </div>
+                      </form>
 
-                                document.querySelectorAll('.filter-option').forEach(item => {
-                                    item.addEventListener('click', function () {
-                                        let filter = this.getAttribute('data-filter');
-                                        chart.updateSeries([{ name: "Jumlah Pesanan", data: [dataPemesanan[filter]] }]);
-                                    });
-                                });
-                            });
-                        </script>
-                    </div>
+                      <!-- Chart -->
+                      <div id="reportsChart"></div>
+
+                      <script>
+                          document.addEventListener("DOMContentLoaded", () => {
+                              let dataPemesanan = {
+                                  totalPemesanan: {{ $totalPemesanan }},
+                                  totalekspedisi: {{ $totalekspedisi }},
+                                  totalpabrikasi: {{ $totalpabrikasi }},
+                                  totalpenyewaan: {{ $totalpenyewaan }},
+                                  totalperbaikan: {{ $totalperbaikan }},
+                                  totalsupplier: {{ $totalsupplier }}
+                              };
+
+                              let bulanTahun = "{{ request('bulan') ? \Carbon\Carbon::create()->month((int)request('bulan'))->locale('id')->translatedFormat('F') : '' }} {{ request('tahun') ?? '' }}";
+
+
+                              let chartOptions = {
+                                  series: [{
+                                      name: "Jumlah Pesanan",
+                                      data: [
+                                          dataPemesanan.totalPemesanan,
+                                          dataPemesanan.totalekspedisi,
+                                          dataPemesanan.totalpabrikasi,
+                                          dataPemesanan.totalpenyewaan,
+                                          dataPemesanan.totalperbaikan,
+                                          dataPemesanan.totalsupplier
+                                      ]
+                                  }],
+                                  chart: {
+                                      height: 350,
+                                      type: 'bar'
+                                  },
+                                  title: {
+                                      text: "Laporan Pemesanan",
+                                      align: 'center',
+                                      style: {
+                                          fontSize: '18px',
+                                          fontWeight: 'bold'
+                                      }
+                                  },
+                                  subtitle: {
+                                      text: bulanTahun,
+                                      align: 'center'
+                                  },
+                                  plotOptions: {
+                                      bar: { horizontal: false }
+                                  },
+                                  dataLabels: { enabled: false },
+                                  xaxis: {
+                                      categories: ["Semua", "Ekspedisi", "Pabrikasi", "Penyewaan", "Perbaikan", "Supplier"]
+                                  }
+                              };
+
+                              let chart = new ApexCharts(document.querySelector("#reportsChart"), chartOptions);
+                              chart.render();
+
+                              document.querySelectorAll('.filter-option').forEach(item => {
+                                  item.addEventListener('click', function () {
+                                      let filter = this.getAttribute('data-filter');
+                                      chart.updateSeries([{ name: "Jumlah Pesanan", data: [dataPemesanan[filter]] }]);
+                                  });
+                              });
+                          });
+                      </script>
+                  </div>
+
                 </div>
             </div>
 

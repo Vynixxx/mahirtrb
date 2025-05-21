@@ -40,14 +40,23 @@
     <div class="container">
         <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Mitra <a href="{{ route('admin.tambahmitra') }}" class="btn btn-white">+</a>
-              <nav>
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                  <li class="breadcrumb-item active">Mitra</li>
-                </ol>
-              </nav>  
-              </h5>
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h5 class="card-title mb-0">Mitra <a href="{{ route('admin.tambahmitra') }}" class="btn btn-white">+</a>
+                    <nav>
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Mitra</li>
+                        </ol>
+                    </nav>
+                </div></h5>
+
+                <!-- Form Search -->
+                <form action="{{ route('admin.mitra') }}" method="GET" class="d-flex" style="max-width: 300px;">
+                    <input type="text" name="search" class="form-control me-2" placeholder="Cari..." value="{{ request('search') }}">
+                    <button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i></button>
+                </form>
+            </div>
 
               <!-- Default Table -->
               <div class="table-responsive">
@@ -61,27 +70,65 @@
                   </tr>
                 </thead>
                 <tbody>
-                @foreach ($mitra as $mitra)
+                @forelse ($mitra as $m)
                   <tr>
                   <th scope="row">{{ $loop->iteration }}</th>
                   <td>
-                    <img style="width: 150px" src="{{ asset('/images/' . $mitra->gambar) }}" alt="foto {{ $mitra->nama }}">
+                    <img style="width: 150px" src="{{ asset('/images/' . $m->gambar) }}" alt="foto {{ $m->nama }}">
                   </td>
-                    <td>{{ $mitra->nama }}</td>
+                    <td>{{ $m->nama }}</td>
                     <td>
-                      <a class="btn btn-outline-warning" href="/admin/editmitra/{{ $mitra->id }}" title="Edit"><i class="bi bi-pen"></i></a>
+                      <a class="btn btn-outline-warning" href="/admin/editmitra/{{ $m->id }}" title="Edit"><i class="bi bi-pen"></i></a>
                       <button class="btn btn-outline-danger btn-delete" 
-                              data-id="{{ $mitra->id }}" 
-                              data-nama="{{ $mitra->nama }}"
-                              data-url="{{ route('admin.deletemitra', $mitra->id) }}"
+                              data-id="{{ $m->id }}" 
+                              data-nama="{{ $m->nama }}"
+                              data-url="{{ route('admin.deletemitra', $m->id) }}"
                               title="Hapus">
                           <i class="bi bi-trash3"></i>
                       </button>
                     </td>                  
                   </tr>
-                @endforeach
+                @empty
+                  <tr>
+                    <td colspan="5" class="text-center text-muted">Tidak ada data terkait pencarian.</td>
+                  </tr>
+                @endforelse                
                 </tbody>
               </table>
+              @if ($mitra->hasPages())
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                      {{-- Tombol sebelumnya --}}
+                      @if ($mitra->onFirstPage())
+                        <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                      @else
+                        <li class="page-item">
+                          <a class="page-link" href="{{ $mitra->previousPageUrl() }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                          </a>
+                        </li>
+                      @endif
+
+                      {{-- Tombol angka halaman --}}
+                      @foreach ($mitra->getUrlRange(1, $mitra->lastPage()) as $page => $url)
+                        <li class="page-item {{ $page == $mitra->currentPage() ? 'active' : '' }}">
+                          <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                        </li>
+                      @endforeach
+
+                      {{-- Tombol berikutnya --}}
+                      @if ($mitra->hasMorePages())
+                        <li class="page-item">
+                          <a class="page-link" href="{{ $mitra->nextPageUrl() }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                          </a>
+                        </li>
+                      @else
+                        <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                      @endif
+                    </ul>
+                  </nav>
+                @endif             
               </div>
               <!-- End Default Table Example -->
               <!-- Modal Konfirmasi Hapus -->

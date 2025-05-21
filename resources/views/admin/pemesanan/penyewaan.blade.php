@@ -40,15 +40,24 @@
   <div class="container">
         <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Penyewaan
-              <nav>
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                  <li class="breadcrumb-item active">Pemesanan</li>
-                  <li class="breadcrumb-item active">Penyewaan</li>
-                </ol>
-              </nav>  
-              </h5>
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h5 class="card-title mb-0">Penyewaan
+                    <nav>
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Pemesanan</li>
+                            <li class="breadcrumb-item active">Penyewaan</li>
+                        </ol>
+                    </nav>
+                </div></h5>
+
+                <!-- Form Search -->
+                <form action="{{ route('admin.penyewaan') }}" method="GET" class="d-flex" style="max-width: 300px;">
+                    <input type="text" name="search" class="form-control me-2" placeholder="Cari..." value="{{ request('search') }}">
+                    <button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i></button>
+                </form>
+            </div>
 
               <!-- Default Table -->
               <div class="table-responsive">
@@ -64,27 +73,65 @@
                   </tr>
                 </thead>
                 <tbody>
-                @foreach ($sewa as $sewa)
+                @forelse ($sewa as $sw)
                 <tr>
                   <th scope="row">{{ $loop->iteration }}</th>
-                    <td>{{ $sewa->nama }}</td>
-                    <td>{{ $sewa->jenis_kendaraan }}</td>
-                    <td>{{ $sewa->jumlah_kebutuhan }}</td>
-                    <td>{{ $sewa->durasi }} {{ $sewa->satuan_durasi }}</td>
+                    <td>{{ $sw->nama }}</td>
+                    <td>{{ $sw->jenis_kendaraan }}</td>
+                    <td>{{ $sw->jumlah_kebutuhan }}</td>
+                    <td>{{ $sw->durasi }} {{ $sw->satuan_durasi }}</td>
                     <td>
-                      <a class="btn btn-outline-info" href="/admin/sewaselengkapnya/{{ $sewa->id }}" title="Detail"><i class="bi bi-eye"></i></a>
+                      <a class="btn btn-outline-info" href="/admin/sewaselengkapnya/{{ $sw->id }}" title="Detail"><i class="bi bi-eye"></i></a>
                        <button class="btn btn-outline-danger btn-delete" 
-                              data-id="{{ $sewa->id }}" 
-                              data-nama="{{ $sewa->nama }}"
-                              data-url="{{ route('admin.deletepenyewaan', $sewa->id) }}"
+                              data-id="{{ $sw->id }}" 
+                              data-nama="{{ $sw->nama }}"
+                              data-url="{{ route('admin.deletepenyewaan', $sw->id) }}"
                               title="Hapus">
                           <i class="bi bi-trash3"></i>
                        </button>
                     </td>
                 </tr>
-              @endforeach
-                </tbody>
+                @empty
+                  <tr>
+                    <td colspan="5" class="text-center text-muted">Tidak ada data terkait pencarian.</td>
+                  </tr>
+                @endforelse
+              </tbody>
               </table>
+              @if ($sewa->hasPages())
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                      {{-- Tombol sebelumnya --}}
+                      @if ($sewa->onFirstPage())
+                        <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                      @else
+                        <li class="page-item">
+                          <a class="page-link" href="{{ $sewa->previousPageUrl() }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                          </a>
+                        </li>
+                      @endif
+
+                      {{-- Tombol angka halaman --}}
+                      @foreach ($sewa->getUrlRange(1, $sewa->lastPage()) as $page => $url)
+                        <li class="page-item {{ $page == $sewa->currentPage() ? 'active' : '' }}">
+                          <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                        </li>
+                      @endforeach
+
+                      {{-- Tombol berikutnya --}}
+                      @if ($sewa->hasMorePages())
+                        <li class="page-item">
+                          <a class="page-link" href="{{ $sewa->nextPageUrl() }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                          </a>
+                        </li>
+                      @else
+                        <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                      @endif
+                    </ul>
+                  </nav>
+                @endif             
               </div>
               <!-- End Default Table Example -->
               <!-- Modal Konfirmasi Hapus -->

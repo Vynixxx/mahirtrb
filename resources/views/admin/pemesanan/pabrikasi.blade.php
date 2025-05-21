@@ -40,15 +40,24 @@
   <div class="container">
         <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Pabrikasi
-              <nav>
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                  <li class="breadcrumb-item active">Pemesanan</li>
-                  <li class="breadcrumb-item active">Pabrikasi</li>
-                </ol>
-              </nav>  
-              </h5>
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h5 class="card-title mb-0">Pabrikasi
+                    <nav>
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Pemesanan</li>
+                            <li class="breadcrumb-item active">Pabrikasi</li>
+                        </ol>
+                    </nav>
+                </div></h5>
+
+                <!-- Form Search -->
+                <form action="{{ route('admin.pabrikasi') }}" method="GET" class="d-flex" style="max-width: 300px;">
+                    <input type="text" name="search" class="form-control me-2" placeholder="Cari..." value="{{ request('search') }}">
+                    <button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i></button>
+                </form>
+            </div>
 
               <!-- Default Table -->
               <div class="table-responsive">
@@ -63,26 +72,64 @@
                   </tr>
                 </thead>
                 <tbody>
-                @foreach ($pabs as $pabs)
+                @forelse ($pabs as $p)
                 <tr>
                   <th scope="row">{{ $loop->iteration }}</th>
-                    <td>{{ $pabs->nama }}</td>
-                    <td>{{ $pabs->jenis_pabrikasi }}</td>
-                    <td>{{ $pabs->jenis_kendaraan }}</td>
+                    <td>{{ $p->nama }}</td>
+                    <td>{{ $p->jenis_pabrikasi }}</td>
+                    <td>{{ $p->jenis_kendaraan }}</td>
                     <td>
-                      <a class="btn btn-outline-info" href="/admin/pabsselengkapnya/{{ $pabs->id }}" title="Detail"><i class="bi bi-eye"></i></a>
+                      <a class="btn btn-outline-info" href="/admin/pabsselengkapnya/{{ $p->id }}" title="Detail"><i class="bi bi-eye"></i></a>
                       <button class="btn btn-outline-danger btn-delete" 
-                            data-id="{{ $pabs->id }}" 
-                            data-nama="{{ $pabs->nama }}"
-                            data-url="{{ route('admin.deletepabrikasi', $pabs->id) }}"
+                            data-id="{{ $p->id }}" 
+                            data-nama="{{ $p->nama }}"
+                            data-url="{{ route('admin.deletepabrikasi', $p->id) }}"
                             title="Hapus">
                         <i class="bi bi-trash3"></i>
                     </button>
                     </td>
                 </tr>
-              @endforeach
-                </tbody>
+                @empty
+                  <tr>
+                    <td colspan="5" class="text-center text-muted">Tidak ada data terkait pencarian.</td>
+                  </tr>
+                @endforelse                
+              </tbody>
               </table>
+              @if ($pabs->hasPages())
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                      {{-- Tombol sebelumnya --}}
+                      @if ($pabs->onFirstPage())
+                        <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                      @else
+                        <li class="page-item">
+                          <a class="page-link" href="{{ $pabs->previousPageUrl() }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                          </a>
+                        </li>
+                      @endif
+
+                      {{-- Tombol angka halaman --}}
+                      @foreach ($pabs->getUrlRange(1, $pabs->lastPage()) as $page => $url)
+                        <li class="page-item {{ $page == $pabs->currentPage() ? 'active' : '' }}">
+                          <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                        </li>
+                      @endforeach
+
+                      {{-- Tombol berikutnya --}}
+                      @if ($pabs->hasMorePages())
+                        <li class="page-item">
+                          <a class="page-link" href="{{ $pabs->nextPageUrl() }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                          </a>
+                        </li>
+                      @else
+                        <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                      @endif
+                    </ul>
+                  </nav>
+                @endif             
               </div>
               <!-- End Default Table Example -->
               <!-- Modal Konfirmasi Hapus -->

@@ -42,14 +42,14 @@
             <div class="card-body">
               <div class="d-flex justify-content-between align-items-center mb-3">
                 <div>
-                    <h5 class="card-title mb-0">Kontak</h5>
+                    <h5 class="card-title mb-0">Kontak
                     <nav>
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                             <li class="breadcrumb-item active">Kontak</li>
                         </ol>
                     </nav>
-                </div>
+                </div></h5>
 
                 <!-- Form Search -->
                 <form action="{{ route('admin.kontak') }}" method="GET" class="d-flex" style="max-width: 300px;">
@@ -70,26 +70,64 @@
                   </tr>
                 </thead>
                 <tbody>
-                @foreach ($kontak as $kontak)
+                @forelse ($kontak as $k)
                 <tr>
                   <th scope="row">{{ $loop->iteration }}</th>
-                    <td>{{ $kontak->name }}</td>
-                    <td>{{ $kontak->email }}</td>
-                    <td>{{ $kontak->whatsapp }}</td>
+                    <td>{{ $k->name }}</td>
+                    <td>{{ $k->email }}</td>
+                    <td>{{ $k->whatsapp }}</td>
                     <td>
-                      <a class="btn btn-outline-info" href="/admin/selengkapnya/{{ $kontak->id }}" title="Detail"><i class="bi bi-eye"></i></a>
+                      <a class="btn btn-outline-info" href="/admin/selengkapnya/{{ $k->id }}" title="Detail"><i class="bi bi-eye"></i></a>
                       <button class="btn btn-outline-danger btn-delete" 
-                              data-id="{{ $kontak->id }}" 
-                              data-nama="{{ $kontak->name }}"
-                              data-url="{{ route('admin.deletekontak', $kontak->id) }}"
+                              data-id="{{ $k->id }}" 
+                              data-nama="{{ $k->name }}"
+                              data-url="{{ route('admin.deletekontak', $k->id) }}"
                               title="Hapus">
                           <i class="bi bi-trash3"></i>
                       </button>
                     </td>
                 </tr>
-              @endforeach
+                @empty
+                  <tr>
+                    <td colspan="5" class="text-center text-muted">Tidak ada data terkait pencarian.</td>
+                  </tr>
+                @endforelse   
                 </tbody>
               </table>
+              @if ($kontak->hasPages())
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                      {{-- Tombol sebelumnya --}}
+                      @if ($kontak->onFirstPage())
+                        <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                      @else
+                        <li class="page-item">
+                          <a class="page-link" href="{{ $kontak->previousPageUrl() }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                          </a>
+                        </li>
+                      @endif
+
+                      {{-- Tombol angka halaman --}}
+                      @foreach ($kontak->getUrlRange(1, $kontak->lastPage()) as $page => $url)
+                        <li class="page-item {{ $page == $kontak->currentPage() ? 'active' : '' }}">
+                          <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                        </li>
+                      @endforeach
+
+                      {{-- Tombol berikutnya --}}
+                      @if ($kontak->hasMorePages())
+                        <li class="page-item">
+                          <a class="page-link" href="{{ $kontak->nextPageUrl() }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                          </a>
+                        </li>
+                      @else
+                        <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                      @endif
+                    </ul>
+                  </nav>
+                @endif             
               </div>
               <!-- End Default Table Example -->
               <!-- Modal Konfirmasi Hapus -->

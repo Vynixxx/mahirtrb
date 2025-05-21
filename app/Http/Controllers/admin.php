@@ -11,6 +11,8 @@ use App\Models\pabrikasi;
 use App\Models\penyewaan;
 use App\Models\perbaikan;
 use App\Models\supplier;
+use Carbon\Carbon;
+
 
 
 class admin extends Controller
@@ -31,15 +33,29 @@ class admin extends Controller
     }
 
     //dashboard
-    public function dashboard(){
+    public function dashboard(Request $request){
         if(Auth::check()&& Auth::user()->role === 'admin'){
             $jumlah_kontak = Kontak::count();
             $jumlah_mitra = mitra::count();
-            $totalekspedisi = ekspedisi::count();
-            $totalpabrikasi = pabrikasi::count();
-            $totalperbaikan = perbaikan::count();
-            $totalpenyewaan = penyewaan::count();
-            $totalsupplier = supplier::count();
+            $bulan = $request->bulan;
+            $tahun = $request->tahun;
+
+            // Filter berdasarkan bulan dan tahun jika ada
+            $filter = function ($query) use ($bulan, $tahun) {
+                if ($bulan && $tahun) {
+                    $query->whereMonth('created_at', $bulan)
+                        ->whereYear('created_at', $tahun);
+                } elseif ($tahun) {
+                    $query->whereYear('created_at', $tahun);
+                }
+            };
+
+            $totalekspedisi = ekspedisi::when($bulan || $tahun, $filter)->count();
+            $totalpabrikasi = pabrikasi::when($bulan || $tahun, $filter)->count();
+            $totalperbaikan = perbaikan::when($bulan || $tahun, $filter)->count();
+            $totalpenyewaan = penyewaan::when($bulan || $tahun, $filter)->count();
+            $totalsupplier = supplier::when($bulan || $tahun, $filter)->count();
+
             $totalPemesanan = $totalekspedisi + $totalpabrikasi + $totalperbaikan + $totalpenyewaan + $totalsupplier;
 
             return view('admin.dashboard', compact('jumlah_kontak', 'jumlah_mitra', 'totalPemesanan', 'totalekspedisi', 'totalpabrikasi', 'totalperbaikan', 'totalpenyewaan', 'totalsupplier'));

@@ -38,17 +38,26 @@
 
   <main id="main" class="main">
   <div class="container">
-    <div class="card">
+    <div class="card">  
             <div class="card-body">
-              <h5 class="card-title">Galeri <a href="{{ route('admin.tambahgaleri') }}" class="btn btn-white">+</a>
-              <nav>
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                  <li class="breadcrumb-item active">Kendaraan</li>
-                  <li class="breadcrumb-item active">Galeri</li>
-                </ol>
-              </nav>  
-              </h5>
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h5 class="card-title mb-0">Galeri <a href="{{ route('admin.tambahgaleri') }}" class="btn btn-white">+</a>
+                    <nav>
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Galeri</li>
+                        </ol>
+                    </nav>
+                </div></h5>
+
+                <!-- Form Search -->
+                <form action="{{ route('admin.galeri') }}" method="GET" class="d-flex" style="max-width: 300px;">
+                    <input type="text" name="search" class="form-control me-2" placeholder="Cari..." value="{{ request('search') }}">
+                    <button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i></button>
+                </form>
+            </div>
+
 
               <!-- Default Table -->
               <div class="table-responsive">
@@ -62,27 +71,65 @@
                   </tr>
                 </thead>
                 <tbody>
-                @foreach ($galeri as $galeri)
+                @forelse ($galeri as $g)
                   <tr>
                   <th scope="row">{{ $loop->iteration }}</th>
                   <td>
-                    <img style="width: 150px" src="{{ asset('/images/' . $galeri->gambar) }}" alt="foto kendaraan">
+                    <img style="width: 150px" src="{{ asset('/images/' . $g->gambar) }}" alt="foto kendaraan">
                   </td>
-                    <td>{{ $galeri->kategori }}</td>
+                    <td>{{ $g->kategori }}</td>
                     <td>
-                      <a class="btn btn-outline-warning" href="/admin/editgaleri/{{ $galeri->id }}" title="Edit"><i class="bi bi-pen"></i></a>
+                      <a class="btn btn-outline-warning" href="/admin/editgaleri/{{ $g->id }}" title="Edit"><i class="bi bi-pen"></i></a>
                       <button class="btn btn-outline-danger btn-delete" 
-                              data-id="{{ $galeri->id }}" 
-                              data-nama="{{ $galeri->nama }}"
-                              data-url="{{ route('admin.deletegaleri', $galeri->id) }}"
+                              data-id="{{ $g->id }}" 
+                              data-nama="{{ $g->nama }}"
+                              data-url="{{ route('admin.deletegaleri', $g->id) }}"
                               title="Hapus">
                           <i class="bi bi-trash3"></i>
                       </button>
                     </td>                  
                   </tr>
-                @endforeach
+                @empty
+                  <tr>
+                    <td colspan="5" class="text-center text-muted">Tidak ada data terkait pencarian.</td>
+                  </tr>
+                @endforelse
                 </tbody>
               </table>
+              @if ($galeri->hasPages())
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                      {{-- Tombol sebelumnya --}}
+                      @if ($galeri->onFirstPage())
+                        <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                      @else
+                        <li class="page-item">
+                          <a class="page-link" href="{{ $galeri->previousPageUrl() }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                          </a>
+                        </li>
+                      @endif
+
+                      {{-- Tombol angka halaman --}}
+                      @foreach ($galeri->getUrlRange(1, $galeri->lastPage()) as $page => $url)
+                        <li class="page-item {{ $page == $galeri->currentPage() ? 'active' : '' }}">
+                          <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                        </li>
+                      @endforeach
+
+                      {{-- Tombol berikutnya --}}
+                      @if ($galeri->hasMorePages())
+                        <li class="page-item">
+                          <a class="page-link" href="{{ $galeri->nextPageUrl() }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                          </a>
+                        </li>
+                      @else
+                        <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                      @endif
+                    </ul>
+                  </nav>
+                @endif
               </div>
               <!-- End Default Table Example -->
               <!-- Modal Konfirmasi Hapus -->
