@@ -87,6 +87,13 @@ Route::middleware([IsAdmin::class])->group(function () {
     Route::get('/admin/tambah-mitra', [pageadmin::class,'tambahmitra'])->name('admin.tambahmitra');
     Route::post('/tambahmitra', [pageadmin::class,'mitratambah'])->name('postTambahmitra');
 
+    Route::post('/admin/kirim-invoice/ekspedisi', [pageAdmin::class, 'kirimInvoiceEkspedisi'])->name('admin.kirimInvoiceEkspedisi');
+    Route::post('/admin/kirim-invoice/pabrikasi', [pageAdmin::class, 'kirimInvoicePabrikasi'])->name('admin.kirimInvoicePabrikasi');
+    Route::post('/admin/kirim-invoice/penyewaan', [pageAdmin::class, 'kirimInvoicePenyewaan'])->name('admin.kirimInvoicePenyewaan');
+    Route::post('/admin/kirim-invoice/perbaikan', [pageAdmin::class, 'kirimInvoicePerbaikan'])->name('admin.kirimInvoicePerbaikan');
+    Route::post('/admin/kirim-invoice/supplier', [pageAdmin::class, 'kirimInvoiceSupplier'])->name('admin.kirimInvoiceSupplier');
+
+
     //edit
     Route::get('/admin/editlayanan/{id}', [pageAdmin::class,'editlayanan'])->name('admin.editlayanan');
     Route::post('/postEditlayanan/{id}', [pageadmin::class, 'postEditlayanan'])->name('postEditlayanan');

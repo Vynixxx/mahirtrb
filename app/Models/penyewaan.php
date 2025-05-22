@@ -21,6 +21,7 @@ class penyewaan extends Model
         'satuan_durasi',
         'awal_penyewaan',
         'dengan_tim',
-        'catatan_tambahan'
+        'catatan_tambahan',
+        'invoice_no', 'harga_total', 'invoice_sent_at'
     ];
 }

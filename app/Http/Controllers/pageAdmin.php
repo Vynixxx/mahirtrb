@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\InvoiceMail;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Models\LayananKendaraan;
 use App\Models\Galeri;
@@ -19,6 +22,148 @@ use App\Models\penyewaan;
 
 class pageAdmin extends Controller
 {
+    public function kirimInvoiceEkspedisi(Request $request)
+    {
+        $request->validate([
+            'id_ekspedisi' => 'required|exists:ekspedisi,id',
+            'invoice_no' => 'required|string',
+            'total' => 'required|numeric',
+            'email' => 'required|email',
+        ]);
+
+        $eks = ekspedisi::findOrFail($request->id_ekspedisi);
+        $eks->invoice_no = $request->invoice_no;
+        $eks->harga_total = $request->total;
+        $eks->invoice_sent_at = Carbon::now();
+        $eks->save();
+
+        // Simpan semua data ke array
+        $invoice = [
+            'invoice_no' => $request->invoice_no,
+            'jenis' => 'Ekspedisi',
+            'total' => $request->total,
+            'email' => $request->email,
+            'nama' => $eks->nama,
+        ];
+
+        Mail::to($request->email)->send(new InvoiceMail($invoice));
+
+        return back()->with('success', 'Invoice berhasil dikirim!');
+    }
+
+    public function kirimInvoicePabrikasi(Request $request)
+    {
+        $request->validate([
+            'id' => 'required|exists:pabrikasi,id',
+            'invoice_no' => 'required|string',
+            'total' => 'required|numeric',
+            'email' => 'required|email',
+        ]);
+
+        $pabrikasi = pabrikasi::findOrFail($request->id);
+        // Jika belum ada kolom invoice, pastikan ada di DB, kalau belum kamu bisa skip simpan ke DB
+        $pabrikasi->invoice_no = $request->invoice_no ?? null;
+        $pabrikasi->harga_total = $request->total ?? null;
+        $pabrikasi->invoice_sent_at = Carbon::now();
+        $pabrikasi->save();
+
+        $invoice = [
+            'invoice_no' => $request->invoice_no,
+            'jenis' => 'Pabrikasi',
+            'total' => $request->total,
+            'email' => $request->email,
+            'nama' => $pabrikasi->nama,
+        ];
+
+        Mail::to($request->email)->send(new InvoiceMail($invoice));
+
+        return back()->with('success', 'Invoice berhasil dikirim!');
+    }
+
+    public function kirimInvoicePenyewaan(Request $request)
+    {
+        $request->validate([
+            'id' => 'required|exists:penyewaan,id',
+            'invoice_no' => 'required|string',
+            'total' => 'required|numeric',
+            'email' => 'required|email',
+        ]);
+
+        $penyewaan = penyewaan::findOrFail($request->id);
+        $penyewaan->invoice_no = $request->invoice_no;
+        $penyewaan->harga_total = $request->total;
+        $penyewaan->invoice_sent_at = Carbon::now();
+        $penyewaan->save();
+
+        $invoice = [
+            'invoice_no' => $request->invoice_no,
+            'jenis' => 'Penyewaan',
+            'total' => $request->total,
+            'email' => $request->email,
+            'nama' => $penyewaan->nama,
+        ];
+
+        Mail::to($request->email)->send(new InvoiceMail($invoice));
+
+        return back()->with('success', 'Invoice berhasil dikirim!');
+    }
+
+    public function kirimInvoicePerbaikan(Request $request)
+    {
+        $request->validate([
+            'id' => 'required|exists:perbaikan,id',
+            'invoice_no' => 'required|string',
+            'total' => 'required|numeric',
+            'email' => 'required|email',
+        ]);
+
+        $perbaikan = perbaikan::findOrFail($request->id);
+        $perbaikan->invoice_no = $request->invoice_no;
+        $perbaikan->harga_total = $request->total;
+        $perbaikan->invoice_sent_at = Carbon::now();
+        $perbaikan->save();
+
+        $invoice = [
+            'invoice_no' => $request->invoice_no,
+            'jenis' => 'Perbaikan',
+            'total' => $request->total,
+            'email' => $request->email,
+            'nama' => $perbaikan->nama,
+        ];
+
+        Mail::to($request->email)->send(new InvoiceMail($invoice));
+
+        return back()->with('success', 'Invoice berhasil dikirim!');
+    }
+
+    public function kirimInvoiceSupplier(Request $request)
+    {
+        $request->validate([
+            'id' => 'required|exists:supplier,id',
+            'invoice_no' => 'required|string',
+            'total' => 'required|numeric',
+            'email' => 'required|email',
+        ]);
+
+        $supplier = supplier::findOrFail($request->id);
+        $supplier->invoice_no = $request->invoice_no;
+        $supplier->harga_total = $request->total;
+        $supplier->invoice_sent_at = Carbon::now();
+        $supplier->save();
+
+        $invoice = [
+            'invoice_no' => $request->invoice_no,
+            'jenis' => 'Pemesanan Barang',
+            'total' => $request->total,
+            'email' => $request->email,
+            'nama' => $supplier->nama,
+        ];
+
+        Mail::to($request->email)->send(new InvoiceMail($invoice));
+
+        return back()->with('success', 'Invoice berhasil dikirim!');
+    }
+
     public function halamanlayanan(Request $request)
     {
         $query = layanankendaraan::query();

@@ -69,6 +69,7 @@
                     <th scope="col">Nama Pemesan / Perusahaan</th>
                     <th scope="col">Plat Nomor</th>
                     <th scope="col">Jenis Kendaraan</th>
+                    <th scope="col">Invoice & Total</th>
                     <th scope="col">Aksi</th>
                   </tr>
                 </thead>
@@ -79,6 +80,13 @@
                     <td>{{ $p->nama }}</td>
                     <td>{{ $p->nopol }}</td>
                     <td>{{ $p->jenis }}</td>
+                    <td>
+                        @if(is_null($p->invoice_no) || is_null($p->harga_total))
+                            <span class="text-muted">Diskusi belum dilakukan</span>
+                        @else
+                            {{ $p->invoice_no }} <br> Rp. {{ number_format($p->harga_total, 0, ',', '.') }}
+                        @endif
+                    </td> 
                     <td>
                       <a class="btn btn-outline-info" href="/admin/perbselengkapnya/{{ $p->id }}" title="Detail"><i class="bi bi-eye"></i></a>
                       <button class="btn btn-outline-danger btn-delete" 

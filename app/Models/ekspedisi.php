@@ -12,6 +12,6 @@ class ekspedisi extends Model
     protected $table = 'ekspedisi';
     
     protected $fillable = [
-        'nama', 'nohp', 'email', 'jenis', 'jml', 'awal', 'akhir', 'isi'
+        'nama', 'nohp', 'email', 'jenis', 'jml', 'awal', 'akhir', 'isi', 'invoice_no', 'harga_total', 'invoice_sent_at'
     ];
 }

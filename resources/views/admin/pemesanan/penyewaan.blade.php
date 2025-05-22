@@ -69,6 +69,7 @@
                     <th scope="col">Jenis Kendaraan</th>
                     <th scope="col">Jumlah Kebutuhan</th>
                     <th scope="col">Durasi Penyewaan</th>
+                    <th scope="col">Invoice & Total</th>
                     <th scope="col">Aksi</th>
                   </tr>
                 </thead>
@@ -80,6 +81,13 @@
                     <td>{{ $sw->jenis_kendaraan }}</td>
                     <td>{{ $sw->jumlah_kebutuhan }}</td>
                     <td>{{ $sw->durasi }} {{ $sw->satuan_durasi }}</td>
+                    <td>
+                        @if(is_null($sw->invoice_no) || is_null($sw->harga_total))
+                            <span class="text-muted">Diskusi belum dilakukan</span>
+                        @else
+                            {{ $sw->invoice_no }} <br> Rp. {{ number_format($sw->harga_total, 0, ',', '.') }}
+                        @endif
+                    </td> 
                     <td>
                       <a class="btn btn-outline-info" href="/admin/sewaselengkapnya/{{ $sw->id }}" title="Detail"><i class="bi bi-eye"></i></a>
                        <button class="btn btn-outline-danger btn-delete" 

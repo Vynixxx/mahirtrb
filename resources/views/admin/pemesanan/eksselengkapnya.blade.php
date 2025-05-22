@@ -141,6 +141,9 @@
                             <button type="button" class="btn btn-success mt-5" onclick="replyWhatsApp()" title="Balas via WhatsApp">
                                 <i class="bi bi-whatsapp"></i>
                             </button>
+                            <button type="button" class="btn btn-warning mt-5" data-bs-toggle="modal" data-bs-target="#invoiceModal">
+                                <i class="bi bi-file-earmark-text"></i> Buat Invoice
+                            </button>
                         @endif
 
                         @if ($hasXss)
@@ -176,6 +179,39 @@
                                 </div>
                             </div>
                         @endif
+                        <!-- Modal Buat Invoice -->
+                        <div class="modal fade" id="invoiceModal" tabindex="-1" aria-labelledby="invoiceModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <form action="{{ route('admin.kirimInvoiceEkspedisi') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="id_ekspedisi" value="{{ $eks->id }}">
+                                    <input type="hidden" name="email" value="{{ $eks->email }}">
+                                    <input type="hidden" name="nama" value="{{ $eks->nama }}">
+
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="invoiceModalLabel">Buat Invoice</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="mb-3">
+                                                <label class="form-label">Nomor Invoice</label>
+                                                <input type="text" name="invoice_no" class="form-control" value="{{ 'INV' . date('Ymd') . rand(100,999) }}" readonly>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Jumlah Harga (Rp)</label>
+                                                <input type="number" name="total" class="form-control" placeholder="Masukkan jumlah harga" required>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="bi bi-send-check"></i> Kirim Invoice ke Email
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

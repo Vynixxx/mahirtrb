@@ -18,6 +18,7 @@ class perbaikan extends Model
         'nopol',
         'jenis',
         'kendala_kendaraan',
-        'catatan_tambahan'
+        'catatan_tambahan',
+        'invoice_no', 'harga_total', 'invoice_sent_at'
     ];
 }

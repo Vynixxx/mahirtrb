@@ -18,5 +18,6 @@ class pabrikasi extends Model
         'jenis_pabrikasi',
         'jenis_kendaraan',
         'isi',
+        'invoice_no', 'harga_total', 'invoice_sent_at'
     ];
 }

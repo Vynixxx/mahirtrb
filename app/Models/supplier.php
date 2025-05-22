@@ -20,5 +20,6 @@ class supplier extends Model
         'satuan',
         'tanggal_kebutuhan',
         'catatan',
+        'invoice_no', 'harga_total', 'invoice_sent_at'
     ];
 }
