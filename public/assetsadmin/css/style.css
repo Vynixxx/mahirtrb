@@ -562,6 +562,28 @@ body.dark-mode .btn-close {
     border-color: #444;
   }
 
+  /* Untuk judul chart */
+body.dark-mode .apexcharts-title-text {
+  fill: #ffffff !important;
+}
+
+/* Untuk subtitle chart */
+body.dark-mode .apexcharts-subtitle-text {
+  fill: #cccccc !important;
+}
+
+/* Untuk label sumbu X dan Y */
+body.dark-mode .apexcharts-xaxis text,
+body.dark-mode .apexcharts-yaxis text {
+  fill: #f0f0f0 !important;
+}
+
+/* Untuk label data pada grafik (jika aktif) */
+body.dark-mode .apexcharts-datalabel-label,
+body.dark-mode .apexcharts-datalabel-value {
+  fill: #ffffff !important;
+}
+
   
 a {
   color: #4154f1;
