@@ -43,7 +43,7 @@
                 <div class="card shadow-lg border-0">
                     <div class="card-body text-center">
                         <!-- Avatar -->
-                        <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=random&size=150&bold=true" 
+                        <img src="{{ asset('assetsadmin/img/newprofile.png') }}" 
                             alt="Profile Picture" class="rounded-circle shadow mt-4 mb-3">
 
                         <h3 class="fw-bold">{{ Auth::user()->name }}</h3>

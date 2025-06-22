@@ -115,12 +115,12 @@
             {{-- Profil --}}
             <li class="nav-item dropdown pe-3">
                 <a class="nav-link nav-profile d-flex align-items-center" href="#" data-bs-toggle="dropdown">
-                    <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=random&size=128&bold=true" alt="Profile" class="rounded-circle" width="32" height="32">
+                    <img src="{{ asset('assetsadmin/img/newprofile.png') }}" alt="Profile" class="rounded-circle" width="32" height="32">
                     <span class="d-none d-md-inline ps-2">Profil</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile shadow">
                     <li class="dropdown-header text-center">
-                        <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=random&size=150&bold=true" class="rounded-circle shadow mb-2" width="60" height="60">
+                        <img src="{{ asset('assetsadmin/img/newprofile.png') }}" class="rounded-circle shadow mb-2" width="60" height="60">
                         <h6 class="mb-0">PT. Mahir Trans Bersaudara</h6>
                         <small class="text-muted">Administrator</small>
                     </li>

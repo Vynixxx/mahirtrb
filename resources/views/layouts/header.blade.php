@@ -3,7 +3,7 @@
 
       <a href="{{ route('home') }}" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="assets/img/logomtbscale.png" alt="Logo Perusahaan">
+        <img src="assets/img/newprofile.png" alt="Logo Perusahaan">
         <!-- <h1 class="sitename">Mahir Trans Bersaudara</h1> -->
       </a>
 
